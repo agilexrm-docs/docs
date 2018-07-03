@@ -1,6 +1,6 @@
 ## Add Note
 
-<embed src="/media/image1.emf" style="width:1.54167in;height:1.16793in" />
+<embed src="media/image1.emf" style="width:1.54167in;height:1.16793in" />
 
 Use this shape to add a Note to an entity.
 
@@ -56,14 +56,14 @@ Use this shape to add a Note to an entity.
 <td>Activity Entry Email</td>
 <td><p>Optional</p>
 <p>The name of an Email Template that should be used to generate an automatic email notification when this AgileShape is entered at runtime. If this property is left blank, then an email notification will not be sent automatically when the AgileShape is entered at runtime. If this property is not blank, then an email notification will be dynamically constructed and sent at runtime (when the AgileShape is entered) using the specified Email Template. To add a new Email Template select <em>Add Mail Template</em>:</p>
-<p><img src="/media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
+<p><img src="media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
 <p>See Defining an Email Template</p></td>
 </tr>
 <tr class="even">
 <td>Activity Exit Email</td>
 <td><p>Optional</p>
 <p>The name of an Email Template that should be used to generate an automatic email notification when this AgileShape is exited at runtime. If this property is left blank, then an email notification will not be sent automatically when the AgileShape is exited at runtime. If this property is not blank, then an email notification will be dynamically constructed and sent at runtime (when the AgileShape is exited) using the specified Email Template. To add a new Email Template select <em>Add Mail Template</em>:</p>
-<p><img src="/media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
+<p><img src="media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
 <p>See Defining an Email Template</p></td>
 </tr>
 <tr class="odd">
@@ -83,18 +83,18 @@ Use this shape to add a Note to an entity.
 <li><p><strong>Single</strong> - If it is set to single, then ONLY one session is effective, meaning that in a loop scenario as shown below, the engine would cancel a task from the previous session automatically</p></li>
 <li><p><strong>Multiple</strong> - If it is set to multiple, then multiple sessions can be effective in a loop scenario, and the process will wait for all tasks to complete and not cancel any previous tasks</p></li>
 </ul>
-<p><img src="/media/image3.png" style="width:2.768in;height:1.53778in" /></p></td>
+<p><img src="media/image3.png" style="width:2.768in;height:1.53778in" /></p></td>
 </tr>
 <tr class="odd">
 <td>Wait All Incoming</td>
 <td><p>Default Value: True (Dynamic)</p>
-<p><embed src="/media/image4.emf" style="width:4.43765in;height:2.17391in" /></p>
+<p><embed src="media/image4.emf" style="width:4.43765in;height:2.17391in" /></p>
 <ul>
 <li></li>
 <li></li>
 <li></li>
 </ul>
-<p><strong>NOTE</strong>: This property is ignored at runtime unless the AgileShape has multiple Incoming-Connectors.When an AgileShape has multiple direct predecessors (e.g. below <strong>E</strong> has multiple Incoming-Connectors leading directly from <strong>B</strong>, <strong>C</strong> and <strong>D</strong>), this property determines how the predecessor AgileShapes must be exited (at runtime) before this AgileShape can be entered (at runtime).This property can be set to the following specific values: <strong>False</strong> - This value indicates that the AgileShape (e.g. <strong>E</strong> in example above) will be entered as soon as any one of the AgileShape’s direct predecessors is exited (<strong>B</strong> or <strong>C</strong> or <strong>D</strong>, in example above). <strong>NOTE</strong>: This value is functionally equivalent to using the <strong>Or</strong> AgileShape (with <strong>Exclusive</strong> property set to <strong>False</strong>) between this AgileShape and its direct predecessors. <strong>True (Dynamic)</strong> - This value indicates that the AgileShape (<strong>E</strong> in example above) will be entered only after all of the AgileShape’s <em>enter-able</em> direct predecessors (<strong>B</strong> and either <strong>C</strong> or <strong>D</strong> based on Condition) are exited. If any of the direct predecessors are <em>un-enter-able</em> because conditional logic in the process bypassed them (e.g. <strong>D</strong> if Condition was Yes) and therefore <em>un-exit-able</em>, then those predecessors are not required to be exited before this AgileShape (<strong>E</strong>) is entered.<strong>NOTE</strong>: This value is functionally equivalent to using the <strong>And</strong> AgileShape (with the <strong>Dynamic</strong> property set to <strong>True</strong>) between this AgileShape and its direct predecessors. <strong>True (Static)</strong> - This value indicates that the AgileShape (<strong>E</strong> in example above) will be entered only after all of the AgileShape’s direct predecessors (<strong>B</strong>, <strong>C</strong> <span class="underline">and</span> <strong>D</strong>) are exited (at runtime). Use this only when all predecessors are <em>enter-able</em>.<strong>NOTE</strong>: If any of the direct predecessors are <em>un-enterable</em> (e.g. either <strong>C</strong> or <strong>D</strong>), then this AgileShape (<strong>E</strong>) will never be entered, and the process instance will be permanently delayed at this AgileShape.<strong>NOTE</strong>: This value is functionally equivalent to using the <strong>And</strong> AgileShape (with the <strong>Dynamic</strong> property set to <strong>False</strong>) between this AgileShape and its direct predecessors.</p></td>
+<p><strong>NOTE</strong>: This property is ignored at runtime unless the AgileShape has multiple Incoming-Connectors.When an AgileShape has multiple direct predecessors (e.g. below <strong>E</strong> has multiple Incoming-Connectors leading directly from <strong>B</strong>, <strong>C</strong> and <strong>D</strong>), this property determines how the predecessor AgileShapes must be exited (at runtime) before this AgileShape can be entered (at runtime).This property can be set to the following specific values: <strong>False</strong> - This value indicates that the AgileShape (e.g. <strong>E</strong> in example above) will be entered as soon as any one of the AgileShapeâ€™s direct predecessors is exited (<strong>B</strong> or <strong>C</strong> or <strong>D</strong>, in example above). <strong>NOTE</strong>: This value is functionally equivalent to using the <strong>Or</strong> AgileShape (with <strong>Exclusive</strong> property set to <strong>False</strong>) between this AgileShape and its direct predecessors. <strong>True (Dynamic)</strong> - This value indicates that the AgileShape (<strong>E</strong> in example above) will be entered only after all of the AgileShapeâ€™s <em>enter-able</em> direct predecessors (<strong>B</strong> and either <strong>C</strong> or <strong>D</strong> based on Condition) are exited. If any of the direct predecessors are <em>un-enter-able</em> because conditional logic in the process bypassed them (e.g. <strong>D</strong> if Condition was Yes) and therefore <em>un-exit-able</em>, then those predecessors are not required to be exited before this AgileShape (<strong>E</strong>) is entered.<strong>NOTE</strong>: This value is functionally equivalent to using the <strong>And</strong> AgileShape (with the <strong>Dynamic</strong> property set to <strong>True</strong>) between this AgileShape and its direct predecessors. <strong>True (Static)</strong> - This value indicates that the AgileShape (<strong>E</strong> in example above) will be entered only after all of the AgileShapeâ€™s direct predecessors (<strong>B</strong>, <strong>C</strong> <span class="underline">and</span> <strong>D</strong>) are exited (at runtime). Use this only when all predecessors are <em>enter-able</em>.<strong>NOTE</strong>: If any of the direct predecessors are <em>un-enterable</em> (e.g. either <strong>C</strong> or <strong>D</strong>), then this AgileShape (<strong>E</strong>) will never be entered, and the process instance will be permanently delayed at this AgileShape.<strong>NOTE</strong>: This value is functionally equivalent to using the <strong>And</strong> AgileShape (with the <strong>Dynamic</strong> property set to <strong>False</strong>) between this AgileShape and its direct predecessors.</p></td>
 </tr>
 <tr class="even">
 <td>AssemblyName</td>
@@ -106,11 +106,11 @@ Use this shape to add a Note to an entity.
 </tr>
 <tr class="even">
 <td>Method</td>
-<td>Read Only – Name of the Method being called in the Class shown in ClassName</td>
+<td>Read Only â€“ Name of the Method being called in the Class shown in ClassName</td>
 </tr>
 <tr class="odd">
 <td>Configure Attachments</td>
-<td><p><img src="/media/image5.png" alt="C:\Users\MASSOU~1.DEH\AppData\Local\Temp\SNAGHTML24090902.PNG" style="width:4.59147in;height:3.2087in" /></p>
+<td><p><img src="media/image5.png" style="width:4.59147in;height:3.2087in" /></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -139,7 +139,7 @@ Use this shape to add a Note to an entity.
 </tr>
 </tbody>
 </table>
-<p><img src="/media/image6.png" alt="C:\Users\MASSOU~1.DEH\AppData\Local\Temp\SNAGHTML24065157.PNG" style="width:4.68696in;height:4.01157in" /></p>
+<p><img src="media/image6.png" style="width:4.68696in;height:4.01157in" /></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -168,7 +168,7 @@ Use this shape to add a Note to an entity.
 </tr>
 </tbody>
 </table>
-<p>OptionalThis is for associating process documentation that is stored in SharePoint to this step.Click the ellipsis button to open the Configure Attachments window:<strong>Field Name / ButtonDefinitionTitle</strong>The value of the Title column of the document that is stored in the SharePoint Document Library<strong>Attachment</strong>URL of the document in SharePoint<strong>ViewNOTE:</strong> Currently this functionality is not supported. In future versions, if checked, it means the document would become accessible and viewable in the Process Manager window<strong>Add</strong>Click to open the <strong>Get SharePoint Document Library</strong> window<strong>Remove</strong>Deletes the association to the document (it does not affect the document in SharePoint)<strong>Open</strong>Opens the document so the contents can be checked<strong>Field Name / ButtonDefinitionSharePoint Server URL</strong>URL to SharePoint Server. Enter this value or select one from the drop-down list, set the credentials and then click the <strong>Get Doc Library</strong> button<strong>Get Doc Library</strong>It connects to the SharePoint Site to get the structure and fill the Library list<strong>Domain / User Name / Password</strong>Specific credentials to connect to SharePoint Site. This user should have Read Permissions in the SharePoint site<strong>Windows Authentication</strong>If checked, the current user’s credentials are used to connect to the SharePoint site<strong>Document Library List</strong>This list is populated once the Get Doc Library button is clicked, with all the library names of the selected SharePoint site<strong>Document Name List</strong>This is a list of the documents available in the Library selected in the list on the left. Once the right document is selected, click the OK button to associate it to this step</p></td>
+<p>OptionalThis is for associating process documentation that is stored in SharePoint to this step.Click the ellipsis button to open the Configure Attachments window:<strong>Field Name / ButtonDefinitionTitle</strong>The value of the Title column of the document that is stored in the SharePoint Document Library<strong>Attachment</strong>URL of the document in SharePoint<strong>ViewNOTE:</strong> Currently this functionality is not supported. In future versions, if checked, it means the document would become accessible and viewable in the Process Manager window<strong>Add</strong>Click to open the <strong>Get SharePoint Document Library</strong> window<strong>Remove</strong>Deletes the association to the document (it does not affect the document in SharePoint)<strong>Open</strong>Opens the document so the contents can be checked<strong>Field Name / ButtonDefinitionSharePoint Server URL</strong>URL to SharePoint Server. Enter this value or select one from the drop-down list, set the credentials and then click the <strong>Get Doc Library</strong> button<strong>Get Doc Library</strong>It connects to the SharePoint Site to get the structure and fill the Library list<strong>Domain / User Name / Password</strong>Specific credentials to connect to SharePoint Site. This user should have Read Permissions in the SharePoint site<strong>Windows Authentication</strong>If checked, the current userâ€™s credentials are used to connect to the SharePoint site<strong>Document Library List</strong>This list is populated once the Get Doc Library button is clicked, with all the library names of the selected SharePoint site<strong>Document Name List</strong>This is a list of the documents available in the Library selected in the list on the left. Once the right document is selected, click the OK button to associate it to this step</p></td>
 </tr>
 <tr class="even">
 <td>Reference URL</td>
