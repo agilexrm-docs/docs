@@ -1,6 +1,6 @@
 ## Add Note
 
-![](media/image1.emf)
+<embed src="/media/image1.emf" style="width:1.54167in;height:1.16793in" />
 
 Use this shape to add a Note to an entity.
 
@@ -56,14 +56,14 @@ Use this shape to add a Note to an entity.
 <td>Activity Entry Email</td>
 <td><p>Optional</p>
 <p>The name of an Email Template that should be used to generate an automatic email notification when this AgileShape is entered at runtime. If this property is left blank, then an email notification will not be sent automatically when the AgileShape is entered at runtime. If this property is not blank, then an email notification will be dynamically constructed and sent at runtime (when the AgileShape is entered) using the specified Email Template. To add a new Email Template select <em>Add Mail Template</em>:</p>
-<p><img src="media/media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
+<p><img src="/media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
 <p>See Defining an Email Template</p></td>
 </tr>
 <tr class="even">
 <td>Activity Exit Email</td>
 <td><p>Optional</p>
 <p>The name of an Email Template that should be used to generate an automatic email notification when this AgileShape is exited at runtime. If this property is left blank, then an email notification will not be sent automatically when the AgileShape is exited at runtime. If this property is not blank, then an email notification will be dynamically constructed and sent at runtime (when the AgileShape is exited) using the specified Email Template. To add a new Email Template select <em>Add Mail Template</em>:</p>
-<p><img src="media/media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
+<p><img src="/media/image2.png" style="width:1.73958in;height:0.60417in" /></p>
 <p>See Defining an Email Template</p></td>
 </tr>
 <tr class="odd">
@@ -83,12 +83,12 @@ Use this shape to add a Note to an entity.
 <li><p><strong>Single</strong> - If it is set to single, then ONLY one session is effective, meaning that in a loop scenario as shown below, the engine would cancel a task from the previous session automatically</p></li>
 <li><p><strong>Multiple</strong> - If it is set to multiple, then multiple sessions can be effective in a loop scenario, and the process will wait for all tasks to complete and not cancel any previous tasks</p></li>
 </ul>
-<p><img src="media/media/image3.png" style="width:2.768in;height:1.53778in" /></p></td>
+<p><img src="/media/image3.png" style="width:2.768in;height:1.53778in" /></p></td>
 </tr>
 <tr class="odd">
 <td>Wait All Incoming</td>
 <td><p>Default Value: True (Dynamic)</p>
-<p><embed src="media/media/image4.emf" style="width:4.43765in;height:2.17391in" /></p>
+<p><embed src="/media/image4.emf" style="width:4.43765in;height:2.17391in" /></p>
 <ul>
 <li></li>
 <li></li>
@@ -110,7 +110,7 @@ Use this shape to add a Note to an entity.
 </tr>
 <tr class="odd">
 <td>Configure Attachments</td>
-<td><p><img src="media/media/image5.png" alt="C:\Users\MASSOU~1.DEH\AppData\Local\Temp\SNAGHTML24090902.PNG" style="width:4.59147in;height:3.2087in" /></p>
+<td><p><img src="/media/image5.png" alt="C:\Users\MASSOU~1.DEH\AppData\Local\Temp\SNAGHTML24090902.PNG" style="width:4.59147in;height:3.2087in" /></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -139,7 +139,7 @@ Use this shape to add a Note to an entity.
 </tr>
 </tbody>
 </table>
-<p><img src="media/media/image6.png" alt="C:\Users\MASSOU~1.DEH\AppData\Local\Temp\SNAGHTML24065157.PNG" style="width:4.68696in;height:4.01157in" /></p>
+<p><img src="/media/image6.png" alt="C:\Users\MASSOU~1.DEH\AppData\Local\Temp\SNAGHTML24065157.PNG" style="width:4.68696in;height:4.01157in" /></p>
 <table>
 <tbody>
 <tr class="odd">
