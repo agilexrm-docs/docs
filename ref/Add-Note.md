@@ -4,7 +4,7 @@ OnPremise: Yes
 Online: Yes
 ---
 
-**[Parent](..) --> Add Note**
+**[Home](/) --> [Reference](javascript:history.back()) --> Add Note**
 
 
 # Add Note
