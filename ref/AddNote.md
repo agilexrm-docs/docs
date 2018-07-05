@@ -1,4 +1,4 @@
-**[Home](/) --> [Reference](../ref) --> Add Note**
+__[Home](/) --> [Reference](../ref) --> Add Note__
 
 # Add Note
 
@@ -9,17 +9,12 @@ For file attachments, please use the [Attach Document](AttachDocument.md) or [De
 
 ## Shape-Specific Properties
 
-### Entity Id
-See [Entity Id](common/EntityId.md)
-
-### Entity Type
-See [Entity Type](common/EntityType.md)
-
-### Subject
-Sets the title of the Note. It can be a static or a dynamic value.
-
-### Text
-Set the text of the body of the Note. It can be a static or a dynamic value.
+* __[Entity Id](common/EntityId.md)__
+* __[Entity Type](common/EntityType.md)__
+* __Subject__
+  Sets the title of the Note. It can be a static or a dynamic value.
+* __Text__
+  Set the text of the body of the Note. It can be a static or a dynamic value.
 
 ## Other Common Proporties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
