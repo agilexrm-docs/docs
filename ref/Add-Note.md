@@ -4,7 +4,7 @@ OnPremise: Yes
 Online: Yes
 ---
 
-**[Parent](../ref/README.md) --> Add Note**
+**[Parent](..) --> Add Note**
 
 
 # Add Note
