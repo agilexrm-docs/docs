@@ -4,6 +4,9 @@ OnPremise: Yes
 Online: Yes
 ---
 
+**[Parent](../README.md) --> Add Note**
+
+
 # Add Note
 
 ![](media/image1.png)
