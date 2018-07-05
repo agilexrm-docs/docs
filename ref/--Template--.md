@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](../ref) --> ShapeNameDisplay__
+__[Home](/) --> [Reference](/ref) --> ShapeNameDisplay__
 
 # ShapeNameDisplay
 
@@ -9,7 +9,7 @@ __[Home](/) --> [Reference](../ref) --> ShapeNameDisplay__
 ## Shape-Specific Properties
 
 * __[Property 1](common/Property1.md)__
-* __Property 2__
+* __Property 2__<br>
   Put description of Property 2 directly here (no fullstop at end)
 
 ## Other Common Proporties

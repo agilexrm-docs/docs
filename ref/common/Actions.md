@@ -1,4 +1,4 @@
-**[Home](/) --> [Reference](../ref) --> [Parent Shape](javascript:history.back()) --> Actions**
+**[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Actions**
 
 ## Actions
 

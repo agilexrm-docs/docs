@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](../ref) --> [Parent Shape](javascript:history.back()) --> Common Properties__
+__[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Common Properties__
 
 # Common Properties
 
