@@ -10,9 +10,9 @@ AgileShapes will also have some of the following Properties:
 * [(UID)](UID.md)
 * [Description](Description.md)
 * [Time Span](TimeSpan.md)
-* [Business Time](BusinessTime.md)
-* [Length](Length.md)
-* [Time Unit](TimeUnit.md)
+	* [Business Time](BusinessTime.md)
+	* [Length](Length.md)
+	* [Time Unit](TimeUnit.md)
 
 ## Email Notification
 
