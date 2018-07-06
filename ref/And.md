@@ -1,6 +1,6 @@
 __[Home](/) --> [Reference](/ref) --> And__
 
-# And Property
+# And Shape
 
 ![And](media/And.png)
 

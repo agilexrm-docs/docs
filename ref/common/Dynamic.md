@@ -1,9 +1,9 @@
-**[Home](/) --> [Reference](/ref) --> [And](/ref/And.md) --> Dynamic**
+**[Home](/) --> [Reference](/ref) --> [And](/ref/README.md) --> Dynamic**
 
 ### Dynamic property 
 
-**NOTE**: If the AgileShape does not have multiple Incoming-Connectors, then
-this property is ignored at runtime.
+> **NOTE**: If the AgileShape does not have multiple Incoming-Connectors, then
+> this property is ignored at runtime.
 
 When an AgileShape has multiple direct predecessors (e.g. below the AND shape
 has multiple Incoming-Connectors leading directly from **B**, **C** and **D**),
@@ -22,13 +22,13 @@ This property can be set to the following specific values:
     *un-exit-able*, then those predecessors are not required to be exited before
     this AgileShape is Completed.
 	
-    **NOTE**: This behavior is equivalent to the *Wait All Incoming* property in
-    most shapes when set to *True (Dynamic)*
+>   **NOTE**: This behavior is equivalent to the *Wait All Incoming* property in
+>   most shapes when set to *True (Dynamic)*
 
 -   **False** - This value indicates that the AgileShape will be Completed only
     after all of the AgileShape’s direct predecessors ( **B**, **C** *and* **D**)
     are exited (at runtime). In above example, Task E will never be reached. Use
     this only when all predecessors are *enter-able*.
 	
-    **NOTE**: This behavior is equivalent to the *Wait All Incoming* property in
-    most shapes when set to *True (Static)*
+>   **NOTE**: This behavior is equivalent to the *Wait All Incoming* property in
+>   most shapes when set to *True (Static)*
