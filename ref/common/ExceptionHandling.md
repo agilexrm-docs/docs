@@ -1,9 +1,9 @@
 **[Home](/) --> [Reference](/ref) --> [Common Properties](/ref/common) --> Exception Handling**
 
-## Exception Handling properties 
+### Exception Handling properties 
 
 
-### Exception Handler Behavior
+#### Exception Handler Behavior
 
 Default Value: **SuspendActivity**
 
@@ -25,7 +25,7 @@ This property can be set to the following specific values:
     ignore such error and continue to move forward through the process flow.
 
 
-### Exception Handler Scope
+#### Exception Handler Scope
 
 Default value: Local
 
@@ -49,10 +49,10 @@ will handle an AgilePart exception. Two options are available: Local or Global:
 
 
 
-### On Exception
+#### On Exception
 ??
 
-### Save Error Message To
+#### Save Error Message To
 
 Default value: ErrorMessage
 
@@ -62,7 +62,7 @@ containing information about the error will be stored in the process variable
 specified by this property
 
 
-### Save Status To
+#### Save Status To
 
 Default value: Success
 
@@ -71,5 +71,3 @@ AgileShape is exited. Depending if the shape executed correctly or if an error
 occurred, then the values true or false will be stored (as a String) in the
 process variable specified by this property. It is common to use a Single
 Condition shape directly afterwards, bound to the process variable
-
-
