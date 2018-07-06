@@ -17,7 +17,7 @@ AgileShapes will also have some of the following Properties:
 ## Email Notification
 
 * [Activity Entry Message (Email)](ActivityEntryMessageEmail.md)
-* [Task Completed Message (Email)](TaskCompletedMessageEmail.md)
+* [Email / Task Completed Message (Email)](TaskCompletedMessageEmail.md)
 
 ## Advanced
 
