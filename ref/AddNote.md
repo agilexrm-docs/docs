@@ -9,20 +9,12 @@ For file attachments, please use the [Attach Document](AttachDocument.md) or [De
 
 ## Shape-Specific Properties
 
-
 | Property | Description |
 | -------- | ----------- |
-| __[Entity Id](common/EntityId.md)__ |  |
-| __[Entity Type](common/EntityType.md)__ |  |
+| __Entity Id__ | This should be the ID of the desired entity record. This value is usually a dynamic value (Custom Attribute)|
+| __Entity Type__ | Select the entity type. This can only be a static value selected from the drop-down list |
 | __Subject__ | Sets the title of the Note. It can be a static or a dynamic value |
 | __Text__ | Set the text of the body of the Note. It can be a static or a dynamic value |
-
-* __[Entity Id](common/EntityId.md)__
-* __[Entity Type](common/EntityType.md)__
-* __Subject__<br>
-  Sets the title of the Note. It can be a static or a dynamic value
-* __Text__<br>
-  Set the text of the body of the Note. It can be a static or a dynamic value
 
 ## Other Common Proporties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

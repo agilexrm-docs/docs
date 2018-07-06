@@ -8,9 +8,10 @@ __[Home](/) --> [Reference](/ref) --> ShapeNameDisplay__
 
 ## Shape-Specific Properties
 
-* __[Property 1](common/Property1.md)__
-* __Property 2__<br>
-  Put description of Property 2 directly here (no fullstop at end)
+| Property | Description |
+| -------- | ----------- |
+| __Property 1__ | Description of Property 1<br>More info in a separate line |
+| __Property 2__ | Put description of Property 2 directly here (no fullstop at end) |
 
 ## Other Common Proporties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
