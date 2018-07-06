@@ -5,7 +5,8 @@ __[Home](/) --> [Reference](/ref) --> Add Note__
 ![Add Note](media/AddNote.png)
 
 Use this shape to add a textual note to an entity, which is added to the annotations entity.
-For file attachments, please use the [Attach Document](AttachDocument.md) or [Detah Document](DetachDocument.md) shapes.
+
+For file attachments, please use the [Attach Document](AttachDocument.md) or [Detach Document](DetachDocument.md) shapes.
 
 ## Shape-Specific Properties
 

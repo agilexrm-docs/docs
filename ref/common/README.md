@@ -10,9 +10,9 @@ AgileShapes will also have some of the following Properties:
 * [(UID)](UID.md)
 * [Description](Description.md)
 * [Time Span](TimeSpan.md)
-	* [Business Time](BusinessTime.md)
-	* [Length](Length.md)
-	* [Time Unit](TimeUnit.md)
+	* Business Time
+	* Length
+	* Time Unit
 
 ## Email Notification
 
@@ -27,15 +27,15 @@ AgileShapes will also have some of the following Properties:
 
 ## AgilePart
 
-* [Assembly Name](AssemblyName.md)
-* [Class Name](ClassName.md)
-* [Method](Method.md)
+* [Assembly Name](AssemblyClassMethod.md)
+* [Class Name](AssemblyClassMethod.md)
+* [Method](AssemblyClassMethod.md)
 
 ## Status and Error Messages
 
-* [Exception Handler Behavior](ExceptionHandlerBehavior.md)
-* [Exception Handler Scope](ExceptionHandlerScope.md)
-* [On Exception](OnException.md)
-* [Save Error Message To](SaveErrorMessageTo.md)
-* [Save Status To](SaveStatusTo.md)
+* [Exception Handler Behavior](ExceptionHandling.md)
+* [Exception Handler Scope](ExceptionHandling.md)
+* [On Exception](ExceptionHandling.md)
+* [Save Error Message To](ExceptionHandling.md)
+* [Save Status To](ExceptionHandling.md)
 
