@@ -1,21 +1,35 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Wait For Update__
 
-# ShapeNameDisplay
+# Wait For Update
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Wait For Update](media/WaitForUpdate.png)
 
-(Description Here)
+This activity is used to wait until a condition is met in CRM. This can be used
+in many scenarios. For example:
+
+-   Make all order items processes to wait until customer account credit rating
+    becomes High.
+
+-   Make a process wait until product stock is sufficient to fulfill an order
+
+The process will wait until the condition configured in the query is met.
+
+It is common to **Add a Timer** to this shape in order not to wait indefinitely.
+This way when the due date is reached, the process will continue using the
+alternative route:
+
+![Wait For Update](media/WaitForUpdate1.png)
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| **EntityID**        | [Entity ID](common/EntityID.md)|
+| **EntityName**      |[Entity Name](common/EntityName.md)|
+| **QueryExpression** |[Query Expression](common/QueryExpression.md)|
 
-### Property 2
-(Put description of Property 2 directly here)
 
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

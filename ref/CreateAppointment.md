@@ -1,21 +1,35 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Create Appointment__
 
-# ShapeNameDisplay
+# Create Appointment
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Create Appointment](media/CreateAppointment.png)
 
-(Description Here)
+This shape creates an Appointment Activity in CRM.
 
-## Shape-Specific Properties
+This shape can optionally have a [Page Form](./PageForm.md). This permits
+creating activity-based forms, which have all the fields necessary for carrying
+out this task by the user.
 
-### Property 1
-See [Proerty1](common/Property1.md)
+When the activity is *Marked as Completed*, the process flow continues.
 
-### Property 2
-(Put description of Property 2 directly here)
+The mapping of the fields is as shown below:
 
+| CRM Field     | AgilePoint setting                                                   |
+|---------------|----------------------------------------------------------------------|
+| **Required**      | RequiredAttendees property                                           |
+| **Optional**      | OptionalAttendees property                                           |
+| **Subject**       | [Subject](common/Subject.md)                                                     |
+| **Location**      | Location property                                                    |
+| **Regarding**     | RegardingEntityId & RegardingEntityType properties                   |
+| **Start Time**    | Start On property                                                    |
+| **End Time**      | End On property                                                      |
+| **All Day Event** | AllDayEvent property                                                 |
+| **Description**   | TaskDescription property                                             |
+| **Priority**      | Priority property                                                    |
+| **Owner**         | Participant property . When Participant is a Queue, OwnerID property |
+| **Other fields**  | Set using the ActivityProperties property                            |
 
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

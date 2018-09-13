@@ -1,21 +1,25 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Change Ownership__
 
-# ShapeNameDisplay
+# Change Ownership
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Change Ownership](media/ChangeOwnership.png)
 
-(Description Here)
+This shape is used to change the Owner of an entity record to another User or
+Team.
+
+> __NOTE__: Owner field is a special field and cannot be changed using the *Update
+Entity* shape.
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| __EntityId__   | [Entity Id](common/EntityId.md) |
+| __EntityName__ | [Entity Name](common/EntityName.md) |
+| __NewOwner__   | [New Owner](common/NewOwner.md) |
+| __OwnerType__  | [Owner Type](common/OwnerType.md) |
 
-### Property 2
-(Put description of Property 2 directly here)
-
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

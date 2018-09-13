@@ -1,21 +1,26 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Page Form__
 
-# ShapeNameDisplay
+# Page Form
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Page Form](media/PageFormShape.png)
 
-(Description Here)
+This shape is used in AgileDialogs models only and is for designing a Page (a
+group of controls) in an AgileDialog.
+
+For a detailed explanation of how to use this and other AgileDialog shapes,
+please see **[AgileDialogs Design Guide](../guides/AgileDialogs-DesignGuide.md)**.
+
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
-
-### Property 2
-(Put description of Property 2 directly here)
+| Property | Description |
+| -------- | ----------- |
+| **FormConfiguration** | Click the ellipsis to open the Form Configuration dialog. |
 
 
-## Other Common Proporties
+
+
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

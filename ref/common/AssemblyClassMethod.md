@@ -2,6 +2,8 @@
 
 ### Assembly Info properties 
 
+These properties are for information-only purposes.
+
 #### Assembly Name
 
 Read Only

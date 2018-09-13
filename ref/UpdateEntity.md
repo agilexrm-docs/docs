@@ -1,22 +1,24 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Update Entity__
 
-# ShapeNameDisplay
+# Update Entity
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Update Entity](media/UpdateEntity.png)
 
-(Description Here)
+This activity is used to update an entity record, including custom entities
+as well as entities not related to the Main Entity.
+
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| __EntityID__ | [Entity Id](common/EntityId.md)  |
+| __EntitySpecification__ | [Entity Specification](common/EntitySpecification.md)  |
+| __EntityType__   |[Entity Type](common/EntityType.md)    |
 
-### Property 2
-(Put description of Property 2 directly here)
-
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions
 See [Actions](common/Actions.md)
+

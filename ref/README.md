@@ -42,11 +42,11 @@ __[Home](/) --> Reference__
 * [Search](Search.md)
 * [Set Status (Multi)](SetStatusMulti.md)
 * [Set Status](SetStatus.md)
-* [Subprocess (Multi)](SubprocessMulti.md)
 * [Update Entity (Multi)](UpdateEntityMulti.md)
 * [Update Entity](UpdateEntity.md)
 * [Wait For Update](WaitForUpdate.md)
 * [XRM Subprocess](XRMSubprocess.md)
+* [XRM Subprocess (Multi)](XRMSubprocessMulti.md)
 
 ### Dyn365/CDS Manual Shapes
 

@@ -1,21 +1,30 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Delete Entity Multi__
 
-# ShapeNameDisplay
+# Delete Entity Multi
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Delete Entity Multi](media/DeleteEntityMulti.png)
 
-(Description Here)
+This shape deletes multiple entity records from CRM.
+
+The set of records that are affected are selected by either:
+
+* The ones returned by the query configured in the *QueryExpression* property
+* From a semicolon-separated list of IDs passed via the *EntityIds* property
+
+> **NOTE**: Standard CRM rules and restrictions apply (e.g. Role, Referential
+integrity etc).
+
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| **EntityIds**       | [Entity IDs](common/EntityIds.md) |
+| **EntityName**      | [Entity name](common/EntityName.md)|
+| **QueryExpression** | [QueryExpression](common/QueryExpression.md) |
 
-### Property 2
-(Put description of Property 2 directly here)
 
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

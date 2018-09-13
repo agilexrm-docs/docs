@@ -22,8 +22,11 @@ AgileShapes will also have some of the following Properties:
 ## Advanced
 
 * [Audit Level](AuditLevel.md)
+* [Auto Complete](AutoComplete.md) - AgileWorks
+* [Priority](Priority.md) - AgileWorks
 * [Session Mode](SessionMode.md)
 * [Wait All Incoming](WaitAllIncoming.md)
+* [Wait Work Performed](WaitWorkPerformed.md) - AgileWorks
 
 ## AgilePart
 

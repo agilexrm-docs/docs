@@ -12,12 +12,13 @@ For file attachments, please use the [Attach Document](AttachDocument.md) or [De
 
 | Property | Description |
 | -------- | ----------- |
-| __Entity Id__ | This should be the ID of the desired entity record.<br>This value is usually a dynamic value (Custom Attribute)|
-| __Entity Type__ | Select the entity type.<br>This can only be a static value selected from the drop-down list |
-| __Subject__ | Sets the title of the Note. It can be a static or a dynamic value |
-| __Text__ | Set the text of the body of the Note. It can be a static or a dynamic value |
+| __EntityId__| [Entity Id](common/EntityId.md)|
+| __EntityType__ | [Entity Type](common/EntityType.md) |
+| __Subject__ | [Subject](common/Subject.md) |
+| __Text__ | [Text](common/Text.md) |
 
-## Other Common Proporties
+
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

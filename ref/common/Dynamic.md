@@ -1,4 +1,4 @@
-**[Home](/) --> [Reference](/ref) --> [And](../And.md) --> Dynamic**
+**[Home](/) --> [Reference](/ref) --> [And](/ref/README.md) --> Dynamic**
 
 ### Dynamic property 
 
@@ -10,7 +10,7 @@ has multiple Incoming-Connectors leading directly from **B**, **C** and **D**),
 this property determines how the predecessor AgileShapes must be exited (at
 runtime) before this AgileShape is considered Completed (at runtime).
 
-![](/ref/media/Dynamic.png)
+![Dynamic](../media/Dynamic.png)
 
 This property can be set to the following specific values:
 

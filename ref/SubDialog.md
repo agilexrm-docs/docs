@@ -1,21 +1,23 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> SubDialog__
 
-# ShapeNameDisplay
+# SubDialog
 
-![ShapeNameDisplay](media/ShapeName.png)
+![SubDialog](media/SubDialog.png)
 
-(Description Here)
+This shape is used in AgileDialogs models only and is for initiating a SubDialog
+from another.
+
+For a detailed explanation of how to use this and other AgileDialog shapes,
+please see **[AgileDialogs Design Guide](../guides/AgileDialogs-DesignGuide.md)**.
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| **NamePrefix** | [Name Prefix](common/NamePrefix.md)  |
+| **SubDialog**  | [Sub Dialog](common/subprocess.md) |
 
-### Property 2
-(Put description of Property 2 directly here)
-
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

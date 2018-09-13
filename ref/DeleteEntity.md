@@ -1,21 +1,24 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Delete Entity__
 
-# ShapeNameDisplay
+# Delete Entity
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Delete Entity](media/DeleteEntity.png)
 
-(Description Here)
+This shape deletes an entity record from CRM.
+
+> **NOTE**: Standard CRM rules and restrictions apply (e.g. Role, Referential
+integrity etc).
+
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| __EntityId__   | [Entity Id](common/EntityId.md) |
+| __EntityName__ | [Entity Name](common/EntityName.md)|
 
-### Property 2
-(Put description of Property 2 directly here)
 
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

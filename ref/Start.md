@@ -1,22 +1,23 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Start__
 
-# ShapeNameDisplay
+# Start
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Start](media/Start.png)
 
-(Description Here)
-
-## Shape-Specific Properties
-
-### Property 1
-See [Proerty1](common/Property1.md)
-
-### Property 2
-(Put description of Property 2 directly here)
+This is a special AgileShape that represents the starting point of a process.
+This AgileShape is activated when a process instance is initiated, and can never
+be reentered. A process template must always contain exactly one Start
+AgileShape.
 
 
-## Other Common Proporties
+<!--## Shape-Specific Properties
+
+| Property | Description |
+| -------- | ----------- |
+| __Property 1__ | Description of Property 1<br>More info in a separate line |
+| __Property 2__ | [Link](common/property2.md) |-->
+
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
-## Actions
-See [Actions](common/Actions.md)
+

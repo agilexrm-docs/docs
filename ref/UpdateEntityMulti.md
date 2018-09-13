@@ -1,22 +1,29 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Update Entity Multi__
 
-# ShapeNameDisplay
+# Update Entity Multi
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Update Entity Multi](media/UpdateEntityMulti.png)
 
-(Description Here)
+This activity is used to update multiple entity records of the same type (usually child entity records) at the same time,
+including custom entities as well as entities not related to the Main Entity.
+
+The set of records that are affected are selected by either:
+
+-   The ones returned by the query configured in the *QueryExpression* property
+-   From a semicolon-separated list of IDs passed via the *EntityIds* property
+
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| __EntityIDs__ | [Entity IDs](common/EntityIds.md)  |
+| __EntitySpecification__ | [Entity Specification](common/EntitySpecification.md)  |
+| __EntityType__   |[Entity Type](common/EntityType.md)    |
 
-### Property 2
-(Put description of Property 2 directly here)
-
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions
 See [Actions](common/Actions.md)
+

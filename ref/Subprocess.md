@@ -1,21 +1,52 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> SubProcess__
 
-# ShapeNameDisplay
+# SubProcess
 
-![ShapeNameDisplay](media/ShapeName.png)
+![ShapeNameDisplay](media/SubProcess.png)
 
-(Description Here)
+When entered, this AgileShape will initiate another process instance as a
+sub-process.
+
+This functionality is useful for breaking complex processes to more manageable
+chunks and also allows creating more modular processes, and enhances
+reusability.
+
+It allows selecting any type of AgilePoint Process: **AgileXRM**, **AgileDialogs**,
+**Generic**, **SharePoint List**, **SharePoint Doc**.
+
+There are other AgileShapes that are better suited when calling an AgileXRM
+sub-process (namely the **[Subprocess](XRMSubprocess.md)** shape in *AgileXRM Automatic Activities*
+stencil) or an AgileDialog sub-process (namely **[SubDialog](SubDialog.md)** and
+**[Dialog Activity](DialogActivity.md)**).
+
+When selecting a sub-process, it is possible to initiate the latest version or a
+particular version. Please see below for details of choosing which version of
+the sub-process template to initiate.
+
+## Configuration Dialogs
+
+### Process Selector dialog
+
+See the *SubProcess* property in the table below.
+
+### Subprocess Parameters dialog
+
+See the *SubProcessParams* property in the table below.
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| **NamePrefix**              | [Name Prefix](common/NamePrefix.md) |
+| **SaveProcessInstanceIdTo** | [Save Process Instance Id To](common/SaveProcessInstanceIdTo.md) |
+| **ShareAttributes**         | [Share Attributes](common/ShareAttributes.md) |
+| **SubProcess**              | [SubProcess](common/subprocess.md)             |
+| **SubProcessInitiator**     | [SubProcess Initiator](common/SubProcessInitiator.md) |
+| **SubProcessParams**        | [SubProcess Params](common/SubProcessParams.md)        |
+| **Wait**                    | [Wait](common/wait.md)                    |
 
-### Property 2
-(Put description of Property 2 directly here)
 
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

@@ -1,22 +1,22 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Stop__
 
-# ShapeNameDisplay
+# Stop
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Stop](media/Stop.png)
 
-(Description Here)
+This is a special activity that is activated at the end of a running process. A
+process template must always contain exactly one Stop AgileShape.
 
-## Shape-Specific Properties
+> **NOTE**: When a process is Completed, all running activities in it are
+automatically Cancelled.
 
-### Property 1
-See [Proerty1](common/Property1.md)
+<!--## Shape-Specific Properties
 
-### Property 2
-(Put description of Property 2 directly here)
+| Property | Description |
+| -------- | ----------- |
+| __Property 1__ | Description of Property 1<br>More info in a separate line |
+| __Property 2__ | [Link](common/property2.md) |-->
 
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
-## Actions
-See [Actions](common/Actions.md)

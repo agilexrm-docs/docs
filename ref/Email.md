@@ -1,21 +1,23 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Email__
 
-# ShapeNameDisplay
+# Email
 
-![ShapeNameDisplay](media/ShapeName.png)
+![ShapeNameDisplay](media/Email.png)
 
-(Description Here)
+An activity that sends an email notification.
+
+Please see the **[Email Shape Comparison Table](common/EmailShapeComparisonTable.md)** for the use cases for each of
+the different email AgileShapes.
+
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
-
-### Property 2
-(Put description of Property 2 directly here)
+| Property | Description |
+| -------- | ----------- |
+| **Email**             |[Email](common/email.md)|
 
 
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

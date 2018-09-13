@@ -1,8 +1,8 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+**[Home](/) --> [Reference](../ref) --> Web Service Enhancements**
 
-# ShapeNameDisplay
+# Web Service Enhancements 
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Web Service Enhancements ](media/WebServiceEnhancements.png)
 
 (Description Here)
 

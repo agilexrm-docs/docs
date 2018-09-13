@@ -5,7 +5,8 @@
 Specifies the maximum amount of time that should be allowed for the completion of the activity associated with this AgileShape before it is considered overdue.
 
 #### Business Time
-Default value: False
+
+Default value: **False**
 
 Determines whether the time span represents normal time, or business hours only.
 
@@ -21,9 +22,11 @@ This property can be set to the following specific values:
     settings
 
 #### Length
-The number of Time Units represented by the Time Span
+
+The number of *Time Units* represented by the *Time Span*
 
 #### Time Unit
+
 The type of time unit represented by the time span. This property can be set to
 the following specific values:
 

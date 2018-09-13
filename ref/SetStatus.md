@@ -1,21 +1,27 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Set Status__
 
-# ShapeNameDisplay
+# Set Status
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Set Status](media/SetStatus.png)
 
-(Description Here)
+This shape is used to change the *Status* & *Status Reason* of a record in CRM.
+
+> **NOTE**: Status fields are special fields and cannot be changed using the
+*Update Entity* shape.
+
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| **ClosePendingTasks**    |[Close Pending Tasks](common/ClosePendingTasks.md)  |
+| **Closing Task Subject** |[Closing Task Subject](common/ClosingTaskSubject.md) |
+| **EntityId**             |[Entity Id](common/EntityId.md) |
+| **EntityName**           |[Entity Name](common/EntityName.md) |
+| **Status**               |[Status](common/status.md)  |
+| **StatusStateValue**     |[Status State Value](common/StatusStateValue.md)  |
 
-### Property 2
-(Put description of Property 2 directly here)
-
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

@@ -1,21 +1,32 @@
-**[Home](/) --> [Reference](../ref) --> ShapeNameDisplay**
+__[Home](/) --> [Reference](/ref) --> Set Status Multi__
 
-# ShapeNameDisplay
+# Set Status Multi
 
-![ShapeNameDisplay](media/ShapeName.png)
+![Set Status Multi](media/SetStatusMulti.png)
 
-(Description Here)
+This shape is used to change the *Status* & *Status Reason* of multiple entity
+records in CRM.
+
+The set of records that are affected are selected by either:
+
+-   The ones returned by the query configured in the *QueryExpression* property
+-   From a semicolon-separated list of IDs passed via the *EntityIds* property
+
+> **NOTE**: Status fields are special fields and cannot be changed using the *Update Entity (Multi)* shape.
 
 ## Shape-Specific Properties
 
-### Property 1
-See [Proerty1](common/Property1.md)
+| Property | Description |
+| -------- | ----------- |
+| **ClosePendingTasks**    |[Close Pending Tasks](common/ClosePendingTasks.md)  |
+| **Closing Task Subject** |[Closing Task Subject](common/ClosingTaskSubject.md) |
+| **EntityIds**            |[Entity Ids](common/EntityIds.md)|
+| **EntityName**           |[Entity Name](common/EntityName.md)|
+| **QueryExpression**      |[Query Expression](common/QueryExpression.md)|
+| **Status**               |[Status](common/status.md)  |
+| **StatusStateValue**     |[Status State Value](common/StatusStateValue.md)  |
 
-### Property 2
-(Put description of Property 2 directly here)
-
-
-## Other Common Proporties
+## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions

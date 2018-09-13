@@ -1,0 +1,15 @@
+__[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()) --> SubProcess Params__
+
+### SubProcessParams property
+
+This opens the Subprocess Parameters dialog for passing variables to the sub-process:
+
+![SubProcessParams](../media/SubProcessParams.png)                                                                                                                                 |
+
+| **Field Name / Button**  | **Definition**                                                                                                                  |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| **Name**                 | This is the name of the Process Variable (aka Custom Attribute) to be created in the sub-process                                |
+| **Value**                | This is the value that the variable is going to have. It can be a static value, a Process Variable or a value from the *Schema* |
+| **Schema button**        | This opens the [Schema Selector](SchemaSelector.md) to select a variable for the *Value* column                                                      |
+
+
