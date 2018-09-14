@@ -42,7 +42,7 @@ To configure XRM Search control:
             navigation.
 
         -   **Always**: Control will perform the search in both navigation sources,
-            “Next” and *Back* operations.
+            *Next* and *Back* operations.
 
             ![](../media/AgileDialogsDesignGuide/XRMSearchControl_03.png)
 

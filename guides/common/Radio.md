@@ -18,7 +18,7 @@ property to *true*. This action also disables the standard *Next* button:
 
 ![](../media/AgileDialogsDesignGuide/Radio_02.png)
 
-The **ShowAsButtonSet** property (set to “true”) changes the items behavior,
+The **ShowAsButtonSet** property (set to *true*) changes the items behavior,
 from being shown as radio options, as buttons. If this behavior is set to
 *true*, we can also activate the property
 

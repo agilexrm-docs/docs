@@ -136,7 +136,7 @@ Host page code:
      switch (dialogData.message) {
          case "txtNameChange":
             // use getElementById if not jQuery
-            // page requires a <div id=”log” /> tag
+            // page requires a <div id="log" /> tag
             $("\#log").html(dialogData.params);
             break;
         default: // sample purpose!
