@@ -7,7 +7,7 @@ implied, by or with respect to anything in this document, and shall not be
 liable for any implied warranties of merchantability or fitness for a particular
 purpose or for any indirect, special or consequential damages.
 
-**Copyright © 2018**, **AgilePoint Inc. All rights reserved.**
+**Copyright (C) 2018**, **AgilePoint Inc. All rights reserved.**
 
 GOVERNMENT RIGHTS LEGEND: Use, duplication or disclosure by the U.S. Government
 is subject to restrictions set forth in the applicable AgilePoint Inc. license
