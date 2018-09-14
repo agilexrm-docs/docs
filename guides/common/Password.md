@@ -1,6 +1,6 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Password__
 
-# Password
+# Password control
 
 This control is used to present a control to get passwords.
 
@@ -11,8 +11,7 @@ and forth in the dialog Pages.
 
 The properties for the Password control are:
 
--   **AssignableByCode**: If true, the control allows to set his value using
-    code.
+-   **AssignableByCode**: If *true*, the control allows to set his value using code.
 
 > __Note__: To avoid security issues, it is the responsibility of the dialog designer
 to clear the variable holding the password, right after it is used in the

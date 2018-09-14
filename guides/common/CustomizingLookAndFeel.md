@@ -433,9 +433,9 @@ goal we should follow these steps:
     <add key="DialogErrorUrl" value="~/AgileDialogsError.aspx"></add>
 ```
 
-    We should change that path, and replace it for the path (file name included)
-    of the .aspx we have just created. Once that is done, we can customize our
-    new page as much as we want to (we can copy the html code from the Default
-    page into our new page and continue from there). There are multiple
-    enhancements you can have on your new customized error page (links to your
-    own bug reporting tool, customized links to user guides and help, etc…).
+We should change that path, and replace it for the path (file name included)
+of the .aspx we have just created. Once that is done, we can customize our
+new page as much as we want to (we can copy the html code from the Default
+page into our new page and continue from there). There are multiple
+enhancements you can have on your new customized error page (links to your
+own bug reporting tool, customized links to user guides and help, etc…).

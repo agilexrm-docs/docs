@@ -1,6 +1,6 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Group Container Control__
 
-# Group Container Control
+# Group Container control
 
 The Group Container allows us to build a certain set of controls inside a same
 group container, for functional and / or decorative purposes. We can group
@@ -46,28 +46,26 @@ The properties for the Group Container control are:
 -   **GroupType**: this property controls the appearance of the actual group
     container to be shown in the canvas.
 
-    -   None: the group container will not have any special appearance or borders to
+    -   **None**: the group container will not have any special appearance or borders to
     separate it from the rest of the canvas elements.
 
-    -   FieldSet: the group container will have a leading title and a line
+    -   **FieldSet**: the group container will have a leading title and a line
         delimiter. There will be a margin between the container and the elements
         surrounding it.
 
         ![](../media/AgileDialogsDesignGuide/GroupContainerControl_07.png)
 
-    -   Panel: the group container will be locked inside a thicker delimiter (title
+    -   **Panel**: the group container will be locked inside a thicker delimiter (title
     included). There will be a margin between the container and the elements
     surrounding it.
 
     ![](../media/AgileDialogsDesignGuide/GroupContainerControl_08.png)
 
-    -   Box: the group container will be locked inside a thin delimiter (title
+    -   **Box**: the group container will be locked inside a thin delimiter (title
     included). There **will not be** a margin between the container and the
     elements surrounding it.
 
     ![](../media/AgileDialogsDesignGuide/GroupContainerControl_09.png)
-
-    -   None: no delimiters between the container and its close elements.
 
 **Visible**: controls if the control is visible to the user. This can be
 adjusted on runtime to improve performance or include new application
@@ -85,5 +83,5 @@ functionalities.
 
 ![](../media/AgileDialogsDesignGuide/GroupContainerControl_11.png)
 
-Figure 7. "Height" property set in the first group container, to match the same
-height of the second group container
+> Figure 7. "Height" property set in the first group container, to match the same
+> height of the second group container

@@ -1,6 +1,6 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> XRM Grid__
 
-# XRM Grid
+# XRM Grid control
 
 This control presents a grid with the records selected with a query configured
 using the *Configure* button.
@@ -37,27 +37,27 @@ the full width of space set by *ColumnSpan*.
 
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_07.png)
 
-The “**AutoNext**” property, if set to “true”, enables the control to move
+The **AutoNext** property, if set to *true*, enables the control to move
 forward, once the user has filled in the control with the desired value.
 
 For instance, if we have a Page Form composed by one Grid control, with its
-“Required” property set to “true” we would need to select an item inside our
-control, and press the predefined “Next” button afterwards to keep on
-progressing in our dialog; if we set “AutoNext” to true, the process will
-continue right after we select a value of our Grid, without pressing the “Next”
+*Required* property set to *true* we would need to select an item inside our
+control, and press the predefined *Next* button afterwards to keep on
+progressing in our dialog; if we set *AutoNext* to true, the process will
+continue right after we select a value of our Grid, without pressing the *Next*
 button.
 
-> **Note**: the “AllowMultipleSelection” property should be set to false.
+> **Note**: the *AllowMultipleSelection* property should be set to *false*.
 
 Two Important features to take into account:
 
--   The “AutoNext” property cannot be set to “true” in a Grid that has its
-    “AllowMultipleSelection” set to true. For “AutoNext” property to be work,
-    the Grid must be set on “single selection” mode.
+-   The *AutoNext* property cannot be set to *true* in a Grid that has its
+    *AllowMultipleSelection* set to *true*. For *AutoNext* property to be work,
+    the Grid must be set on *Single selection* mode.
 
 -   Be careful changing both properties, because setting
-    “AllowMultipleSelection” to “true” automatically toggles “AutoNext” property
-    to “false”, and vice versa.
+    *AllowMultipleSelection* to *true* automatically toggles *AutoNext* property
+    to *false*, and vice versa.
 
     ![](../media/AgileDialogsDesignGuide/XRMGridControl_08.png)
 

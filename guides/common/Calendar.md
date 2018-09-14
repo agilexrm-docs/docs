@@ -1,6 +1,6 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Calendar__
 
-# Calendar
+# Calendar control
 
 This control shows a date picker and an optional time picker to the user:
 
@@ -23,5 +23,5 @@ Either type the date/time or select them using the mouse:
 
 ![](../media/AgileDialogsDesignGuide/Calendar_05.png)
 
-Note: The control does not have the ControlWidth property.
+> **Note**: The control does not have the ControlWidth property.
 

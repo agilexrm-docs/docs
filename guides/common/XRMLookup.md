@@ -21,7 +21,7 @@ clicking the *Configure Lookup* button. This windows uses the CRM System View -
 Quick Find view - to find the data more easily.
 
 To configure the filter criteria, click the Configure button to open the
-Advanced Find window:
+*Advanced Find* window:
 
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_04.png)
 
@@ -30,15 +30,17 @@ the *Advanced Find* window.
 
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_05.png)
 
-The “**AutoNext**” property, if set to “true”, enables the control to move
+The **AutoNext** property, if set to *true*, enables the control to move
 forward, once the user has filled in the control with the desired value.
 
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_06.png)
 
 For instance, if we have a Page Form composed by one Lookup control, with its
-“Required” property set to “true” we would need to select an item inside our
-control, and press the predefined “next” button afterwards to keep on
-progressing in our process; if we set “AutoNext” to true, the process will
+*Required* property set to *true* we would need to select an item inside our
+control, and press the predefined *Next* button afterwards to keep on
+progressing in our process; if we set *AutoNext* to *true*, the process will
 continue right after we select a value of our lookup control, without pressing
-the “next” button (**Important**: if there is any other control in the current
-form with its “required” value set to true, the process will not move forward).
+the *Next* button 
+
+> **Important**: if there is any other control in the current
+form with its *required* property set to *true*, the process will not move forward.

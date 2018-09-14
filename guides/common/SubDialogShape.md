@@ -20,7 +20,7 @@ This window is used to configure the SubDialog to run:
 
 ![](../media/AgileDialogsDesignGuide/SubdialogShape_02.png)
 
-| **Property**| |
+| **Property**| Description |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Process Template**                    | Select which dialog to run, from the list of AgileDialogs already deployed to the Process Engine                                                                                                                                                                          |
 | **Latest Version**                      | The latest version of the SubDialog will be used at runtime                                                                                                                                                                                                               |

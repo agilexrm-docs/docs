@@ -7,7 +7,7 @@ __[Home](/) --> AgileDialogs User Guide__
 ## Introduction
 =
 
-This document describes the usage of AgileDialogs from end user’s perspective.
+This document describes the usage of AgileDialogs from end user's perspective.
 
 With AgileDialogs Users can fill out dialogs to save information in Microsoft
 Dynamics CRM or other systems.
@@ -197,7 +197,7 @@ These are the question types that this container can include:
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_19.png)
 
 It is possible to filter the results by typing on the Textbox. After clicking on
-the “filter” button, the filtered results are shown:
+the "filter" button, the filtered results are shown:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_20.png)
 
@@ -206,15 +206,15 @@ the “filter” button, the filtered results are shown:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_21.png)
 
->   …or selecting multiple items:
+>   ...or selecting multiple items:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_22.png)
 
->   …or just show the list for information purposes:
+>   ...or just show the list for information purposes:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_23.png)
 
--   **File**: This allows selecting a file from the user’s PC. Click on the
+-   **File**: This allows selecting a file from the user's PC. Click on the
     button and the selected file will start uploading:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_24.png)

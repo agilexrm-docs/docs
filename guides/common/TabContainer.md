@@ -1,9 +1,9 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Tab Container Control__
 
-# Tab Container Control
+# Tab Container control
 
 We can organize our Form information for structural and / or validation
-purposes. For that goal, the “Tab Container” control can be included inside our
+purposes. For that goal, the Tab Container control can be included inside our
 form. We can place different kinds of elements inside it, and distribute them by
 creating different tabs. Another advantage is that we can hide or disable all
 tab container elements as a whole.
@@ -24,12 +24,12 @@ Container, in order to organize and add inner controls.
     ![](../media/AgileDialogsDesignGuide/TabContainerControl_03.png)
 
 2.  Once added, we have to position our focus into the tab container control and
-    add a tab / tabs into it, and then, we will be pressing the “configure”
+    add a tab / tabs into it, and then, we will be pressing the *configure*
     button:
 
     ![](../media/AgileDialogsDesignGuide/TabContainerControl_04.png)
 
-3.  Now we add different tabs pressing “Add” and create the desired tabs to
+3.  Now we add different tabs pressing *Add* and create the desired tabs to
     organize the information:
 
     ![](../media/AgileDialogsDesignGuide/TabContainerControl_05.png)
@@ -44,12 +44,12 @@ Container, in order to organize and add inner controls.
 The most important properties for the Tab Container control are:
 
 -   **AllowAlign:** If activated, the container would position inline to the
-    previous element before it. If set to “false”, the container will be placed
+    previous element before it. If set to *false*, the container will be placed
     on a new line inside the canvas.
 
--   **AutoHeight:** If set to true, the tab container height will set a
+-   **AutoHeight:** If set to *true*, the tab container height will set a
     predefined height for all tabs (set to the height of the tallest tab). If
-    false, the height of the tab container will be adapted to its selected tab
+    *false*, the height of the tab container will be adapted to its selected tab
     height, which may make the other controls following the Tab Container to
     move accordingly.
 

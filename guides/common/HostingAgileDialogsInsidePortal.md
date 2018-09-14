@@ -1,18 +1,16 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Hosting AgileDialogs inside portals__
 
-# Hosting AgileDialogs inside a Portal (in an IFRAME)
+# Hosting AgileDialogs inside a Portal
 
-## Hosting AgileDialogs inside IFRAME
+## Hosting inside an IFRAME
 
 To host AgileDialogs inside another application like an intranet site or portal,
 we need to use a standard HTML tag IFRAME.
 
 ```xml
 <iframe
-
     id="DialogsFrame"
-    src="<SERVER_URL>?orgname=<ORG_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE>"
-
+    src="<SERVER_URL>?orgname=<ORG_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE>">
 </iframe>
 ```
 
@@ -24,10 +22,8 @@ Use the *hosted* parameter to remove the AgileDialogs branding frame:
 
 ```xml
  <iframe
-
      id="DialogsFrame"
      src="<SERVER_URL>?orgname=<ORG_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE>&hosted=1">
-
   </iframe>
 ```
 
@@ -105,22 +101,15 @@ Host page code:
 
 ```javascript
  window.addEventListener("message", function (event) {
-
      // use JSON.parse(event.data) if not jQuery
-
      var dialogData = $.parseJSON(event.data);
-
      switch (dialogData.message) {
-
         case "notificationKey":
-
-         window.alert(dialogData.params);
-         break;
-
+          window.alert(dialogData.params);
+          break;
         default: // sample purpose!
-
-         window.alert("No listener for message:" + dialogData.message);
-         break;
+          window.alert("No listener for message:" + dialogData.message);
+          break;
     }
  });
 ```
@@ -134,9 +123,7 @@ AgileDialogs OnLoadScript code:
 
 ```javascript
  DialogsEngine.addChangeEventHandler("txtName", function (value,display) {
-
     DialogsEngine.postMessage("txtNameChange", value);
-
  });
 ```
 
@@ -144,29 +131,18 @@ Host page code:
 
 ```javascript
  window.addEventListener("message", function (event) {
-
      // use JSON.parse(event.data) if not jQuery
-
      var dialogData = $.parseJSON(event.data);
-
      switch (dialogData.message) {
-
          case "txtNameChange":
             // use getElementById if not jQuery
             // page requires a <div id=”log” /> tag
-
             $("\#log").html(dialogData.params);
-
             break;
-
         default: // sample purpose!
-
             window.alert("No listener->" + dialogData.message);
-
             break;
-
     }
-
 });
 ```
 
@@ -201,11 +177,8 @@ AgileDialogs OnLoadScript code:
 
 ```javascript
  // this sample shows the returned data in textControl
-
  DialogsEngine.postMessage("receiveDataKey", "", function (data) {
-
     DialogsEngine.setSelectedValue("textControl", data);
-
  });
 ```
 
@@ -213,34 +186,22 @@ Host page code:
 
 ```javascript
   window.addEventListener("message", function (event) {
- 
       // use JSON.parse(event.data) if not jQuery
- 
       var dialogData = $.parseJSON(event.data);
- 
       switch (dialogData.message) {
- 
-          case "receiveDataKey":
- 
+           case "receiveDataKey":
               // Set notify property to send data back to AgileDialogs 
               dialogData.notify = "This data is from host page";
- 
               // Get the IFRAME object 
               var iframe = document.getElementsByTagName('iframe')[0];
- 
               // Send the message to AgileDialogs 
               iframe.contentWindow.postMessage(JSON.stringify(dialogData), dialogData.source);
- 
-            break;
- 
-          default:
- 
-            window.alert("No listener->" + dialogData.message);
- 
-            break;
- 
+              break;
+           default:
+              window.alert("No listener->" + dialogData.message);
+              break;
+
       }
- 
   });
 ```
 

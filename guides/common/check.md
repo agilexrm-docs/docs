@@ -1,6 +1,6 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Check__
 
-# Check
+# Check control
 
 This control is used to show a set of checkboxes to the user and allows multiple
 selections.
@@ -9,8 +9,6 @@ The values shown to the user can be:
 
 -   Static
 -   Dynamic
-
-See Error! Reference source not found. for details.
 
 ![](../media/AgileDialogsDesignGuide/Check_01.png)
 

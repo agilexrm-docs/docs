@@ -34,11 +34,11 @@ The time needed to complete this walkthrough is around **50 minutes**.
 
 This document assumes that:
 
--   Publish the managed solution “AgileXRMQuickStart_1_0_0_1_managed.zip” to
+-   Publish the managed solution **AgileXRMQuickStart_1_0_0_1_managed.zip** to
     CRM. It contains all the necessary entities and customizations to run this
     QuickStart guide successfully.
 
--   Publish the Dialog called “Update Children Entity Dialog”. It contains a
+-   Publish the Dialog called **Update Children Entity Dialog**. It contains a
     predefined SubDialog that we will be using along with this walkthrough
     guide.
 
@@ -58,7 +58,7 @@ This document assumes that:
 
 -   In the message box that says *AgilePoint Envision has updated template path.
     Please Restart Visio* click **OK**  
-    (This window may be behind the Visio window – click on the Taskbar icon to
+    (This window may be behind the Visio window - click on the Taskbar icon to
     bring it in view)
 
 -   Close **Visio**
@@ -142,7 +142,7 @@ Enter the **CRM Server URL** and **Organization name** (use your own values)
 
 -   In the **Status** property, select *Approved-Inactive*
 
--   In the **AfterSubmitAction** property, select “Mark as completed”. Once
+-   In the **AfterSubmitAction** property, select *Mark as completed*. Once
     finished the work, the CRM task will autocomplete itself and will keep
     moving forward through the process flow.
 
@@ -259,22 +259,22 @@ Configure the step to launch the previously created process:
 -   Double-click on the created Parent Record, and notice that the attached
     process has been executed.  
     (If such process instance does not appear, it means that the environment has
-    not been set up correctly – Please create a Post in the Forum
+    not been set up correctly - Please create a Post in the Forum
     [forum.agilexrm.net](http://forum.agilexrm.net/) under **Installation &
     Setup Discussions** to get help)
 
 ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_22.png)
 
-Congratulations! You’ve successfully launched your very first AgileXRM Process!
+Congratulations! You've successfully launched your very first AgileXRM Process!
 
-Now let’s complete the Task created by the process and see the process move
+Now let's complete the Task created by the process and see the process move
 forward:
 
--   On **“Activities”** section, focus on “Task 1” and click **“Complete”.**
+-   On **Activities** section, focus on **Task 1** and click **Complete.**
 
 ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_23.png)
 
--   Refresh the screen (by pressing “F5”), check **View Process** section and
+-   Refresh the screen (by pressing **F5**), check **View Process** section and
     notice that the process has continued past *Task 1* to *Set Inactive Status*
     and inactivated the record and finished  
     (This record will now be under the **Inactive Parent Entities** View)
@@ -294,7 +294,7 @@ Duration: **5 minutes**
 
 Objectives:
 
--   Show the use of activity-based forms in processes – each activity has its
+-   Show the use of activity-based forms in processes - each activity has its
     own specific form
 
 -   Show that these forms can expose all the fields necessary to complete the
@@ -315,37 +315,37 @@ chosen values.
 
     Select the shape *Task 1* and in the **Design Task**, click **XRM** category
 
--   In the **“PageForm” property**, click the **ellipsis** button to show a new
+-   In the **PageForm property**, click the **ellipsis** button to show a new
     AgileDialogs Form, ready to be configured
     
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_25.png)
 
--   Now, we will be associating an **AgileDialogs form to “Task 1”.** For that
+-   Now, we will be associating an AgileDialogs form to Task 1. For that
     goal, a predefined template is going to be used. Once the AgileDialogs Form
-    is opened, click on “**Import Form**”.
+    is opened, click on **Import Form**.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_26.png)
 
--   Look for the provided template “**AgileDialogs_Task1.xml**” and click
-    “Open”. If the importation process has succeeded, the form should be visible
+-   Look for the provided template **AgileDialogs_Task1.xml** and click
+    **Open**. If the importation process has succeeded, the form should be visible
     and ready to be saved and deployed, as shown below.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_27.png)
 
--   Click on “Save” to persist changes on “**Task 1**” shape.
+-   Click on **Save** to persist changes on *Task 1* shape.
 
--   Back on the main menu, drag and drop another **“Update Entity”** shape (from
+-   Back on the main menu, drag and drop another **Update Entity** shape (from
     the **XRM Automatic Activities** stencil) on to the canvas.
 
--   Name it *“Update Parent Entity”*.
+-   Name it *Update Parent Entity*.
 
--   Select the shape, and click on “**XRM**”. Then, choose
-    “**EntitySpecification**”, clicking on the ellipsis button.
+-   Select the shape, and click on **XRM**. Then, choose
+    **EntitySpecification**, clicking on the ellipsis button.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_28.png)
 
 -   **Link** the Parent Entity fields against the process context variables that
-    we have created in “**Task 1**”, accordingly. This can be accomplished by
+    we have created in **Task 1**, accordingly. This can be accomplished by
     choosing the entity field name (on the left handside of the properties
     menu), and map it against the process context variable name (on the right
     handside, as shown below).
@@ -356,7 +356,7 @@ chosen values.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_30.png)
 
--   **Click on “***Update Parent Entity”* and select **Help** in the menu to
+-   **Click on **Update Parent Entity** and select **Help** in the menu to
     open contextual help for this shape (You can also right-click the shapes in
     the stencil and click **Help** to see contextual help).
 
@@ -371,25 +371,25 @@ chosen values.
     name, that is *AgileXRM QuickStart Process*)
 
 -   In CRM, create a new *Parent Entity* record to kick-off the new version of
-    the process called “**Parent Record 2**”
+    the process called **Parent Record 2**
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_31.png)
 
--   The process is started automatically. Click on “*Task 1” and then, click
-    again on “Open Task”.*
+-   The process is started automatically. Click on **Task 1** and then, click
+    again on **Open Task**.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_32.png)
 
--   *The AgileDialogs Form will be shown on screen.* Type the values you want to
-    update for “**Parent Entity 2**”. Finish by pressing “Submit”, and click on
-    “Mark Complete” afterwards.
+-   The AgileDialogs Form will be shown on screen. Type the values you want to
+    update for **Parent Entity 2**. Finish by pressing **Submit**, and click on
+    **Mark Complete** afterwards.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_33.png)
 
 -   Back to the main screen, it is noticed that the process flow has kept going
-    forward, the shape “Update Parent Entity” has been processed automatically
+    forward, the shape *Update Parent Entity* has been processed automatically
     and the process has been terminated. Please note the updated fields on
-    “Parent Entity 2”.
+    *Parent Entity 2*.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_34.png)
 
@@ -415,71 +415,71 @@ Objectives:
 ### Scenario
 
 
-In this stage we are going to create children entities of “Child Entity” type
-attached to our “Parent Entity” record in CRM, all by using our process
+In this stage we are going to create children entities of *Child Entity* type
+attached to our *Parent Entity* record in CRM, all by using our process
 template. For that goal, a new shape will be added with functionality to add
 those children entities through AgileDialogs interface.
 
 ### Adding new Dialog Task shape
 
 -   In the Visio diagram, drag and drop a **Dialog Task** shape from **XRM
-    Automatic Activities 2011** stencil, and name it *Update Children Entity –
-    Dialog, as it is being shown below.*
+    Automatic Activities 2011** stencil, and name it *Update Children Entity 
+    Dialog*, as it is being shown below.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_35.png)
 
--   **Select the shape** and, in the Property Grid, select the value “**Mark as
-    completed**” for the property **AfterSubmitAction.**
+-   **Select the shape** and, in the Property Grid, select the value **Mark as
+    completed** for the property **AfterSubmitAction**.
 
 -   Click on the property **Dialog** by clicking on its ellipsis button. If
-    asked, connect to the server clicking “**OK**”.
+    asked, connect to the server clicking **OK**.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_36.png)
 
--   After connecting, select the previously published Dialog “Update Children
-    Entity Dialog” (provided along with the rest of the necessary resources) as
+-   After connecting, select the previously published Dialog *Update Children
+    Entity Dialog* (provided along with the rest of the necessary resources) as
     the chosen process template.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_37.png)
 
--   Later, click on the property **InParameters;** on the left handside, type
+-   Later, click on the property **InParameters**; on the left handside, type
     the name **parentBeId** (SubDialog inner variable name); on the right
-    handside, type \${CrmBeId} (business entity Id that we will be passing to
+    handside, type **\$\{CrmBeId\}** (business entity Id that we will be passing to
     the mentioned dialog dynamically).
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_38.png)
 
--   The SubDialog called “Update Children Entity Dialog” creates a whole new
+-   The SubDialog called *Update Children Entity Dialog* creates a whole new
     Dialog behind the scenes that executes itself in parallel, and depending of
-    our main process. It will be getting the business entity Id (of type “Main
-    Entity”), and will create / update entities of type “child entity” depending
+    our main process. It will be getting the business entity Id (of type *Main
+    Entity*), and will create / update entities of type *child entity* depending
     of the main entity running in the first place (picture of the template
-    below). Go to **Parent Entities** and change the View **to Inactive Parent
+    below). Go to **Parent Entities** and change the View to **Inactive Parent
     Entities** (to see the records created before).
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_39.png)
 
--   Now, publish the main process against CRM, by clicking “Publish Process to
-    Server”.
+-   Now, publish the main process against CRM, by clicking **Publish Process to
+    Server**.
 
 -   Once published, we should run a new instance of the process. For that goal,
-    go to “WorkPlace” and select “Parent Entities”.
+    go to **WorkPlace** and select **Parent Entities**.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_40.png)
 
--   Choose the entity we used before and click on “Activate”. Once done, click
-    on the ellipsis menu for the entity record, and choose “Run Process”.
+-   Choose the entity we used before and click on **Activate**. Once done, click
+    on the ellipsis menu for the entity record, and choose **Run Process**.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_41.png)
 
--   A pop-up menu comes up. Click on the “play” button for the “AgileXRM
-    Quickstart process”.
+-   A pop-up menu comes up. Click on the **play** button for the *AgileXRM
+    Quickstart process*.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_42.png)
 
 -   Refresh the page, and a new instance for the process will be launched. Click
-    again on “Task 1”, “Open Task”, and fill in the form as you did on “Stage
-    2”.
+    again on **Task 1**, **Open Task**, and fill in the form as you did on **Stage
+    2**.
 
 -   If everything went as expected, the process flow will be reaching the
     SubDialog. That means, that a new dialog has been launched on parallel and
@@ -487,17 +487,17 @@ those children entities through AgileDialogs interface.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_43.png)
 
--   Click on the shape, and select “Open Task”. Such task will be opened on a
+-   Click on the shape, and select **Open Task**. Such task will be opened on a
     new popup window. The first form is showing us the list of child entity
-    records that are associated to this main record of type “main entity” (image
+    records that are associated to this main record of type *main entity* (image
     below).
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_44.png)
 
 -   We can edit the records inside the grid to update values, or adding new
-    records by pressing “Add Child Entity”. Press that button and a new form is
-    shown, to type the record values (“name” and “child option set” fields).
-    Type those, and press “Next”.
+    records by pressing **Add Child Entity**. Press that button and a new form is
+    shown, to type the record values (*name* and *child option set* fields).
+    Type those, and press **Next**.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_45.png)
 
@@ -508,11 +508,11 @@ those children entities through AgileDialogs interface.
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_46.png)
 
 -   The edition form is shown as well. Type the new values you want and press
-    “Next” again.
+    **Next** again.
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_47.png)
 
--   Lastly, press “Finish”, and the whole SubDialog will have come to an end.
+-   Lastly, press **Finish**, and the whole SubDialog will have come to an end.
     The flow will have gone back to the main process, that it is going to be
     over after the entity is deactivated.
 
@@ -528,8 +528,7 @@ Duration: **5 minutes**
 Objectives:
 
 -   Show that end users with the right permissions can control the flow of the
-    
-    process (jump from any step to any step – forward or backward) while
+    process (jump from any step to any step - forward or backward) while
     maintaining details for audit purposes.
 
 ### Scenario
@@ -607,7 +606,7 @@ value *Option 1*:
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_51.png)
 
--   Click the **New…** button to open the **Expression** window
+-   Click the **New** button to open the **Expression** window
 
 -   Type *Option 1* in **Value** and click **OK** to close the **Expression**
     window
@@ -627,7 +626,7 @@ value *Option 1*:
     *Child Entity* and set **Status** property to *Closed-Inactive*
 
 As the query expression for this shape is the same as the earlier *Update
-Children* step, let’s copy the query definition:
+Children* step, let's copy the query definition:
 
 -   Click on the *Set Children OptionSet* shape to see its properties in the
     grid
@@ -651,14 +650,14 @@ Children* step, let’s copy the query definition:
 
     ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_54.png)
 
--   Publish new version of process like before (in **AgilePoint ribbon,** click
+-   Publish new version of process like before (in **AgilePoint ribbon** click
     **Publish Process to Server**), and **Save** Visio diagram
 
 -   Open the **Parent Entity** record that we left running in the last Stage and
     go to **View Process** section
 
 -   In the Process Manager, click the **Suspend** button
-    so that users cannot interact with the process ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_55_0.png)
+    so that users cannot interact with the process  ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_55_0.png)
 
 -   Click the **Migrate** button to open the **Real-Time Process Migration** window ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_55_1.png)
 
@@ -721,8 +720,8 @@ installed (normally in C:\\Program Files
 
 -   Locate the *QuickStart AgileDialog.vsd* file
 
--   Open the file with Visio – You’ll get an *Unable to connect to the remote
-    server…* error. Click **OK**.
+-   Open the file with Visio - You'll get an *Unable to connect to the remote
+    server* error. Click **OK**.
 
 -   The Connection window pops-up. Ensure that the connection configuration is
     pointing to your CRM Server and organization, and click **OK**

@@ -4,21 +4,19 @@ __[Home](/) --> AgileDialogs Design Guide__
 # AgileDialogs Design Guide
 ---
 
-Introduction
-=
-This document describes the usage of AgileDialogs from dialog-designer
-perspective.
+## Introduction
+
+This document describes the usage of AgileDialogs from dialog-designer perspective.
 
 With AgileDialogs, a designer can create dialogs or scripts to gather
 information from users and save this information either in Microsoft Dynamics
 365 or other systems.
 
-The terms ‘AgileDialog’ and ‘dialog’ are used interchangeably in the rest of the
-document. To avoid confusion, *Dynamics’ own dialogs*, are referred to as such,
+The terms 'AgileDialog' and 'dialog' are used interchangeably in the rest of the
+document. To avoid confusion, *Dynamics' own dialogs*, are referred to as such,
 in *italic*.
 
-AgileDialogs Basics
-=
+## AgileDialogs Basics
 
 An AgileDialog is a visually designed model comprising of a set of UI steps
 (Page Forms) and optionally, automatic system steps. The interface presents data
@@ -38,20 +36,19 @@ AgileDialogs can be executed standalone, meaning the dialog is not part of an
 AgileXRM process, or they could be part of a business process, that is, the
 execution of the dialog is a task assigned to an end-user.
 
-From the end-user’s perspective, a dialog is a set of questions that he/she must
+From the end-user's perspective, a dialog is a set of questions that he/she must
 answer in order to perform a task. Within the dialog, the user can go forward or
 backward in order to fulfill the required task. The dialog is presented to the
 end-user using an HTML5-based Dialog Render Engine.
 
-AgileDialogs Design Concepts
--
+## AgileDialogs Design Concepts
 
 These are the basic concepts that an AgileDialog designer must know.
 
 ### Dialog Model
 
 An AgileDialog Model is a business process drawn and configured in Envision (MS
-Visio), used for “holding a conversation” with an end-user. This process is
+Visio), used for "holding a conversation" with an end-user. This process is
 different from other AgileXRM processes, as all the tasks are executed
 **synchronously** by the end-user; there are no task assignments or tasks lists
 involved.
@@ -163,7 +160,7 @@ The most important ones are described in depth here:
 -   *DialogTaskCRMActivityId*: If part of Dialog Activity, this property holds
     the CRM Activity ID that launched the current dialog instance.
 
-### Render Modes for Page Forms
+### Render Modes
 
 AgileDialogs Pages can be configured to be shown in three different types of
 views, from a User Experience point of view. When Designing an AgileDialogs
@@ -212,8 +209,7 @@ The three view modes to be described are:
 
 >   Figure 5. Page Form shown on "Popup Mode"
 
-AgileDialogs Design
-=
+## AgileDialogs Design
 
 There is a specific Visio template to create AgileDialogs:
 
@@ -227,8 +223,7 @@ Connection* window.
 
 [AgileDialogs Security](common/AgileDialogsSecurity.md)
 
-AgileDialogs Shapes
-=
+### AgileDialogs Shapes
 
 In Envision, these stencils contain the shapes specific to AgileDialogs:
 
@@ -239,11 +234,11 @@ In Envision, these stencils contain the shapes specific to AgileDialogs:
 There are 5 shapes in total, four in the *XRM AgileDialogs* stencil and one in
 the *XRM External Connector* stencil:
 
-1.  *Page Form*: is a step in an AgileDialog where the form is configured. The
+1.  **[Page Form](common/PageFormShape.md)**: is a step in an AgileDialog where the form is configured. The
     form can contain multiple controls of various types
 
-2.  *SubDialog*: allows calling another AgileDialog where this step is used.
-    There are two important differences with *CRM’s own sub-dialog*
+2.  **[SubDialog shape](common/SubDialogShape.md)**: allows calling another AgileDialog where this step is used.
+    There are two important differences with *CRM's own sub-dialog*
     functionality:
 
     1.  A SubDialog step can be used anywhere in an AgileDialog, and not just as
@@ -253,16 +248,16 @@ the *XRM External Connector* stencil:
         In *CRM dialogs*, it is not possible go back to the parent dialog;
         limiting the end-user experience.
 
-3.  *Dialog Task*: is used in an AgileXRM Process (and not in an AgileDialog
+3.  **[Dialog Task](common/DialogTask.md)**: is used in an AgileXRM Process (and not in an AgileDialog
     model) as a Task for a Full User. Upon opening the task in CRM, the user is
     presented with the associated AgileDialog.
 
-4.  *Intranet Dialog Task*: is used in an AgileXRM Process as a Task for a
+4.  **[Intranet Dialog Task](common/IntranetDialogTask.md)**: is used in an AgileXRM Process as a Task for a
     Process Participant User. Upon opening the task in the Portal, the user is
     presented with the associated AgileDialog. The Task is *Completed* when the
     user completes the dialog.
 
-5.  *Internet Dialog Task*: used in an AgileXRM Process (and not in an
+5.  **[Internet Dialog Task](common/InternetDialogTask.md)**: used in an AgileXRM Process (and not in an
     AgileDialog model) as a Task for an External User. Upon opening the task in
     the Portal, the user is presented with the associated AgileDialog. The Task
     is *Completed* when the user completes the dialog.
@@ -274,97 +269,51 @@ AgileDialog model:
 - [Wait for Update](../ref/WaitforUpdate.md)
 - [Page Form Shape](common/PageFormShape.md)
 
-Control Types
--
+### Control Types
 
-Currently the following control types are available:
+Currently the following control types are available, and each type has specific 
+configuration besides the common properties.
 
--   Calendar
--   Check
--   Combo
--   Currency
--   File
--   Group Container
--   IFrame
--   Info
--   Password
--   Radio
--   Tab Container
--   Textbox
--   Widget
--   XRM Grid
--   XRM Lookup
--   XRM Search
--   Yes/No
--   Variable Control
+- [Calendar](common/Calendar.md)
+- [Check](common/check.md)
+- [Combo](common/Combo.md)
+  - [Populating a Combo](common/PopulatingCombo.md) 
+- [Currency Control](common/CurrencyControl.md)
+- [File](common/File.md)
+- [Group Container](common/GroupContainer.md)
+- [IFrame](common/IFrame.md)
+- [Info](common/Info.md)
+- [Password](common/Password.md)
+- [Radio](common/Radio.md)
+- [Tab Container](common/TabContainer.md)
+- [Textbox](common/Textbox.md)
+-  Variable Control
+- [Widget Control](common/WidgetControl.md)
+- [XRM Grid](common/XRMGrid.md)
+- [XRM Lookup](common/XRMLookup.md)
+- [XRM Search](common/XrmSearchControl.md)
+-  Yes/No
 
-Each type has specific configuration besides the common properties.
-
-[Calendar](common/Calendar.md)
-
-[Check](common/check.md)
-
-[Combo](common/Combo.md)
-
-[Currency Control](common/CurrencyControl.md)
-
-[File](common/File.md)
-
-[Group Container](common/GroupContainer.md)
-
-[IFrame](common/IFrame.md)
-
-[Info](common/Info.md)
-
-[Password](common/Password.md)
-
-[Radio](common/Radio.md)
-
-[Tab Container](common/TabContainer.md)
-
-[Textbox](common/Textbox.md)
-
-[Widget Control](common/WidgetControl.md)
-
-[XRM Grid](common/XRMGrid.md)
-
-[XRM Lookup](common/XRMLookup.md)
-
-[XrmSearchControl](common/XrmSearchControl.md)
-
-[Populating Combo](common/PopulatingCombo.md)
-
-[SubDialog shape](common/SubDialogShape.md)
-
-[Dialog Task](common/DialogTask.md)
-
-[Intranet Dialog Task](common/IntranetDialogTask.md)
-
-[Internet Dialog Task](common/InternetDialogTask.md)
-
-[Localization](common/Localization.md)
-
-Advanced Features
-=
+### Advanced Features
 
 [Breadcrumbs](common/Breadcrumbs.md)
 
 [User Feeback](common/UserFeeback.md)
 
+[Localization](common/Localization.md)
+
 [JavaScript Extensions](common/JavaScriptExtensions.md)
 
 [Hosting dialogs inside a Portal](common/HostingAgileDialogsInsidePortal.md)
 
-Exporting and Importing Page configuration
--
+#### Exporting and Importing Page configuration
 
 The form definition can be exported to an XML file or imported from an XML file
 using the menu options available in Tools menu:
 
 ![](media/AgileDialogsDesignGuide/AgileDialogsDesignGuide_17.png)
 
-Launching a Dialog On-Demand
--
+#### Launching a Dialog using a URL
 
 AgileDialogs can be launched using a URL, there is no need to have an associated
 XRM record nor an AgileXRM task.
@@ -379,12 +328,12 @@ The format of the URL to launch a dialog is:
 http://<SERVER_URL>/AgileDialogs/AgileDialogsKendoRuntime.aspx?orgname=<ORGANIZATION_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE_NAME>
 ```
 
-This URL’s can be used in portals to allow the users starting dialogs on demand.
+This URL can be used in portals to allow the users starting dialogs on demand.
 
 In order to make this work, the user must have permission to start instances of
 the dialog template.
 
-### Language Setting
+##### Language Setting
 
 When the dialog is localized and the link must open a specific language, the URL
 can contain the Locale ID of the language, the format of the URL in this case
@@ -394,13 +343,13 @@ is:
 http://<SERVER_URL>/AgileDialogs/AgileDialogsKendoRuntime.aspx?orgname=<ORGANIZATION_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE_NAME>&lcid=<USER_LOCALE_ID>
 ```
 
-For a list of Locale ID’s see
+For a list of Locale IDs see
 <http://msdn.microsoft.com/en-us/library/0h88fahh(v=vs.85).aspx>.
 
-The value to pass is in the column *Decimal Value*, for instance for *Spanish
-3082*, *for French 1036*.
+The value to pass is in the column *Decimal Value*, for instance for 3082 for Spanish
+ or 1036 for French.
 
-### Action after dialog finishes
+##### Action after dialog finishes
 
 When creating a link to open a dialog it is also possible to specify what to do
 when the dialog is finished. There are several options based on the use of the
@@ -420,8 +369,7 @@ query string parameter *AfterSubmit*:
    http://<PROCESS_TEMPLATE_NAME>/AgileDialogs/AgileDialogsKendoRuntime.aspx?orgname=<ORGANIZATION_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE_NAME>&AfterSubmit=\<URL_TO_REDIRECT_TO\>
 ```
 
-Creating links to complete a Dialog Task
--
+#### Creating links to complete a Dialog Task
 
 Sometimes the process modeler needs to send an email to a user with a link to
 complete a task that consists of a dialog. The email needs to be sent using the
@@ -441,13 +389,12 @@ the user opens this URL) or resumed if the user is returning to this dialog.
 <!--
 [Custom Controls SDK](common/CustomControlsSDK.md)
 -->
-Accessibility
--
+#### Accessibility
 
-### Enable/Disable Section 508 mode.
+##### Enable/Disable Section 508 mode.
 
 AgileDialogs has a mode that will render the UI compatible with the US
-Government’s Section 508 requirements.
+Government's Section 508 requirements.
 
 To enable this mode, the URL to initiate the dialog should contain the *s508*
 parameter set to 1:
@@ -456,12 +403,11 @@ parameter set to 1:
  http://<PROCESS_TEMPLATE_NAME>/AgileDialogs/AgileDialogsKendoRuntime.aspx?orgname=<ORGANIZATION_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE_NAME>&s508=1
 ```
 
-Cancelling a dialog
--
+#### Cancelling a dialog
 
-There are 4 ways that may cancel a dialog:
+There are various ways that a dialog may be cancelled:
 
-### By User
+##### By User
 
 AgileDialogs that are associated to a task (Dialog Task, Intranet Dialog Task
 and Internet Dialog Task) can be cancelled by the user if the modeler allows it
@@ -471,6 +417,8 @@ by setting the *Enable Cancelation* parameter to *true*:
 
 When the dialog is canceled the corresponding task in the parent process is
 canceled and the process continues.
+
+##### By System
 
 Dialogs will also be automatically canceled when the Expected Time property
 which is set at the dialog level is surpassed.
