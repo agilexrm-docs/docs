@@ -41,10 +41,10 @@ Templates but the corresponding Template in their own Major version.
 For example, you have 3 related processes:
 
 *   Process A at version 1.04
-*   Sub-Process B at version 1.34 – initiated from A
-*   Sub-Process C at version 1.20 – initiated from B
+*   Sub-Process B at version 1.34 - initiated from A
+*   Sub-Process C at version 1.20 - initiated from B
 
-Let’s say you continue enhancing these processes and you then publish **B 2.0**
+Let's say you continue enhancing these processes and you then publish **B 2.0**
 first and **C 2.0** on another day. If the sub-processes shapes were configured
 with this option, new **A** process instances will continue initiating **B
 1.34**, and **B** in turn would continue to initiate **C 1.20**. This is even

@@ -17,7 +17,7 @@ Access Token must be created previously in AgilePoint NX administration portal.
 | **EntityId**    |[EntityId](common/EntityId.md)|
 | **EntityName**  |[Entity Name](common/EntityName.md)|
 | **Destination** |[Destination](common/DestinationProperty.md)|
-| **Filter**      | The filename or filter for the document source. Wildcards are allowed. For example, it can be “\*.pdf” to get all PDF files. |
+| **Filter**      | The filename or filter for the document source. Wildcards are allowed. For example, it can be "\*.pdf" to get all PDF files. |
 
 
 ## Other Common Properties

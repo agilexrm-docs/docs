@@ -55,15 +55,15 @@ This section defines the details of service execution.
 
 ![REST Service Activity](media/RestActivityShape5.png)
 
-**Action**: Specifies the type of action for the REST service to do. It is the service verb (GET, POST, PUT …). Service must support selected action.
+**Action**: Specifies the type of action for the REST service to do. It is the service verb (GET, POST, PUT ...). Service must support selected action.
 
-**Content Type:** Specifies the type of content the REST service uses. JSON or XML patch files are also supported to patch the document with the specified changes.
+**Content Type:** Specifies the type of content the REST service uses. JSON or XML patch files are also supported to patch the document with the specified changes.
 
-**Accept:** Specifies the data format to accept in a REST service.
+**Accept:** Specifies the data format to accept in a REST service.
 
-**Protocol:** Specifies the communication protocol for your REST service.
+**Protocol:** Specifies the communication protocol for your REST service.
 
-**Request Timeout:** Specifies the maximum amount of time, in seconds, to complete the REST service call for the activity.
+**Request Timeout:** Specifies the maximum amount of time, in seconds, to complete the REST service call for the activity.
 
 **Readwrite Timeout:** Specifies the maximum amount of time, in seconds, for read and write methods.
 
@@ -81,7 +81,7 @@ Add header using **Add** button and then click **Authentication** button to show
 
 ![REST Service Activity](media/RestActivityShape7.png)
 
-REST activity shape allows two kinds of authentication,**Basic Authentication** and **OAuth 2.0 Authentication**. This window creates REST service authentication credentials to connect to a REST service with authentication.
+REST activity shape allows two kinds of authentication,**Basic Authentication** and **OAuth 2.0 Authentication**. This window creates REST service authentication credentials to connect to a REST service with authentication.
 
 ![REST Service Activity](media/RestActivityShape8.png)
 

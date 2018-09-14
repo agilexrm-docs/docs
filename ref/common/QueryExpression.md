@@ -4,7 +4,7 @@ __[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back())
 
 Configure the query to be performed against the selected entities. 
 
-To use, click on the ‘ellipsis’ button to open the Advanced Find window.
+To use, click on the *ellipsis* button to open the Advanced Find window.
  
 The config window is divided in different sections:
 
@@ -15,7 +15,7 @@ The config window is divided in different sections:
 
 2. **Main section**: Depending on the selected tab, shows the corresponding config page
 
-3. **Footer**: Composed of the button “Refresh metadata details” (explained below) 
+3. **Footer**: Composed of the button **Refresh metadata details**(explained below) 
 and the OK/Cancel buttons
 
 #### Tabs section details

@@ -18,8 +18,8 @@ The following dialog is shown when this shape is dropped on the canvas:
 |---------------------|--------------------------------------------------------------------------------------------------|
 | **Name**                | See (Name) property                                                                              |
 | **Data Binding**        | See Property Binding property                                                                    |
-| **Ellipsis (…)**        | Opens the dialog for selecting a process variable or context variable See Schema Selector Dialog |
-| **Description**        | See Description property                                                                         |
+| **Ellipsis (...)**      | Opens the dialog for selecting a process variable or context variable See Schema Selector Dialog |
+| **Description**         | See Description property                                                                         |
 | **Type**                | Is always Boolean                                                                                |
 
 

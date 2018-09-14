@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back())
 
 ### SaveEntityIdTo property 
 
-Sets the name of the custom variable that will hold the entity’s ID that is going to be created, 
+Sets the name of the custom variable that will hold the entity's ID that is going to be created, 
 in the AgileXRM process context. The process variable can then be used elsewhere in the process.
 
 For example, in an **Add Note** shape, when the process executes this shape, 

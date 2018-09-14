@@ -27,14 +27,14 @@ There are three ways to configure this shape:
 | __Data Binding__                                 | See **Property Binding**                                                                                      |
 | __Description__                                  | See [Description](common/Description.md)                                                                                            |
 | __Type__                                         | See [Type](common/MultipleConditionTypeProperty.md)                                                               |
-| __Ellipsis (…)__                                 | Opens the dialog for selecting a process variable or context data.<br>See [Schema Selector](common/SchemaSelector.md)              |
+| __Ellipsis (...)__                                 | Opens the dialog for selecting a process variable or context data.<br>See [Schema Selector](common/SchemaSelector.md)              |
 | __Advanced Mode__                                | Click to configure shape in **Advanced Mode**                                                                 |
 
 ![Multiple condition](media/MultipleCondition3.png)
 
 | Field Name / Button | Definition                                                                                                                                                                                                                                                                   |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| __New…__      | Add a new expression                                                                                                                                                                                                                                                                   |
+| __New...__      | Add a new expression                                                                                                                                                                                                                                                                   |
 | __Edit__      | Edit an existing expression                                                                                                                                                                                                                                                            |
 | __Remove__      | Remove an existing expression. (Remember to remove any orphaned connectors)                                                                                                                                                                                                          |
 | __Move Up / Down__      | Select an expression and use these buttons to change the order of the expressions. The shape executes the expressions in this order and as soon as an expression is evaluated to TRUE, the corresponding route is followed and the rest of the expressions are not evaluated |

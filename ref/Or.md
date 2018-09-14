@@ -34,9 +34,9 @@ The dialog would show the following:
 | **Stop System Tasks**            | When selected, any automatic activities selected in the *Other Predecessor Activities* listbox are cancelled when process enters the OR AgileShape.                                                                                            |
 
 > **NOTE**: If none of the checkboxes are selected, this shape behaves as if the
-> *Exclusive* property was set to *False*. If only “Cancel Manual Tasks” is
+> *Exclusive* property was set to *False*. If only *Cancel Manual Tasks* is
 > checked, the manual tasks will be cancelled (nearest incoming and other
-> predecessor activities), and in case of “Stop System Tasks”, both the nearest
+> predecessor activities), and in case of *Stop System Tasks*, both the nearest
 > incoming activities and other predecessor that fit the category will be stopped.
 
 

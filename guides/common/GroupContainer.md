@@ -4,7 +4,7 @@ __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md)
 
 The Group Container allows us to build a certain set of controls inside a same
 group container, for functional and / or decorative purposes. We can group
-different kinds of controls (textboxes, combos, calendars, etc…) inside this
+different kinds of controls (textboxes, combos, calendars, etc.) inside this
 container, and we also can validate all these inner elements as a whole or
 toggle its visibility through the container properties.
 
