@@ -68,7 +68,7 @@ which will store the value provided by the user:
 
 1.  **Form Properties**
 
-    You can access to the configuration window by clicking at the “options”
+    You can access to the configuration window by clicking at the **options**
 
     ![](../media/AgileDialogsDesignGuide/PageFormShape_08.png)
 
@@ -76,12 +76,12 @@ which will store the value provided by the user:
 
     ![](../media/AgileDialogsDesignGuide/PageFormShape_09.png)
 
-| __Properties__ | |
+| __Properties__ | Description |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Render Mode**                        | You can choose the render mode to define how AgileDialogs render the pages. Available values are «Default», «Continuous» and «Popup». Each render mode is explained at its own section.                                                   |
+| **Render Mode**                        | You can choose the render mode to define how AgileDialogs render the pages. Available values are **Default**, **Continuous** and **Popup**. Each render mode is explained at its own section.                                                   |
 | **Disable Back (Clear History)**       | If checked, when the dialog arrives to this page, the dialog history is cleared and the Back button becomes disabled. This is useful when the dialog designer decides to block the user from going back to previous steps before this one |
-| **Hide this page from breadcrumb**     | If checked, the page will not show its “breadcrumb” functionality on the upper-left hand side of the page.                                                                                                                                |
-| **Change “Next” Button text to**       | When filled in, it changes the caption of the predefined “Next” button on the lower right corner of the Dialog, to the literal we have entered.                                                                                           |
+| **Hide this page from breadcrumb**     | If checked, the page will not show its *breadcrumb* functionality on the upper-left hand side of the page.                                                                                                                                |
+| **Change *Next* Button text to**       | When filled in, it changes the caption of the predefined *Next* button on the lower right corner of the Dialog, to the literal we have entered.                                                                                           |
 | **Validate controls upon submit only** | By default, AgileDialogs validates and shows the validation message label each time user changes selected control. If checked the form will be only validated on navigation                                                               |
 
 ## Control Configuration
@@ -166,7 +166,7 @@ These are the properties used in the configuration of a control:
 >   To insert blank lines in the caption use Shift+Enter.
 
 -   **Options**: When the selected control shows a set of options to the user
-    (combo control, radio, …), these options can be configured as static (set at
+    (combo control, radio, ...), these options can be configured as static (set at
     design time) or dynamic (can be linked to a filtered lookup in the XRM
     repository). For this controls the *Options* region is enabled:
 
@@ -266,7 +266,7 @@ Common properties are:
     Please refer to AgileDialogs Customization Guide.
 
 -   **Visible**: This feature allows us to toggle the initial visibility of a
-    created control, by setting its value to “true” or “false”.
+    created control, by setting its value to **true** or **false**.
 
 Control-specific parameters are explained for each Control-type below.
 

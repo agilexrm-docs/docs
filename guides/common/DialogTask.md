@@ -10,7 +10,7 @@ cannot be used in AgileDialogs templates.
 
 The shape creates a manual Task in CRM. The AgileXRM process will continue when
 the CRM Task is Mark complete. The dialog is presented in an IFrame in CRM Task
-form. Let’s illustrate the Dialog Task inner mechanics by showing an example:
+form. Let's illustrate the Dialog Task inner mechanics by showing an example:
 
 -   Here we have this process template definition, which executes a search
     operation and opens a Dialog Task afterwards.
@@ -18,7 +18,7 @@ form. Let’s illustrate the Dialog Task inner mechanics by showing an example:
 ![](../media/AgileDialogsDesignGuide/DialogTask_02.png)
 
 -   Once a process instance is created in CRM, as the flow reaches the Dialog
-    Task shape, the user can click on the shape, and choose “Open Task” option,
+    Task shape, the user can click on the shape, and choose **Open Task** option,
     to execute its associated Dialog, and continue moving forward within the
     process (images below).
 
@@ -50,7 +50,7 @@ The dialog to be executed by the user is selected using *Dialog* property:
 | **Latest Version**                      | The latest version of the SubDialog will be used at runtime                                                                                                                                                                                                               |
 | **Specific Version (\*)**               | The selected version will always be used                                                                                                                                                                                                                                  |
 | **Latest Major Version (\*)**           | The highest minor version of the selected major version is used                                                                                                                                                                                                           |
-| **My Dynamic Major Version (\*)**       | The same as Latest Major Version but the major version number is the calling dialog’s Major Version                                                                                                                                                                       |
+| **My Dynamic Major Version (\*)**       | The same as Latest Major Version but the major version number is the calling dialog's Major Version                                                                                                                                                                       |
 | **Start Latest Version (if not found)** | This configures the behavior of the shape if the version setting above is one of the ones with an (\*) and that version does not exist at runtime. In the case it will behave as if Latest Version was selected                                                           |
 | **Throw an exception (if not found)**   | This configures the behavior of the shape if the version setting above is one of the ones with an (\*) and that version does not exist at runtime. In the case it will make the shape throw an Exception (i.e. process hangs in this shape until the problem is remedied) |
 

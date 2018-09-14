@@ -7,11 +7,11 @@ the end user. This way, the same dialog can be presented to different people in
 different languages, avoiding the maintenance of multiple dialogs (one for each
 language).
 
-For Full Users, the language choice is based on the user’s language setting in
+For Full Users, the language choice is based on the user's language setting in
 XRM.
 
 For Process Participants or External Users, the language choice is based on
-their browser’s language setting.
+their browser's language setting.
 
 Also, when initiating a dialog, the lcid query string can be used to set the
 desired language.

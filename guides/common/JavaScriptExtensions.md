@@ -32,12 +32,12 @@ of customs attributes directly in OnLoadScript:
 
 ```javascript
  var contextValue = "${attrName}";
- // user code …
+ // user code ...
 ```
 
 ### Get Control Value
 
-To get a control’s value, use this code:
+To get a control's value, use this code:
 
 ```javascript
 DialogsEngine.getSelectedValue(<controlName>);
@@ -52,7 +52,7 @@ method will return the value of the column that is mapped to the Value Variable.
 
 ### Get Display Value
 
-To get a control’s display value, use this code:
+To get a control's display value, use this code:
 
 ```javascript
 DialogsEngine.getDisplayValue(<controlName>);
@@ -68,7 +68,7 @@ Variable.
 
 ### Change Control Value
 
-To change a control’s value, use this code:
+To change a control's value, use this code:
 
 ```javascript
 DialogsEngine.setSelectedValue(<controlName>, <newValue>);
@@ -95,7 +95,7 @@ Where:
 
 -   control, is the control that we want to check
 
-Returns “true” or “false”, depending on the read-only property of the control
+Returns *true* or *false*, depending on the read-only property of the control
 
 ### Toggle a control read-only property
 
@@ -112,7 +112,7 @@ Where:
 
 -   control, meaning the control we want to modify.
 
--   value, “true” to convert the control to read-only, “false” otherwise.
+-   value, *true* to convert the control to read-only, *false* otherwise.
 
 ### Enable/disable a control
 
@@ -166,7 +166,7 @@ In order to manage value changes in a control this code must be added:
 ```javascript
 
     DialogsEngine.addChangeEventHandler(<controlName>, function (value,display){
-        // user code …
+        // user code ...
     });
 ```
 Where:
@@ -211,7 +211,7 @@ Where:
 
 ### Inter-Control dependency
 
-A control’s value can depend on the value of other control(s) by registering it
+A control's value can depend on the value of other control(s) by registering it
 as such:
 
 ```javascript
@@ -274,7 +274,7 @@ Where:
 
 Returns:
 
-‘true’ if the control is filled in with a value, ‘false’ otherwise.
+*true* if the control is filled in with a value, *false* otherwise.
 
 ### Add custom validation for a single control
 
@@ -306,7 +306,7 @@ Where:
 Example:
 
 ```javascript
-  // add custom validation to control called “textControl”
+  // add custom validation to control called textControl
  
   DialogsEngine.addCustomValidation(  
       "key1",  
@@ -314,7 +314,7 @@ Example:
       function (controlname, value, display){  
         if (value.length > 5 ) return "error"  
       },  
-      "Value can´t be longer that 5");
+      "Value cannot be longer that 5");
 ```
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_08.png)
@@ -331,7 +331,7 @@ to the user.
 In order to subscribe to validation events add this code:
 
 ```javascript
-  // add validation to control called “textControl”
+  // add validation to control called textControl
  
   function myValidationFunction(controlName, controValue){  
       if(controlName == "textControl"){
@@ -377,7 +377,7 @@ Where:
 Example:
 
 ```javascript
-// apply custom format to currency control called “currencyControl”
+// apply custom format to currency control called currencyControl
 
 var theFormat = {  
     "color":"white", // css-property : value  
@@ -442,7 +442,7 @@ DialogsEngine.setNotesVisible(<value>);
 
 Where:
 
--   value, “true” if we want the “notes” tab to be shown, “false” otherwise.
+-   value, *true* if we want the *notes* tab to be shown, *false* otherwise.
 
 ### Get Notes content
 
@@ -516,7 +516,7 @@ To show a formatted message, use this code.
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_16.png)
 
-### Enable/Disable the “You are leaving the Page” warning message
+### Enable/Disable the **You are leaving the Page** warning message
 
 By default, if the user navigates away from the Page they would get a warning
 message.
@@ -674,7 +674,7 @@ Where:
 -   variable, stands for the context variable value that we want to know of.
 
 Example (we want to know the value of a system context variable called
-“dialogRootCulture” that displays the current environment language):
+*dialogRootCulture* that displays the current environment language):
 
 ```javascript
 DialogsEngine.getDialogContextValue('dialogRootCulture');
@@ -687,18 +687,18 @@ values, instead of a single variable.
 
 It is possible to toggle the availability of getDialogContext and
 getDialogContextValue commands through the application configuration file
-web.config, modifying the following value to “true” or “false” according to our
+web.config, modifying the following value to *true* or *false* according to our
 needs:
 
 ```xml
-<add key="EnableGetDialogsContextMethod" value="false|true"></add>
+<add key="EnableGetDialogsContextMethod" value="false|true"></add>
 ```
 
 ### Enable / Disable a control for validation requirement
 
 In a form, we have the possibility of setting a control as required. This means
 that, when moving to the next stage of our defined process, we will be stopped
-by the application if that control doesn’t have its default value filled in.
+by the application if that control does not have its default value filled in.
 
 However, we can customize this feature on runtime using the method setRequired.
 
@@ -722,7 +722,7 @@ Where:
 Example:
 
 ```javascript
- // enable validation to control called “textbox_1”
+ // enable validation to control called textbox_1
  
  DialogsEngine.setRequired(  
      "textbox_1",  
@@ -733,7 +733,7 @@ Example:
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_23.png)
 
 In the opposite case (setting the value to false) we would not need to set any
-message, so we can leave out the “message” parameter from the function:
+message, so we can leave out the *message* parameter from the function:
 
 ```javascript
 DialogsEngine.setRequired("textbox_1",false);
@@ -742,7 +742,7 @@ DialogsEngine.setRequired("textbox_1",false);
 ### Set a regular expression in a control to be validated
 
 We also can set an advanced validation pattern on our controls in order to
-control the correct format or our fields’ content.
+control the correct format or our fields' content.
 
 In order to perform the advanced control validation, this code should be added:
 
@@ -764,7 +764,7 @@ Example (we are setting a text field to be validated as an US phone number):
 ```javascript
 DialogsEngine.setRegularExpression(  
     "textbox_1", 
-    ”\^(\\([0-9]{3}\\)\|[0-9]{3}-)[0-9]{3}-[0-9]{4}\$”,  
+    "\^(\\([0-9]{3}\\)\|[0-9]{3}-)[0-9]{3}-[0-9]{4}\$",  
     "You should enter a valid U.S. phone number");
 ```
 
@@ -773,12 +773,12 @@ DialogsEngine.setRegularExpression(
 ### Arrange a custom set of actions before every navigation callback
 
 We could want the application to perform a custom set of actions or message
-before every callback (e.g. everytime we press “next” to move from a process
+before every callback (e.g. everytime we press *next* to move from a process
 stage to another we could want to show a predefined message to the user, etc.)
 
 In order to perform this set of actions, we can define a custom function with
-our desired commands / steps, loading this predefined method onto the “OnLoad
-Script”:
+our desired commands / steps, loading this predefined method onto the **OnLoad
+Script**:
 
 ```javascript
 DialogsEngine.beforeNavigate(<function>);
@@ -791,12 +791,12 @@ Where:
     navigation inside the process.
 
 Example (we want to show an informative message to the user everytime we press
-“next” on our form and move forward inside the main process flow):
+*next* on our form and move forward inside the main process flow):
 
 ```javascript
 DialogsEngine.beforeNavigate(function () {
 
-    window.alert ('Form process finished. Moving to the next step…');
+    window.alert ('Form process finished. Moving to the next step...');
 
 });
 ```
@@ -807,7 +807,7 @@ DialogsEngine.beforeNavigate(function () {
 
 We could need to perform special actions on our application due to special needs
 or requirements when the page is loaded. For that reason, the Engine method
-“addInitHandler” would be useful to that purpose.
+*addInitHandler* would be useful to that purpose.
 
 In order to perform this, this code should be added:
 
@@ -840,7 +840,7 @@ DialogsEngine.addInitHandler(function (data) {
 
 We could probably need to set some special variables or methods that we want on
 our application due to special needs or requirements. For that reason, the
-Engine method “addStartHandler” would be useful to that purpose.
+Engine method *addStartHandler* would be useful to that purpose.
 
 In order to perform this, this code should be added:
 
@@ -855,26 +855,26 @@ Where:
 
 Things are going to be clearer using one example. For this example, we need to
 load a logo URL that will be placed on a form inside our process, inside an
-element already created and called “logoContainer”. For that goal, we already
+element already created and called *logoContainer*. For that goal, we already
 have a defined variable that contains the URL address:
 ```javascript
 
  DialogsEngine.addStartHandler(function () {
 
     //Accesing the already created variable, containing the logo url
-    var url =DialogsEngine.getDialogContextValue("logoBaseUrl");
+    var url =DialogsEngine.getDialogContextValue("logoBaseUrl");
 
-    //now we are setting our image to be shown on our container “logoContainer”,on the initial loading of the page.
-    $("\#logoContainer").css("background-image", "url(" + url + ")");
+    //now we are setting our image to be shown on our container "logoContainer",on the initial loading of the page.
+    $("\#logoContainer").css("background-image", "url(" + url + ")");
 
    });
 ```
 
-### Arrange a new “Description” literal for our controls
+### Arrange a new *Description* literal for our controls
 
 If we want to add or update a previous tooltip description that is being shown
 when positioning on a page control, we can do so by using the predefined engine
-method “setDescription”.
+method *setDescription*.
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_27.png)
 
@@ -894,7 +894,7 @@ Where:
 Example:
 
 ```javascript
-    DialogsEngine.setDescription(”text_2”,”this is the new description”);
+    DialogsEngine.setDescription("text_2","this is the new description");
 ```
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_28.png)
@@ -917,10 +917,10 @@ Where:
 -   literal, string that conforms the literal we want to appear on the control
 
 Example (we are setting a description text to be shown on a textbox called
-“text_1” :
+*text_1* :
 
 ```javascript
-DialogsEngine.setWatermark("text_1",  ”Enter address");
+DialogsEngine.setWatermark("text_1", "Enter address");
 ```
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_29.png)
@@ -928,7 +928,7 @@ DialogsEngine.setWatermark("text_1",  ”Enter address");
 ### Find out if a control exists
 
 There is an Engine method for checking if a control exists, passing its Id as a
-parameter. We will be receiving a “true” value in case it exists, “false”
+parameter. We will be receiving a *true* value in case it exists, *false*
 otherwise.
 
 To do so, this code should be added:
@@ -941,9 +941,9 @@ Where:
 
 -   idControl, stands for the id of the control we want to look for.
 
-### Change the text of the “Next” button 
+### Change the text of the *Next* button 
 
-If we want to change the text of the predefined “Next” button inside a form
+If we want to change the text of the predefined *Next* button inside a form
 (picture below), we have a method using the Engine that covers that
 functionality.
 
@@ -955,9 +955,9 @@ DialogsEngine.setNextButtonText(<literal>);
 
 Where:
 
--   literal, text that we want to set as the caption for the “next” button.
+-   literal, text that we want to set as the caption for the *next* button.
 
-The result will be immediately updated on AgileDialogs “Next” button, showing
+The result will be immediately updated on AgileDialogs *Next* button, showing
 the new caption:
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_31.png)
@@ -967,8 +967,8 @@ the new caption:
 Sometimes, could be useful to make the user wait in a form, until a certain set
 of information or requirements have been satisfied (getting data from a service,
 perform some custom validations, etc...). For that goal, the API engine has two
-methods available for enabling / disabling the predefined Form buttons (“Back”,
-“History”, “Next”...). It also disables the keyboard commands that perform the
+methods available for enabling / disabling the predefined Form buttons (*Back*,
+*History*, *Next*...). It also disables the keyboard commands that perform the
 same functionalities.
 
 In order to disable them:
@@ -989,7 +989,7 @@ DialogsEngine.on();
 ### Moving forward and backwards 
 
 In a defined process, we could move through its different stages using the
-“Next” and “Back” buttons. But we also can achieve the same results
+*Next* and *Back* buttons. But we also can achieve the same results
 programmatically, using the DialogsEngine API.
 
 In order to do so, this code should be added:
@@ -1027,13 +1027,13 @@ The API will show us all the details about the selected row:
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_34.png)
 
-In case we have a Grid with its *“AllowMultipleSelection”* property set to
-*“true”,* we would also receive all the needed details for each selected row
+In case we have a Grid with its *AllowMultipleSelection* property set to
+*true,* we would also receive all the needed details for each selected row
 (**Important**: only for the current grid page being shown on screen):
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_35.png)
 
-In case no row is selected, we will receive a “*null”* as the return value.
+In case no row is selected, we will receive a *null* as the return value.
 
 ### Set focus in a specific control
 
@@ -1064,7 +1064,7 @@ Where:
 
 Returns:
 
-‘true’ if the control is required, ‘false’ otherwise.
+*true* if the control is required, *false* otherwise.
 
 ### Show/hide page spinner
 
@@ -1076,7 +1076,7 @@ To show/hide the page spinner, use this code:
 
 Where:
 
--   value is a ‘true’/’false’ expression. Use true to show the spinner and false
+-   value is a *true/false* expression. Use true to show the spinner and false
     to hide it.
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_36.png)
@@ -1103,7 +1103,7 @@ AgileDialogs API contains two properties that can be tailored in order to change
 the message title and the message body contents. If we want to change these
 information for a particular page, we should:
 
-Open AgileDialogs Designer, and click on “OnLoad Script”.
+Open AgileDialogs Designer, and click on **OnLoad Script**.
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_39.png)
 
@@ -1119,7 +1119,7 @@ Once published, the page will show the desired messages when needed:
 
 Inside a Page form, sometimes it is necessary to warn or inform the user about
 the consequences of an action (choosing an item inside a combo, pressing a
-button, selecting a Grid’s element)… moreover, if the information to show has to
+button, selecting a Grid's element), moreover, if the information to show has to
 be specific, we need a method to perform that task. For that goal, use this
 code:
 
@@ -1137,23 +1137,23 @@ Where:
 
 -   confirmFunc is a **mandatory** parameter. Represents the handler function in
     which we will group the action or actions that we want to perform when the
-    user will press the ‘OK’ button inside the confirm frame (explained in
+    user will press the **OK** button inside the confirm frame (explained in
     detail in the practical example below).
 
 -   cancelFunc is an **optional** parameter. Represents the handler function in
     which we will group the action or actions that we want to perform when the
-    user will press the ‘Cancel’ button inside the confirm frame (explained in
+    user will press the **Cancel** button inside the confirm frame (explained in
     detail in the practical example below).
 
--   okButtonText is an **optional** parameter. Represents the text for the “Ok”
+-   okButtonText is an **optional** parameter. Represents the text for the **OK**
     button of confirmation window.
 
 -   cancelButtonText is an **optional** parameter. Represents the text for the
-    “Cancel” button of confirmation window
+    **Cancel** button of confirmation window
 
-Example. Let’s suppose we have a Page form with a combo, which is composed of
+Example. Let's suppose we have a Page form with a combo, which is composed of
 different values. We want to configure the page in a way that will warn us if we
-try to change the combo’s selected value.
+try to change the combo's selected value.
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_42.png)
 
@@ -1163,7 +1163,7 @@ type the following command (image below):
 ```javascript
 DialogsEngine.addChangeEventHandler( "combo", function (value, display){
 
-    DialogsEngine.confirm("Warning Title", "You are about to change the default value. Are you sure?”,
+    DialogsEngine.confirm("Warning Title", "You are about to change the default value. Are you sure?",
         function(){ window.alert("You have pressed OK")},
         function(){ window.alert("You have pressed Cancel")});
 
@@ -1174,7 +1174,7 @@ DialogsEngine.addChangeEventHandler( "combo", function (value, display){
 
 As we can see, when the combo changes its value, we have set a personalized
 confirmation message, composed of the title, the customized message, the message
-after the user has pressed ‘OK’ and the analog message for the ‘Cancel’ handler.
+after the user has pressed **OK** and the analog message for the **Cancel** handler.
 The result (after such changes are published) is easy to see:
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_44.png)
@@ -1200,8 +1200,8 @@ Where:
 
 Returns:
 
-‘true’ if the value is “true”, “True”, TRUE” or combination of upper/lowercase,
-‘false’ otherwise.
+*true* if the value is true, True, TRUE or combination of upper/lowercase,
+*false* otherwise.
 
 ```javascript
 DialogsEngine.bool('True');
@@ -1293,12 +1293,12 @@ KendoTextBoxWidget = UpperCaseTextBoxWidget;
 
 ### Deprecated functions
 
-#### Subscribe to control value changes (Deprecated – Use addChangeEventHandler Instead)
+#### Subscribe to control value changes (Deprecated - Use addChangeEventHandler Instead)
 
 In order to manage value changes in controls this code must be added:
 
 ```javascript
-// add change handler to control called “textControl”
+// add change handler to control called textControl
 
 function myChangeHandler (controlName,controlValue){  
     if (controlName == "textControl"){  
