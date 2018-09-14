@@ -17,7 +17,7 @@ AgileDialogs allows layout customization through themes, using LESS technology
 (<http://demos.telerik.com/kendo-ui/themebuilder/web.html>).
 
 Themes customization is really useful for the goal of modifying the AgileDialogs
-controls (typography, font colors, etc…).
+controls (typography, font colors, etc.).
 
 The customization process stands for generating a new stylesheet with the
 desired values, using **Kendo UI Theme Builder** and deploy it over
@@ -122,9 +122,9 @@ Various options are available to show / hide AgileDialogs frame.
 
 **Hosted** parameter possible values:
 
--   **1** – Hides AgileDialogs frame.
+-   **1** - Hides AgileDialogs frame.
 
--   **0** – Shows AgileDialogs frame.
+-   **0** - Shows AgileDialogs frame.
 
 In case the **hosted** parameter is not specified, the AgileDialogs frame will be
 shown.
@@ -159,7 +159,7 @@ executions.
 Important. Choose your default configuration file by changing the **value**
 parameter in the application web.config (example below).
 
-\<add key="CustomStyleFile" value="**CSS/AgileDialogsStyles.custom.css**"/\>
+\<add key="CustomStyleFile" value="**CSS/AgileDialogsStyles.custom.css**"/\>
 
 #### Window Frame personalization for AgileDialogs.
 
@@ -269,7 +269,7 @@ There is a quick way to change how the controls that got the focus on our form
 are shown. There is a web.config key that can do the trick for us:
 
 ```xml
-<add key="HighlightBehavior" value="box"> <!--text, box, none-->
+<add key="HighlightBehavior" value="box"> <!--text, box, none-->
 ```
 
 Describing effects according to set every possible value;
@@ -307,7 +307,7 @@ Section508-compliant.
     it is necessary to set to true this key in our configuration file:
 
 ```xml
-<add key="Section508" value="true"></add>
+<add key="Section508" value="true"></add>
 ```
 
 That would be all we need to make our website accomplish the Section 508
@@ -334,7 +334,7 @@ page.
 
 In order to do so, it is necessary to make a backup of the original page,
 AgileDialogsKendoRuntime.aspx, y modify its contents (adding new elements to the
-page, adding features to the existing ones, etc…).
+page, adding features to the existing ones, etc.).
 
 To activate a customized .aspx page, we should modify the *web.config*
 configuration.
@@ -387,10 +387,10 @@ goal we should follow these steps:
 -   In the Web app. Configuration file Web.config, there is a key called
     **DialogErrorUrl** that holds the path in which the Default error page for the
     application is contained. If some error occurs, the flow will be redirected
-    to the .aspx that is referenced in the “value” path of this tag.
+    to the .aspx that is referenced in the **value** path of this tag.
 
 ```xml
-    <add key="DialogErrorUrl" value="~/AgileDialogsError.aspx"></add>
+    <add key="DialogErrorUrl" value="~/AgileDialogsError.aspx"></add>
 ```
 
 We should change that path, and replace it for the path (file name included)
