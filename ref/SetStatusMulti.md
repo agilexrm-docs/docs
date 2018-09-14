@@ -23,7 +23,7 @@ The set of records that are affected are selected by either:
 | **EntityIds**            |[Entity Ids](common/EntityIds.md)|
 | **EntityName**           |[Entity Name](common/EntityName.md)|
 | **QueryExpression**      |[Query Expression](common/QueryExpression.md)|
-| **Status**               |[Status](common/status.md)  |
+| **Status**               |[Status](common/Status.md)  |
 | **StatusStateValue**     |[Status State Value](common/StatusStateValue.md)  |
 
 ## Other Common Properties

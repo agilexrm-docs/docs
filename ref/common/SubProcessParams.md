@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()
 
 ### SubProcessParams property
 
-This opens the Subprocess Parameters dialog for passing variables to the sub-process:
+This opens the SubProcess Parameters dialog for passing variables to the sub-process:
 
 ![SubProcessParams](../media/SubProcessParams.png)                                                                                                                                 |
 

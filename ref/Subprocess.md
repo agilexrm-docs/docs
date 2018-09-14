@@ -15,7 +15,7 @@ It allows selecting any type of AgilePoint Process: **AgileXRM**, **AgileDialogs
 **Generic**, **SharePoint List**, **SharePoint Doc**.
 
 There are other AgileShapes that are better suited when calling an AgileXRM
-sub-process (namely the **[Subprocess](XRMSubprocess.md)** shape in *AgileXRM Automatic Activities*
+sub-process (namely the **[SubProcess](XRMSubProcess.md)** shape in *AgileXRM Automatic Activities*
 stencil) or an AgileDialog sub-process (namely **[SubDialog](SubDialog.md)** and
 **[Dialog Activity](DialogActivity.md)**).
 
@@ -29,7 +29,7 @@ the sub-process template to initiate.
 
 See the *SubProcess* property in the table below.
 
-### Subprocess Parameters dialog
+### SubProcess Parameters dialog
 
 See the *SubProcessParams* property in the table below.
 
@@ -40,10 +40,10 @@ See the *SubProcessParams* property in the table below.
 | **NamePrefix**              | [Name Prefix](common/NamePrefix.md) |
 | **SaveProcessInstanceIdTo** | [Save Process Instance Id To](common/SaveProcessInstanceIdTo.md) |
 | **ShareAttributes**         | [Share Attributes](common/ShareAttributes.md) |
-| **SubProcess**              | [SubProcess](common/subprocess.md)             |
+| **SubProcess**              | [SubProcess](common/SubProcess.md)             |
 | **SubProcessInitiator**     | [SubProcess Initiator](common/SubProcessInitiator.md) |
 | **SubProcessParams**        | [SubProcess Params](common/SubProcessParams.md)        |
-| **Wait**                    | [Wait](common/wait.md)                    |
+| **Wait**                    | [Wait](common/Wait.md)                    |
 
 
 ## Other Common Properties

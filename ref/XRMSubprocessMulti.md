@@ -12,7 +12,7 @@ with *EntityName*).
 If the *Wait* parameter is set to *True*, the process continues once all the
 subprocesses that were initiated by this shape are completed.
 
-Subprocesses can be initiated sequentially or in parallel.
+SubProcesses can be initiated sequentially or in parallel.
 
 Typically this is used to manage the lifecycle of child entities, for example
 Order Line Items of an Order.

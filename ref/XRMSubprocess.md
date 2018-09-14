@@ -12,7 +12,7 @@ chunks and also allows creating more modular processes, and enhances
 reusability.
 
 It allows selecting any Proceess of type *AgileXRM*. For initiating other types
-of processes, use the **[Subprocess](Subprocess.md)** shape in the Generic stencil.
+of processes, use the **[SubProcess](SubProcess.md)** shape in the Generic stencil.
 
 This shape does NOT share the context of the caller with the child, assuming
 that the Main Entity of the child is different. If the Main Entity of the child 

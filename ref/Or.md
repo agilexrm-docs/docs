@@ -45,7 +45,7 @@ The dialog would show the following:
 | Property | Description |
 | -------- | ----------- |
 | **Configuration** | <blockquote>**NOTE:** Configuration is only available when *Exclusive* property is set to *True*</blockquote>Opens the *Select Exclusive Predecessor Activities* dialog box, to configure whether the activities in the parallel process flow will continue to process or be cancelled once one of the process flows enters this AgileShape |
-| **Exclusive**     | [Exclusive](common/exclusive.md)|
+| **Exclusive**     | [Exclusive](common/Exclusive.md)|
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

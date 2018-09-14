@@ -14,7 +14,7 @@ the different email AgileShapes.
 
 | Property | Description |
 | -------- | ----------- |
-| **Email**             |[Email](common/email.md)|
+| **Email**             |[Email](common/Email.md)|
 
 
 ## Other Common Properties

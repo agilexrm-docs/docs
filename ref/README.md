@@ -17,7 +17,7 @@ __[Home](/) --> Reference__
 * [Single Condition](SingleCondition.md)
 * [Start](Start.md)
 * [Stop](Stop.md)
-* [Subprocess](Subprocess.md)
+* [SubProcess](SubProcess.md)
 * [Update Custom Attributes](UpdateCustomAttributes.md)
 * [Update Parent Process](UpdateParentProcess.md)
 * [WCF](WCF.md)
@@ -45,8 +45,8 @@ __[Home](/) --> Reference__
 * [Update Entity (Multi)](UpdateEntityMulti.md)
 * [Update Entity](UpdateEntity.md)
 * [Wait For Update](WaitForUpdate.md)
-* [XRM Subprocess](XRMSubprocess.md)
-* [XRM Subprocess (Multi)](XRMSubprocessMulti.md)
+* [XRM SubProcess](XRMSubProcess.md)
+* [XRM SubProcess (Multi)](XRMSubProcessMulti.md)
 
 ### Dyn365/CDS Manual Shapes
 

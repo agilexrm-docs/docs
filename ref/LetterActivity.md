@@ -6,7 +6,7 @@ __[Home](/) --> [Reference](/ref) --> Letter Activity__
 
 This shape creates a Letter Activity in CRM.
 
-This shape can optionally have a [Page Form](./PageForm.md). This permits
+This shape can optionally have a [Page Form](PageForm.md). This permits
 creating activity-based forms, which have all the fields necessary for carrying
 out this task by the user.
 

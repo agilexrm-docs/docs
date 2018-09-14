@@ -15,7 +15,7 @@ The source file or files to be attached to CRM entity can be any AgilePoint NX G
 | __EntityId__| [Entity Id](common/EntityId.md) |
 | __EntityName__| [Entity Name](common/EntityName.md)|
 | __SaveAnnotationIdTo__| [Save Annotation Id To](common/SaveAnnotationIdTo.md)|
-| __Source__ | [Source](common/source.md) | 
+| __Source__ | [Source](common/Source.md) | 
 
 
 ## Other Common Properties

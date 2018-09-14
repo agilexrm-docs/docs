@@ -18,7 +18,7 @@ This shape is used to change the *Status* & *Status Reason* of a record in CRM.
 | **Closing Task Subject** |[Closing Task Subject](common/ClosingTaskSubject.md) |
 | **EntityId**             |[Entity Id](common/EntityId.md) |
 | **EntityName**           |[Entity Name](common/EntityName.md) |
-| **Status**               |[Status](common/status.md)  |
+| **Status**               |[Status](common/Status.md)  |
 | **StatusStateValue**     |[Status State Value](common/StatusStateValue.md)  |
 
 ## Other Common Properties

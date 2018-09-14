@@ -8,7 +8,7 @@ This shape is used for creating a CRM Task activity. The Task *Owner* will be
 the User/Team that the task is assigned to (i.e. Participant), and the
 *Regarding* field will be the Main Entity of the process.
 
-This shape can optionally have a [Page Form](./PageForm.md). This permits
+This shape can optionally have a [Page Form](PageForm.md). This permits
 creating activity-based forms, which have all the fields necessary for carrying
 out this task by the user.
 

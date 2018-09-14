@@ -1,9 +1,9 @@
-__[Home](/) --> [Reference](/ref) --> AgileXRM Quick Start__
+__[Home](/) --> AgileXRM Quick Start__
 
 # AgileXRM Quick Start
 ---
 
-## Introductio
+## Introduction
 
 > **NOTE:** This guide assume you selected the **Install QuickStart Samples**
 option in the Installer.

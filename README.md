@@ -19,13 +19,13 @@ Topics currently in this repository's scope:
 ## Guides
 
 - [Quick Start Guide](guides/Quick-Start.md): Create your first process and dialog to experience the ease and power of AgileXRM
-- [AgileDialogs User Guide](guides/AgileDialogs-UserGuide.md): AgileDialogs User Guide]
-- [AgileDialogs Design Guide](guides/AgileDialogs-DesignGuide.md): AgileDialogs Design Guide
+- [AgileDialogs User Guide](guides/AgileDialogs-UserGuide.md)
+- [AgileDialogs Design Guide](guides/AgileDialogs-DesignGuide.md)
 
 ## Reference Documentation
 
 - [Shape Reference](ref/README.md): Get the detailed documentation of the functionality for each of the Shapes in AgileXRM
-- [AgileDialogs reference] ()
+- [AgileDialogs Reference]() To Do
 
 
 

@@ -10,7 +10,7 @@ The Email can be sent automatically (if *AutoSend* is set to *True*) or
 manually by the user through clicking the *Send* button in CRM. In either case,
 once sent, the process continues.
 
-This shape can optionally have a [Page Form](./PageForm.md). This permits
+This shape can optionally have a [Page Form](PageForm.md). This permits
 creating activity-based forms, which have all the fields necessary for carrying
 out this task by the user.
 

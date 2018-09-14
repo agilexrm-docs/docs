@@ -15,7 +15,7 @@ please see **[AgileDialogs Design Guide](../guides/AgileDialogs-DesignGuide.md)*
 | Property | Description |
 | -------- | ----------- |
 | **NamePrefix** | [Name Prefix](common/NamePrefix.md)  |
-| **SubDialog**  | [Sub Dialog](common/subprocess.md) |
+| **SubDialog**  | [Sub Dialog](common/SubProcess.md) |
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
