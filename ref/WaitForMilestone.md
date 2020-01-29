@@ -2,7 +2,7 @@
 
 # ShapeNameDisplay
 
-![ShapeNameDisplay](media/ShapeName.png)
+![ShapeNameDisplay] media/ShapeName.png
 
 (Description Here)
 
