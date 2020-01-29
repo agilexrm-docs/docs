@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Update Parent Process__
 
 # Update Parent Process
 
-![Update Parent Process](media/UpdateParentProcess.png)
+![Update Parent Process](media/UpdateParentProcess.png
 
 (Description Here)
 
