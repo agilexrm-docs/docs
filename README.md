@@ -12,7 +12,7 @@ This repository is a collaborative effort, so please feel free to make a pull re
 
 Topics currently in this repository's scope:
 
-- Introduction to AgileXRM Concepts.
+- Introduction to AgileXRM Concepts
 - Guides
 - AgileXRM Shape Reference documentation
 
