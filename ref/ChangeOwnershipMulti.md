@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Change ownership (Multi)__
 
 # Change ownership (Multi)
 
-![Change ownership (Multi)](media/ChangeOwnerShipMulti.png)
+![Change ownership (Multi)](media/ChangeOwnershipMulti.png)
 
 This shape is used to change the Owner of multiple entity records to another User or Team.
 
