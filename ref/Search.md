@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Search__
 
 # Search
 
-![Search](media/Search.png)
+![Search](media/search.png)
 
 This shape can:
 
