@@ -2,7 +2,7 @@
 
 # ShapeNameDisplay
 
-![ShapeNameDisplay](media/ShapeName.png)
+![ShapeNameDisplay](media/XRMSubProcessMulti.png)
 
 (Description Here)
 
