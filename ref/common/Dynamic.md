@@ -1,4 +1,4 @@
-**[Home](/) --> [Reference](/ref) --> [And](/ref/README.md) --> Dynamic**
+**[Home](/) --> [Reference](/ref) --> [And](../And.md) --> Dynamic**
 
 ### Dynamic property 
 

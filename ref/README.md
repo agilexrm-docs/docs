@@ -2,7 +2,7 @@ __[Home](/) --> Reference__
 
 # Reference Documentation
 
-## AgileShape Reference
+## AgileXRM Shape Reference
 
 ### Generic Shapes
 
@@ -12,7 +12,6 @@ __[Home](/) --> Reference__
 * [Email](Email.md)
 * [Multiple Condition](MultipleCondition.md)
 * [Or](Or.md)
-* [Pass Milestone](PassMilestone.md)
 * [REST](REST.md)
 * [Single Condition](SingleCondition.md)
 * [Start](Start.md)
@@ -22,6 +21,7 @@ __[Home](/) --> Reference__
 * [Update Parent Process](UpdateParentProcess.md)
 * [WCF](WCF.md)
 * [WSE](WSE.md)
+* [Pass Milestone](PassMilestone.md)
 * [Wait For Milestone](WaitForMilestone.md)
 * [Web Service](WebService.md)
 * [Word](Word.md)
@@ -39,6 +39,7 @@ __[Home](/) --> Reference__
 * [Detach Document](DetachDocument.md)
 * [Manage Association](ManageAssociation.md)
 * [Run XRM Workflow](RunXRMWorkflow.md)
+* [SDK Message](SDKMessage.md)
 * [Search](Search.md)
 * [Set Status (Multi)](SetStatusMulti.md)
 * [Set Status](SetStatus.md)
@@ -62,7 +63,6 @@ __[Home](/) --> Reference__
 
 ### AgileDialogs Shapes
 
-* [Page Form](PageForm.md)
-* [SubDialog](SubDialog.md)
+- [AgileDialogs Reference](AgileDialogs.md)
 
 

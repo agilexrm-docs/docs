@@ -43,7 +43,7 @@ of the different email AgileShapes.
 | **ActivityProperties**  | [Activity Properties](common/ActivityProperties.md)|
 | **AfterSubmitAction**   | [After Submit Action](common/AfterSubmitAction.md) |
 | **AgilePointTemplate**  | [AgilePoint Template](common/AgilePointTemplate.md) |
-| **AutoSend**            | Default: False <br />* **True** The CRM Email will be sent automatically and the Email Activity will be Completed.<br>* **False** - The Email will be created but not send (See also *[AutoComplete](common/AutoComplete.md)*)|
+| **AutoSend**            | Incicates if email should be automatically sent or if it needs to be completed by a user. Default: False <br />* **True** The CRM Email will be sent automatically and the Email Activity will be Completed.<br>* **False** - The Email will be created but not send (See also *[AutoComplete](common/AutoComplete.md)*)|
 | **EmbededHeight**       | [Embeded Height](common/EmbededHeight.md)|
 | **OwnerID**             | [Owner ID](common/OwnerId.md) |
 | **PageForm**            | [Page Form](common/PageForm.md) |

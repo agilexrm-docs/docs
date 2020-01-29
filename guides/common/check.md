@@ -12,5 +12,7 @@ The values shown to the user can be:
 
 ![](../media/AgileDialogsDesignGuide/Check_01.png)
 
+Also, check control can show *«MultiSelect Option Sets»*  by **FieldAndEntity** property.
+
 Once selected, the internal result set of data to store would be a literal of
 all the checked values separated by a semicolon (e.g. *One;Two;Three*)

@@ -10,12 +10,12 @@ option in the Installer.
 
 This QuickStart document describes how to create a sample process from scratch.
 
-The content of the process is oriented to show several AgileXRM features using
+The content of the process is oriented to show several **AgileXRM** features using
 the components of the platform:
 
--   AgileXRM Envision: For Modeling the Process and the Dialog
+- **AgileXRM Envision**: For Modeling the Process and the Dialog
 
--   AgileXRM Process Manager: For viewing and visually managing the Process
+- **AgileXRM Process Manager**: For viewing and visually managing the Process
 
 The sample process here is not based on a real scenario; the idea is to show the
 basic concepts of AgileXRM.

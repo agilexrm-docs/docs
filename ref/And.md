@@ -4,7 +4,8 @@ __[Home](/) --> [Reference](/ref) --> And__
 
 ![And](media/And.png)
 
-An activity that associates multiple activities with the ‘**AND’** condition. All direct predecessor activities must be completed or cancelled in order for this shape to complete and allow process to continue.
+An activity that associates multiple activities with the **AND** condition. 
+All direct predecessor activities must be completed or cancelled in order for this shape to complete and allow process to continue.
 
 See *Dynamic* property below for variations in behavior.
 

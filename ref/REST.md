@@ -126,16 +126,16 @@ how to map it with the context data of the process.
 This sections contains two areas:
 
 1.  *Request Mapping*. Defines mapping for the service Request and how data is
-    sent to service.
+    sent to service. This section has two different configurations depending on whether "Content-Type" value selected in "Advanced" tab is "x-www-form-urlencoded" or anything else.
 2.  *Response Mapping*. Defines mapping for the service Response and how service
     data is written to process data.
 
 ![REST Service Activity](media/RestActivityShape94.png)
 
 ### Request mapping 
-
+#### For XML or JSON Content Type
 This section defines how process data is mapped to REST service Request and
-Response.
+Response, when "Content-Type" is set to "JSON" or "XML"
 
 It can map the request to custom request body or map request body from AgileXRM
 schema. To map request to AgilePoint schema it is necessary that have previously defined
@@ -152,6 +152,16 @@ mapper window. Use **Schema** button to open the schema mapper window.
 ![REST Service Activity](media/RestActivityShape97.png)
 
 > **Important**. Request Data format is derived from the information in the simulation section from request body field.
+
+#### For x-www-form-urlencoded Content Type
+This section defines how process data is mapped to REST service Request and
+Response, when "Content-Type" is set to "x-www-form-urlencoded".
+
+Request needs to be map parameter by parameter. Use "Add" button to add as many parameters as you wish. With "Edit" and "Remove" buttons you can either modify or delete any existent parameter.
+It's possible to use AgileXRM schema to set any parameter which has been already defined.
+
+
+![REST Service Activity](media/RestActivityShape97_a.png)
 
 
 ### Response mapping

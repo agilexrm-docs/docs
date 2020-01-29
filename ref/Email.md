@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Email__
 
 # Email
 
-![ShapeNameDisplay](media/Email.png)
+![Email](media/Email.png)
 
 An activity that sends an email notification.
 
@@ -14,7 +14,8 @@ the different email AgileShapes.
 
 | Property | Description |
 | -------- | ----------- |
-| **Email**             |[Email](common/Email.md)|
+| __Email__  |[Email](common/Email.md)|
+| __Deferred Time__ | Default value: 0 Minute(s)<br>Specifies the amount of additional time that should be allowed to pass before the email notification is sent.<br>NOTE: If the Length sub-property is 0, the email notification will be sent without any delay. |
 
 
 ## Other Common Properties

@@ -106,6 +106,9 @@ for strings, validate using regular expressions or type (validate that a string
 is an integer, decimal). Additionally, the designer can include JavaScript code
 to perform more complex validations.
 
+
+We also have the *CustomValidationMessage* property available for input controls that allows us to configure and locate a message for custom validations.
+
 ### Context
 
 The dialog has access to a context. These are dynamic values which are used in
@@ -159,6 +162,8 @@ The most important ones are described in depth here:
 
 -   *DialogTaskCRMActivityId*: If part of Dialog Activity, this property holds
     the CRM Activity ID that launched the current dialog instance.
+
+[This document list all available variables under *Generic* node](common/SchemaGenericVariables.md)
 
 ### Render Modes
 
@@ -287,12 +292,13 @@ configuration besides the common properties.
 - [Radio](common/Radio.md)
 - [Tab Container](common/TabContainer.md)
 - [Textbox](common/Textbox.md)
--  Variable Control
+- [Numeric](common/NumericControl.md)
 - [Widget Control](common/WidgetControl.md)
 - [XRM Grid](common/XRMGrid.md)
 - [XRM Lookup](common/XRMLookup.md)
 - [XRM Search](common/XrmSearchControl.md)
--  Yes/No
+- [Variable Control](common/VariableControl.md)
+- [Yes/No](common/YesNoControl.md)
 
 ### Advanced Features
 
@@ -301,6 +307,8 @@ configuration besides the common properties.
 [User Feeback](common/UserFeeback.md)
 
 [Localization](common/Localization.md)
+
+[Performance Window](common/PerformanceWindow.md)
 
 [JavaScript Extensions](common/JavaScriptExtensions.md)
 

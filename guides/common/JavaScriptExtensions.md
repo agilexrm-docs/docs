@@ -5,7 +5,7 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 Process modeler can add JavaScript code in order to extend AgileDialogs default
 behavior.
 
-AgileDialogs page includes a reference to jQuery 1.4 and JSON, so jQuery and
+AgileDialogs page includes a reference to jQuery 1.9 and JSON, so jQuery and
 JSON components can be used while adding code to AgileDialogs.
 
 To add code to a Dialog lick *On Load Script* in AgileDialogs form window:
@@ -65,6 +65,30 @@ Where:
 If the control is mapped to data (for instance in a XRM Grid control), this
 method will return the value of the column that is mapped to the Display
 Variable.
+
+
+### Get and set question label
+
+To get a control's label, use this code:
+
+```javascript
+DialogsEngine.getLabel(<controlName>);
+```
+Where:
+
+-   controlName is the value of *ValueVariable* parameter in the question.
+
+To set a control's label, use this code:
+```javascript
+DialogsEngine.setLabel(<controlName>, <value>);
+```
+
+Where:
+
+- controlName is the value of *ValueVariable* parameter in the question.
+- value is the value to set in control´s question label. Value can be a literal string or HTML content as string.
+
+
 
 ### Change Control Value
 
@@ -318,6 +342,22 @@ Example:
 ```
 
 ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_08.png)
+
+Also, we can return a localized string with the custom validation error message. To do this, first we must configure the CustomValidationMessage property of the control and use the location mechanism of AgileDialogs.
+Once the property is configured and localized, we can use the DialogsEngine.getCustomValidationMessage (<controlname>) method to return the localized message.
+```javascript
+   DialogsEngine.getCustomValidationMessage(<controlname>);
+```
+```javascript
+  // add custom validation to control called textControl
+ 
+  DialogsEngine.addCustomValidation(  
+      "key1",  
+      "textControl",  
+      function (controlname, value, display){  
+        if (value.length > 5 ) return DialogsEngine.getCustomValidationMessage(controlname);
+      });
+```
 
 ### Add validation extensions for all controls in the page
 
@@ -1202,6 +1242,29 @@ Returns:
 
 *true* if the value is true, True, TRUE or combination of upper/lowercase,
 *false* otherwise.
+
+```javascript
+DialogsEngine.bool('True');
+```
+
+### Check if variable contains value
+
+DialogsEngine API has a feature that allows to check if a certain variable has value thats returns a Boolean value. We may use this
+functionality to avoid check some javascript values like null and undefinied, and it is simple to implement.
+
+```javascript
+   DialogsEngine.isNullOrEmpty(<value>);
+```
+
+Where:
+
+-   value is a string literal that conforms a condition, property or value to be
+    checked.
+
+Returns:
+
+*true* if the value has content,
+*false* otherwise, that is when does not have content, or its null or undefined.
 
 ```javascript
 DialogsEngine.bool('True');

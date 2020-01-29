@@ -98,7 +98,7 @@ The following options can be set:
     ![](../media/AgileDialogsDesignGuide/XRMConnectionWindow_09.png)
 
 -   **Enable Dialog-level comments**: Indicates if the Notes windows is shown to
-    users at runetime to take notes or write comments during the execution of
+    users at runtime to take notes or write comments during the execution of
     the dialog. If activated, the Notes area is collapsed by default, but the
     user can expand it as required.
 
@@ -120,7 +120,7 @@ The following options can be set:
 
 ![](../media/AgileDialogsDesignGuide/XRMConnectionWindow_13.png)
 
-**Show Cancel Button**: With this option selected, the user can us a Cancel
+- **Show Cancel Button**: With this option selected, the user can us a Cancel
 button to cancel the current dialog.
 
 -   **Show Process Viewer Button**: If selected, the View Process button is
@@ -128,6 +128,10 @@ button to cancel the current dialog.
     this functionality is not supported in Production environments, and is only
     useful when developing the dialogs.
 
+-- **Save history**: If selected, AgileDialogs will save the execution history in order to show it in ProcessManager.
+
+![](../media/ProcessManagerUserGuide/ProcessManagerUserGuide_29_5.png)
+ 
 ### Naming Convention tab
 
 In this tab the designer can configure the name of the dialog template as well

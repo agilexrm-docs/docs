@@ -10,12 +10,15 @@ The source file or files to be attached to CRM entity can be any AgilePoint NX G
 
 ## Shape-Specific Properties
 
+| *Document Destination (CRM Entity)* |  
+| -------- | ----------- |
 | Property | Description |
-| -------- | ----------- |                                                                                                                                                      
-| __EntityId__| [Entity Id](common/EntityId.md) |
-| __EntityName__| [Entity Name](common/EntityName.md)|
-| __SaveAnnotationIdTo__| [Save Annotation Id To](common/SaveAnnotationIdTo.md)|
-| __Source__ | [Source](common/Source.md) | 
+| <span style="padding-left:16px" />__EntityId__| [Entity Id](common/EntityId.md) |
+| <span style="padding-left:16px" />__EntityName__| [Entity Name](common/EntityName.md)|
+| <span style="padding-left:16px" />__SaveAnnotationIdTo__| [Save Annotation Id To](common/SaveAnnotationIdTo.md)|
+| *__Document Source__* | 
+| Property | Description |
+| <span style="padding-left:16px" />__Source__| [Source](common/Source.md) | 
 
 
 ## Other Common Properties

@@ -17,11 +17,15 @@ value **Now** in the *Default Value* property (note: the values range go from
 
 ![](../media/AgileDialogsDesignGuide/Calendar_03.png)
 
+By default, AgileDialogs calendar control shows its content using CRM timezone settings so we can change this behavior by *TimeZoneIndependent* property.
+
 Either type the date/time or select them using the mouse:
 
 ![](../media/AgileDialogsDesignGuide/Calendar_04.png)
 
 ![](../media/AgileDialogsDesignGuide/Calendar_05.png)
+
+> **Note**: Calendar control uses the *ISO-8601* format to store its value variable.
 
 > **Note**: The control does not have the ControlWidth property.
 

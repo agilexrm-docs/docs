@@ -26,14 +26,16 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
     and DateTime.  
     The format of the text is validated to check that it corresponds to the type
     specified in this field (the content of the validation message can be set in
-    *ValidationMessage* parameter).  
-    
+    *ValidationMessage* parameter).
 
     ![](../media/AgileDialogsDesignGuide/TextboxControl_04.png)
-
       
-    Note: DateTime is deprecated and is there for backward compatibility. It
-    will be removed in a future version. Use the Calendar control instead.
+    When TextControlContentType property is set to DateTime control stores the value variable using ISO-8601.
+
+    When TextControlContentType property is set to Decimal control stores the value variable using invariant culture.
+
+    > Note: This property is deprecated and is there for backward compatibility. It
+    will be removed in a future version. Use the Calendar and Currency controls instead.
 
 -   **ValidationMessage**: The message that will be presented when the content
     does not match the validation rule:  

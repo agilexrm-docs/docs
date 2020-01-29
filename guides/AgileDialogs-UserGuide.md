@@ -150,45 +150,49 @@ validation warning is automatically hidden:
 
 These are the question types that this container can include:
 
--   **Textbox**: this question type is used to introduce a text value
+-   **[Textbox](common/Textbox.md)**: this question type is used to introduce a text value
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10.png)
 
--   **Drop-Down List**: this question type is used to select a single value from
+-   **[Numeric](common/NumericControl.md)**: this question type is used to introduce a numeric value
+
+![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10_01.png)
+
+-   **[Drop-Down List](common/Combo.md)**: this question type is used to select a single value from
     a list
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_11.png)
 
--   **Radio Button**: this question type is used to select a single value
+-   **[Radio Button](common/Radio.md)**: this question type is used to select a single value
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_12.png)
 
--   **Button Set**: This question type is the same as the Radio button but
+-   **[Button Set](common/Radio.md)**: This question type is the same as the Radio button but
     represented as a set of buttons. Clicking on one button is like selecting
     that option AND clicking *Next* in one go
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_13.png)
 
--   **Checkbox**: This question type allows selecting multiple values
+-   **[Checkbox](common/Check.md)**: This question type allows selecting multiple values
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_14.png)
 
--   **Info**: This question type presents information to the user. This
+-   **[Info](common/Info.md)**: This question type presents information to the user. This
     information can include images, formatted text and hyperlinks.
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_15.png)
 
--   **Yes/No**: This question type is used to select Yes or No as the response
+-   **[Yes/No](common/YesNoControl.md)**: This question type is used to select Yes or No as the response
     to a question. It is just a common use of Radio Buttons
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_16.png)
 
--   **Calendar**: This question type is used to select either a Date or a Date
+-   **[Calendar](common/Calendar.md)**: This question type is used to select either a Date or a Date
     and Time
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_17.png)
 
--   **Lookup**: this control is used to select an item in a list. The value can
+-   **[Lookup](common/XRMLookup.md)**: this control is used to select an item in a list. The value can
     be filled using auto- complete feature. Just Click on the button to get the
     list of values to choose:
 
@@ -201,7 +205,7 @@ the "filter" button, the filtered results are shown:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_20.png)
 
--   **Data Grid**: This question type shows a list of items in a table for
+-   **[Data Grid](common/XRMgrid.md)**: This question type shows a list of items in a table for
     selecting one of them:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_21.png)
@@ -214,18 +218,23 @@ the "filter" button, the filtered results are shown:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_23.png)
 
--   **File**: This allows selecting a file from the user's PC. Click on the
+-   **[File](common/File.md)**: This allows selecting a file from the user's PC. Click on the
     button and the selected file will start uploading:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_24.png)
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_25.png)
 
--   **Password**: It is used to get passwords:
+-   **[Password](common/Password.md)**: It is used to get passwords:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_26.png)
 
--   **Custom Control**: This type of question is for adding your own controls,
+- **[XRM Search control](common/XrmSearchControl.md)**: XRM Search control allows to perform a XRM FetchXML search in AgileDialogs page
+and set the data retrieved to page controls.
+
+- **[Variable Control](common/VariableControl.md)**: Variable control allows to create process context variables.
+
+- **[Custom Control](common/WidgetControl.md)**: This type of question is for adding your own controls,
     using AgileDialogs extension mechanisms
 
 Notes Container

@@ -8,5 +8,4 @@ in the AgileXRM process context. The process variable can then be used elsewhere
 For example, in an **Add Note** shape, when the process executes this shape, 
 one could store the Note ID in a variable to use it somewhere else in the process.
 
-?? Change image (remove $\{\} )
 ![SaveEntityIdTo](../media/SaveEntityIdTo.png)
