@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Update Custom Attributes__
 
 # Update Custom Attributes
 
-![Update Custom Attributes](media/UpdateCustomAttributes.png)
+![Update Custom Attributes]media/UpdateCustomAttributes.png
 
 (Description Here)
 
