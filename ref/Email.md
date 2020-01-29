@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Email__
 
 # Email
 
-![Email](media/Email.png)
+![Email](media/email.png)
 
 An activity that sends an email notification.
 
