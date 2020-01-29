@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> DateTime Operations__
 
 # DateTime Operations
 
-![DateTime Operations](media/DateTimeOperations.png)
+![DateTime Operations](media/DatetimeOperations.png)
 
 (Description Here)
 
