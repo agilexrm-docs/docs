@@ -1,5 +1,2 @@
 theme: jekyll-theme-slate
 encoding: utf-8
-markdown: kramdown
-highlighter: rouge
-exclude: []
