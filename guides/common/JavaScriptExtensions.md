@@ -2,8 +2,7 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 
 # JavaScript Extensions (OnLoadScript)
 
-Process modeler can add JavaScript code in order to extend AgileDialogs default
-behavior.
+Process modeler can add JavaScript code in order to extend AgileDialogs default behavior.
 
 AgileDialogs page includes a reference to jQuery 1.9 and JSON, so jQuery and
 JSON components can be used while adding code to AgileDialogs.
@@ -86,7 +85,7 @@ DialogsEngine.setLabel(<controlName>, <value>);
 Where:
 
 - controlName is the value of *ValueVariable* parameter in the question.
-- value is the value to set in control´s question label. Value can be a literal string or HTML content as string.
+- value is the value to set in controlÂ´s question label. Value can be a literal string or HTML content as string.
 
 
 
