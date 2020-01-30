@@ -42,7 +42,7 @@ implied, by or with respect to anything in this document, and shall not be
 liable for any implied warranties of merchantability or fitness for a
 particular purpose or for any indirect, special or consequential damages.
 
-**Copyright © 2018**, **AgilePoint Inc. All rights reserved.**
+**Copyright Â© 2018**, **AgilePoint Inc. All rights reserved.**
 
 GOVERNMENT RIGHTS LEGEND: Use, duplication or disclosure by the U.S.
 Government is subject to restrictions set forth in the applicable AgilePoint
@@ -50,7 +50,7 @@ Inc. license agreement and as provided in DFARS 227.7202-1(a) and
 227.7202-3(a) (1995), DFARS 252.227-7013(c)(1)(ii) (Oct 1988), FAR 12.212(a)
 (1995), FAR 52.227-19, or FAR 52.227-14, as applicable.
 
-‘AgilePoint Inc.’ and all its products are trademarks of AgilePoint Inc..
+â€˜AgilePoint Inc.â€™ and all its products are trademarks of AgilePoint Inc..
 References to other companies and their products use trademarks owned by the
 respective companies and are for reference purposes only.
 
@@ -181,7 +181,7 @@ separate machines:
 This section provides detailed information about the specific optimal system
 requirements for the Process Server component of the . The recommended
 requirements for this component can vary based on the intended usage of the
-product. The System Administrator’s Portal is also installed on the same
+product. The System Administratorâ€™s Portal is also installed on the same
 machine.
 
 | Feature            | Requirements |
@@ -314,7 +314,7 @@ External Connector License is required).
 
 AgilePoint is committed to fully supporting running on virtualization
 technologies. AgilePoint supports both physical server machines as well as
-virtual machines. AgilePoint recommends **Windows Server® Hyper-V™**,
+virtual machines. AgilePoint recommends **Windows ServerÂ® Hyper-Vâ„¢**,
 however other Microsoft and non-Microsoft virtualization products are also
 supported as discussed in the link below:
 
