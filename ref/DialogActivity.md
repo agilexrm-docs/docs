@@ -19,23 +19,28 @@ continues.
 Use this shape rather than one of the other CRM Activities shapes, when a single Page
 Form may not suffice or the user needs to be guided to complete the task.
 
+## Participants
+The property *ConfigureParticipants* allows to set the Activity owner and (optionally) assign the activity to a queue, just clicking on the ellipsis button.
+
+To see full configuration navigate to the [Participants](./common/Participants.md) detailed section.
 
 ## Shape-Specific Properties
 
 | Property | Description |
 | -------- | ----------- |
-| **ActivityProperties**  |[Activity Properties](common/ActivityProperties.md)|
-| **AfterSubmitAction**   |[After Submit Action](common/AfterSubmitAction.md)|
-| **Dialog**              |[Dialog](common/SubProcess.md)|
-| **EmbededHeight**       |[Embeded Height](common/EmbededHeight.md)|
-| **InParameters**        |[In Parameters](common/InParameters.md)|
-| **OutParamters**        |[Out Paramters](common/OutParamters.md)|
-| **OwnerID**             |[Owner ID](common/OwnerID.md)|
-| **RegardingEntityID**   |[Regarding Entity ID](common/RegardingEntityID.md)|
-| **RegardingEntityType** |[Regarding Entity Type](common/RegardingEntityType.md)|
-| **SaveCrmActivityIdTo** |[Save CRM Activity Id To](common/SaveCrmActivityIdTo.md)|
-| **Subject**             |[Subject](common/Subject.md)|
-| **TaskDescription**     |[Task Description](common/TaskDescription.md)|
+| **ActivityProperties**            |[Activity Properties](common/ActivityProperties.md)|
+| **AfterSubmitAction**             |[After Submit Action](common/AfterSubmitAction.md)|
+| **CreateProcessInstanceRecord**   |[Create Process Instance Record](common/CreateProcessInstanceRecord.md)|
+| **Dialog**                        |[Dialog](common/SubProcess.md)|
+| **EmbededHeight**                 |[Embeded Height](common/EmbededHeight.md)|
+| **InParameters**                  |[In Parameters](common/InParameters.md)|
+| **OutParamters**                  |[Out Parameters](common/OutParamters.md)|
+| **OwnerID**                       |[Owner ID](common/OwnerID.md)|
+| **RegardingEntityID**             |[Regarding Entity ID](common/RegardingEntityID.md)|
+| **RegardingEntityType**           |[Regarding Entity Type](common/RegardingEntityType.md)|
+| **SaveCrmActivityIdTo**           |[Save CRM Activity Id To](common/SaveCrmActivityIdTo.md)|
+| **Subject**                       |[Subject](common/Subject.md)|
+| **TaskDescription**               |[Task Description](common/TaskDescription.md)|
 
 
 ## Other Common Properties

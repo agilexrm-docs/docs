@@ -252,6 +252,17 @@ To view correctly large process diagrams, Process Manager has a zoom tool to zoo
 
 > **Note:** Zoom tool is integrated with mouse wheel, so we can use it to zoom in and zoom out process diagram as well.
 
+### Integration with Dynamics 365/CDS
+Once that a D365/CDS entity has been enabled to be used with AgileXRM, that entity will have an additional tab (called "View Process") as part of its main form (see following image).
+Inside of this new tab there will be a view of the Process Manager.
+![](media/ProcessManagerUserGuide/ProcessManagerUserGuide_ViewProcess.png)
+
+In this view, only those processes that belongs to selected entity record will be displayed. In addition, following criterias also applies:
+* Only AgileXRM process (Not AgileDialogs)
+* Not archived
+* Without parent
+* Ordered by Created On date Descending
+
 ## Disclaimer of warranty
 
 [Disclaimer of warranty](common/DisclaimerOfWarranty.md)

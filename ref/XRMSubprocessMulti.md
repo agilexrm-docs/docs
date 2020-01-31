@@ -33,9 +33,11 @@ See the *SubProcessParams* property.
 | -------- | ----------- |
 | **EntityIds**               | [Entity Ids](common/EntityIds.md)               |
 | **EntityName**              | [Entity Name](common/EntityName.md)              |
-| **ExecutionMode**           | Default: Parallel<br>All subprocesses are started in parallel unless this parameter is set to Sequential, in which case subprocesses are initiaited one by one after previous subprocess is completed (or cancelled) |
+| __ExecuteAsync__            | [Execute Async](common/ExecuteAsync.md) |
+| **ExecutionMode**           | Default value: **Parallel**<br />- **Parallel** : All subprocesses are started in parallel in no particular order<br />- **Sequential** : subprocesses are initiated one by one so next subprocess is not started until previous subprocess is completed (or cancelled)|
 | **NamePrefix**              | [Name Prefix](common/NamePrefix.md)              |
 | **QueryExpression**         | [Query Expression](common/QueryExpression.md)         |
+| **RunProcessIndependently** | [Run Process Independently](common/RunProcessIndependently.md) |
 | **SaveProcessInstanceIdTo** | [Save Process Instance Id To](common/SaveProcessInstanceIdTo.md) |
 | **Sub Process**             | [SubProcess](common/SubProcess.md)             |
 | **SubProcessInitiator**     | [SubProcess Initiator](common/SubProcessInitiator.md)     |

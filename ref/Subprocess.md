@@ -38,6 +38,7 @@ See the *SubProcessParams* property in the table below.
 | Property | Description |
 | -------- | ----------- |
 | **NamePrefix**              | [Name Prefix](common/NamePrefix.md) |
+| **RunProcessIndependently** | [Run Process Independently](common/RunProcessIndependently.md) |
 | **SaveProcessInstanceIdTo** | [Save Process Instance Id To](common/SaveProcessInstanceIdTo.md) |
 | **ShareAttributes**         | [Share Attributes](common/ShareAttributes.md) |
 | **SubProcess**              | [SubProcess](common/SubProcess.md)             |
