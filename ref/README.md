@@ -46,8 +46,8 @@ __[Home](/) --> Reference__
 * [Update Entity (Multi)](UpdateEntityMulti.md)
 * [Update Entity](UpdateEntity.md)
 * [Wait For Update](WaitForUpdate.md)
-* [XRM SubProcess](XRMSubProcess.md)
-* [XRM SubProcess (Multi)](XRMSubProcessMulti.md)
+* [XRM SubProcess](XRMSubprocess.md)
+* [XRM SubProcess (Multi)](XRMSubprocessMulti.md)
 
 ### Dyn365/CDS Manual Shapes
 
