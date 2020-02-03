@@ -18,6 +18,16 @@ __[Home](/) --> [Reference](/ref) --> ShapeNameDisplay__
 | __Property 1__ | Description of Property 1<br>More info in a separate line |
 | __Property 2__ | [Link](common/property2.md) |
 
++--------------------------------+--------------------------------+
+| Heading1                       | Heading2                       |
++================================+================================+
+| **Line1**                      | Line 1 Description             |
++--------------------------------+--------------------------------+
+| **Line 2        **             | Line 2 Description             |
+|                                | - Listitem A                   |
+|                                | - Listitem B                   |
++--------------------------------+--------------------------------+
+
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
