@@ -1,4 +1,5 @@
 .vs/
+.vs/slnx.sqlite
 _posts/
 _site/
 .sass-cache
@@ -10,5 +11,3 @@ Gemfile
 index.md
 404.html
 _config.yml
-
-
