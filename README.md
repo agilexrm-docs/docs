@@ -21,8 +21,8 @@ Topics currently in this repository's scope:
 - [AgileXRM Concepts](concepts/AgileXRM-Concepts.md): Get to know the basic elements of **AgileXRM**
 - [AgileXRM System Requirements](systemrequirements/AgileXRM-SystemrequiRements.md): System requirements for **AgileXRM**
 
-Visit **AgileXRM** officil site at [https://www.agilexrm.com](https://www.agilexrm.com).  
-Check **AgileXRM** new features and news at [https://blog.agilexrm.com](https://blog.agilexrm.com).
+Visit **AgileXRM** officil site at <https://www.agilexrm.com>.  
+Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 
 ## Guides
 

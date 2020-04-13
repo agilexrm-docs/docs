@@ -173,9 +173,9 @@ requirements for the Envision component of.
 ## Support for Virtualization Technologies
 
 
-AgilePoint is committed to fully supporting running on virtualization
-technologies. AgilePoint supports both physical server machines as well as
-virtual machines. AgilePoint recommends **Windows Server® Hyper-V™**,
+AgileXRM is committed to fully supporting running on virtualization
+technologies. AgileXRM supports both physical server machines as well as
+virtual machines. AgileXRM recommends **Windows Server® Hyper-V™**,
 however other Microsoft and non-Microsoft virtualization products are also
 supported as discussed in the link below:
 

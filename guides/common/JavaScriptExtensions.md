@@ -1315,7 +1315,7 @@ was abandoned before.
 
 ### Advanced Engine customizations
 
-This use of this technique should be validated with AgilePoint before going
+This use of this technique should be validated with AgileXRM before going
 live.
 
 This allows changing the behavior of at the engine level.

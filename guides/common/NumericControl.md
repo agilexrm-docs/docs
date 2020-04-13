@@ -10,6 +10,6 @@ This control shows a numeric input to the user to store numeric data. This contr
 
 **Decimals**: This is the number of decilmals for the control data. Only numberic values are allowed.
 
-**MaxValue**: This is the maximum value allowed in the control data. Property accepts a valid numeric input or AgilePoint variable. 
+**MaxValue**: This is the maximum value allowed in the control data. Property accepts a valid numeric input or a custom attribute. 
 
 **MinValue**: This is the minimum value allowed in the control data.

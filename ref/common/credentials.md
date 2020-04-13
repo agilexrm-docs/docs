@@ -3,7 +3,7 @@ __[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back())
 ### Credentials property
 
 
-Defines the credentials that AgilePoint uses to invoke the current activity, both in designtime and runtime
+Defines the credentials that AgilePoint uses to invoke the current activity, both in design-time and runtime
 
 ![](../media/CredentialsWindow.png)
 

@@ -8,7 +8,7 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 |**ActivityParticipantFullNames**| Gets the full name of current activity.|
 |**ActivityParticipantUserNames**| Gets the name of all participants.|
 |**CurrentDate**| Gets the server current date. Its an UTC date in ISO-8601 format.<br />Sample value: *2019-09-18T12:55:45Z*|
-|**HomeDirectory**| Gets the home directory of AgilePoint server instance.|
+|**HomeDirectory**| Gets the home directory of Process server instance.|
 |**ProcessID**| Gets the process instance ID of current process.<br />Sample value: *edb3529f13dae911826d0050562195fa*|
 |**ParentProcessID**| When process instance is a subprocess, return the parent process ID.|
 |**ProcessInitiator**| Gets the user name thats has initiate the current process instance. <br />Sample value: *DOMAIN\UserName*|

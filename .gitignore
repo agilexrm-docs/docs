@@ -1,5 +1,7 @@
+.vs
 .vs/
-.vs/slnx.sqlite
+/.vs
+/.vs/
 _posts/
 _site/
 .sass-cache

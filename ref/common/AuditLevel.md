@@ -11,7 +11,7 @@ to control the level of granularity in terms of the amount of process related
 data that is recorded to the workflow database. This property can be set to the
 following specific values:
 
--   **High** - This value indicates that AgilePoint will record all data about
+-   **High** - This value indicates that process engine will record all data about
     the activity or process to the database.
 
 -   **Low** - The record of auto work item will be deleted from database after

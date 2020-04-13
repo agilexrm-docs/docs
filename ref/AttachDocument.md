@@ -6,7 +6,8 @@ __[Home](/) --> [Reference](/ref) --> Attach Document__
 
 This activity creates an attachment or attachments (*annotations*) in a CRM entity from other systems.
 
-The source file or files to be attached to CRM entity can be any AgilePoint NX Global Access Token. Global Access Token must be created previously in AgilePoint NX administration portal.
+The source file or files to be attached to CRM entity can be any AgilePoint NX Global Access Token. 
+Global Access Token must be created previously in AgilePoint NX administration portal.
 
 ## Shape-Specific Properties
 

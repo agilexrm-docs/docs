@@ -2,11 +2,11 @@
 
 # AgileXRM Concepts
 
-## What is AgileXRM
+## What is AgileXRM?
 
-**AgileXRM** is an integration with and embedding of **Agilepoint NX** into **Microsoft Dynamics 365**.
+**AgileXRM** is an integration with and embedding of **Agilepoint NX** into **Microsoft Dynamics 365 / Power Platform (CDS)**.
 
-**AgileXRM** allows users of Dynamics 365 to create powerful process-centric applications
+**AgileXRM** allows users of Dynamics 365 / CDS to create powerful process-centric applications
 within Dynamics 365 that extend beyond out-of-the-box functionality to cater for
 more business requirements in an easier more manageable way.
 
@@ -14,7 +14,7 @@ more business requirements in an easier more manageable way.
 
 With **AgileXRM** you can:
 
-- Visually model end-to-end business processes using AgilePoint Envision
+- Visually model end-to-end business processes using Visio-based Process Modeller
 - Visually monitor the execution of business processes in the organization
 - Extend business processes beyond Dynamics 365 for easy integration with other systems
 - Involve non-Dynamics 365 users, inside or outside the organization, to participate in business processes
@@ -32,8 +32,8 @@ to the Dynamics 365 platform.
 
 ## AgileXRM Components
 
-
 ### Process Designer
+
 - Comprehensive and visual Process Designer
 - End-to-end business process design: Full data life-cycle management inside Dynamics 365/CRM
 - Activity-based Forms
@@ -54,6 +54,7 @@ to the Dynamics 365 platform.
 ![](media/AgileXRM_Concepts_03.png)
 
 ### AgileDialogs
+
 - Contact-center grade Dialogs.
 - Standalone or embeddable in Dynamics 365/CRM or Custom portal
 - Dynamic UI guided by process models
@@ -108,27 +109,6 @@ to the Dynamics 365 platform.
 ![](media/AgileXRM_Concepts_07.png)
 ![](media/AgileXRM_Concepts_08.png)
 
-### AgileMonitor: Reporting & Monitoring
-
-A perfect companion to complement the powerful **Microsoft Dynamics 365/CRM** reporting and analysis tools.
-
-**AgileMonitor** provides Business Activity Monitoring (BAM) analysis to make decisions on the running processes in real-time. It allows the user to filter and select with ample criteria and define data points for further analysis and take action upon it.
-
-> e.g. How many complaints have not been answered within our  SLA, Overdue deliveries in course, User group with the most workload etc.
-
-The result of each report is a representation of the process model that a power user can interact with.
-
-> e.g. Reassign tasks, Change due dates, Send alerts to appropriate participants, Skip tasks, Cancel activities, etc.  
-
-Some functionality includes: 
-- Graphical Business Process Monitoring
-- Metadata-based dynamic filtering
-- Dynamics 365/CRM Security Role based data visibility
-- Real-Time process status monitoring
-- Allows superimposing any process data and aggregates on the model
-- SLA-type on-demand reporting
-- Drill down to process instance and real-time process management
-- Directly from the model, the user can take actions on the process flow (i.e. reassign, roll-back, jump forward etc.)
 
 ### AgilePoint NX
 
@@ -136,22 +116,23 @@ Some functionality includes:
 
 **AgilePoint NX** is a cloud-based, digital-transformation
 platform that combines the speed and agility of general
--purpose Low-Code with enterprise-class BPMS.
-AgilePoint NX empowers citizen developers to build
+-purpose Low-Code with enterprise-class BPMS, 
+which empowers citizen developers to build
 almost any kind of custom app, from simple to
 complex, without writing code.
 
-### Microsoft Dynamics CRM / CDS
+### Microsoft Dynamics 365 CE / CDS / Power Platform
 
 **AgileXRM** allows companies to build line-of-business
-applications rapidly within Microsoft Dynamics 365.
-Dynamics 365’s out-of-the-box functionality provides
+applications rapidly within Microsoft Dynamics 365 CE and Power Platform (CDS).
+Dynamics 365’s / CDS's out-of-the-box functionality provides
 reasonable workflow and forms capabilities, enabling
 certain process automation. But managing real-world
-business processes with this limited functionality
-is impractical.AgileXRM brings true BPM functionality
-to the Dynamics 365 platform.
+business processes with this functionality
+is sometimes impractical. AgileXRM brings true BPM functionality
+to the Dynamics 365 / CDS platform.
 
-**AgileXRM** allows users of Dynamics 365 create powerful process-centric applications within Dynamics 365 that extend beyond out-of-the-box functionality to cater for more business requirements in a more manageable way.
+**AgileXRM** allows users of Dynamics 365 / CDS create powerful process-centric applications within Dynamics 365 / CDS 
+that extend beyond out-of-the-box functionality to cater for more business requirements in a more manageable way.
 
 ![](media/AgileXRM_Concepts_90.png)
