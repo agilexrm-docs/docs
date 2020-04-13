@@ -35,6 +35,11 @@ The mapping of the fields is as shown below:
 Please also see the **[Email Shape Comparison Table](common/EmailShapeComparisonTable.md)** for the use cases for each
 of the different email AgileShapes.
 
+## Participants
+The property *ConfigureParticipants* allows to set the Activity owner and (optionally) assign the activity to a queue, just clicking on the ellipsis button.
+
+To see full configuration navigate to the [Participants](./common/Participants.md) detailed section.
+
 
 ## Shape-Specific Properties
 
@@ -45,11 +50,14 @@ of the different email AgileShapes.
 | **AgilePointTemplate**  | [AgilePoint Template](common/AgilePointTemplate.md) |
 | **AutoSend**            | Incicates if email should be automatically sent or if it needs to be completed by a user. Default: False <br />* **True** The CRM Email will be sent automatically and the Email Activity will be Completed.<br>* **False** - The Email will be created but not send (See also *[AutoComplete](common/AutoComplete.md)*)|
 | **EmbededHeight**       | [Embeded Height](common/EmbededHeight.md)|
-| **OwnerID**             | [Owner ID](common/OwnerId.md) |
+| **ExistingActivityId**  | [Existing Activity Id](common/ExistingActivityId.md)       |
+| **OwnerID**             | [DEPRECATED][Owner ID](common/OwnerId.md) |
 | **PageForm**            | [Page Form](common/PageForm.md) |
 | **RegardingEntityID**   | [Regarding Entity ID](common/RegardingEntityID.md) |
 | **RegardingEntityType** | [Regarding Entity Type](common/RegardingEntityType.md)| 
-| **SaveCrmActivityIdTo** | [Save CRM Activity Id To](common/SaveCrmActivityIdTo.md) |
+| **SaveCrmActivityIdTo** | [DEPRECATED][Save CRM Activity Id To](common/SaveCrmActivityIdTo.md) |
+| **SaveCrmActivityFieldsTo** | [Save CRM Activity Fields To](common/SaveCrmActivityFieldsTo.md)     |
+           
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

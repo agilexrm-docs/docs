@@ -27,21 +27,27 @@ The mapping of the fields is as shown below:
 | **Owner**        | the Participant property . When Participant is a Queue, OwnerID property |
 | **Other fields** | Set using the ActivityProperties property                                |
 
+## Participants
+The property *ConfigureParticipants* allows to set the Activity owner and (optionally) assign the activity to a queue, just clicking on the ellipsis button.
+
+To see full configuration navigate to the [Participants](./common/Participants.md) detailed section.
 
 ## Shape-Specific Properties
 
 | Property | Description |
 | -------- | ----------- |
-| **ActivityProperties**  | [Activity Properties](common/ActivityProperties.md)  |
-| **AfterSubmitAction**   | [After Submit Action](common/AfterSubmitAction.md)   |
-| **EmbededHeight**       | [Embeded Height](common/EmbededHeight.md)       |
-| **OwnerID**             | [Owner ID](common/OwnerID.md)             |
-| **PageForm**            | [Page Form](common/PageForm.md)            |
-| **RegardingEntityID**   | [Regarding Entity ID](common/RegardingEntityID.md)   |
-| **RegardingEntityType** | [Regarding Entity Type](common/RegardingEntityType.md) |
-| **SaveCrmActivityIdTo** | [Save CRM Acticity Id To](common/SaveCrmActivityIdTo.md) |
-| **Subject**             | [Subject](common/Subject.md)             |
-| **TaskDescription**     | [Task Description](common/Subject.md)     |
+| **ActivityProperties**           | [Activity Properties](common/ActivityProperties.md)  |
+| **AfterSubmitAction**            | [After Submit Action](common/AfterSubmitAction.md)   |
+| **EmbededHeight**                | [Embeded Height](common/EmbededHeight.md)       |
+| **ExistingActivityId**           | [Existing Activity Id](common/ExistingActivityId.md)       |
+| **OwnerID**                      | [DEPRECATED][Owner ID](common/OwnerID.md)             |
+| **PageForm**                     | [Page Form](common/PageForm.md)            |
+| **RegardingEntityID**            | [Regarding Entity ID](common/RegardingEntityID.md)   |
+| **RegardingEntityType**          | [Regarding Entity Type](common/RegardingEntityType.md) |
+| **SaveCrmActivityFieldsTo**      | [Save CRM Activity Fields To](common/SaveCrmActivityFieldsTo.md) |
+| **SaveCrmActivityIdTo**          | [DEPRECATED] [Save CRM Activity Id To](common/SaveCrmActivityIdTo.md) |
+| **Subject**                      | [Subject](common/Subject.md)             |
+| **TaskDescription**              | [Task Description](common/Subject.md)     |
 
 
 ## Other Common Properties

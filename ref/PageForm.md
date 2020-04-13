@@ -15,7 +15,7 @@ please see **[AgileDialogs Design Guide](../guides/AgileDialogs-DesignGuide.md)*
 
 | Property | Description |
 | -------- | ----------- |
-| **FormConfiguration** | Click the ellipsis to open the Form Configuration dialog. |
+| **FormConfiguration** | Click the ellipsis to open the [Form Configuration dialog](../guides/common/PageFormShape.md).|
 
 
 

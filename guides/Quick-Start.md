@@ -88,7 +88,7 @@ The **XRM Connection** window opens.
 
 ### Configure Connection Settings
 
-Enter the **CRM Server URL** and **Organization name** (use your own values)
+Enter the **CRM Server URL**, **Organization name** (use your own values) and **AgileDialogs Server**
 
 -   Click the **Connect** button to check connectivity to your organization
 

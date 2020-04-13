@@ -2,23 +2,15 @@ __[Home](/) --> [Reference](/ref) --> Pass Milestone__
 
 # Pass Milestone
 
-<!--![Pass Milestone](media/PassMilestone.png)
+![Pass Milestone](media/PassMilestone.png)
 
--->
 
-(Description Here)
+An activity that, when used together with the [Wait For Milestone activity](WaitForMilestone.md), lets a process wait for an event that is not in the process, and then continue once the event is complete. 
 
-(More Description on seperate line)
+For example, if an activity can not start until an approval occurs in a subprocess, you can use this activity to control the process based on that event..
 
-> __NOTE__: Notes in this format.
-> More note lines here 
+> __NOTE__: This activity is available under  *Advanced Extension*.
 
-## Shape-Specific Properties
-
-| Property | Description |
-| -------- | ----------- |
-| __Property 1__ | Description of Property 1<br>More info in a separate line |
-| __Property 2__ | [Link](common/property2.md) |
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

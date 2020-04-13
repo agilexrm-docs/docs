@@ -6,8 +6,9 @@ This shape creates a Web Service Activity, which allows consuming a SOPA ASMX We
 
 ![Web Service](media/WebService.png)
 
-> **NOTE**: In order to use this shape, the web service must have WSDL description enabled.
+> **Note**: In order to use this shape, the web service must have WSDL description enabled.
 
+> **Note**: This activity is available under *Web Services*
  
 ## Configure
 

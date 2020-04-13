@@ -87,6 +87,7 @@ be provided for the test tab to show any results
 
 ##### Advanced Tab
 
+###### Advanced Queries Mode
 For advanced queries, it is possible to configure the query enabling
 the advanced mode by accessing this tab, and selecting the *Enable Advanced mode*
 checkbox. The *Query tab* would be deactivated, and the query definition would
@@ -98,6 +99,13 @@ After making the changes to the query FetchXML, the syntax can be checked by pre
 button. If the FetchXML syntax is correct, the following confirmation will be shown:
 
 ![](../media/QueryExpression_13.png)
+
+###### Run Query On Behalf Of Dynamics User
+In this tab is also possible to enable query execution on behalf of any user in Dynamics 365/CDS. 
+To do that just provide a valid User ID (GUID value) or any variable which contains such value and the query defined
+in this shape will be performed on behalf of given user on runtime.
+
+![](../media/QueryExpression_13a.png)
 
 ##### Variable mapping Tab (Available in AgileDialogs Page Form Only)
 In AgileDialogs designer, there are certain user-selectable controls (XRMGrid, XRMlookup, Combo, RadioButton and

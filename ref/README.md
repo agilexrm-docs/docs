@@ -12,19 +12,20 @@ __[Home](/) --> Reference__
 * [Email](Email.md)
 * [Multiple Condition](MultipleCondition.md)
 * [Or](Or.md)
-* [REST](REST.md)
 * [Single Condition](SingleCondition.md)
 * [Start](Start.md)
 * [Stop](Stop.md)
 * [SubProcess](SubProcess.md)
 * [Update Custom Attributes](UpdateCustomAttributes.md)
 * [Update Parent Process](UpdateParentProcess.md)
-* [WCF](WCF.md)
+* [Web Service](WebService.md)
 * [WSE](WSE.md)
+* [WCF](WCF.md)
+* [REST](REST.md)
 * [Pass Milestone](PassMilestone.md)
 * [Wait For Milestone](WaitForMilestone.md)
-* [Web Service](WebService.md)
 * [Word](Word.md)
+
 
 ### Dyn365/CDS Automatic Shapes
 
@@ -46,8 +47,8 @@ __[Home](/) --> Reference__
 * [Update Entity (Multi)](UpdateEntityMulti.md)
 * [Update Entity](UpdateEntity.md)
 * [Wait For Update](WaitForUpdate.md)
-* [XRM SubProcess](XRMSubProcess.md)
-* [XRM SubProcess (Multi)](XRMSubProcessMulti.md)
+* [XRM SubProcess](XRMSubprocess.md)
+* [XRM SubProcess (Multi)](XRMSubprocessMulti.md)
 
 ### Dyn365/CDS Manual Shapes
 

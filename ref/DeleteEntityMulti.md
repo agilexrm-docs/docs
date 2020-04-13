@@ -21,6 +21,8 @@ integrity etc).
 | -------- | ----------- |
 | **EntityIds**       | [Entity IDs](common/EntityIds.md) |
 | **EntityName**      | [Entity name](common/EntityName.md)|
+| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
+| __OnBehalfOf__      | [On Behalf Of](common/OnBehalfOf.md)    |
 | **QueryExpression** | [QueryExpression](common/QueryExpression.md) |
 
 

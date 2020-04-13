@@ -16,6 +16,8 @@ integrity etc).
 | -------- | ----------- |
 | __EntityId__   | [Entity Id](common/EntityId.md) |
 | __EntityName__ | [Entity Name](common/EntityName.md)|
+| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
+| __OnBehalfOf__ | [On Behalf Of](common/OnBehalfOf.md)    |
 
 
 ## Other Common Properties

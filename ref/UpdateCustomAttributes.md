@@ -4,19 +4,17 @@ __[Home](/) --> [Reference](/ref) --> Update Custom Attributes__
 
 ![Update Custom Attributes](media/UpdateCustomAttributes.png)
 
-(Description Here)
+This activity can be used to update the runtime value(s) of one or more custom process attributes. When using this shape, you specify the name(s) of one or more custom process attributes, and associate a snippet/fragment of C# code with each attribute name. At runtime, each snippet will be executed/evaluated to determine the value that will be assigned to the associated custom process attribute.
 
-(More Description on seperate line)
 
-> __NOTE__: Notes in this format.
+> __NOTE__: This activity is available under *Premier Extension*.
 > More note lines here 
 
 ## Shape-Specific Properties
 
 | Property | Description |
 | -------- | ----------- |
-| __Property 1__ | Description of Property 1<br>More info in a separate line |
-| __Property 2__ | [Link](common/property2.md) |
+| __Configuration__ | Opens the  [Update Custom Attributes](common/UpdateCustomAttributes.md) dialog box. |
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

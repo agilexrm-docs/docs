@@ -20,6 +20,8 @@ The set of records that are affected are selected by either:
 | __EntityIDs__ | [Entity IDs](common/EntityIds.md)  |
 | __EntitySpecification__ | [Entity Specification](common/EntitySpecification.md)  |
 | __EntityType__   |[Entity Type](common/EntityType.md)    |
+| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
+| __OnBehalfOf__   |[On Behalf Of](common/OnBehalfOf.md)    |
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

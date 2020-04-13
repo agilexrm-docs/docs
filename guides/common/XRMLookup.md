@@ -44,3 +44,10 @@ the *Next* button
 
 > **Important**: if there is any other control in the current
 form with its *required* property set to *true*, the process will not move forward.
+
+The **UseRelativeDataFormat** property determines how Datetime columns are shown.
+<br>When its set to *false*, Datetime column are shown using the CRM/CDS date format.
+![](../media/AgileDialogsDesignGuide/XRMLookupControl_07.png)
+<br>When its set to *true*, Datetime column are shown as friendly relative text and we can get the Datetime value by cross button.
+![](../media/AgileDialogsDesignGuide/XRMLookupControl_08.png)
+> **Note** When XRMGrid control is configured with UseRelativeDateFormat, we can use the cross button to show the Datetime value

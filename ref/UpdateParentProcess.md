@@ -4,19 +4,18 @@ __[Home](/) --> [Reference](/ref) --> Update Parent Process__
 
 ![Update Parent Process](media/UpdateParentProcess.png)
 
-(Description Here)
+This activity can be used to update the values of one or more custom process attributes in a separate process instance.
 
-(More Description on seperate line)
+> __NOTE__: This activity is available under  *Premier Extension.*
 
-> __NOTE__: Notes in this format.
-> More note lines here 
 
 ## Shape-Specific Properties
 
 | Property | Description |
 | -------- | ----------- |
-| __Property 1__ | Description of Property 1<br>More info in a separate line |
-| __Property 2__ | [Link](common/property2.md) |
+| __ParentProcessID__ | This property specifies the Process ID of the process instance containing the custom process attributes that should be updated.<br/>Default value: *$ParentProcessID* |
+| __Attributes__ | Opens the [Update Parent Process configuration](common/UpdateParentProcessConfiguration.md) window |
+
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

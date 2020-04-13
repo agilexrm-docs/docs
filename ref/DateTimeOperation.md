@@ -2,21 +2,19 @@ __[Home](/) --> [Reference](/ref) --> DateTime Operations__
 
 # DateTime Operations
 
-![DateTime Operations](media/DateTimeOperations.png)
+![DateTime Operations](media/DatetimeOperations.png)
 
-(Description Here)
+An activity that lets you specify dates and times, and then uses your rules to makes calculations. This shape can change the operations between two date-time values, or add more time to a given date-time.
 
-(More Description on seperate line)
+Shape configuration is done through the *Configuration* property.
 
-> __NOTE__: Notes in this format.
-> More note lines here 
+> __NOTE__: This activity is available under  *Miscellaneous Extension.*
 
 ## Shape-Specific Properties
 
 | Property | Description |
 | -------- | ----------- |
-| __Property 1__ | Description of Property 1<br>More info in a separate line |
-| __Property 2__ | [Link](common/property2.md) |
+| __Configuration__ | Opens the  [DateTime Operations Configuration](common/DateTimeOperationsConfiguration.md) dialog box, where you can configure date calculations. |
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

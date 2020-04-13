@@ -22,7 +22,9 @@ The set of records that are affected are selected by either:
 | **Closing Task Subject** |[Closing Task Subject](common/ClosingTaskSubject.md) |
 | **EntityIds**            |[Entity Ids](common/EntityIds.md)|
 | **EntityName**           |[Entity Name](common/EntityName.md)|
+| __ExecuteAsync__         | [Execute Async](common/ExecuteAsync.md) |
 | **QueryExpression**      |[Query Expression](common/QueryExpression.md)|
+| __OnBehalfOf__           |[On Behalf Of](common/OnBehalfOf.md)    |
 | **Status**               |[Status](common/Status.md)  |
 | **StatusStateValue**     |[Status State Value](common/StatusStateValue.md)  |
 
