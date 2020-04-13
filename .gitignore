@@ -1,6 +1,14 @@
 .vs/
-_site
+_posts/
+_site/
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
 media-source/
+about.md
+Gemfile
+index.md
+404.html
+_config.yml
+
+
