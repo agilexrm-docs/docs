@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Update Custom Attributes__
 
 # Update Custom Attributes
 
-![Update Custom Attributes](media/UpdateCustomAttributes.png)
+![Update Custom Attributes]media/UpdateCustomAttributes.png
 
 This activity can be used to update the runtime value(s) of one or more custom process attributes. When using this shape, you specify the name(s) of one or more custom process attributes, and associate a snippet/fragment of C# code with each attribute name. At runtime, each snippet will be executed/evaluated to determine the value that will be assigned to the associated custom process attribute.
 

@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) --> Update Parent Process__
 
 # Update Parent Process
 
-![Update Parent Process](media/UpdateParentProcess.png)
+![Update Parent Process](media/UpdateParentProcess.png
 
 This activity can be used to update the values of one or more custom process attributes in a separate process instance.
 
