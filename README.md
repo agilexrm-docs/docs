@@ -2,7 +2,7 @@
 
 Welcome to the AgileXRM documentation repository!
 
-This repository is a collaborative effort, so please feel free to make a pull request to add/edit content or create an issue to discuss it.
+Please feel free to got to the GitHub repository and create an issue to discuss it.
 
 ## Disclaimer of warranty
 
@@ -19,7 +19,7 @@ Topics currently in this repository's scope:
 ## AgileXRM Concepts
 
 - [AgileXRM Concepts](concepts/AgileXRM-Concepts.md): Get to know the basic elements of **AgileXRM**
-- [AgileXRM System Requirements](systemrequirements/AgileXRM-SystemrequiRements.md): System requirements for **AgileXRM**
+- [AgileXRM System Requirements](systemrequirements/AgileXRM-SystemRequirements.md): System requirements for **AgileXRM**
 
 Visit **AgileXRM** officil site at <https://www.agilexrm.com>.  
 Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.

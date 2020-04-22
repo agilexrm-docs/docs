@@ -12,4 +12,4 @@ notification will be dynamically constructed and sent at runtime (when the
 AgileShape is exited) using the specified Email Template. To add a new Email
 Template select *Add Mail Template*:
 
-![](/ref/media/AddMailTemplate.png)
+![](../media/AddMailTemplate.png)

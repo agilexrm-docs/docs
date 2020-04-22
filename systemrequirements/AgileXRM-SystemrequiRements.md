@@ -31,7 +31,7 @@ AgileXRM currently *does not* support Dynamics 365 for Operations or Finance.
 
 These are the different Deplyment Options that are supported:
 
-|  #  | AgileXRM Installed in: &downarrow;         | Dynamics 356 CE / CDS Online | Dynamics 365 CE/CRM installed in Azure VM | Dynamics 365 CE/CRM installed in non-Azure VM | Dynamics 365 CE/CRM installed in client On-Premise |
+|  #  | AgileXRM Installed in:                     | Dynamics 356 CE / CDS Online | Dynamics 365 CE/CRM installed in Azure VM | Dynamics 365 CE/CRM installed in non-Azure VM | Dynamics 365 CE/CRM installed in client On-Premise |
 |-----|--------------------------------------------|-----|-----|-----|-----|
 |**A**| Public Cloud (Shared)                      |**Y**|  N  |  N  |  N  |
 |**B**| Public Cloud (Dedicated)                   |**Y**|**Y**| (*) | (*) |
@@ -104,7 +104,45 @@ In Azure VM Size terminology:
 - **PRO**: D8as v4 or higher 
 - **Non-PRO**: B4MS or higher
 
-#### System Requirements for Envision Process Modeler
+#### AgileXRM Server Installation Prerequisites 
+
+In all AgileXRM Servers (64-bit only):
+ 
+1.	**Create a Domain User** to be used as a service account (i.e. non-expiring password).<br>
+    This user will also be used during the installation process, so it should be allowed to logon to the 
+    Windows Server, including via RDP.
+    *	Add this user to **Local Administrator** group on the server
+    *   Create a **mailbox** for the service account 
+    *   **Logon to the server** with this user and complete the rest of the tasks with this user
+1.  Turn off things that interfere with the installation (all can be turned back on after the installation):
+    *  **Turn off Windows Firewall**
+    *  **Turn off AntiVirus**
+    *  **Disable UAC and reboot** 
+1.	Decide which **ports** are going to be used.<br>
+    Normally these ports are used:
+      * AgileDialogs & ProcessManager: 443 (https) or 8888 (http)
+      * WCF Service: 444 (https) or 13487 (http)
+      * REST API: 443 (https) or 13490 (http)
+      * Admin Portal: 443 (https) or 13491 (http)
+1.  Decide which **host headers** are going to be used.<br>
+    Something like this: [can change *agilexrm* for other word)]
+      * AgileDialogs / ProcessManager: *agilexrm*.contoso.com
+      * REST API & WCF Service: *agilexrm*api.contoso.com or *agilexrm*.api.contoso.com
+      * Admin Portal: *agilexrm*portal.contoso.com or *agilexrm*.portal.contoso.com
+1.  If SSL is required then have a valid **SSL Certificate** available that covers the chosen host headers 
+1.	Have **.NET Framework 4.7.2 or higher** enabled/installed
+1.	Create the following **empty DBs** in SQL Server:
+    *  **APDB**
+    *  **APMasterPortalDB**
+    *  **APTenantPortalDB**
+    *  **APArchiveDB**
+    *  Grant **db_owner** privilege to **service account** user in all DBs
+1.	Provide **access to SMTP server** for the service account to send emails
+1.  Install **Chrome or Edge** (Chromium version)
+1.  Copy **AgileXRM Installer** ZIP file onto the server
+
+
+### System Requirements for Envision Process Modeler
 
 This section provides detailed information about the specific system
 requirements for the Envision component of.
@@ -169,6 +207,7 @@ requirements for the Envision component of.
 - Microsoft Internet Explorer 10 or 11 (Not Compatibility View)
 - Latest Chrome version 
 - Latest Firefox version
+- Latest Edge (Chromium) version
 
 ## Support for Virtualization Technologies
 
