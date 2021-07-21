@@ -2,10 +2,9 @@ __[Home](/) --> AgileDialogs User Guide__
 
 ---
 # AgileDialogs User Guide
----
+
 
 ## Introduction
-=
 
 This document describes the usage of AgileDialogs from end user's perspective.
 
@@ -19,6 +18,8 @@ him/her through the dialog.
 ## Disclaimer of warranty
 
 [Disclaimer of warranty](common/DisclaimerOfWarranty.md)
+
+---
 
 ## AgileDialogs basics
 
@@ -47,7 +48,7 @@ presented to the user using a web page.
 ## AgileDialogs concepts
 
 
-These are the basic concepts that an AgileDialogs user must know.
+These are the basic concepts that an AgileDialogs user must know..
 
 ### Page
 
@@ -62,7 +63,9 @@ controls have been validated successfully.
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_01.png)
 
-### Question
+> AgileDialogs controls and navigation bar.
+
+### Control
 
 This is the basic unit of a dialog. Each question has a caption that describes
 the input.
@@ -72,14 +75,16 @@ extended help (presented in a modal window).
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_02.png)
 
+> AgileDialogs control basics
+
 ### Sub-Dialog
 
 This is a dialog called from another dialog. It helps organize complex dialogs
 into manageable pieces, as well as for creating reusable sub-dialogs that can be
 called in different dialogs.
 
-AgileDialogs Execution
-=
+
+## AgileDialogs Execution
 
 When an AgileDialog is opened, the user must respond to the questions and using
 the *Next* button, navigate to the following pages.
@@ -103,14 +108,15 @@ Each page has the following parts:
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_03.png)
 
-Dialog Title
--
+> AgileDialogs page structure
+
+### Dialog Title
+
 This part of the dialog window contains a descriptive title of the dialog.
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_04.png)
 
-Breadcrumb
--
+### Breadcrumbs
 
 If the dialog designer wishes so, the dialog may show a breadcrumb at the top of
 the pages, as way of guiding the user as to which stage of the dialog he/she is
@@ -118,15 +124,13 @@ at.
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_05.png)
 
-Page Title
--
+### Page Title
 
 This part contains the descriptive name of the page.
 
 ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_06.png)
 
-Page Questions Container
--
+### Controls Container
 
 This part contains the questions that are configured for the current step. Here
 is where the user must introduce the values required to continue the dialog. The
@@ -152,82 +156,90 @@ These are the question types that this container can include:
 
 -   **[Textbox](common/Textbox.md)**: this question type is used to introduce a text value
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10.png)
 
 -   **[Numeric](common/NumericControl.md)**: this question type is used to introduce a numeric value
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10_01.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10_01.png)
 
 -   **[Drop-Down List](common/Combo.md)**: this question type is used to select a single value from
     a list
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_11.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_11.png)
 
 -   **[Radio Button](common/Radio.md)**: this question type is used to select a single value
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_12.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_12.png)
 
 -   **[Button Set](common/Radio.md)**: This question type is the same as the Radio button but
     represented as a set of buttons. Clicking on one button is like selecting
     that option AND clicking *Next* in one go
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_13.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_13.png)
 
 -   **[Checkbox](common/Check.md)**: This question type allows selecting multiple values
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_14.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_14.png)
 
 -   **[Info](common/Info.md)**: This question type presents information to the user. This
     information can include images, formatted text and hyperlinks.
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_15.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_15.png)
 
 -   **[Yes/No](common/YesNoControl.md)**: This question type is used to select Yes or No as the response
     to a question. It is just a common use of Radio Buttons
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_16.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_16.png)
 
 -   **[Calendar](common/Calendar.md)**: This question type is used to select either a Date or a Date
     and Time
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_17.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_17.png)
 
 -   **[Lookup](common/XRMLookup.md)**: this control is used to select an item in a list. The value can
     be filled using auto- complete feature. Just Click on the button to get the
     list of values to choose:
+	
+	![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_18.png)
+	![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_19.png)
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_18.png)
+    It is possible to filter the results by typing on the Textbox. After clicking on the "filter" button, the filtered results are shown:
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_19.png)
-
-It is possible to filter the results by typing on the Textbox. After clicking on
-the "filter" button, the filtered results are shown:
-
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_20.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_20.png)
 
 -   **[Data Grid](common/XRMgrid.md)**: This question type shows a list of items in a table for
     selecting one of them:
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_21.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_21.png)
 
->   ...or selecting multiple items:
+    >   ...or selecting multiple items:
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_22.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_22.png)
 
->   ...or just show the list for information purposes:
+    >   ...or just show the list for information purposes:
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_23.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_23.png)
 
 -   **[File](common/File.md)**: This allows selecting a file from the user's PC. Click on the
     button and the selected file will start uploading:
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_24.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_24.png)
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_25.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_25.png)
 
 -   **[Password](common/Password.md)**: It is used to get passwords:
 
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_26.png)
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_26.png)
+
+-   **[Tab container control](common/TabContainer.md)**: Tab container control allows organize our Form information for structural and / or validation
+purposes.
+
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_26_01.png)
+
+-   **[Group container control](common/GroupContainer.md)**: The Group Container allows us to build a certain set of controls inside a same
+group container, for functional and / or decorative purposes
+
+  ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_26_02.png)
 
 - **[XRM Search control](common/XrmSearchControl.md)**: XRM Search control allows to perform a XRM FetchXML search in AgileDialogs page
 and set the data retrieved to page controls.
@@ -250,7 +262,7 @@ The Notes box is collapsible to increase the available space of the window.
 
 Action buttons 
 -
-![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_28.png)
+
 
 Depending on the configuration of the dialog, the buttons available may be
 different.
@@ -258,6 +270,8 @@ different.
 All dialogs have the buttons *Back* (enable from second step), *History*
 (enabled from second step too) and *Next*. The other buttons are based on
 configuration.
+
+![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_28.png)
 
 ### Back button
 

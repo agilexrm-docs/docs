@@ -14,7 +14,6 @@ This shape can:
 
 | Property | Description |
 | -------- | ----------- |
-| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
 | **Exists**              | The holds the name of the Boolean process variable that is set depending if the query expression returns zero (False) or one-or-more records (True). By default the name of the variable is *Exists*, but this can set to any valid variable name. It is common to use this variable to take decisions later in the process. |
 | **QueryExpression**     | [Query Expression](common/QueryExpression.md)|
 | **ResultCount**         | The holds the name of the variable that is set to the number of records that the query expression has returnes. By default the name of the process variable is *ResultCount*, but this can set to any valid variable name. |
@@ -27,3 +26,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

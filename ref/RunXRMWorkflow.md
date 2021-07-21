@@ -16,7 +16,6 @@ complete before becoming completed itself.
 | -------- | ----------- |
 | **EntityId**   |[Entity ID](common/EntityId.md)|
 | **EntityName** |[Entity Name](common/EntityName.md)|
-| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
 | **Workflow**   | This is the name of the CRM Workflow for the selected *Entity Name* property. This can be a dynamic value using process context variables (**\$\{variablename\}**) |
 
 
@@ -25,3 +24,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

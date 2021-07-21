@@ -17,7 +17,6 @@ This shapes is used to create Connections between two entity records
 | **Connect to: Record ID**      | Record ID of the To side of the connection       |
 | **Connect to: Entity**         | Entity name of the To side of the connection     |
 | **Description**                | Text field to add explaination to the connection |
-| __ExecuteAsync__               | [Execute Async](common/ExecuteAsync.md) |
 | **Set Date Range**             | If set, enables the Start and End Date fieds     |
 | **Start Date**                 | Connection valid from this date                  |
 | **End Date**                   | Connection valid until this date                    |
@@ -33,3 +32,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

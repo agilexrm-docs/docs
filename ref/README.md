@@ -35,7 +35,6 @@ __[Home](/) --> Reference__
 * [Change Ownership](ChangeOwnership.md)
 * [Create Connection](CreateConnection.md)
 * [Create Entity](CreateEntity.md)
-* [Upsert Entity](UpsertEntity.md)
 * [Delete Entity (Multi)](DeleteEntityMulti.md)
 * [Delete Entity](DeleteEntity.md)
 * [Detach Document](DetachDocument.md)
@@ -48,6 +47,7 @@ __[Home](/) --> Reference__
 * [Set Status](SetStatus.md)
 * [Update Entity (Multi)](UpdateEntityMulti.md)
 * [Update Entity](UpdateEntity.md)
+* [Upsert Entity](UpsertEntity.md)
 * [Wait For Update](WaitForUpdate.md)
 * [XRM SubProcess](XRMSubprocess.md)
 * [XRM SubProcess (Multi)](XRMSubprocessMulti.md)
@@ -69,3 +69,6 @@ __[Home](/) --> Reference__
 - [AgileDialogs Reference](AgileDialogs.md)
 
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

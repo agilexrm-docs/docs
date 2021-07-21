@@ -179,7 +179,7 @@ To Change the visualization style for the Page, perform the following steps
 
 ![](media/AgileDialogsDesignGuide/AgileDialogsDesignGuide_08.png)
 
->   Figure 1. Access to the Page Form and click "Configure"
+>   Figure 1. Access to the Page Form and click "Options"
 
 ![](media/AgileDialogsDesignGuide/AgileDialogsDesignGuide_09.png)
 
@@ -193,8 +193,7 @@ To Change the visualization style for the Page, perform the following steps
 The three view modes to be described are:
 
 -   **Default Render**. Every time we access to the next Dialog Page, we remove
-    the previous page. Set by default when creating a new Dialog Page.  
-    
+    the previous page. Set by default when creating a new Dialog Page. 
 
     ![](media/AgileDialogsDesignGuide/AgileDialogsDesignGuide_11.png)
 
@@ -242,7 +241,10 @@ the *XRM External Connector* stencil:
 1.  **[Page Form](common/PageFormShape.md)**: is a step in an AgileDialog where the form is configured. The
     form can contain multiple controls of various types
 
-2.  **[SubDialog shape](common/SubDialogShape.md)**: allows calling another AgileDialog where this step is used.
+2.  **[Start Page](common/StartPageShape.md)**: is a step in an AgileDialog where the form is configured, but it does not creates an AgilePoint process until its completed. The
+    form can contain multiple controls of various types
+
+3.  **[SubDialog shape](common/SubDialogShape.md)**: allows calling another AgileDialog where this step is used.
     There are two important differences with *CRM's own sub-dialog*
     functionality:
 
@@ -253,16 +255,16 @@ the *XRM External Connector* stencil:
         In *CRM dialogs*, it is not possible go back to the parent dialog;
         limiting the end-user experience.
 
-3.  **[Dialog Task](common/DialogTask.md)**: is used in an AgileXRM Process (and not in an AgileDialog
+4.  **[Dialog Task](common/DialogTask.md)**: is used in an AgileXRM Process (and not in an AgileDialog
     model) as a Task for a Full User. Upon opening the task in CRM, the user is
     presented with the associated AgileDialog.
 
-4.  **[Intranet Dialog Task](common/IntranetDialogTask.md)**: is used in an AgileXRM Process as a Task for a
+5.  **[Intranet Dialog Task](common/IntranetDialogTask.md)**: is used in an AgileXRM Process as a Task for a
     Process Participant User. Upon opening the task in the Portal, the user is
     presented with the associated AgileDialog. The Task is *Completed* when the
     user completes the dialog.
 
-5.  **[Internet Dialog Task](common/InternetDialogTask.md)**: used in an AgileXRM Process (and not in an
+6.  **[Internet Dialog Task](common/InternetDialogTask.md)**: used in an AgileXRM Process (and not in an
     AgileDialog model) as a Task for an External User. Upon opening the task in
     the Portal, the user is presented with the associated AgileDialog. The Task
     is *Completed* when the user completes the dialog.

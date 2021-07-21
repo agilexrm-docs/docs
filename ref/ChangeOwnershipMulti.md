@@ -19,7 +19,6 @@ The set of records that are affected are selected by either:
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **EntityIds**   | This could be a list of entity record IDs seperated with a semicolon (;). It can take dynamic variable(s)                                                                                                                                   |
 | **EntityName**| [Entity Name](common/EntityName.md)|
-| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
 | **NewOwner**| This can be any of these: If *OwnerType* property is set to *User* then it can be either *CRM Domain Logon Name* (*domainname*) or *User* (*systemuserid*). If *OwnerType* property is set to *Team* then it must be the *Team ID.(teamid)* |
 | **OwnerType**| This can be either **User** or **Team**|
 | **QueryExpression** | [Query Expression](common/QueryExpression.md)|
@@ -29,3 +28,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

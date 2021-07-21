@@ -50,4 +50,6 @@ The dialog would show the following:
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+## Disclaimer of warranty
 
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

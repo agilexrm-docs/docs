@@ -41,4 +41,6 @@ By clicking the right mouse button on the shape, these actions are shown in the
 context menu. These allow repositioning the Yes and No connections of the shape
 for better readability of the process model.
 
+## Disclaimer of warranty
 
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

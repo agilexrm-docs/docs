@@ -21,7 +21,6 @@ integrity etc).
 | -------- | ----------- |
 | **EntityIds**       | [Entity IDs](common/EntityIds.md) |
 | **EntityName**      | [Entity name](common/EntityName.md)|
-| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
 | __OnBehalfOf__      | [On Behalf Of](common/OnBehalfOf.md)    |
 | **QueryExpression** | [QueryExpression](common/QueryExpression.md) |
 
@@ -31,3 +30,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

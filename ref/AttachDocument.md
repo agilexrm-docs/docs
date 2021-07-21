@@ -16,7 +16,6 @@ Global Access Token must be created previously in AgilePoint NX administration p
 | Property | Description |
 | <span style="padding-left:16px" />__EntityId__| [Entity Id](common/EntityId.md) |
 | <span style="padding-left:16px" />__EntityName__| [Entity Name](common/EntityName.md)|
-| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
 | <span style="padding-left:16px" />__SaveAnnotationIdTo__| [Save Annotation Id To](common/SaveAnnotationIdTo.md)|
 | *__Document Source__* | 
 | Property | Description |
@@ -28,3 +27,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

@@ -12,33 +12,32 @@ included in the product suite:
 -   Process Server (incl. Administration Portal)
 -   Process Manager
 -   Envision Process Modeler
--   Dynamics 365/CDS Integration
+-   Dynamics 365 CE/Dataverse/CDS Integration
 -   AgileDialogs
 -   SharePoint Integration (Optional)
 -   External Connector (Optional)
 
-Requirements are kept in line with Dynamics 365 CE (CRM) System Requirements
-as described here:
+Requirements are kept in line with Dynamics 365 CE (CRM) System Requirements as described here:
 
 <https://docs.microsoft.com/en-us/dynamics365/customerengagement/on-premises/deploy/system-requirements-required-technologies>
 
-AgileXRM supports **Microsoft Common Data Service (CDS) of Power Platform** as 
-well as any Apps built on top of Dyn365/CDS like **Microsoft Project Online**.
+AgileXRM supports **Microsoft Dataverse (formerly Common Data Service - CDS) of Power Platform** as 
+well as any Apps built on top of Dyn365/Dataverse like **Microsoft Project Online**.
 
-AgileXRM currently *does not* support Dynamics 365 for Operations or Finance.
+AgileXRM currently *does not* support Dynamics 365 for Operations or Finance and Business Central.
 
 ## Deployment Options
 
 These are the different Deplyment Options that are supported:
 
-|  #  | AgileXRM Installed in:                     | Dynamics 356 CE / CDS Online | Dynamics 365 CE/CRM installed in Azure VM | Dynamics 365 CE/CRM installed in non-Azure VM | Dynamics 365 CE/CRM installed in client On-Premise |
-|-----|--------------------------------------------|-----|-----|-----|-----|
-|**A**| Public Cloud (Shared)                      |**Y**|  N  |  N  |  N  |
-|**B**| Public Cloud (Dedicated)                   |**Y**|**Y**| (*) | (*) |
-|**C**| Client Azure VMs<br/>(Managed by AgileXRM) |**Y**|**Y**| (*) | (*) |
-|**D**| Client Azure VMs<br/>(Managed by client)   |**Y**|**Y**| (*) | (*) |
-|**E**| Client Cloud non-Azure VMs                 | (*) | (*) |**Y**| (*) |
-|**F**| Client On-Premises                         | (*) | (*) | (*) |**Y**|
+|  #  | AgileXRM Installed in:                       | Dynamics 356 CE / Dataverse Online | Dynamics 365 CE/CRM installed in Azure VM | Dynamics 365 CE/CRM installed in non-Azure VM | Dynamics 365 CE/CRM installed in client On-Premise |
+|-----|----------------------------------------------|-----|-----|-----|-----|
+|**A**| Public Cloud (*Shared*)                      |**Y**|  N  |  N  |  N  |
+|**B**| Public Cloud (*Dedicated*)                   |**Y**|**Y**| (*) | (*) |
+|**C**| Client Azure VMs<br/>(*Managed by AgileXRM*) |**Y**|**Y**| (*) | (*) |
+|**D**| Client Azure VMs<br/>(*Managed by client*)   |**Y**|**Y**| (*) | (*) |
+|**E**| Client Cloud non-Azure VMs                   | (*) |  N  |**Y**| (*) |
+|**F**| Client On-Premises                           | (*) | (*) | (*) |**Y**|
 
 >   **(*)** : **Not-Recommended** but consult for these combinations, as it 
 >   maybe supported under certain circumstances.
@@ -49,8 +48,8 @@ These are the different Deplyment Options that are supported:
 
 This is a tenant in a multi-tenant shared AgileXRM Online pool.
 One AgileXRM tenant can support any number of Dynamics 365 CE Online organizations and/or 
-Power Platform Common Data Service (CDS) Environments, as long as these are in the same Azure Region.
-It is possible to connect to client's on-premise systems via Azure AD Application Proxy.
+Dataverse/CDS Environments, as long as these are in the same Azure Region.
+It is possible to connect to client's on-premise legacy systems via Azure AD Application Proxy.
 
 ![](media/SystemRequirements_01.png)
 > **Figure 1**. Public Cloud (Shared)
@@ -59,16 +58,40 @@ It is possible to connect to client's on-premise systems via Azure AD Applicatio
 
 This is a single tenant in a dedicated AgileXRM Online environment. Nothing is shared with any other client.
 This can support any number of Dynamics 365 CE organizations (both installed or Online) and/or 
-Power Platform Common Data Service (CDS) Environments, as long as these are in the same Azure Region.
-It is possible to connect to client's on-premise systems via Azure AD Application Proxy.
+Dataverse/CDS Environments, as long as these are in the same Azure Region.
+It is possible to connect to client's on-premise systems via Azure AD Application Proxy or Private VPN.
 
 ![](media/SystemRequirements_02.png)
 > **Figure 2**. Public Cloud (Dedicated)
 
+### Integration Requirements (Options A and B)
+
+In order to integrate the AgileXRM Tenant with the client's Dynamics/Dataverse environment, the following are needed:
+
+- Give Consent by an Azure AD Administrator at the Azure Tenant level by clicking on the following consent links:
+  * Services App ([consent link](https://login.microsoftonline.com/common/oauth2/authorize?response_type=code&client_id=19e4137f-55ae-4dbf-9fbc-e386bbf36304&resource=https%3A%2F%2Fgraph.windows.net&redirect_uri=https%3A%2F%2Fpool400.agilexrmonline.com%2FAgileDialogs%2fConsentDone.aspx&prompt=admin_consent))
+  * Portal App   ([consent link](https://login.microsoftonline.com/common/oauth2/authorize?response_type=code&client_id=81c01359-21c1-467f-a3a8-52f5d6721fa0&resource=https%3A%2F%2Fgraph.windows.net&redirect_uri=https%3A%2F%2Fpool400.agilexrmonline.com%2FAgileDialogs%2fConsentDone.aspx&prompt=admin_consent))
+  * Envision App ([consent link](https://login.microsoftonline.com/common/oauth2/authorize?response_type=code&client_id=583a4e00-bcf2-4fbb-b346-6c90c376f160&resource=https%3A%2F%2Fgraph.windows.net&redirect_uri=https%3A%2F%2Fpool400.agilexrmonline.com%2FAgileDialogs%2fConsentDone.aspx&prompt=admin_consent))
+
+- For each Org/Environment, add an Application User as such:
+ 
+    |  Field        | Value                                     |
+    |---------------|-------------------------------------------|
+    | User Name     | s2s.*[unique orgname]*@agilexrmonline.com |
+    | App ID        | 81c01359-21c1-467f-a3a8-52f5d6721fa0      |
+    | Full Name     | AgileXRM S2S Application User             |
+    | Email address | support@agilexrm.com                      |
+    | Security Role | System Administrator                      |
+
+  * Import AgileXRM Solution & configure
+  * [OPTIONAL] Import External Connector Solution
+  * Enable selected Tables (Entities) and Activities to be used with AgileXRM
+  * Add AgileXRM Full License to Users that are going to use AgileXRM 
+
 ## Server Requirements for Deployment Options C, D, E and F
 
 AgileXRM is very flexible in that it can be installed on one single server for smaller
-deployments or distributed in a HA cluster for large deployments. The
+deployments or distributed in a High Availibility (HA) cluster for large deployments, including ScaleSets. The
 components easily scale out. The information here applies to both physical
 machines as well as virtual machines. VMs can also be in public Cloud like Azure
 or other IaaS providers supported by Microsoft. For further information on
@@ -80,13 +103,30 @@ This is when AgileXRM is installed in client's Azure subscription.
 There is an option that AgileXRM manages the environment as a Managed Service or the client 
 maintains the environment themselves. 
 This can support any number of Dynamics 365 CE organizations and/or 
-Power Platform Common Data Service (CDS) Environments, as long as these are in the same Azure Region. 
-It is possible to connect to client's on-premise systems via Azure AD Application Proxy.
+Dataverse/CDS Environments, as long as these are in the same Azure Region. 
+It is possible to connect to client's on-premise legacy systems via Azure AD Application Proxy or Private VPN.
 
 ![](media/SystemRequirements_03.png)
 > **Figure 3**. AgileXRM in Client Azure VMs
 
+#### Azure Resource Requirements (Options C and D)
 
+The following Azure resources will be required:
+- Virtual Network
+- Network Interface Card
+- VMs for AgileXRM Server 
+- VM for AgileXRM Modeler 
+- SQL Azure for 4 DBs 
+- Storage Account
+- Public IP
+- Visio Plan 2 License
+
+Also need:
+- DNS Entries
+- WildCard Public Certificate (not self-signed) 
+- 1 Email Account as sender (with SMTP capabilities) 
+- 1 Email Account as platform notification receiver 
+​
 ### AgileXRM Server Requirements
 
 This section provides detailed information about the specific optimal system
@@ -168,14 +208,13 @@ requirements for the Envision component of.
 - SQL Server 2016 (Std, Ent, DC)
 - SQL Server 2014 (Std, Ent, DC)
 - SQL Server 2012 (Std, Ent, DC)
-- SQL Server 2008 R2 (Std, Ent, DC)
+- SQL Azure
+ 
+>   **NOTE**: SSD disks are highly recommended for Production environments.
 
->   **NOTE**: Support for Azure SQL is on the Roadmap.<br/>
->   SSD disks are highly recommended for Production environments.
+### Dynamics 365 Customer Engagement / Power Platform Dataverse/CDS
 
-### Dynamics 365 Customer Engagement / Power Platform Common Data Service (CDS)
-
-- Power Platform CDS 
+- Power Platform Dateverse/CDS 
 - Dynamics 365 CE Online (8.2+, 9.0+)
 - Dynamics 365 (CRM) 2016 (SP1 or higher)
 - Dynamics CRM 2015 (Update 0.1 or higher)
@@ -204,7 +243,6 @@ requirements for the Envision component of.
 
 ## Supported Browsers
 
-- Microsoft Internet Explorer 10 or 11 (Not Compatibility View)
 - Latest Chrome version 
 - Latest Firefox version
 - Latest Edge (Chromium) version
@@ -219,3 +257,9 @@ however other Microsoft and non-Microsoft virtualization products are also
 supported as discussed in the link below:
 
 <http://www.windowsservercatalog.com/results.aspx?&bCatID=1521&cpID=0&avc=0>
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)
+
+

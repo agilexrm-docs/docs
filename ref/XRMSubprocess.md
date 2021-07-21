@@ -39,7 +39,6 @@ See the *SubProcessParams* property.
 
 | Property | Description |
 | -------- | ----------- |
-| __ExecuteAsync__            | [Execute Async](common/ExecuteAsync.md) |
 | **NamePrefix**              | [Name Prefix](common/NamePrefix.md)              |
 | **RunProcessIndependently** | [Run Process Independently](common/RunProcessIndependently.md) |
 | **SaveProcessInstanceIdTo** | [Save Process Instance Id To](common/SaveProcessInstanceIdTo.md) |
@@ -55,3 +54,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

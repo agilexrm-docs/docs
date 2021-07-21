@@ -19,6 +19,7 @@ There are three ways to configure this shape:
 ### Simple Mode
 
 ![Multiple condition](media/MultipleCondition1.png)
+
 ![Multiple condition](media/MultipleCondition2.png)
 
 | Field Name / Button                              | Definition                                                                                                    |
@@ -54,6 +55,7 @@ There are three ways to configure this shape:
 3.  Click New button
 
 ![Multiple condition](media/MultipleCondition5.png)
+
 ![Multiple condition](media/MultipleCondition6.png)
 
 | Field Name / Button | Definition                                                                                                                                                                                                                                                            |
@@ -108,3 +110,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 Double-clicking this shape opens its configuration dialog.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

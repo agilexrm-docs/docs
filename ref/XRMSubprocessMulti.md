@@ -33,7 +33,6 @@ See the *SubProcessParams* property.
 | -------- | ----------- |
 | **EntityIds**               | [Entity Ids](common/EntityIds.md)               |
 | **EntityName**              | [Entity Name](common/EntityName.md)              |
-| __ExecuteAsync__            | [Execute Async](common/ExecuteAsync.md) |
 | **ExecutionMode**           | Default value: **Parallel**<br />- **Parallel** : All subprocesses are started in parallel in no particular order<br />- **Sequential** : subprocesses are initiated one by one so next subprocess is not started until previous subprocess is completed (or cancelled)|
 | **NamePrefix**              | [Name Prefix](common/NamePrefix.md)              |
 | **QueryExpression**         | [Query Expression](common/QueryExpression.md)         |
@@ -51,3 +50,7 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

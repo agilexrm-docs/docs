@@ -5,9 +5,6 @@ __[Home](/) --> AgileXRM Quick Start__
 
 ## Introduction
 
-> **NOTE:** This guide assume you selected the **Install QuickStart Samples**
-option in the Installer.
-
 This QuickStart document describes how to create a sample process from scratch.
 
 The content of the process is oriented to show several **AgileXRM** features using
@@ -33,7 +30,7 @@ The time needed to complete this walkthrough is around **50 minutes**.
 
 
 This document assumes that:
-
+<!--
 -   Publish the managed solution **AgileXRMQuickStart_1_0_0_1_managed.zip** to
     CRM. It contains all the necessary entities and customizations to run this
     QuickStart guide successfully.
@@ -46,14 +43,15 @@ This document assumes that:
 
 -   You have an Activated and working copy of Visio 2010 / 2013 (can be Trial
     version, but should be Activated)
+-->
 
 -   The following actions need to be done only once, the very first time you use
-    the modeler, and should have been carried out in the Post Install steps of
-    the Quick Installer. If not, do them now:
+    the modeler.If not was previosly performed , do them now:
+    -   [Configure the process modeler remote connection](EnvisionRemoteConfiguration.md)
+-   Enable CDS entitites
 
--   Open the modeler **StartAll ProgramsAgilePointAgilePoint Envision**
-
--   If you get a message box that says *AgilePoint Envision requires macro
+<!--
+    -   If you get a message box that says *AgilePoint Envision requires macro
     enabled. Do you want to enable it?* Click **Yes**
 
 -   In the message box that says *AgilePoint Envision has updated template path.
@@ -62,15 +60,15 @@ This document assumes that:
     bring it in view)
 
 -   Close **Visio**
+-->
 
-### Stage 1: Designing and running your first process
+## Stage 1: Designing and running your first process
 
 Duration: **10 minutes**
 
 Objectives: Show basic concepts of modeling, publishing and running a process
 
-### Scenario
-
+## Scenario
 
 We have a custom entity in CRM called *Parent Entity.* The process will manage
 the lifecycle of *Parent Entity*. We will create a CRM Task and when this Task
@@ -78,33 +76,93 @@ is *completed*, the Status of the record will be changed to *Inactive*.
 
 ### Create the process template
 
--   Open **StartAll ProgramsAgilePointAgilePoint Envision**
+-   Launch **Envision** from your computer and connect to your organization. If you have any issue to execute ENVISION check this guide: [Configure the process modeler remote connection](EnvisionRemoteConfiguration.md)
 
--   Go to FileNewAgilePoint Template CategoryAgileXRM 2011Create
-
+-   When ENVISION is loaded the first step we need to do is create an AgileXRM application.  
 ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_01.png)
+	
+	The actions toolbar will allow you to:
 
-The **XRM Connection** window opens.
+    - Change your environtment connection
+    - Create Applications
+    - Create AgileDialogs process templates
+    - Create AgileXRM process templates
+	
+	![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_01_00.png)
+	> Also action toolbar allows you to search your process templates.
+
+### Create a new AgileXRM Application. 
+
+An AgileXRM application is a logical grouping of AgileXRM and AgileDialogs Process templates  
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_01_01.png)
+
+Provide an Aplication name.  
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_01_02.png)
+
+Created application is shown as a Folder view in Environment Explorer.  
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_01_03.png)
+
+### Create an AgileXRM/AgileDialogs process template
+
+From actions toolbar
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_01_04.png)
+
+New document is created and the **XRM Connection** window is shown.
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_01_05.png)
+> Basic elements as the Start and Stop activity and process swimlane are automatically created
 
 ### Configure Connection Settings
 
 Enter the **CRM Server URL**, **Organization name** (use your own values) and **AgileDialogs Server**
 
--   Click the **Connect** button to check connectivity to your organization
+Choose the organization againt you will model your template from the available list and click OK.
 
 ![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_02.png)
+
 ### Configure Main Entity
+
+A MainEntity defines entity record that will be the ...
+
+From Connection Settings window:
 
 -   Go to **Entity** tab
 
 -   Click **Retrieve Entities** button to get the list of AgileXRM-enabled
     entities for selected organization
 
--   Open the **Main Entity** drop-down list and select **Parent Entity**
+-   Open the **Main Entity** drop-down list and select and entity type. Also we can choose Child entities, Parent Entities and releated entities. Be careful to select only the data you will need in the process.
 
-![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_03.png)
+	![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_03.png)
+  > Main Entity is optional for AgileDialogs Processes
 
-### Set Process Name
+### Scope
+
+AgileDialogs.  
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_03_00.png)
+
+AgileXRM.  
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_03_01.png)
+
+### Options
+
+Only for AgileDialogs process Templates.    
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_03_02.png)
+
+### SLA 
+
+Only for AgileXRM process Templates.  
+
+![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_03_03.png)
+
+### Process Template Name
 
 -   Click on the Naming Conventions tab
 
@@ -113,7 +171,7 @@ Enter the **CRM Server URL**, **Organization name** (use your own values) and **
 
 -   Click **Apply** and then **OK** to close *XRM Connection* window
 
-![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_04.png)
+	![](media/AgileXRMQuickStartGuide/AgileXRMQuickStart_04.png)
 
 ### Add steps (shapes)
 
@@ -287,7 +345,7 @@ forward:
 
 This concludes this stage.
 
-### Stage 2: Using Activity-based Forms with AgileDialogs
+## Stage 2: Using Activity-based Forms with AgileDialogs
 
 
 Duration: **5 minutes**
@@ -301,7 +359,7 @@ Objectives:
     task without having to navigate elsewhere, including fields from related
     entities.
 
-### Scenario
+## Scenario
 
 
 In this stage we are going to add an AgileDialogs Form to be used in Task 1;
@@ -395,7 +453,7 @@ chosen values.
 
 This concludes this stage.
 
-### Stage 3: Updating Child Entity records
+## Stage 3: Updating Child Entity records
 
 
 Duration: **5 minutes**
@@ -412,7 +470,7 @@ Objectives:
 
 -   Show the use of Schema Picker window and the Query Expression window.
 
-### Scenario
+## Scenario
 
 
 In this stage we are going to create children entities of *Child Entity* type
@@ -520,7 +578,7 @@ those children entities through AgileDialogs interface.
 
 This concludes this stage.
 
-### Stage 4: Changing process flow at runtime
+## Stage 4: Changing process flow at runtime
 
 
 Duration: **5 minutes**
@@ -531,7 +589,7 @@ Objectives:
     process (jump from any step to any step - forward or backward) while
     maintaining details for audit purposes.
 
-### Scenario
+## Scenario
 
 
 In this stage we are going to skip a process activity at runtime.
@@ -558,7 +616,7 @@ In this stage we are going to skip a process activity at runtime.
 
 This concludes this stage.
 
-### Stage 5: Process migration
+## Stage 5: Process migration
 
 Duration: **10 minutes**
 
@@ -571,7 +629,7 @@ Objectives:
 -   Show branching mechanisms in processes and how these can loop back if
     required
 
-### Scenario
+## Scenario
 
 In this stage we are going to modify the process definition and migrate the
 process instance that we have left running in the previous stage to the new
@@ -693,7 +751,7 @@ process definition.
 
 This concludes this stage.
 
-### Stage 6: Using AgileDialogs.
+## Stage 6: Using AgileDialogs.
 
 
 Duration: **10 minutes**
@@ -702,7 +760,7 @@ Objective:
 
 -   Show the use of dialogs instead of forms in completing a task.
 
-### Scenario
+## Scenario
 
 
 An AgileXRM task can be associated to a dialog created using AgileDialogs
@@ -773,7 +831,9 @@ Notice that when the dialog is finished the process continues to the next step.
 
 This concludes this stage.
 
-### Stage 7: Starting Processes from SharePoint
+<!--
+
+## Stage 7: Starting Processes from SharePoint
 
 
 > **NOTE**: This stage assumes you enabled a SharePoint Web Application when you
@@ -785,7 +845,7 @@ Duration: **5 minutes**
 Objectives: Show that people outside CRM or even outside the company can
 initiate and interact with processes (and dialogs)
 
-### Scenario
+## Scenario
 
 We are going to start a process using a pre-created Start-Up Form from
 SharePoint.
@@ -837,5 +897,5 @@ The start-up form is opened:
 
 This concludes this stage.
 
-### Manual Installation Instructions
 
+-->

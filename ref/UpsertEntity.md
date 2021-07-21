@@ -16,7 +16,6 @@ The set of records that are affected are selected by the ones returned by the qu
 | -------- | ----------- |
 | __EntitySpecification__ 				| [Entity Specification](common/EntitySpecification.md)  |
 | __EntityType__   						|[Entity Type](common/EntityType.md)    |
-| __ExecuteAsync__ 						| [Execute Async](common/ExecuteAsync.md) |
 | __OnBehalfOf__   						|[On Behalf Of](common/OnBehalfOf.md)    |
 | **QueryExpression** 					| [QueryExpression](common/QueryExpression.md) |
 | **RecordCreatedValueTo** 				| [Record Created Value To](common/RecordCreatedValueTo.md) |
@@ -30,3 +29,6 @@ All shapes have many other common properties. Look them up here: [Common Poperti
 ## Actions
 See [Actions](common/Actions.md)
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

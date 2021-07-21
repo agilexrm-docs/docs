@@ -4,10 +4,10 @@
 
 ## What is AgileXRM?
 
-**AgileXRM** is an integration with and embedding of **Agilepoint NX** into **Microsoft Dynamics 365 / Power Platform (CDS)**.
+**AgileXRM** is a Low-to-No-Code Business Process Management (BPM) and Dialogs engine fully integrated with embedded into **Microsoft Dynamics 365 Customer Engagement** and **Power Platform Dataverse/CDS**.
 
-**AgileXRM** allows users of Dynamics 365 / CDS to create powerful process-centric applications
-within Dynamics 365 that extend beyond out-of-the-box functionality to cater for
+**AgileXRM** allows users of Dynamics 365 CE / Dataverse / CDS to create powerful process-centric applications
+within their environments that extend beyond out-of-the-box functionality to cater for
 more business requirements in an easier more manageable way.
 
 ![](media/AgileXRM_Concepts_01.png)
@@ -18,49 +18,45 @@ With **AgileXRM** you can:
 - Visually monitor the execution of business processes in the organization
 - Extend business processes beyond Dynamics 365 for easy integration with other systems
 - Involve non-Dynamics 365 users, inside or outside the organization, to participate in business processes
-- Measure and improve efficiency by controlling the performance of business processes
+- Measure and improve efficiency by controlling the performance of business processes including SLAs
 - Adapt to change with agility enabling business Users to respond to changing requirements
 
 **AgileXRM** allows companies to build line-of-business
-applications rapidly within Microsoft Dynamics 365.
-Dynamics 365’s out-of-the-box functionality provides
-reasonable workflow and forms capabilities, enabling
-certain process automation. But managing real-world
-business processes with this limited functionality
-is impractical.AgileXRM brings true BPM functionality
-to the Dynamics 365 platform.
+applications rapidly within Microsoft Dataverse/CDS and Dynamics 365 CE,
+enhancing its out-of-the-box functionality allowing to manage real-world
+business processes. **AgileXRM brings true BPM functionality and dialogs
+to the Microsoft platform**.
 
 ## AgileXRM Components
 
-### Process Designer
+### Process Modeller
 
-- Comprehensive and visual Process Designer
-- End-to-end business process design: Full data life-cycle management inside Dynamics 365/CRM
+- Comprehensive and visual Process Modeller
+- End-to-end business process design: Full data life-cycle management
 - Activity-based Forms
 - Validate the business logic before publishing
-- Simulation. Detect bottlenecks proactively
 - Zero down-time deploying new versions of processes
 - Full Multi-Version Control
 - Model to easily interact with external users
-- Drag & Drop system activities to integrate with 45+ external systems: Office365, SharePoint, DBs, WS, etc.
+- Drag & Drop system activities to integrate with many external systems: Office365, SharePoint, DBs, WS, etc.
 - Extensive Workflow patterns supported to cater for more business use cases, many out-of-the-box
 - Multiple Notification mechanisms to make sure users are duly reminded of their tasks
 - Create escalation routes when tasks become overdue
-- Existing Dynamics 365/CRM Workflows are reusable within the processes
+- Bi-directional integration with Power Automate
 - Integrates with ALM tools
-- ... OOTB not enough? No worries, It is extensible
+- Need more? No worries: It is extensible
 
 ![](media/AgileXRM_Concepts_02.png)
+
 ![](media/AgileXRM_Concepts_03.png)
 
 ### AgileDialogs
 
-- Contact-center grade Dialogs.
-- Standalone or embeddable in Dynamics 365/CRM or Custom portal
+- Contact-center grade Dialogs
+- Standalone or embeddable in Dataverse/CDS/D365CE and Portal
 - Dynamic UI guided by process models
 - Create and deploy with no compilation
-- Consume business data in and out of different systems: integrate seamlessly with Dynamics 365/CRM
-- Support for Unified Service Desk (USD)
+- Consume business data in and out of different systems: integrate seamlessly with Dataverse/CDS/D365CE
 - Full track history and versioning
 - Comprehensive Dialogs
   - Dialog Page steps: for user interaction
@@ -80,6 +76,7 @@ to the Dynamics 365 platform.
 - Flexible Selection of Dynamic Data
   - OptionSet & Dynamic Filtered LookUps
   - Single & Multiple selection, Drop-down, Radio button, Check-boxes, Data Grid, List, LookUp List
+  - REST Data sources
 - Flow Control
   - Elements in the Flow include: Single Condition, Multiple Condition, Nested SubDialogs 
 - Synchronous & Asynchronous External System Calls
@@ -89,7 +86,12 @@ to the Dynamics 365 platform.
 
 ![](media/AgileXRM_Concepts_04.png)
 ![](media/AgileXRM_Concepts_05.png)
+> Contact-center grade Dialogs
+
+AgileDialogs is fully customizable to your company branding.
+
 ![](media/AgileXRM_Concepts_06.png)
+> Theming & Branding Sample
 
 ### Process Manager
 
@@ -101,38 +103,27 @@ to the Dynamics 365 platform.
   - View/Change process data
   - Navigate in the process hierarchy
  
-
-- Control Flow: when required, it is possible to jump back or forth within a process instance, stop and resume it, and always maintaining full traceability.  
-- In-flight process migration: AgileXRM can run multiple versions of the same process at the same time and Process Manager can migrate a running process instance, or a selection of instances, from one version to another. 
-- Process Manager can run standalone or embeded within Dynamics 365/CRM and gives full process control to the user, assuming the necessary permissions are granted
-
-![](media/AgileXRM_Concepts_07.png)
 ![](media/AgileXRM_Concepts_08.png)
 
+- Control Flow: when required, it is possible to jump back or forth within a process instance, 
+  stop and resume it, and always maintaining full traceability.  
+- In-flight process migration: AgileXRM can run multiple versions of the same process at the 
+  same time and Process Manager can migrate a running process instance, or a selection of instances, 
+  from one version to another. 
 
-### AgilePoint NX
+![](media/AgileXRM_Concepts_07.png)
 
-**AgileXRM** is built on **AgilePoint NX** that provides full integration with all its capabilities.
+- Process Manager can run standalone or embeded within Dataverse/CDS/D365CE and gives full process 
+  control to the user, assuming the necessary permissions are granted
 
-**AgilePoint NX** is a cloud-based, digital-transformation
-platform that combines the speed and agility of general
--purpose Low-Code with enterprise-class BPMS, 
-which empowers citizen developers to build
-almost any kind of custom app, from simple to
-complex, without writing code.
+### Process Engine
 
-### Microsoft Dynamics 365 CE / CDS / Power Platform
-
-**AgileXRM** allows companies to build line-of-business
-applications rapidly within Microsoft Dynamics 365 CE and Power Platform (CDS).
-Dynamics 365’s / CDS's out-of-the-box functionality provides
-reasonable workflow and forms capabilities, enabling
-certain process automation. But managing real-world
-business processes with this functionality
-is sometimes impractical. AgileXRM brings true BPM functionality
-to the Dynamics 365 / CDS platform.
-
-**AgileXRM** allows users of Dynamics 365 / CDS create powerful process-centric applications within Dynamics 365 / CDS 
-that extend beyond out-of-the-box functionality to cater for more business requirements in a more manageable way.
+**AgileXRM** Process Engine where the Process Models are executed.
 
 ![](media/AgileXRM_Concepts_90.png)
+
+> Power Apps full deep integration
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)

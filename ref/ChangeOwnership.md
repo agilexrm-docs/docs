@@ -16,12 +16,16 @@ Entity* shape.
 | -------- | ----------- |
 | __EntityId__   | [Entity Id](common/EntityId.md) |
 | __EntityName__ | [Entity Name](common/EntityName.md) |
-| __ExecuteAsync__ | [Execute Async](common/ExecuteAsync.md) |
 | __NewOwner__   | [New Owner](common/NewOwner.md) |
 | __OwnerType__  | [Owner Type](common/OwnerType.md) |
+
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions
 See [Actions](common/Actions.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)
