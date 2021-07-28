@@ -36,7 +36,7 @@ RemoteApp will prompt if you trust in the application publisher. Choose "Connect
 
 ![](media/EnvisionRemoteConfiguration/EnvisionRemoteConfiguration_05.png)
 
-> Check "Don´t ask me agin for remote connections from this publisher" to avoid this message
+> Check "Don't ask me agin for remote connections from this publisher" to avoid this message
 
 Needed credential to connect will be provided with onboarding mail.
 
