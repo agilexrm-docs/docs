@@ -63,7 +63,7 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [How to make an AgileDialogs control required]
 - [How to show a file within AgileDIalogs]
 - [How to personalize AgileDialogs look & feel]
-- [How to …. (all DialogsEngine API, same as javascript extensions document)]
+- [How to ... (all DialogsEngine API, same as javascript extensions document)]
 - [How to send an email using CRM mails]
 - [How to wait for CRM event]
 - [How to define milesstones]
