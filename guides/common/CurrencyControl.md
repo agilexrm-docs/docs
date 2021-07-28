@@ -23,7 +23,7 @@ Example:
 
 >   **Value variable** saves: 5.25
 >   
->   **Display variable** saves: \$5,25
+>   **Display variable** saves: €5,25
 
 **How to create a Currency Control**
 
