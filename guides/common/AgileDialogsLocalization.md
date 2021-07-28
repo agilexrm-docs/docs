@@ -38,7 +38,7 @@ Steps:
 
 ### Export Resource files
 
-Under `Export` section tab, are placed the <<Available languages list>> and the <<Selected languages list>>. Choose a language from <<Available languages list>> and include it into <<Selected languages list>> using the `>>` button. You can remove a languague by the same way using the `<<` button.
+Under `Export` section tab, are placed the \<<Available languages list>> and the \<<Selected languages list>>. Choose a language from \<\<Available languages list>> and include it into \<\<Selected languages list>> using the `>>` button. You can remove a languague by the same way using the `<<` button.
 
 > AgileDialogs stores its translations with ProcesTemplate model, be careful to not include a large number of languages. Include only the languages which you need.
 
