@@ -282,7 +282,7 @@ Currently the following control types are available, and each type has specific
 configuration besides the common properties.
 
 - [Calendar](common/Calendar.md)
-- [Check](common/check.md)
+- [Check](common/Check.md)
 - [Combo](common/Combo.md)
   - [Populating a Combo](common/PopulatingCombo.md) 
 - [Currency Control](common/CurrencyControl.md)
