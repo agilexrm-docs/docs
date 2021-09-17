@@ -2,7 +2,7 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 title: AgileXRM Docs
 email: AgileXRMDocs@agilexrm.com
-description: AgileXRM Documentation site
+description: AgileXRM Documentation Site
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://docs.agilexrm.com"
 twitter_username: AgileXRM

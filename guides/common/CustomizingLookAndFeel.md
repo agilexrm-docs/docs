@@ -399,3 +399,8 @@ new page as much as we want to (we can copy the html code from the Default
 page into our new page and continue from there). There are multiple
 enhancements you can have on your new customized error page (links to your
 own bug reporting tool, customized links to user guides and help, etc.).
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

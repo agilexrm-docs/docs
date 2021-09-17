@@ -7,7 +7,13 @@ auto-complete feature to help user select a value.
 
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_01.png)
 
-Lookup control has the *MinLength* property that allows users to set the number
+XRMLookup control can populate its items from one of these values:
+
+-   XRM: XRMLookup control populates its items from the results of XRM query.
+-   JSON: XRMLookup control populates its items from AgileXRM variable which contains a JSON value.
+-   REST: XRMLookup control populates its items performing a REST call and getting its elements from the response of REST service.
+
+XRMLookup control has the *MinLength* property that allows users to set the numberX
 of characters typed to fire the auto-complete feature.
 
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_02.png)
@@ -17,7 +23,7 @@ When the user clicks the Search icon on the right, the lookup window is opened:
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_03.png)
 
 The query used to filter the records presented to the user, is configured by
-clicking the *Configure Lookup* button. This windows uses the CRM System View -
+clicking the `Configure` button. This windows uses the CRM System View -
 Quick Find view - to find the data more easily.
 
 To configure the filter criteria, click the Configure button to open the
@@ -51,3 +57,16 @@ The **UseRelativeDataFormat** property determines how Datetime columns are shown
 <br>When its set to *true*, Datetime column are shown as friendly relative text and we can get the Datetime value by cross button.
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_08.png)
 > **Note** When XRMGrid control is configured with UseRelativeDateFormat, we can use the cross button to show the Datetime value
+
+## Related
+
+- [How to configure QueryExpression](../../ref/common/QueryExpression.md)
+
+- [JSON data in AgileDialogs](../common/JSONAgileDialogs.md);
+
+- [How to configure external data](../../ref/common/ExternalData.md)
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

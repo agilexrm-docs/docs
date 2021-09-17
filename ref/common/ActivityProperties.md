@@ -15,3 +15,8 @@ update any activity fields including custom fields:
 | **Field**               | Select the field for the selected Activity Type                                |
 | **Value**               | Sets the value of the Field. Type **\${** to open the [Schema Selector](SchemaSelector.md) window to enter a dynamic value |
 | **Down Arrow**          | Add new Field-Value pair or Remove existing Field-Value pair                   |
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

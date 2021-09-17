@@ -16,3 +16,8 @@ following specific values:
 
 -   **Low** - The record of auto work item will be deleted from database after
     leaving the activity. No record will be kept for this particular activity. For high volume environments, it is recommended to set this property to Low, to reduce DB size.
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

@@ -19,3 +19,7 @@ Click the ellipsis button to open the config window:
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                | This is the name of the Process Variable (aka Custom Attribute) to be updated in the current Process<br>Do not use this format \$\{ProcessVariable1\}, use just the name |
 | **Dialog Variable**     | This is the name of the Dialog Variable whose value we want to assign to our process variable<br>Do not use this format \$\{DialogVariable1\}, use just the name         |
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

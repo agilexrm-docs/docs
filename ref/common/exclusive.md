@@ -29,3 +29,7 @@ This property can be set to the following specific values:
   This means that the **E** activity will be entered **twice** in this example.
 
 ![](../media/exclusive1.png)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

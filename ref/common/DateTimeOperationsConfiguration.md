@@ -19,3 +19,8 @@ This window enables you to configure date calculations.
 |**Result Boolean**	|If Compare Difference is enabled, the difference will be evaluated as a Boolean (True/False) result, and the Boolean value will be associated with the text that appears in this field.|
 |**Date String**	|If based on the operation performed, the output is of type DateTime, the result will be converted to a string and stored in the format provided in the Format list, and stored associated with the text that appears in this field.|
 |**Difference**	|If Compare Difference is enabled, the difference will be stored as a NameValue where the name is the text that appears in this field, and the value is the output value.
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

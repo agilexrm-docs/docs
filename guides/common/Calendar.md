@@ -17,7 +17,17 @@ value **Now** in the *Default Value* property (note: the values range go from
 
 ![](../media/AgileDialogsDesignGuide/Calendar_03.png)
 
+Calendar control uses ISO-8601 format to store the value for value variable value,
+and the localized screen display for display variable.
+
+Example:
+
+>   **Value variable** saves: 1975-05-12T22:00:00Z
+>   
+>   **Display variable** saves: 13/05/1975 0:00 for es-ES culture
+
 By default, AgileDialogs calendar control shows its content using CRM timezone settings so we can change this behavior by *TimeZoneIndependent* property.
+
 
 Either type the date/time or select them using the mouse:
 
@@ -28,4 +38,8 @@ Either type the date/time or select them using the mouse:
 > **Note**: Calendar control uses the *ISO-8601* format to store its value variable.
 
 > **Note**: The control does not have the ControlWidth property.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
 

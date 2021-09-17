@@ -66,3 +66,8 @@ AgileShape is exited. Depending if the shape executed correctly or if an error
 occurred, then the values true or false will be stored (as a String) in the
 process variable specified by this property. It is common to use a Single
 Condition shape directly afterwards, bound to the process variable
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

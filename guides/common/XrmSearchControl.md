@@ -7,10 +7,12 @@ and set the data retrieved to page controls.
 
 > **Important**: FetchXML query must to retrieve a single record.
 
-We can run the FetchXML query in these scenarios:
+XRM Search control can populate its items from one of these values:
 
--   When AgileDialogs page loads.
--   When a control changes its value.
+-   XRM: XRM Search control populates its items from the results of XRM query.
+-   JSON: XRM Search control populates its items from AgileXRM variable which contains a JSON value.
+-   REST: XRM Search control populates its items performing a REST call and getting its elements from the response of REST service.
+
 
 XRM Search control does not create variables in process context.
 
@@ -64,3 +66,16 @@ To configure XRM Search control:
         ![](../media/AgileDialogsDesignGuide/XRMSearchControl_06.png)
 
         ![](../media/AgileDialogsDesignGuide/XRMSearchControl_07.png)
+
+## Related
+
+- [How to configure QueryExpression](../../ref/common/QueryExpression.md)
+
+- [JSON data in AgileDialogs](../common/JSONAgileDialogs.md);
+
+- [How to configure external data](../../ref/common/ExternalData.md)
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

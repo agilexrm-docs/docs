@@ -8,3 +8,7 @@ This combo field is for selecting the *Status* and *Status Reason* combination f
 
 However, it can take a dynamic value by typing **$\{variable\}** which should resolve to a Status 
 value (not the display name - e.g. 2 instead of *Inactive*)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

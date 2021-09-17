@@ -10,3 +10,8 @@ Configure this by this way:
 ![Wait For Milestone Configuration window](../media/WaitForMilestone_Configuration01.png)
 2. Choose the Milestone activity to wait.
 3. ![Wait For Milestone Configuration window](../media/WaitForMilestone_Configuration02.png)
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

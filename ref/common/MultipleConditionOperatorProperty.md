@@ -9,3 +9,7 @@ Each data type has its own operators :
 | **String**                                       | =<br/>=(IgnoreCase)<br/> StartsWith <br/>EndsWith<br/> Contains<br/> |
 | **DateTime**                                     | =<br/> LaterThan<br/> EarlierThan<br/> !=<br/>                   |
 | **Double, Integer, Short, Float, Decimal**       | =<br/> ><br/> \>=<br/> \<<br/> \<=<br/> !=<br/>                           |
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

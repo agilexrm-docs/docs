@@ -21,3 +21,7 @@ The **properties** for the Variable control are:
 
 - **Value Variable**: The name for process context variable that should be created.
 - **Default Value**: The default value for control.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

@@ -33,6 +33,7 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [AgileDialogs Design Guide](guides/AgileDialogs-DesignGuide.md)
 - [Process Manager User Guide](guides/ProcessManager-UserGuide.md)
 - [AgileXRM Administration tool](guides/XRMAdministrationTool-UserGuide.md)
+- [AgileXRM Import/Export Utility](guides/ImportExportUtility.md)
 
 ## Reference Documentation
 
@@ -44,7 +45,6 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 
 - [How to enable/disable a CDS entity/ task to execute AgileXRM process](howto/EnableDisableEntities.md)
 - [How to define an email template](ref/common/DefiningAnEmailTemplate.md)
-
 
 - [How to execute an AgileXRM process against CDS entity]
 - [How to execute an AgileDialogs process against CDS entity]
@@ -76,6 +76,7 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [XRM Connection Window](guides/common/XRMConnectionWindow.md)
 - [AgileDialogs Security](guides/common/AgileDialogsSecurity.md)
 - [AgileDialogs Localization](guides/common/AgileDialogsLocalization.md)
+- [AgileDialogs Localization - Deprecated](guides/common/Localization.md)
 - [Hosting AgileDialogs inside a Portal](guides/common/HostingAgileDialogsInsidePortal.md) Needs update
 - [Customizing Look and Feel](guides/common/CustomizingLookAndFeel.md) Needs update
 - [AgileDialogs Breadcrumbs](guides/common/Breadcrumbs.md)
@@ -83,6 +84,5 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [Schema Generic variables](guides/common/SchemaGenericVariables.md)
 - [Populating Combo, Radio-button and Checkbox controls](guides/common/PopulatingCombo.md)
 - [Performance Window](guides/common/PerformanceWindow.md) 
-- [AgileDialogs Localization](guides/common/Localization.md)
 - [Show JSON data in AgileDialogs](guides/common/JSONAgileDialogs.md)
 - [AgileDialogs client API](guides/common/JavaScriptExtensions.md)

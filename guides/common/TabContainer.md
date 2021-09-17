@@ -58,3 +58,8 @@ The most important properties for the Tab Container control are:
 
 -   **Visible**: We can hide /show the Tab Container (and all its inner
     elements) to the user, for functional purposes, manipulating this property.
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

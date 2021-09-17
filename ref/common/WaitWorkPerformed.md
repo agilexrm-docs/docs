@@ -11,3 +11,8 @@ Default Value: True
 
 > Example:
 This property might be set to False if a task requires some work that does not include data entry, such as delivering items to the post office. 
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

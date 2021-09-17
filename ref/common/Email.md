@@ -12,3 +12,8 @@ To add new Email Template select Add Mail Template:
 If left blank, the Shape is completed and no email is sent.
 
 See **[Defining an Email Template](DefiningAnEmailTemplate.md)**
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

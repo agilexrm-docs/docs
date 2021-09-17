@@ -19,3 +19,8 @@ And permission can be assigned based on XRM roles:
 ![](../media/AgileDialogsDesignGuide/AgileDialogsSecurity_03.png)
 
 In order to launch a Dialog the user must belong to a role that has *Initiate Process* permission.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

@@ -73,3 +73,8 @@ drop-down which with all Fields that are of type OptionSet in the selected
 Entity:
 
 ![](../media/AgileDialogsDesignGuide/PopulatingControls_10.png)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

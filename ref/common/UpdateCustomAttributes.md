@@ -11,3 +11,8 @@ After clicking the Add button, entering an attribute name and a code snippet, an
 ![](../media/UpdateCustomAttributes_Configuration_02.png)
 
 > Note: The Create or Update Custom Attributes configuration dialog is not intended as a complete replacement for Visual Studio.NET. It is recommend that you create a C# project that you can use as a "scratch pad" so that you have full access to Intellisense and other built-in tools while constructing your snippets. This will help in avoiding simple syntax mistakes and other errors.
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

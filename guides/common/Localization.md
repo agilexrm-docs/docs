@@ -66,3 +66,8 @@ is *Form* and Property column value is *DisplayName*:
 
 To set localizations for different languages, select them in the list of
 *Localized Languages* and fill localization for each localizable string.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

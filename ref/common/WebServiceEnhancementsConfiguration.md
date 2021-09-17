@@ -40,3 +40,8 @@ Click the ellipses button to open *Certificates* window:
 Finally, we can choose a file with the certificate or select one from windows installed certificates store.
 
 ![](../media/WebServiceEnhancements_Configure_07.png)
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

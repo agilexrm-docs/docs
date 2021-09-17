@@ -23,13 +23,12 @@ Example:
 
 >   **Value variable** saves: 5.25
 >   
->   **Display variable** saves: €5,25
+>   **Display variable** saves: €5,25 for es-ES culture
 
 **How to create a Currency Control**
 
 The way to add a currency would be through the add control / currency options.
 
-![](../media/AgileDialogsDesignGuide/CurrencyControl_02.png)
 
 The **properties** for the Currency control are:
 
@@ -43,3 +42,8 @@ The **properties** for the Currency control are:
     details before user interaction
 
 -   **Symbol**: Currency Symbol to be shown in our control
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

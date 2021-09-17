@@ -2,39 +2,43 @@ __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md)
 
 # IFrame
 
-This control allows to insert an external web page or application inside the
+This control allows to show an external web page, file or application inside the
 AgileDialogs page. Very useful for information purposes, we could attach to our
 dialog some webpage embedded inside an IFrame, shown along with the rest of the
 Page Form controls.
 
 ![](../media/AgileDialogsDesignGuide/Iframe_01.png)
 
-Figure H: Example of a request form with two input textboxes, and an IFrame
+> Figure H: Example of a request form with two input textboxes, and an IFrame
 attached below them, showing a custom URL designed by the process modeler.
 
 If we want to /add a new IFrame to our form, we would follow these steps:
 
 -   Press the plus button, and chose to attach the **IFrame** control inside our
-    Page Form canvas.
+    Page Form canvas. 
 
-![](../media/AgileDialogsDesignGuide/Iframe_02.png)
-
-![](../media/AgileDialogsDesignGuide/Iframe_03.png)
+	![](../media/AgileDialogsDesignGuide/Iframe_03.png)
 
 -   Afterwards, Click on **Configure** to select the IFrame Type we want to build;
     a popup menu will come up:
 
-![](../media/AgileDialogsDesignGuide/Iframe_04.png)
+	![](../media/AgileDialogsDesignGuide/Iframe_04.png)
 
-There are three types of IFrame to be configured:
+There are these types of IFrame to be configured:
+- FrameControl to show a **XRM attached document**.
+- FrameControl to show a **public SharePoint document**.
+- FrameControl to show a **file using Access Token**.
+- FrameControl to show a **URL**.
 
--   To show a CRM attached document: We want the IFrame to show a document
-    content in our Page (an image, internal pdf...). If we choose this option
-    (clicking OK), AgileDialogs will ask us for the process variable which will
-    feed the IFrame inner content, **this variable should contains the document
-    Id in CRM**  
+## Show a XRM attached file.
+
+To show a XRM attached document: We want the IFrame to show a document
+content in our Page (an image, internal pdf...). If we choose this option
+(clicking OK), AgileDialogs will ask us for the process variable which will
+feed the IFrame inner content, **this variable should contains the document
+ID in XRM platform**  
       
-    *Supported files types are: Jpeg and Png images, text and pdf formats.*
+> Supported files types are: Jpeg and Png images, text and pdf formats.*
 
 ![](../media/AgileDialogsDesignGuide/Iframe_05.png)
 
@@ -43,106 +47,139 @@ modeler:
 
 ![](../media/AgileDialogsDesignGuide/Iframe_06.png)
 
->   If we click on the *Advanced* Tab, we could notice that the needed details
->   are automatically filled in for us; The *QueryString* and *URL* properties
->   get default values (important: do not modify these). After finishing the
->   configuration customization and publish the process template, we'll see the
->   document content inside our IFrame on the Dialog execution (pictures below).
+If we check on the control property grid, we could notice that the needed details
+are automatically filled in for us; The *QueryString* and *URL* properties
+get configured values to show the content (important: do not modify these). 
 
 ![](../media/AgileDialogsDesignGuide/Iframe_07.png)
 
-Figure I. Added property values in "CRM attached document' IFrame type
+After finishing the configuration customization and publish the process template, we'll see the
+document content inside our IFrame on the Dialog execution.
 
 ![](../media/AgileDialogsDesignGuide/Iframe_08.png)
 
-Figure J. Showing IFrame content (an image in .png format previously loaded in
-the Dialog)
+> Figure J. Showing IFrame content (a PDF document within the Dialog)
 
--   To show a SharePoint attached document: We want the IFrame to show a
-    document content in our Page. If we choose this option (clicking OK),
-    AgileDialogs will ask us for the process variable which will feed the IFrame
-    inner content, **this variable must contains the SharePoint document URL**
+## Show a public SharePoint document.
 
-    *Supported files types are: Jpeg and Png images, text and pdf formats.*
+To show a public SharePoint document choose this option from available configurations,
+AgileDialogs will ask us for the process variable which will feed the IFrame inner content, 
+**this variable must contains the SharePoint document URL**.
 
-    **Tip: Store the URL of SharePoint site as Shared Custom attribute.**
+![](../media/AgileDialogsDesignGuide/Iframe_05.png)
 
-    ![](../media/AgileDialogsDesignGuide/Iframe_09.png)
+Once the value is selected, the IFrame will be shown in the Canvas View of the
+modeler:
 
-    Important: The user that executes Agiledialogs should have access to the
-    SharePoint file.
+![](../media/AgileDialogsDesignGuide/Iframe_06_01.png)
 
--   The last option will be *Empty frame control*. Meant for normal URLs to be
-    shown in the Dialog. It lets the user customize the parameters to be
-    configured.
-
-From now on, let's suppose we are configuring and Empty frame control, to
-explain better the features to customize one by one.
-
--   Go to the *Advanced* tab, and type the desired website you want to show on
-    your Dialog, in the *URL* property. If the provided value is correct, the
-    website should be up and running on the lower side of the test canvas.
-
-![](../media/AgileDialogsDesignGuide/Iframe_10.png)
-
--   Manipulate the control properties accordingly to style the IFrame as desired
-    (at the example below, changed *columnspan* and *height* property, for a
-    better visualization of its inner website).
-
-![](../media/AgileDialogsDesignGuide/Iframe_11.png)
-
-Once published, this would be how the form looks like:
+> Supported files types are: Jpeg and Png images, text and pdf formats.
 
 ![](../media/AgileDialogsDesignGuide/Iframe_12.png)
+
+> Important: This option only is valid for public sharepoint sites.
+> 
+> If you need to show a file stored in a private SharePoint server you must use an Access Token as will be described below.
+
+**Tip: Store the URL of SharePoint site as Shared Custom attribute.**
+
+## Show a file using Access Token
+
+To show a file using a Access Token, choose the "FrameControl to show a **file using Access Token**" option from configuration window.
+
+![](../media/AgileDialogsDesignGuide/Iframe_20.png)
+
+Once the option is selected a new window is shown to choose the document source system. Each source system is represented as an icon, choose it an accept.
+
+![](../media/AgileDialogsDesignGuide/Iframe_21.png)
+
+> Disabled icons means that there is no any Access Token defined. Global AccessToken must be created from Administration Portal.
+
+Once document source is selected, the next screen allows to select the document to be shown. Can choose an static document or dynamic one. A dynamic path to document means that we use AgileXRM process variables to define the path to document.
+
+![](../media/AgileDialogsDesignGuide/Iframe_22_00.png)
+
+To end configure the control we must provide these data:
+
+- **Global Access Token**: The access token to use to retrieve the document. Choose one available Global Access Token from dropdown.
+  > For ShapePoint, Global Access Token must be defined with *SiteCollection* URL. We can override the site collection URL value at runtime with an AgileXRM variable.
+  > Leave the field empty to use the URL value defined in Global Access Token.
+  
+- **Site**: This option is only available if document source is SharePoint. Indicates the SharePoint site. Also can use AgileXRM variables.
+- **Library**: This option is only available if document source is SharePoint. Indicates the SharePoint library. Also can use AgileXRM variables.
+- **Path**: The document path. Could be an static or dynamic path value. 
+	For static paths, we can use the folder viewer to show the content of selected folder.
+
+	![](../media/AgileDialogsDesignGuide/Iframe_22_01.png)
+
+	When document source is diferent to SharePoint, site and library fields are not needed.
+
+	![](../media/AgileDialogsDesignGuide/Iframe_22_02.png)
+
+
+## Show a URL
+
+Obviously, we can show the content of an URL, choose the "FrameControl to show a URL" option from configuration window.
+
+AgileDialogs will ask us for the process variable which will feed the IFrame inner content by the same way of previous options.
+
+![](../media/AgileDialogsDesignGuide/Iframe_05.png)
+
+> **Important:** Some sites does not allow render its contents within an IFrame.
+> For these cases we can configure IFrame control as external as described below.
+
+
+## Other properties
 
 There are various ways to show the IFrame, as it will be explained next.
 
 The properties for the IFrame control are:
 
--   **AutoLoad**: If activated, it will launch the IFrame on the Form loading
+- **Mode:** Frame control can render its contents in three different ways:
+    - **Embedded:** Default value. The IFrame will be shown inside the main container canvas, being
+    in the same browser as the main process flow.  
+
+    ![](../media/AgileDialogsDesignGuide/Iframe_12.png)
+
+    - **Window:** The IFrame will be shown as a new window outside the container
+    canvas.  
+
+	![](../media/AgileDialogsDesignGuide/Iframe_18.png)
+    > Keep in mind that when IFrame control is shown as Window, the user can close it anytime. In this case the Frame control its rendered in the container canvas as a link to allow user to open it again.
+
+    - **External:** external window outside the container canvas. The default
+    behavior of this window will not allow the user to interact with the main
+    window as it is going to remain locked until our external dialog has been
+    closed.  
+
+    ![](../media/AgileDialogsDesignGuide/Iframe_19.png)
+
+    > Keep in mind that when IFrame control is shown as Window, the user can close it anytime. In this case the Frame control its rendered in the container canvas as a link to allow user to open it again.
+
+- **AutoLoad**: If activated, it will launch the IFrame on the Form loading
     process. If false, the IFrame will wait for a triggering event (click on a
     button/link) to launch the IFrame content.
 
-    **Important**: if *Mode* is set to *embedded*, this property will not be
+    > This property can be used with "Window" and "External" modes. 
+    >**Important**: if *Mode* is set to *embedded*, this property will not be
     able to toggle to *false*, as this mode makes the IFrame load on the page
     initialization by default.
 
--   **LauncherMode:** Can be set to:
+- **LauncherMode:** When IFrame control is rendered with "Window" or "External" modes, 
+the content will shown inside a window and user can close it anytime. For this case, IFrame control provides a launcher to open it again. This property defines if Frame control will render a link or button as launcher to open the window.
+. 
+	- *Button.* A button interface is placed to launch the IFrame.  
+	![](../media/AgileDialogsDesignGuide/Iframe_13.png)
 
->   **-***Button.* A button interface is placed to launch the IFrame.
+	- *-Link.* A link interface is placed to launch the IFrame.  
+	![](../media/AgileDialogsDesignGuide/Iframe_14.png)
 
-![](../media/AgileDialogsDesignGuide/Iframe_13.png)
+    > This property can be used with "Window" and "External" modes. 
+	> **Important:** If *Mode* is set to *embebbed*, the property *LauncherMode* will
+	have no effect, because there will be no user interaction for loading such
+	IFrame content.
 
->   *-Link.* A link interface is placed to launch the IFrame.
-
-![](../media/AgileDialogsDesignGuide/Iframe_14.png)
-
-**Important:** If *Mode* is set to *embebbed*, the property *LauncherMode* will
-have no effect, because there will be no user interaction for loading such
-IFrame content.
-
--   **URL**: Address of the web page to insert in the IFrame. Needs to be
-    absolute and valid URL:  
-    e.g.: <http://mysite.com/myresource.aspx>
-
--   **QueryString**: set of parameters to be sent to the IFrame web page who is
-    responsible to deal with them accordingly. Given a case in which we are
-    having an IFrame that requires two values passed by querystring, we should
-    type those *namevariable=valuevariable* separated by **&**. The IFrame mechanism
-    will do the rest (no need to type the **?** character to separate such
-    querystring, as you would normally do typing the whole URL). The host canvas
-    (the Main page we are customizing) is going to pass those parameters to its
-    dependent IFrame.  
-    e.g.: *param1=value1&param2=value2* (image below)
-
-![](../media/AgileDialogsDesignGuide/Iframe_15.png)
-
--   **LauncherMode**: It can be adjusted to *Link* (there will be a link to
-    launch the IFrame) or button (picture below). **Important**: If *Mode* set to
-    *Embedded* there will be no link or button to show in the screen as the
-    control loads automatically.
-
-![](../media/AgileDialogsDesignGuide/Iframe_16.png)
+-   **LauncherText**: Allows personalize the text within the launcher.
 
 -   **ModalWindow**: If set to *true*, the user will not be allowed to press any
     option or button in the parent window, until the modal window is closed. If
@@ -150,25 +187,27 @@ IFrame content.
     and will permit the process flow to keep going if the user desires to, no
     matter if the modal window is still opened.
 
--   **Mode:** it can be set in three different ways:
+-   **URL**: Address of the web page to insert in the IFrame. Needs to be
+    absolute and valid URL:  
+    e.g.: <http://mysite.com/myresource.aspx>
+	> This property is filled automatically by configuration wizard.
 
-    -   **Embedded:** The IFrame will be shown inside the main container canvas, being
-    in the same browser as the main process flow.
+-   **QueryString**: set of parameters to be sent to the IFrame web page who is
+    responsible to deal with them accordingly. Given a case in which we are
+    having an IFrame that requires two values passed by querystring, we should
+    type those *namevariable=valuevariable* separated by **&**. The IFrame mechanism
+    will do the rest (no need to type the **?** character to separate such
+    querystring, as you would normally do typing the whole URL).
+    > This property is filled automatically by configuration wizard.
 
-    ![](../media/AgileDialogsDesignGuide/Iframe_17.png)
+-   **Width:** The width of control. Can be any valid expression or a number (in this case pixel is used as unit)
+    >   500px, 85% , 100em ... are valid values for Width property.
+   
+-   **Height**: The height of control. Can be any valid expression or a number (in this case pixel is used as unit)
+    >   500px, 85% , 100em ... are valid values for Height property.
 
-    -   **Window:** The IFrame will be shown as a new window outside the container
-    canvas.
+-   **ShowContentInHistory**: Sets if IFrame content is rendered in History view.
 
-    ![](../media/AgileDialogsDesignGuide/Iframe_18.png)
+## Disclaimer of warranty
 
-    -   **External:** external window outside the container canvas. The default
-    behavior of this window will not allow the user to interact with the main
-    window as it is going to remain locked until our external dialog has been
-    closed.
-
-    ![](../media/AgileDialogsDesignGuide/Iframe_19.png)
-
--   **Width:** in pixels
-
--   **Height**: in pixels
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

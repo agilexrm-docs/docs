@@ -46,3 +46,8 @@ This property can be set to the following specific values:
     >   **NOTE**: This value is functionally equivalent to using the **And**
     >   AgileShape (with the **Dynamic** property set to **False**) between this
     >   AgileShape and its direct predecessors.
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

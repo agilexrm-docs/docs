@@ -134,3 +134,7 @@ Configure document mappings by this way:
 * Move template fields to maping grid. ![](../media/WordConfig30.png)
 * Set values for each fields. Assign process variables values to every template fields. ![](../media/WordConfig31.png)
 
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

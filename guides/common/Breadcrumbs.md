@@ -41,3 +41,8 @@ SubDialog shapes, these are shown as Stages:
 The text shown in the Stages is the text of the Shapes themselves. This feature
 can be used only in processes where all phases must be fulfilled, there cannot
 be decisions between phases, and parent process only allows SubDialogs shapes.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

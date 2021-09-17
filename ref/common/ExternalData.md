@@ -8,7 +8,7 @@ In order to show external data is needed to perform these steps :
  
 - Store the **JSON** data that we want to show within a process context variable. This step usually is performed by [**REST activity**](../REST.md) execution and store the response in context variable, 
 but always we can use any other way to get this **JSON** value (like a SharePoint file that contains it)
-- Configure the control to External data and bind it to previous context variable.
+- Configure the control to JSON data and bind it to previous context variable.
 > **Note**: External data must be in **JSON** valid format.  Valid formats are shown below in this document.
 
 ### Sample
@@ -26,7 +26,7 @@ For this sample the variable name is *"restShapeOutput"*.
 
 > **Note**: Can use this link to get the REST activity configuration page.[REST activity configuration](../REST.md)
 
-> **Note**: For this sample, JSON data returned by REST activity has JSON Array format like this:
+> **Note**: For this sample, JSON data returned by REST activity has JSON Array format like this (we will need this value later):
 ```json
 [
 	{
@@ -54,9 +54,17 @@ Once done, we need to configure the [**Page activity**](../../guides/common/Page
 
 > **Note**: Preview data is not available at designtime when  [XRM Grid](../../guides/common/XRMGrid.md)  control is configured to show external data.
 
-Next, click *Configure* button to show configuration window.
+Next, click `Configure` button to show configuration window, and under data section, set the runtime variable that contains the JSON value to show in control. Type here the same value that you puts previously in REST activity shape.
 
 ![](../media/ExternalData_Sample_04.png)
+
+Click now in `Payload`link and put here the payload - Payload must be the JSON data structure returned by REST activity
+
+![](../media/ExternalData_Sample_04_01.png)
+
+Next, we need to set the ValueVariable and DisplayVariable fields. We can set here the column header, width and visibility too. 
+
+![](../media/ExternalData_Sample_04_02.png)
 
 Next within configuration window wills provide the following information:
 
@@ -123,3 +131,6 @@ The rest of the values shown as columns in results correspond to each of the pro
 
 ```
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

@@ -54,3 +54,8 @@ values gathered in the dialog.
 The *Name* column contains the name of the variable to create in calling process
 and *Dialog Variable* column contains the name of the variable in dialog to get
 value from.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

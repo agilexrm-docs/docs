@@ -149,3 +149,8 @@ presented to the user that runs the dialog, whereas process name is used
 internally by Process Owners in CRM.
 
 ![](../media/AgileDialogsDesignGuide/XRMConnectionWindow_14.png)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

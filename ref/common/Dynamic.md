@@ -32,3 +32,7 @@ This property can be set to the following specific values:
 	
 >   **NOTE**: This behavior is equivalent to the *Wait All Incoming* property in
 >   most shapes when set to *True (Static)*
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

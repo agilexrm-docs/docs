@@ -144,14 +144,18 @@ This section defines the credential that is going to be used by Dynamics CRM to 
 
 > **Note:** AgileDialogs has available these themes:
 > 
-> |**Theme.crm**|**Theme.cds**|**Theme.uui**
-> |-------------|---------|---------|
-> |![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_01.png)|![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_05.png)|![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_06.png)
+> |**Theme.uui**|**Theme.cds**
+> |---------|---------|
+> |![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_06.png)|![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_05.png)
+>
+>|**Theme.crm**|**Theme**
+> |-------------|---------|
+> |![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_01.png)|![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_02.png)
 > 
-> |**Theme**|**Theme.01**|**Theme.02**|
-> |------------|------------|------------|
-> |![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_02.png)|![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_03.png)|![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_04.png)|
-> 
+> |**Theme.01**|**Theme.02**|
+> |------------|------------|
+> |![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_03.png)|![Theme](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide35_04.png)
+ 
 
 
 #### Fault Tolerance Configuration

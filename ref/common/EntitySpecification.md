@@ -14,4 +14,6 @@ Click the ellipsis button to open the configuration window:
 | **Down-Arrow button**   | Add a new row or Remove an existing row from the grid                                                       |
 
 
+## Disclaimer of warranty
 
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

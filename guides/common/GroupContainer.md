@@ -85,3 +85,9 @@ functionalities.
 
 > Figure 7. "Height" property set in the first group container, to match the same
 > height of the second group container
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+
+

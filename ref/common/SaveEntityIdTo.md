@@ -9,3 +9,7 @@ For example, in an **Add Note** shape, when the process executes this shape,
 one could store the Note ID in a variable to use it somewhere else in the process.
 
 ![SaveEntityIdTo](../media/SaveEntityIdTo.png)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

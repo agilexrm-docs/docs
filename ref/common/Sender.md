@@ -9,3 +9,6 @@ CRM Domain Logon Name (*domainname*)
 
 > **NOTE**: For Fax activities, Queue is also a valid entity
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

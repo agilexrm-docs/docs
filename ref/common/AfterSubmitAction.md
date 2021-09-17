@@ -9,3 +9,8 @@ PageForm is opened and completed, inside the mentioned CRM Activity.
 Possible Values:
 * **None** - No action to perform.
 * **Mark as Completed** - Marks the current CRM activity as completed.
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

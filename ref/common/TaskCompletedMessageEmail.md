@@ -13,3 +13,8 @@ AgileShape is exited) using the specified Email Template. To add a new Email
 Template select *Add Mail Template*:
 
 ![](../media/AddMailTemplate.png)
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

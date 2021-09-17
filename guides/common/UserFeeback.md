@@ -33,3 +33,8 @@ Dialog, the version, the date and the user that added the comment.
 
 Using XRM views the designer can manage the comments fixing the issues or
 suggestions that the reviewers have created.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

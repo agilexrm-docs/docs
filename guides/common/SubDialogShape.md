@@ -35,3 +35,8 @@ This window is used to configure the SubDialog to run:
 The *NamePrefix* property can be used to set a readable name for the SubDialog
 instance. This name is used in *AgileXRM Process Manager* to show a hyperlink to
 the SubDialog.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

@@ -10,3 +10,7 @@ ${variable} syntax.
 
 > __Note__: The Display Variable for Info control is deprectaed and is only present for
 backward compatibility. It will be removed in a future version.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

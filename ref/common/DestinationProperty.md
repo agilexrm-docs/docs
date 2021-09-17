@@ -45,3 +45,6 @@ if exists.
 > **NOTE**: The Process Server (AgilePoint Server) Application Pool Identity
 should have Read permission on the file(s)
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

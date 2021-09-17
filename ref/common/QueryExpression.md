@@ -133,3 +133,7 @@ Entities and Fields is subject to change. By pressing this button, the metadata 
 It is important to use this functionality whenever there is any CRM customaztion while modelling the process.
 
 ![](../media/QueryExpression_19.png)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

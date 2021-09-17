@@ -24,3 +24,7 @@ There are 4 columns for each supported parameter
 * Type: parameter type; it can be primitive (*string*, *decima^*, *bool*,...) or complex (such *Entity*, *Entity Reference*,...)
 * Name: parameters property name; in the case of primitive type is the same as SDK Param, in complex types is the name of property
 * Variable Name: name of the variable where output message parameter will be written.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

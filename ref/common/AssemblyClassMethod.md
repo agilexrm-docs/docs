@@ -30,3 +30,8 @@ specific AgilePart or AgileWork that this AgileShape instance is associated with
 Read Only
 
 Name of the Method being called in the Class shown in ClassName
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

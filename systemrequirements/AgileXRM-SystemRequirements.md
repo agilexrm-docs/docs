@@ -84,7 +84,6 @@ In order to integrate the AgileXRM Tenant with the client's Dynamics/Dataverse e
     | Security Role | System Administrator                      |
 
   * Import AgileXRM Solution & configure
-  * [OPTIONAL] Import External Connector Solution
   * Enable selected Tables (Entities) and Activities to be used with AgileXRM
   * Add AgileXRM Full License to Users that are going to use AgileXRM 
 
@@ -167,8 +166,8 @@ In all AgileXRM Servers (64-bit only):
 1.  Decide which **host headers** are going to be used.<br>
     Something like this: [can change *agilexrm* for other word)]
       * AgileDialogs / ProcessManager: *agilexrm*.contoso.com
-      * REST API & WCF Service: *agilexrm*api.contoso.com or *agilexrm*.api.contoso.com
-      * Admin Portal: *agilexrm*portal.contoso.com or *agilexrm*.portal.contoso.com
+      * REST API & WCF Service: *agilexrm*-api.contoso.com or *agilexrm*.api.contoso.com
+      * Admin Portal: *agilexrm*-admin.contoso.com or *agilexrm*.admin.contoso.com
 1.  If SSL is required then have a valid **SSL Certificate** available that covers the chosen host headers 
 1.	Have **.NET Framework 4.7.2 or higher** enabled/installed
 1.	Create the following **empty DBs** in SQL Server:

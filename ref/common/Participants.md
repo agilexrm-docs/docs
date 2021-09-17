@@ -24,3 +24,6 @@ Queue. By selecting this, the activity will be assigned to a Dynamics 365/CDS qu
 It is also possible to type a queue name in the dropdown box.
 
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

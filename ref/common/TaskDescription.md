@@ -8,3 +8,7 @@ Clicking the ellipsis button opens a window for setting the description content.
 
 This window accepts dynamic values by typing these special characters **\${**
 which opens the [Schema Selector](SchemaSelector.md) window
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

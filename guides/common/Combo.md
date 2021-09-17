@@ -31,3 +31,10 @@ without pressing the *next* button.
 
 ![](../media/AgileDialogsDesignGuide/Combo_03.png)
 
+## Related 
+- [Populating a Combo](../common/PopulatingCombo.md) 
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

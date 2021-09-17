@@ -15,3 +15,8 @@ Valid values for the **To**, **CC** and **BCC** fields are:
 * A single ID of a valid entity: *Account*, *Lead*, *Contact*, *Queue*, *User* or *Facility/Equipment*
 * A semicolon-separated list of IDs of any valid entity (*Account*, *Lead*,
     *Contact*, *Queue* or *User*)
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

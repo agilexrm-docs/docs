@@ -7,3 +7,8 @@ This property allows the process modeler to update the values of one or more cus
 ![](../media/UpdateParentProcess_Configuration_01.png)
 
 > **Note**: Can use *Schema* button to show process context window.
+
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

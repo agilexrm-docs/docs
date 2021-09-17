@@ -61,3 +61,6 @@ initiate the new versions of **B** and **C** (i.e. 2.0).
                              This way the System Administrator gets a chance to correct the error.                                                                                                                                                        
 
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

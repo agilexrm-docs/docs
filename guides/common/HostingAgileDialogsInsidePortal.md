@@ -206,3 +206,8 @@ Host page code:
 ```
 
 ![](../media/AgileDialogsDesignGuide/HostingAgileDialogsInsidePortal_05.png)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

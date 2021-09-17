@@ -284,3 +284,8 @@ To set preview configuration click in ToolsAgileDialogs Preview Configuration
 menu and set the right URL in this window:
 
 ![](../media/AgileDialogsDesignGuide/PageFormShape_21.png)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

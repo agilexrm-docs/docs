@@ -31,3 +31,8 @@ Once **Performace window** is shown, it shows a list of all process activities:
 > **Important**: System suggestion is what is, a suggestion. Process modeller must validate the system suggestion value is properly.
 
 > **Note**: Double click in any **Performance Window** activity row selects the activity in process model diagram.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

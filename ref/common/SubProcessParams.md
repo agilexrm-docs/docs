@@ -13,3 +13,6 @@ This opens the SubProcess Parameters dialog for passing variables to the sub-pro
 | **Schema button**        | This opens the [Schema Selector](SchemaSelector.md) to select a variable for the *Value* column                                                      |
 
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

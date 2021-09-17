@@ -8,3 +8,6 @@ Allows to configura a Proxy conexion to execute activity.
 
 Also we can provide a credentials to connect Proxy.
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

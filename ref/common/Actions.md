@@ -15,3 +15,7 @@ Use Collapse shape to minimize the visual effect of steps in the process which a
 Right-clicking the shape brings up the **Add Timer** menu action. 
 Clicking it adds a timer to the shape, allowing the process modeler to add an alternative route out of the shape when the configured Time Span times out. 
 Right-clicking a shape with a Timer shows a **Remove Timer** menu action, which would remove the timer from the shape. 
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

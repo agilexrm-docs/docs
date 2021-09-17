@@ -35,3 +35,8 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 |**CrmBeType**| This is the type of the process main entity, for example *account* or *incident*.|
 |**organizationname**| This is the name of the CRM organization that the process record belongs to.|
 |**DialogTaskCRMActivityId**| If part of Dialog Activity, this property holds the CRM Activity ID that launched the current dialog instance.|
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)
+

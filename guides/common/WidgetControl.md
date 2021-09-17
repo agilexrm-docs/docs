@@ -30,3 +30,7 @@ For reference, the following Widgets are deployed with AgileDialogs here:
 
 The details of creating a Widget are in the **AgileDialogs Customization
 Guide.**
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

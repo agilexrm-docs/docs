@@ -7,13 +7,19 @@ using the *Configure* button.
 
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_01.png)
 
+
+XRMGrid control can populate its items from one of these values:
+
+-   XRM: XRMGrid control populates its items from the results of XRM query.
+-   JSON: XRMGrid control populates its items from AgileXRM variable which contains a JSON value.
+-   REST: XRMGrid control populates its items performing a REST call and getting its elements from the response of REST service.
+
+
 It has Paging functionality with Page Navigation buttons. The ***PageSize***
 parameter (default 10) controls the page size, and a value of zero disables
 paging and returns all records.
 
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_02.png)
-
-
 
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_03.png)
 
@@ -76,7 +82,7 @@ button.
     the Grid must be set on *Single selection* mode.
 > -   Be careful changing both properties, because setting
     *AllowMultipleSelection* to *true* automatically toggles *AutoNext* property
-    to *false*, and vice versa.
+    to *false*, and vice versa.  
     ![](../media/AgileDialogsDesignGuide/XRMGridControl_08.png)
 
 
@@ -101,3 +107,16 @@ filter button again to remove the filter.
 <br>When its set to *true*, Datetime column are shown as friendly relative text and we can get the Datetime value by cross button.
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_13.png)
 > **Note** When XRMGrid control is configured with UseRelativeDateFormat, we can use the cross button to show the Datetime value
+
+
+## Related
+
+- [How to configure QueryExpression](../../ref/common/QueryExpression.md)
+
+- [JSON data in AgileDialogs](../common/JSONAgileDialogs.md);
+
+- [How to configure external data](../../ref/common/ExternalData.md)
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](DisclaimerOfWarranty.md)

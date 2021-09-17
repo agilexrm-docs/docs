@@ -13,3 +13,7 @@ Each data type has its own operators:
 | **Double, Integer, Short, Float, Decimal**       | =<br/> ><br/> \>=<br/> \<<br/> \<=<br/> !=<br/>                           |
 
 
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

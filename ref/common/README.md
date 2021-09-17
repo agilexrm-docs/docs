@@ -27,6 +27,7 @@ AgileShapes will also have some of the following Properties:
 * [Session Mode](SessionMode.md)
 * [Wait All Incoming](WaitAllIncoming.md)
 * [Wait Work Performed](WaitWorkPerformed.md) - AgileWorks
+* [Execute Async](ExecuteAsync.md) - AgileParts
 
 ## AgilePart
 
@@ -42,3 +43,6 @@ AgileShapes will also have some of the following Properties:
 * [Save Error Message To](ExceptionHandling.md)
 * [Save Status To](ExceptionHandling.md)
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

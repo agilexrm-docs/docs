@@ -28,3 +28,6 @@ When the process template has `Main Entity` selected, Schema selector window con
 The second tab, called 'Process Variables' that contains the defined process variables.
 ![](../media/SchemaSelector_04.png)
  
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

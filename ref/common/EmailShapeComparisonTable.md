@@ -9,3 +9,6 @@ __[Home](/) --> [Reference](/ref) --> [Back](javascript:history.back()) --> Emai
 |![](../media/GenericEmailShape.png)           | AgilePoint       | NO                                   | NO              | YES                | AgilePoint              |
 |![](../media/EmailNotificationProperties.png) | AgilePoint       | NO                                   | NO              | YES                | AgilePoint              |
 
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)

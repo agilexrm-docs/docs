@@ -3,3 +3,7 @@ __[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back())
 ### EntityId property 
 
  This should be the ID of the desired entity record. This value is usually a dynamic value.
+
+## Disclaimer of warranty
+
+[Disclaimer of warranty](../../guides/common/DisclaimerOfWarranty.md)
