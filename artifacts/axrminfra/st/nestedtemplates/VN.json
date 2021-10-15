@@ -1,0 +1,380 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "string"
+    },
+    "customer_deployment_name": {
+      "defaultValue": "contoso",
+      "type": "string"
+    },
+    "networkSecurityGroups_frontend_st_nsg_name": {
+      "defaultValue": "axrmfrontend-nsg",
+      "type": "string"
+    },
+    "publicIPAddresses_AXRM_SERVER_IP_name": {
+      "defaultValue": "AXRM_SERVER-IP",
+      "type": "string"
+    },
+    "serverPublicIPResourceGroup": { "type": "string" },
+    "serverPublicIPNewOrExisting": {
+      "defaultValue": "",
+      "type": "string"
+    },
+    "publicIPAddresses_AXRM_SERVER_IP_domainNameLabel": {
+      "type": "string"
+    },
+    "publicIPAddresses_AXRM_MODELER_IP_name": {
+      "defaultValue": "AXRM_MODELER-IP",
+      "type": "string"
+    },
+    "modelerPublicIPResourceGroup": { "type": "string" },
+    "modelerPublicIPNewOrExisting": {
+      "defaultValue": "",
+      "type": "string"
+    },
+    "publicIPAddresses_AXRM_MODELER_IP_domainNameLabel": {
+      "type": "string"
+    },
+    "nic_server_name": {
+      "defaultValue": "axrm-server-nic",
+      "type": "string"
+    },
+    "nic_modeler_name": {
+      "defaultValue": "axrm-modeler-nic",
+      "type": "string"
+    },
+    "virtualNetworksName": {
+      "defaultValue": "AgileXRM-VN",
+      "type": "string"
+    },
+    "virtualNetworksResourceGroup": {
+      "type": "string"
+    },
+    "virtualNetworkNewOrExisting": {
+      "type": "string",
+      "metadata": {
+        "description": "Boolean indicating whether the VNet is new or existing"
+      }
+    },
+    "virtualNetworksSubnetName": {
+      "defaultValue": "main",
+      "type": "string"
+    },
+    "virtualNetworksAddressSize": {
+      "type": "string"
+    },
+    "virtualNetworksSubnetAddressSize": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "serveralias": "[concat(parameters('publicIPAddresses_AXRM_SERVER_IP_domainNameLabel'))]",
+    "envisionalias": "[concat(parameters('publicIPAddresses_AXRM_MODELER_IP_domainNameLabel'))]",
+    "vnetId": {
+      "new": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworksName'))]",
+      "existing": "[resourceId(parameters('virtualNetworksResourceGroup'),'Microsoft.Network/virtualNetworks',parameters('virtualNetworksName'))]"
+    },
+    "subnetId": "[concat(variables('vnetId')[parameters('virtualNetworkNewOrExisting')],'/subnets/',parameters('virtualNetworksSubnetName'))]",
+    "serverPiPId": {
+      "new": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_AXRM_SERVER_IP_name'))]",
+      "existing": "[resourceId(parameters('serverPublicIPResourceGroup'), 'Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_AXRM_SERVER_IP_name'))]"
+    },
+    "modelerPiPId": {
+      "new": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_AXRM_MODELER_IP_name'))]",
+      "existing": "[resourceId(parameters('modelerPublicIPResourceGroup') ,'Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_AXRM_MODELER_IP_name'))]"
+    }
+  },
+
+    "resources":[
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2020-04-01",
+            "name": "[parameters('networkSecurityGroups_frontend_st_nsg_name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+            "securityRules": [
+                {
+                    "name": "https",
+                    "properties": {
+                        "protocol": "*",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "443",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 101,
+                        "direction": "Inbound",
+                        "sourcePortRanges": [],
+                        "destinationPortRanges": [],
+                        "sourceAddressPrefixes": [],
+                        "destinationAddressPrefixes": []
+                    }
+                },
+                {
+                    "name": "ap-ws",
+                    "properties": {
+                        "protocol": "*",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "13487",
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 102,
+                        "direction": "Inbound",
+                        "sourcePortRanges": [],
+                        "destinationPortRanges": [],
+                        "sourceAddressPrefixes": [],
+                        "destinationAddressPrefixes": []
+                    }
+                }          
+            ]
+            }
+        },
+        {
+          "condition": "[equals(parameters('serverPublicIPNewOrExisting'),'new')]",
+          "type": "Microsoft.Network/publicIPAddresses",
+          "apiVersion": "2020-04-01",
+          "name": "[parameters('publicIPAddresses_AXRM_SERVER_IP_name')]",
+          "location": "[parameters('location')]",
+          "sku": {
+            "name": "Basic"
+          },
+          "properties": {
+            "publicIPAddressVersion": "IPv4",
+            "publicIPAllocationMethod": "Dynamic",
+            "idleTimeoutInMinutes": 4,
+            "dnsSettings": {
+              "domainNameLabel": "[variables('serveralias')]",
+              "fqdn": "[concat(variables('serveralias'),'.',parameters('location'),'.cloudapp.azure.com')]"
+            },
+            "ipTags": []
+          }
+        },
+      {
+        "condition": "[equals(parameters('modelerPublicIPNewOrExisting'),'new')]",
+        "type": "Microsoft.Network/publicIPAddresses",
+        "apiVersion": "2020-04-01",
+        "name": "[parameters('publicIPAddresses_AXRM_MODELER_IP_name')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Basic"
+        },
+        "properties": {
+          "publicIPAddressVersion": "IPv4",
+          "publicIPAllocationMethod": "Dynamic",
+          "idleTimeoutInMinutes": 4,
+          "dnsSettings": {
+            "domainNameLabel": "[variables('envisionalias')]",
+            "fqdn": "[concat(variables('envisionalias'),'.',parameters('location'),'.cloudapp.azure.com')]"
+          },
+          "ipTags": []
+        }
+      },
+      {
+        "condition": "[equals(parameters('virtualNetworkNewOrExisting'),'new')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "apiVersion": "2020-04-01",
+        "name": "[parameters('virtualNetworksName')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [ "[parameters('virtualNetworksAddressSize')]" ]
+          },
+          "subnets": [
+            {
+              "name": "[parameters('virtualNetworksSubnetName')]",
+              "properties": {
+                "addressPrefix": "[parameters('virtualNetworksSubnetAddressSize')]",
+                "serviceEndpoints": [
+                  {
+                    "service": "Microsoft.Sql",
+                    "locations": [
+                      "[parameters('location')]"
+                    ]
+                  }
+                ],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+              }
+            }
+          ],
+          "virtualNetworkPeerings": [],
+          "enableDdosProtection": false,
+          "enableVmProtection": false
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+        "apiVersion": "2020-04-01",
+        "name": "[concat(parameters('networkSecurityGroups_frontend_st_nsg_name'), '/office-default-connections')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_frontend_st_nsg_name'))]"
+        ],
+        "properties": {
+          "description": "Allow all connections from office IP",
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "destinationPortRange": "*",
+          "sourceAddressPrefix": "127.0.0.1",
+          "destinationAddressPrefix": "VirtualNetwork",
+          "access": "Allow",
+          "priority": 100,
+          "direction": "Inbound",
+          "sourcePortRanges": [],
+          "destinationPortRanges": [],
+          "sourceAddressPrefixes": [],
+          "destinationAddressPrefixes": []
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+        "apiVersion": "2020-04-01",
+        "name": "[concat(parameters('networkSecurityGroups_frontend_st_nsg_name'), '/ap-ws')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_frontend_st_nsg_name'))]"
+        ],
+        "properties": {
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "destinationPortRange": "13487",
+          "sourceAddressPrefix": "*",
+          "destinationAddressPrefix": "*",
+          "access": "Allow",
+          "priority": 102,
+          "direction": "Inbound",
+          "sourcePortRanges": [],
+          "destinationPortRanges": [],
+          "sourceAddressPrefixes": [],
+          "destinationAddressPrefixes": []
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+        "apiVersion": "2020-04-01",
+        "name": "[concat(parameters('networkSecurityGroups_frontend_st_nsg_name'), '/https')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_frontend_st_nsg_name'))]"
+        ],
+        "properties": {
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "destinationPortRange": "443",
+          "sourceAddressPrefix": "*",
+          "destinationAddressPrefix": "*",
+          "access": "Allow",
+          "priority": 101,
+          "direction": "Inbound",
+          "sourcePortRanges": [],
+          "destinationPortRanges": [],
+          "sourceAddressPrefixes": [],
+          "destinationAddressPrefixes": []
+        }
+      },
+      {
+        "condition": "[equals(parameters('virtualNetworkNewOrExisting'),'new')]",
+        "type": "Microsoft.Network/virtualNetworks/subnets",
+        "apiVersion": "2020-04-01",
+        "name": "[concat(parameters('virtualNetworksName'), '/',parameters('virtualNetworksSubnetName') )]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworksName'))]"
+        ],
+        "properties": {
+          "addressPrefix": "[parameters('virtualNetworksSubnetAddressSize')]",
+          "serviceEndpoints": [
+            {
+              "service": "Microsoft.Sql",
+              "locations": [
+                "[parameters('location')]"
+              ]
+            }
+          ],
+          "delegations": [],
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        }
+      },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-04-01",
+            "name": "[parameters('nic_server_name')]",
+            "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_frontend_st_nsg_name'))]"
+          ],
+            "properties": {
+            "ipConfigurations": [
+                {
+                "name": "ipconfig1",
+                "properties": {
+                    "privateIPAllocationMethod": "Dynamic",
+                  "publicIPAddress": {
+                    "id": "[variables('serverPiPId')[parameters('serverPublicIPNewOrExisting')]]"
+                  },
+                  "subnet": {
+                    "id": "[variables('subnetId')]"
+                  },
+                    "primary": true,
+                    "privateIPAddressVersion": "IPv4"
+                }
+                }
+            ],
+            "dnsSettings": {
+                "dnsServers": []
+            },
+            "enableAcceleratedNetworking": false,
+            "enableIPForwarding": false,
+            "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_frontend_st_nsg_name'))]"
+            }
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-04-01",
+            "name": "[parameters('nic_modeler_name')]",
+            "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_frontend_st_nsg_name'))]"
+          ],
+            "properties": {
+            "ipConfigurations": [
+                {
+                "name": "ipconfig1",
+                "properties": {
+                    "privateIPAllocationMethod": "Dynamic",
+                  "publicIPAddress": {
+                    "id": "[variables('modelerPiPId')[parameters('modelerPublicIPNewOrExisting')]]"
+                  },
+                  "subnet": {
+                    "id": "[variables('subnetId')]"
+                  },
+                    "primary": true,
+                    "privateIPAddressVersion": "IPv4"
+                }
+                }
+            ],
+            "dnsSettings": {
+                "dnsServers": []
+            },
+            "enableAcceleratedNetworking": false,
+            "enableIPForwarding": false,
+            "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_frontend_st_nsg_name'))]"
+            }
+            }
+        }
+
+    ],
+
+    "outputs": {
+        "virtualNetworksAXrmId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworksName'), parameters('virtualNetworksSubnetName'))]"
+        }
+    }
+
+}

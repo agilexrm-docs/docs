@@ -1,0 +1,333 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "string"
+    },
+    "customer_deployment_name": {
+      "defaultValue": "contoso",
+      "type": "string"
+    },
+    "axrm_server_name": {
+      "defaultValue": "AXRM-SERVER-VM",
+      "type": "string"
+    },
+    "axrm_modeler_name": {
+      "defaultValue": "AXRM-MODELER-VM",
+      "type": "string"
+    },
+    "adminUsername": {
+      "defaultValue": "adminaxrm",
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "string"
+    },
+    "nic_server_name": {
+      "defaultValue": "axrm-server-nic",
+      "type": "string"
+    },
+    "nic_modeler_name": {
+      "defaultValue": "axrm-modeler-nic",
+      "type": "string"
+    },
+    "sqlConnectionString": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure DB SQL Connection String"
+      }
+    },
+    "sqlServerFQDN": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure DB SQL Connection String"
+      }
+    },
+    "vmSizeServer": {
+      "type": "string"
+    },
+    "vmSizeModeler": {
+      "type": "string"
+    },
+    "keyVaultId": {
+      "type": "string"
+    },
+    "certificateUrl": {
+      "type": "string"
+    },
+    "axrmStorageAccountName": {
+      "type": "string"
+    },
+    "axrmStorageAccountNewOrExisting": {
+      "defaultValue": "new",
+      "type": "string"
+    },
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
+      }
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+      }
+    }
+  },
+  "variables": {
+    "serverScriptFileName": "StartVM.ps1",
+    "serverScriptArgs": "[concat('-test \"',parameters('sqlConnectionString'), '\"','-apServiceAccountPassword \"',parameters('adminPassword'),'\" -regionNumber \"\" -poolNumber \"\" -redisAccessKey \"\" -azureServiceBusConnectionString \"\" -defaultGateway \"10.0.0.1\" -sqlServer \"',parameters('sqlServerFQDN'),'\" -sqlServerPort \"1433\" -appUrlSeparator \"-\" -domainUrl \"agilexrmonline.com\" -mainHostName \"','axrm',parameters('customer_deployment_name'),'\" -deploymentMode \"ST\" -deploymentType \"PrivateCloud\" -localUsersPassword \"Default@1\" -singleTenantCrmOrgUniqueId \"orgXXXXX\" -singleTenantCrmOrgFullUrl \"https://myorg.crm4.dynamics.com\"' )]",
+    "modelerScriptFileName": "Envision-PostInstallation-Tasks.ps1",
+    "modelerScriptArgs": "[concat('-deploymentType \"PrivateCloud\"')]"
+  },
+    "resources":[
+      {
+        "condition": "[equals(parameters('axrmStorageAccountNewOrExisting'), 'new')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "name": "[parameters('axrmStorageAccountName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "StorageV2",
+        "properties": {
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "virtualNetworkRules": [],
+            "ipRules": [],
+            "defaultAction": "Allow"
+          },
+          "supportsHttpsTrafficOnly": true,
+          "encryption": {
+            "services": {
+              "file": {
+                "keyType": "Account",
+                "enabled": true
+              },
+              "blob": {
+                "keyType": "Account",
+                "enabled": true
+              }
+            },
+            "keySource": "Microsoft.Storage"
+          },
+          "accessTier": "Hot"
+        }
+      },
+      {
+        "condition": "[equals(parameters('axrmStorageAccountNewOrExisting'), 'new')]",
+        "type": "Microsoft.Storage/storageAccounts/blobServices",
+        "apiVersion": "2019-06-01",
+        "name": "[concat(parameters('axrmStorageAccountName'), '/default')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('axrmStorageAccountName'))]"
+        ],
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "properties": {
+          "cors": {
+            "corsRules": []
+          },
+          "deleteRetentionPolicy": {
+            "enabled": false
+          }
+        }
+      },
+      {
+        "condition": "[equals(parameters('axrmStorageAccountNewOrExisting'), 'new')]",
+        "type": "Microsoft.Storage/storageAccounts/fileServices",
+        "apiVersion": "2019-06-01",
+        "name": "[concat(parameters('axrmStorageAccountName'), '/default')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('axrmStorageAccountName'))]"
+        ],
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "properties": {
+          "cors": {
+            "corsRules": []
+          }
+        }
+      },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-07-01",
+            "name": "[parameters('axrm_server_name')]",
+            "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/StorageAccounts',parameters('axrmStorageAccountName'))]"
+          ],
+            "properties": {
+              "hardwareProfile": {
+                "vmSize": "[parameters('vmSizeServer')]"
+              },
+              "osProfile": {
+                "computerName": "[parameters('axrm_server_name')]",
+                "adminUsername": "[parameters('adminUsername')]",
+                "adminPassword": "[parameters('adminPassword')]",
+                "secrets": [
+                  {
+                    "sourceVault": {
+                      "id": "[parameters('keyVaultId')]"
+                    },
+                    "vaultCertificates": [
+                      {
+                        "certificateUrl": "[parameters('certificateUrl')]",
+                        "certificateStore": "My"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "storageProfile": {
+                "imageReference": {
+                  "offer": "axrm-st-vm",
+                  "publisher": "agiledialogssl1603791911858",
+                  "sku": "p_axrm-server-st",
+                  "version": "latest"
+                },
+                "osDisk": {
+                  "osType": "Windows",
+                  "createOption": "fromImage",
+                  "caching": "ReadWrite"
+                },
+                "dataDisks": []
+              },
+              "networkProfile": {
+                "networkInterfaces": [
+                  {
+                    "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nic_server_name'))]",
+                    "properties": {
+                      "primary": true
+                    }
+                  }
+                ]
+              },
+              "diagnosticsProfile": {
+                "bootDiagnostics": {
+                  "enabled": true,
+                  "storageUri": "[concat('https://', parameters('axrmStorageAccountName'), '.blob.core.windows.net/')]"
+                }
+              }
+            },
+            "resources": [
+              {
+                "type": "extensions",
+                "name": "configScript",
+                "apiVersion": "2020-06-01",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                  "[parameters('axrm_server_name')]"
+                ],
+                "properties": {
+                  "publisher": "Microsoft.Compute",
+                  "type": "CustomScriptExtension",
+                  "typeHandlerVersion": "1.9",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {
+                    "fileUris": [
+                      "[uri(parameters('_artifactsLocation'), concat('scripts/',  concat(variables('serverScriptFileName'),parameters('_artifactsLocationSasToken'))))]"
+                    ]
+                  },
+                  "protectedSettings": {
+                    "commandToExecute": "[concat('echo powershell -ExecutionPolicy Unrestricted -file ./scripts/', variables('serverScriptFileName'), ' ', variables('serverScriptArgs'))]"
+                  }
+                }
+              }
+            ],
+            "plan": {
+                "name": "p_axrm-server-st",
+                "publisher": "agiledialogssl1603791911858",
+                "product": "axrm-st-vm"
+            }			
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-07-01",
+            "name": "[parameters('axrm_modeler_name')]",
+            "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/StorageAccounts',parameters('axrmStorageAccountName'))]"
+          ],
+            "properties": {
+              "hardwareProfile": {
+                "vmSize": "[parameters('vmSizeModeler')]"
+              },
+              "osProfile": {
+                "computerName": "[parameters('axrm_modeler_name')]",
+                "adminUsername": "[parameters('adminUsername')]",
+                "adminPassword": "[parameters('adminPassword')]"
+              },
+              "storageProfile": {
+                "imageReference": {
+                  "offer": "axrm-st-vm",
+                  "publisher": "agiledialogssl1603791911858",
+                  "sku": "p_axrm-modeler-st",
+                  "version": "latest"
+                },
+                "osDisk": {
+                  "osType": "Windows",
+                  "createOption": "fromImage",
+                  "caching": "ReadWrite"
+                },
+                "dataDisks": []
+              },
+              "networkProfile": {
+                "networkInterfaces": [
+                  {
+                    "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nic_modeler_name'))]",
+                    "properties": {
+                      "primary": true
+                    }
+                  }
+                ]
+              },
+              "diagnosticsProfile": {
+                "bootDiagnostics": {
+                  "enabled": true,
+                  "storageUri": "[concat('https://', parameters('axrmStorageAccountName'), '.blob.core.windows.net/')]"
+                }
+              }
+            },
+            "resources": [
+              {
+                "type": "extensions",
+                "name": "configScript",
+                "apiVersion": "2020-06-01",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                  "[parameters('axrm_modeler_name')]"
+                ],
+                "properties": {
+                  "publisher": "Microsoft.Compute",
+                  "type": "CustomScriptExtension",
+                  "typeHandlerVersion": "1.9",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {
+                    "fileUris": [
+                      "[uri(parameters('_artifactsLocation'), concat('scripts/', variables('modelerScriptFileName'), parameters('_artifactsLocationSasToken')))]"
+                    ]
+                  },
+                  "protectedSettings": {
+                    "commandToExecute": "[concat('echo powershell -ExecutionPolicy Unrestricted -file ./scripts/', variables('modelerScriptFileName'), ' ', variables('modelerScriptArgs'))]"
+                  }
+                }
+              }
+            ],
+            "plan": {
+                "name": "p_axrm-modeler-st",
+                "publisher": "agiledialogssl1603791911858",
+                "product": "axrm-st-vm"
+            }
+        }
+    ]
+}
