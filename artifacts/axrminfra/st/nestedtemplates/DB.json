@@ -1,0 +1,194 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+
+  "parameters": {
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "string"
+    },
+    "excludeDBCreation": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "sqlInstanceName": {
+      "defaultValue": "contoso",
+      "type": "string"
+    },
+    "adminPassword": {
+      "defaultValue": "",
+      "type": "string"
+    },
+    "singleAPDBSize": {
+      "type": "int"
+    },
+    "masterPortalDBSize": {
+      "type": "int"
+    },
+    "singlePortalDBSize": {
+      "type": "int"
+    },
+    "allowAzureIps": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "virtualNetworksAXrmId": {
+      "type": "string"
+    }
+  },
+
+    "variables":{
+        "servers_sql_axrmst_name": "[parameters('sqlInstanceName')]",
+        "adminUserName":"apservice",
+        "masterPortalDB":"MasterPortalDB",
+        "singlePortalDB":"SinglePortalDB",
+        "singleAPDB":"SingleAPDB",
+        "dbCollation":"SQL_Latin1_General_CP1_CI_AS",
+        "dbMaxSize":8589934592,
+        "minimumDbSize":1073741824,
+        "autoPauseDelay":60
+    },
+
+    "resources":[
+      {
+        "condition": "[not(parameters('excludeDBCreation'))]",
+        "type": "Microsoft.Sql/servers",
+        "apiVersion": "2019-06-01-preview",
+        "name": "[variables('servers_sql_axrmst_name')]",
+        "location": "[parameters('location')]",
+        "kind": "v12.0",
+        "properties": {
+          "administratorLogin": "[variables('adminUsername')]",
+          "administratorLoginPassword": "[parameters('adminPassword')]",
+
+          "version": "12.0",
+          "publicNetworkAccess": "Enabled"
+        },
+        "resources": [
+          {
+            "condition": "[and(equals(parameters('allowAzureIPs'), 'true'), not(parameters('excludeDBCreation')))]",
+            "apiVersion": "2015-05-01-preview",
+            "dependsOn": [
+              "[resourceId('Microsoft.Sql/servers', variables('servers_sql_axrmst_name'))]"
+            ],
+            "location": "[resourceGroup().location]",
+            "name": "AllowAllWindowsAzureIps",
+            "properties": {
+              "endIpAddress": "0.0.0.0",
+              "startIpAddress": "0.0.0.0"
+            },
+            "type": "firewallRules"
+          }
+        ]
+      },
+      {
+        "condition": "[not(parameters('excludeDBCreation'))]",
+        "type": "Microsoft.Sql/servers/databases",
+        "apiVersion": "2019-06-01-preview",
+        "name": "[concat(variables('servers_sql_axrmst_name'), '/', variables('singlePortalDB'))]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Sql/servers', variables('servers_sql_axrmst_name'))]"
+        ],
+        "sku": {
+          "name": "GP_S_Gen5",
+          "tier": "GeneralPurpose",
+          "family": "Gen5",
+          "capacity": 1
+        },
+        "kind": "v12.0,user,vcore,serverless",
+        "properties": {
+          "collation": "[variables('dbCollation')]",
+          "maxSizeBytes": "[mul(parameters('singlePortalDBSize'),variables('minimumDbSize'))]",
+          "catalogCollation": "[variables('dbCollation')]",
+          "zoneRedundant": false,
+          "readScale": "Disabled",
+          "readReplicaCount": 0,
+          "autoPauseDelay": "[variables('autoPauseDelay')]",
+          "storageAccountType": "GRS",
+          "minCapacity": 0.5
+        }
+      },
+      {
+        "condition": "[not(parameters('excludeDBCreation'))]",
+        "type": "Microsoft.Sql/servers/databases",
+        "apiVersion": "2019-06-01-preview",
+        "name": "[concat(variables('servers_sql_axrmst_name'), '/', variables('masterPortalDB'))]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Sql/servers', variables('servers_sql_axrmst_name'))]"
+        ],
+        "sku": {
+          "name": "GP_S_Gen5",
+          "tier": "GeneralPurpose",
+          "family": "Gen5",
+          "capacity": 1
+        },
+        "kind": "v12.0,user,vcore,serverless",
+        "properties": {
+          "collation": "[variables('dbCollation')]",
+          "maxSizeBytes": "[mul(parameters('masterPortalDBSize'),variables('minimumDbSize'))]",
+          "catalogCollation": "[variables('dbCollation')]",
+          "zoneRedundant": false,
+          "readScale": "Disabled",
+          "readReplicaCount": 0,
+          "autoPauseDelay": "[variables('autoPauseDelay')]",
+          "storageAccountType": "GRS",
+          "minCapacity": 0.5
+        }
+      },
+      {
+        "condition": "[not(parameters('excludeDBCreation'))]",
+        "type": "Microsoft.Sql/servers/databases",
+        "apiVersion": "2019-06-01-preview",
+        "name": "[concat(variables('servers_sql_axrmst_name'), '/', variables('singleAPDB'))]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Sql/servers', variables('servers_sql_axrmst_name'))]"
+        ],
+        "sku": {
+          "name": "GP_S_Gen5",
+          "tier": "GeneralPurpose",
+          "family": "Gen5",
+          "capacity": 1
+        },
+        "kind": "v12.0,user,vcore,serverless",
+        "properties": {
+          "collation": "[variables('dbCollation')]",
+          "maxSizeBytes": "[mul(parameters('singleAPDBSize'),variables('minimumDbSize'))]",
+          "catalogCollation": "[variables('dbCollation')]",
+          "zoneRedundant": false,
+          "readScale": "Disabled",
+          "readReplicaCount": 0,
+          "autoPauseDelay": "[variables('autoPauseDelay')]",
+          "storageAccountType": "GRS",
+          "minCapacity": 0.5
+        }
+      },
+      {
+        "condition": "[not(parameters('excludeDBCreation'))]",
+        "type": "Microsoft.Sql/servers/virtualNetworkRules",
+        "apiVersion": "2015-05-01-preview",
+        "name": "[concat(variables('servers_sql_axrmst_name'), '/axrmstVnetRule')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Sql/servers', variables('servers_sql_axrmst_name'))]"
+        ],
+        "properties": {
+          "virtualNetworkSubnetId": "[concat(parameters('virtualNetworksAXrmId'))]",
+          "ignoreMissingVnetServiceEndpoint": false
+        }
+      }	
+    ],
+
+  "outputs": {
+    "sqlConnectionString": {
+      "type": "string",
+      "value": "[if(not(parameters('excludeDBCreation')),concat('Data Source=tcp:', reference(variables('servers_sql_axrmst_name')).fullyQualifiedDomainName, ',1433;Initial Catalog=',variables('singleAPDB'),';UserId=',variables('adminUserName'),'@',variables('servers_sql_axrmst_name'),';Password=',parameters('adminPassword'),';') ,'')]"
+    },
+    "sqlServerFQDN": {
+      "type": "string",
+      "value": "[if(not(parameters('excludeDBCreation')), concat(reference(variables('servers_sql_axrmst_name')).fullyQualifiedDomainName),'')]"
+    }
+
+  }
+}
