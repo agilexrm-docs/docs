@@ -70,7 +70,7 @@ Languages will not be available until translations are imported into model and p
 
 ## RTL Support
 
-AgileDialogs provides support for RTL (Right to Left) languages.
+AgileDialogs provides support for **RTL** (Right to Left) languages.
 
 ![](../media/AgileDialogsLocalization/AgileDialogsLocalization_05.png)
 

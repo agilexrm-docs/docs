@@ -4,18 +4,18 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 
 ![](../media/AgileDialogsDesignGuide/InternetDialogTask_01.png)
 
-> **NOTE**: This activity can only be used in an AgileXRM process template. It
+> **NOTE**: This activity can only be used in an **AgileXRM** process template. It
 cannot be used in AgileDialogs templates.
 
 The activity creates a manual task that is completed when a Dialog is completed.
-The dialog is presented to the external user in the Portal. The AgileXRM process
+The dialog is presented to the external user in the Portal. The **AgileXRM** process
 will continue when the dialog is completed. If the dialog is canceled, a process
 variable called *DialogCanceled* is set to *true.* This variable can be used to
 take decisions in the process.
 
 ## Configuration
 
-The configuration is the same as the AgileXRM Manual Task shape; the only
+The configuration is the same as the **AgileXRM** Manual Task shape; the only
 difference is that there is a *Dialog* property instead of a *Form* property.
 
 ### Dialog property

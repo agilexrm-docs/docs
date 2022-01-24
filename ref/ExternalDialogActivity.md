@@ -4,7 +4,7 @@ __[Home](/) --> [Reference](/ref) --> External Dialog Activity__
 
 ![External Dialog Activity](media/ExternalDialogActivity.png)
 
-This shape is used in AgileXRM processes (not in AgileDialogs models) and will 
+This shape is used in **AgileXRM** processes (not in AgileDialogs models) and will 
 create a custom type of Dynamics365/CDS Activity with an associated AgileDialog.
 
 Created activity can be assigned to a external user of Dynamics365/CDS platform.

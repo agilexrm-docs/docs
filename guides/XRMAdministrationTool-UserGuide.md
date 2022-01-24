@@ -3,40 +3,40 @@ __[Home](/) --> AgileXRM Administration tool__
 # AgileXRM Administration tool
 
 
-The **AgileXRM** administration tool allows you to manage the AgileXRM configuration and how Dymanics CRM entities and tasks interact with AgileXRM processes.
+The **AgileXRM** administration tool allows you to manage the **AgileXRM** configuration and how Dymanics CRM entities and tasks interact with **AgileXRM** processes.
 
 ## Introduction
 
-AgileXRM administration tool is integrated inside Dynamics CRM. In order to launch AgileXRM administration tool navigate to `Settings` > `Agile XRM - Administration`.
+**AgileXRM** administration tool is integrated inside Dynamics CRM. In order to launch **AgileXRM** administration tool navigate to `Settings` > `Agile XRM - Administration`.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide01.png)
 
-First time execute AgileXRM Administration tool is needed set administration URL in order to launch the application.
+First time execute **AgileXRM** Administration tool is needed set administration URL in order to launch the application.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide02.png)
 
-Once previous steps are done, AgileXRM administration tool is shown.
+Once previous steps are done, **AgileXRM** administration tool is shown.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide03.png)
 
 ### Enable / Disable entities
 
-This section allows enable/disable AgileXRM deep integration for Dynamics CRM Entities.
+This section allows enable/disable **AgileXRM** deep integration for Dynamics CRM Entities.
 
-Dynamics CRM entities must be enabled in order to allow AgileXRM deep integration. To enable a CRM entity for AgileXRM deep integration simply choose the entity from entities list and click on `Apply changes to entites` button. When an entity is going to be enabled, the selected row is shown with green background color. 
+Dynamics CRM entities must be enabled in order to allow **AgileXRM** deep integration. To enable a CRM entity for **AgileXRM** deep integration simply choose the entity from entities list and click on `Apply changes to entites` button. When an entity is going to be enabled, the selected row is shown with green background color. 
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide04.png)
 
-> **Note:** Only enabled CRM entities can be used as `MainEntity` for AgileXRM process.   
+> **Note:** Only enabled CRM entities can be used as `MainEntity` for **AgileXRM** process.   
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide04_01.png)
 
-When a Dynamics CRM entity is enabled for AgileXRM deep integration, many features and customizations are enabled for each entity. These features are explained below.
+When a Dynamics CRM entity is enabled for **AgileXRM** deep integration, many features and customizations are enabled for each entity. These features are explained below.
 
 **Command bar integration**: Enabled entities has `Run process` and `Start AgileDialog` buttons in its command bar.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide07.png)
 
-These buttons allows executing AgileXRM and AgileDialogs process by launch new window with available proccess list.
+These buttons allows executing **AgileXRM** and AgileDialogs process by launch new window with available proccess list.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide12.png)
 
@@ -56,7 +56,7 @@ Also, Enabled entities has `Run process` and `Start AgileDialog` buttons in its 
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide09.png)
 
-**Workflow integration**: Enabled entitites has Dynamics CRM Workflows full integration, by this way Dynamics CRM Entities can trigger AgileXRM process when records are created or modified.
+**Workflow integration**: Enabled entitites has Dynamics CRM Workflows full integration, by this way Dynamics CRM Entities can trigger **AgileXRM** process when records are created or modified.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide14.png)
 
@@ -68,29 +68,29 @@ It is possible to enable / disable multiple entities at same time
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide06.png)
 
-`Update enable entities` button allows update Dynamics CRM customizations when new version of AgileXRM product is installed.
+`Update enable entities` button allows update Dynamics CRM customizations when new version of **AgileXRM** product is installed.
 
 ### Enable / Disable Activities
 
-This section allows enable/disable AgileXRM deep integration for Dynamics CRM activities.
+This section allows enable/disable **AgileXRM** deep integration for Dynamics CRM activities.
 
-Dynamics CRM activities must be enabled in order to allow AgileXRM deep integration. To enable a Dynamics CRM Activity for AgileXRM deep integration simply choose the activity from activities list and click on  `Apply changes to activities` button. When an activity is going to be enabled, the selected row is shown with green background color.
+Dynamics CRM activities must be enabled in order to allow **AgileXRM** deep integration. To enable a Dynamics CRM Activity for **AgileXRM** deep integration simply choose the activity from activities list and click on  `Apply changes to activities` button. When an activity is going to be enabled, the selected row is shown with green background color.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide20.png)
 
 The process to enable / disable a Dynamics CRM Activity is equal to Activities process.
 
-When a Dynamics CRM activity is enabled for AgileXRM deep integration, many features and customizations are enabled for each activity. These features are explained below.
+When a Dynamics CRM activity is enabled for **AgileXRM** deep integration, many features and customizations are enabled for each activity. These features are explained below.
 
-**Activities integration**: Enabled Dynamics CRM Activities can run AgileDialogs process and pages within Dynamics CRM actity form. Also, Dynamics CRM activities can be completed from AgileXRM or AgileDialogs process.
+**Activities integration**: Enabled Dynamics CRM Activities can run AgileDialogs process and pages within Dynamics CRM actity form. Also, Dynamics CRM activities can be completed from **AgileXRM** or AgileDialogs process.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide11.png)
 
-`Update enable activities` button allows update Dynamics CRM customizations when new version of AgileXRM product is installed.
+`Update enable activities` button allows update Dynamics CRM customizations when new version of **AgileXRM** product is installed.
 
 ### Manage AgileXRM settings
 
-This section allows to manage AgileXRM settings and configuration.
+This section allows to manage **AgileXRM** settings and configuration.
 
 ![](media/XRMAdministrationToolUserGuide/XRMAdministrationToolUserGuide30.png)
 

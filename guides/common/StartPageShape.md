@@ -6,7 +6,7 @@ __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md)
 
 This shape allows to show an AgileDialog Page without creating a process instance until this activity is completed.
 
-This shape is only usable in AgileDialogs. It cannot be used in AgileXRM
+This shape is only usable in AgileDialogs. It cannot be used in **AgileXRM**
 processes.
 
 The Start Page can only be placed immediately after the Start shape.

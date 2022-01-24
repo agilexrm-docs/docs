@@ -2,7 +2,7 @@ __[Home](/) --> How to enable/disable a CDS entity/ task to execute AgileXRM pro
 
 # How to enable/disable a CDS entity/ task to execute AgileXRM process
 
-Before execute an AgileXRM process againts entity, it needed enable the entity.
+Before execute an **AgileXRM** process againts entity, it needed enable the entity.
 
 Only enabled entities will be available to select as process MAIN ENTITY.
 
@@ -11,7 +11,7 @@ Only enabled entities will be available to select as process MAIN ENTITY.
 Settings and unde AgilrXRM item group, Administration
 ![](media/EnableDisableEntities_01.png)
 
-AgileXRM administration tool is shown. Each entity displays its display and logical names.
+**AgileXRM** administration tool is shown. Each entity displays its display and logical names.
 Entities which are currently enabled are marked with a check mark at left side. 
 ![](media/EnableDisableEntities_02.png)
 

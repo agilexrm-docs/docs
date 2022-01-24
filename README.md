@@ -1,6 +1,6 @@
 # AgileXRM Documentation
 
-Welcome to the AgileXRM documentation repository!
+Welcome to the **AgileXRM** documentation repository!
 
 Please feel free to go to the GitHub repository and create an issue to discuss it.
 
@@ -13,8 +13,8 @@ Please feel free to go to the GitHub repository and create an issue to discuss i
 
 Topics currently in this repository's scope:
 
-- Introduction to AgileXRM Concepts
-- General AgileXRM Guides
+- Introduction to **AgileXRM** Concepts
+- General **AgileXRM** Guides
 - Reference documentation
 - How to
 
@@ -28,7 +28,7 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 
 ## General AgileXRM Guides
 
-- [Quick Start Guide](guides/Quick-Start.md): Create your first process and dialog to experience the ease and power of AgileXRM
+- [Quick Start Guide](guides/Quick-Start.md): Create your first process and dialog to experience the ease and power of **AgileXRM**
 - [AgileDialogs User Guide](guides/AgileDialogs-UserGuide.md)
 - [AgileDialogs Design Guide](guides/AgileDialogs-DesignGuide.md)
 - [Process Manager User Guide](guides/ProcessManager-UserGuide.md)
@@ -76,7 +76,7 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [XRM Connection Window](guides/common/XRMConnectionWindow.md)
 - [AgileDialogs Security](guides/common/AgileDialogsSecurity.md)
 - [AgileDialogs Localization](guides/common/AgileDialogsLocalization.md)
-- [AgileDialogs Localization - Deprecated](guides/common/Localization.md)
+<!-- - [AgileDialogs Localization - Deprecated](guides/common/Localization.md) -->
 - [Hosting AgileDialogs inside a Portal](guides/common/HostingAgileDialogsInsidePortal.md) Needs update
 - [Customizing Look and Feel](guides/common/CustomizingLookAndFeel.md) Needs update
 - [AgileDialogs Breadcrumbs](guides/common/Breadcrumbs.md)

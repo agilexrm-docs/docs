@@ -95,18 +95,18 @@ Once the option is selected a new window is shown to choose the document source 
 
 > Disabled icons means that there is no any Access Token defined. Global AccessToken must be created from Administration Portal.
 
-Once document source is selected, the next screen allows to select the document to be shown. Can choose an static document or dynamic one. A dynamic path to document means that we use AgileXRM process variables to define the path to document.
+Once document source is selected, the next screen allows to select the document to be shown. Can choose an static document or dynamic one. A dynamic path to document means that we use **AgileXRM** process variables to define the path to document.
 
 ![](../media/AgileDialogsDesignGuide/Iframe_22_00.png)
 
 To end configure the control we must provide these data:
 
 - **Global Access Token**: The access token to use to retrieve the document. Choose one available Global Access Token from dropdown.
-  > For ShapePoint, Global Access Token must be defined with *SiteCollection* URL. We can override the site collection URL value at runtime with an AgileXRM variable.
+  > For ShapePoint, Global Access Token must be defined with *SiteCollection* URL. We can override the site collection URL value at runtime with an **AgileXRM** variable.
   > Leave the field empty to use the URL value defined in Global Access Token.
   
-- **Site**: This option is only available if document source is SharePoint. Indicates the SharePoint site. Also can use AgileXRM variables.
-- **Library**: This option is only available if document source is SharePoint. Indicates the SharePoint library. Also can use AgileXRM variables.
+- **Site**: This option is only available if document source is SharePoint. Indicates the SharePoint site. Also can use **AgileXRM** variables.
+- **Library**: This option is only available if document source is SharePoint. Indicates the SharePoint library. Also can use **AgileXRM** variables.
 - **Path**: The document path. Could be an static or dynamic path value. 
 	For static paths, we can use the folder viewer to show the content of selected folder.
 

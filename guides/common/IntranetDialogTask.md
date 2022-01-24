@@ -5,11 +5,11 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 
 ![](../media/AgileDialogsDesignGuide/IntranetDialogTask_01.png)
 
-> **NOTE**: This activity can only be used in an AgileXRM process template. It
+> **NOTE**: This activity can only be used in an **AgileXRM** process template. It
 cannot be used in AgileDialogs templates.
 
 The activity creates a CRM Process Task that is completed when the Dialog is
-completed. The AgileXRM process will continue when the dialog is completed. If
+completed. The **AgileXRM** process will continue when the dialog is completed. If
 the dialog is canceled, a process variable called *DialogCanceled* is set to
 *true.* This variable can be used to take decisions in the process.
 
@@ -17,7 +17,7 @@ The dialog can be consumed by non-CRM users from say SharePoint or other portal.
 
 ## Configuration
 
-The configuration is the same as the AgileXRM Manual Task shape; the only
+The configuration is the same as the **AgileXRM** Manual Task shape; the only
 difference is that there is a *Dialog* property instead of a *Form* property.
 
 ### Dialog property

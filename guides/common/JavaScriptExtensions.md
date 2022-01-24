@@ -299,16 +299,14 @@ to the user. Successful validations must return an empty string.
 In order to subscribe to validation events add this code:
 
 ```javascript
-   DialogsEngine.addCustomValidation(<control>, <key>, <function>,<message>);
+   DialogsEngine.addCustomValidation( <key>,<control>, <function>,<message>);
 ```
 
 > Where:
-> -   Key, is the validation key, can be any a unique string to identify the
-    validation.
-> -   Control, is the value of `ValueVariable` parameter in the target control to apply
-    the custom validation.
-> -   handler is the function with the validation.
-> -   Message is the error message to be show if validation fail.
+> -   Key, is the validation key, can be any a unique string to identify the validation.
+> -   Control, is the value of `ValueVariable` parameter in the target control to apply the custom validation.
+> -   handler, is the function with the validation. If validation fails, this function must return a non empty string. If validation success, return an empty string.
+> -  [Optional] Message,  is the error message to be show if validation fail. If this parameter is ommited, the return of `handler` parameter will shown as error message.
 
 Example:
 
@@ -1352,7 +1350,7 @@ DialogsEngine.filterSelection("MyGridControl",true);
 
 ### Resume an unfinished previous Process 
 
-AgileXRM gives us the possibility of picking up a process inside our current
+**AgileXRM** gives us the possibility of picking up a process inside our current
 form, needing a unique identifier. This is really useful for continuing
 unfinished processes that we need to work with and resume.
 

@@ -11,7 +11,7 @@ using the *Configure* button.
 XRMGrid control can populate its items from one of these values:
 
 -   XRM: XRMGrid control populates its items from the results of XRM query.
--   JSON: XRMGrid control populates its items from AgileXRM variable which contains a JSON value.
+-   JSON: XRMGrid control populates its items from **AgileXRM** variable which contains a JSON value.
 -   REST: XRMGrid control populates its items performing a REST call and getting its elements from the response of REST service.
 
 
@@ -91,7 +91,7 @@ and configuration in the *Columns* tab:
  ![](../media/AgileDialogsDesignGuide/XRMGridControl_09.png)<br>
 When multiple selection is allowed, the values selected by the user are stored
 in the *ValueVariable* and *DisplayVariable* separated by semicolons. This
-format can be used in other AgileXRM shapes like *Update Entity (Multi)*.<br>
+format can be used in other **AgileXRM** shapes like *Update Entity (Multi)*.<br>
 When multiple values are selected in XRM Grid control , selected values can be
 located in different grid pages depending of the user selection. We can filter
 selected data clicking the filter button of XRM Grid control placed at bottom

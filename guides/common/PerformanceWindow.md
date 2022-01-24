@@ -12,7 +12,7 @@ By using **Performance Window** process modeller can define which activities wil
 Also, when any **AgileXRM** activity is executed consumes server resources. 
 When an activity invokes extenal resource the activity thread is running until the remote resource responses. Process modeller can configure this behavior using *Performance Window* in order to perform the activity work in asyncronous mode.
 
-In order to launch perfomance window, use the *Performance* button placed on *AgileXRM* ribbon.
+In order to launch perfomance window, use the *Performance* button placed on **AgileXRM** ribbon.
 
 ![](../media/AgileDialogsDesignGuide/PerformanceWindow_01.png)
 

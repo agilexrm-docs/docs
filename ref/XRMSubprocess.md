@@ -4,7 +4,7 @@ __[Home](/) --> [Reference](/ref) --> XRM SubProcess__
 
 ![XRM SubProcess](media/XRMSubProcess.png)
 
-When entered, this AgileShape will initiate another AgileXRM process instance as
+When entered, this AgileShape will initiate another **AgileXRM** process instance as
 a sub-process.
 
 This functionality is useful for breaking complex processes to more manageable

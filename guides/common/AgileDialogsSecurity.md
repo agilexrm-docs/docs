@@ -3,14 +3,14 @@ __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md)
 # AgileDialogs Security
 
 Configuring permissions for AgileDialogs works like configuring permissions for
-AgileXRM processes. When a Dialog is deployed to server the modeler can
+**AgileXRM** processes. When a Dialog is deployed to server the modeler can
 configure permissions using the same mechanism.
 
 ![](../media/AgileDialogsDesignGuide/AgileDialogsSecurity_01.png)
 
-Process permission can be managed using Process Security button in AgileXRM Ribbon.
+Process permission can be managed using Process Security button in **AgileXRM** Ribbon.
 
-Runtime Permissions have the same configuration options as for AgileXRM processes
+Runtime Permissions have the same configuration options as for **AgileXRM** processes
 
 ![](../media/AgileDialogsDesignGuide/AgileDialogsSecurity_02.png)
 

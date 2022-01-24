@@ -21,10 +21,10 @@ Requirements are kept in line with Dynamics 365 CE (CRM) System Requirements as 
 
 <https://docs.microsoft.com/en-us/dynamics365/customerengagement/on-premises/deploy/system-requirements-required-technologies>
 
-AgileXRM supports **Microsoft Dataverse (formerly Common Data Service - CDS) of Power Platform** as 
+**AgileXRM** supports **Microsoft Dataverse (formerly Common Data Service - CDS) of Power Platform** as 
 well as any Apps built on top of Dyn365/Dataverse like **Microsoft Project Online**.
 
-AgileXRM currently *does not* support Dynamics 365 for Operations or Finance and Business Central.
+**AgileXRM** currently *does not* support Dynamics 365 for Operations or Finance and Business Central.
 
 ## Deployment Options
 
@@ -46,8 +46,8 @@ These are the different Deplyment Options that are supported:
 
 ### AgileXRM in Public Cloud (A-Shared)
 
-This is a tenant in a multi-tenant shared AgileXRM Online pool.
-One AgileXRM tenant can support any number of Dynamics 365 CE Online organizations and/or 
+This is a tenant in a multi-tenant shared **AgileXRM** Online pool.
+One **AgileXRM** tenant can support any number of Dynamics 365 CE Online organizations and/or 
 Dataverse/CDS Environments, as long as these are in the same Azure Region.
 It is possible to connect to client's on-premise legacy systems via Azure AD Application Proxy.
 
@@ -56,7 +56,7 @@ It is possible to connect to client's on-premise legacy systems via Azure AD App
 
 ### AgileXRM in Public Cloud (B-Dedicated)
 
-This is a single tenant in a dedicated AgileXRM Online environment. Nothing is shared with any other client.
+This is a single tenant in a dedicated **AgileXRM** Online environment. Nothing is shared with any other client.
 This can support any number of Dynamics 365 CE organizations (both installed or Online) and/or 
 Dataverse/CDS Environments, as long as these are in the same Azure Region.
 It is possible to connect to client's on-premise systems via Azure AD Application Proxy or Private VPN.
@@ -66,7 +66,7 @@ It is possible to connect to client's on-premise systems via Azure AD Applicatio
 
 ### Integration Requirements (Options A and B)
 
-In order to integrate the AgileXRM Tenant with the client's Dynamics/Dataverse environment, the following are needed:
+In order to integrate the **AgileXRM** Tenant with the client's Dynamics/Dataverse environment, the following are needed:
 
 - Give Consent by an Azure AD Administrator at the Azure Tenant level by clicking on the following consent links:
   * Services App ([consent link](https://login.microsoftonline.com/common/oauth2/authorize?response_type=code&client_id=19e4137f-55ae-4dbf-9fbc-e386bbf36304&resource=https%3A%2F%2Fgraph.windows.net&redirect_uri=https%3A%2F%2Fpool400.agilexrmonline.com%2FAgileDialogs%2fConsentDone.aspx&prompt=admin_consent))
@@ -83,13 +83,13 @@ In order to integrate the AgileXRM Tenant with the client's Dynamics/Dataverse e
     | Email address | support@agilexrm.com                      |
     | Security Role | System Administrator                      |
 
-  * Import AgileXRM Solution & configure
-  * Enable selected Tables (Entities) and Activities to be used with AgileXRM
-  * Add AgileXRM Full License to Users that are going to use AgileXRM 
+  * Import **AgileXRM** Solution & configure
+  * Enable selected Tables (Entities) and Activities to be used with **AgileXRM**
+  * Add **AgileXRM** Full License to Users that are going to use **AgileXRM** 
 
 ## Server Requirements for Deployment Options C, D, E and F
 
-AgileXRM is very flexible in that it can be installed on one single server for smaller
+**AgileXRM** is very flexible in that it can be installed on one single server for smaller
 deployments or distributed in a High Availibility (HA) cluster for large deployments, including ScaleSets. The
 components easily scale out. The information here applies to both physical
 machines as well as virtual machines. VMs can also be in public Cloud like Azure
@@ -98,23 +98,23 @@ Virtual Machine support, please see Support for Virtualization Technologies furt
 
 ### AgileXRM in Client Azure VM (Options C and D)
 
-This is when AgileXRM is installed in client's Azure subscription. 
-There is an option that AgileXRM manages the environment as a Managed Service or the client 
+This is when **AgileXRM** is installed in client's Azure subscription. 
+There is an option that **AgileXRM** manages the environment as a Managed Service or the client 
 maintains the environment themselves. 
 This can support any number of Dynamics 365 CE organizations and/or 
 Dataverse/CDS Environments, as long as these are in the same Azure Region. 
 It is possible to connect to client's on-premise legacy systems via Azure AD Application Proxy or Private VPN.
 
 ![](media/SystemRequirements_03.png)
-> **Figure 3**. AgileXRM in Client Azure VMs
+> **Figure 3**. **AgileXRM** in Client Azure VMs
 
 #### Azure Resource Requirements (Options C and D)
 
 The following Azure resources will be required:
 - Virtual Network
 - Network Interface Card
-- VMs for AgileXRM Server 
-- VM for AgileXRM Modeler 
+- VMs for **AgileXRM** Server 
+- VM for **AgileXRM** Modeler 
 - SQL Azure for 4 DBs 
 - Storage Account
 - Public IP
@@ -129,7 +129,7 @@ Also need:
 ### AgileXRM Server Requirements
 
 This section provides detailed information about the specific optimal system
-requirements for an AgileXRM  server, where all server components are
+requirements for an **AgileXRM**  server, where all server components are
 installed in one server:
 
 | Feature            | Requirements               |
@@ -145,7 +145,7 @@ In Azure VM Size terminology:
 
 #### AgileXRM Server Installation Prerequisites 
 
-In all AgileXRM Servers (64-bit only):
+In all **AgileXRM** Servers (64-bit only):
  
 1.	**Create a Domain User** to be used as a service account (i.e. non-expiring password).<br>
     This user will also be used during the installation process, so it should be allowed to logon to the 
@@ -249,9 +249,9 @@ requirements for the Envision component of.
 ## Support for Virtualization Technologies
 
 
-AgileXRM is committed to fully supporting running on virtualization
-technologies. AgileXRM supports both physical server machines as well as
-virtual machines. AgileXRM recommends **Windows Server® Hyper-V™**,
+**AgileXRM** is committed to fully supporting running on virtualization
+technologies. **AgileXRM** supports both physical server machines as well as
+virtual machines. **AgileXRM** recommends **Windows Server® Hyper-V™**,
 however other Microsoft and non-Microsoft virtualization products are also
 supported as discussed in the link below:
 

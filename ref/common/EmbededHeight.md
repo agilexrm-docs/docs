@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()
 
 ### EmbededHeight property
 
-Indicates the height in pixels of the AgileXRM frame inside the CRM Form
+Indicates the height in pixels of the **AgileXRM** frame inside the CRM Form
 
 ## Disclaimer of warranty
 

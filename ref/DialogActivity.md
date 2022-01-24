@@ -4,11 +4,11 @@ __[Home](/) --> [Reference](/ref) --> Dialog Activity__
 
 ![Dialog Activity](media/DialogActivity.png)
 
-This shape is used in AgileXRM processes (not in AgileDialogs models) and can
+This shape is used in **AgileXRM** processes (not in AgileDialogs models) and can
 create any type of CRM Activity with an associated AgileDialog.
 
 > **NOTE**: The chosen Activity Type should have previously been Enabled in
-AgileXRM Administration.
+**AgileXRM** Administration.
 
 When the activity is opened in CRM, the AgileDialog starts for the user to
 interact with.

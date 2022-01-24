@@ -2,7 +2,7 @@ __[Home](/) --> AgileXRM Import/Export Utility__
 
 # AgileXRM Import/Export Utility
 
-The **AgileXRM** Import/Export utility allows move AgileXRM process templates from one environment to other easily.
+The **AgileXRM** Import/Export utility allows move **AgileXRM** process templates from one environment to other easily.
 
 ![](media/AgileXRMExportImportGuide/AgileXRMExportImportGuide_00.png)
 

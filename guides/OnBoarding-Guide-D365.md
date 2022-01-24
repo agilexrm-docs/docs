@@ -1,7 +1,7 @@
 # AgileXRM OnBoarding Guide
 
 ## I need a Trial Dynamics 365 CE Org or CDS Database
-**Note**: If you already have an available D365 Organization or CDS DB to test out AgileXRM on it, you can skip this section
+**Note**: If you already have an available D365 Organization or CDS DB to test out **AgileXRM** on it, you can skip this section
 1. Navigate to this [link](https://signup.microsoft.com/Signup?OfferId=bd569279-37f5-4f5c-99d0-425873bb9a4b&dl=DYN365_ENTERPRISE_PLAN1&Culture=en-us&Country=es&ali=1)
 2. Provide info. Make sure to select European Country
 
@@ -81,7 +81,7 @@
 
    ![](media/OnBoardingGuide/Onboarding-AgileXRM-ConsentPortal.PNG)
 
-7. Dialog Page to provide AgileXRM Onboarding Code
+7. Dialog Page to provide **AgileXRM** Onboarding Code
 
    ![](media/OnBoardingGuide/Onboarding-AgileXRM-CodeDialogPage.PNG)
 

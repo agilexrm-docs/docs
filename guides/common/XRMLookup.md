@@ -10,7 +10,7 @@ auto-complete feature to help user select a value.
 XRMLookup control can populate its items from one of these values:
 
 -   XRM: XRMLookup control populates its items from the results of XRM query.
--   JSON: XRMLookup control populates its items from AgileXRM variable which contains a JSON value.
+-   JSON: XRMLookup control populates its items from **AgileXRM** variable which contains a JSON value.
 -   REST: XRMLookup control populates its items performing a REST call and getting its elements from the response of REST service.
 
 XRMLookup control has the *MinLength* property that allows users to set the numberX

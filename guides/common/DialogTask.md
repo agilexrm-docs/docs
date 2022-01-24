@@ -5,10 +5,10 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 
 ![](../media/AgileDialogsDesignGuide/DialogTask_01.png)
 
-> **NOTE**: This activity can only be used in an AgileXRM process template. It
+> **NOTE**: This activity can only be used in an **AgileXRM** process template. It
 cannot be used in AgileDialogs templates.
 
-The shape creates a manual Task in CRM. The AgileXRM process will continue when
+The shape creates a manual Task in CRM. The **AgileXRM** process will continue when
 the CRM Task is Mark complete. The dialog is presented in an IFrame in CRM Task
 form. Let's illustrate the Dialog Task inner mechanics by showing an example:
 
@@ -35,7 +35,7 @@ form. Let's illustrate the Dialog Task inner mechanics by showing an example:
 
 ## Configuration
 
-The configuration is the same as the AgileXRM Manual Task shape; the only
+The configuration is the same as the **AgileXRM** Manual Task shape; the only
 difference is that there is a *Dialog* property instead of a *Form* property.
 
 ### Dialog property

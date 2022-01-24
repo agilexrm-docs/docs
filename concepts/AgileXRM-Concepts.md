@@ -107,7 +107,7 @@ AgileDialogs is fully customizable to your company branding.
 
 - Control Flow: when required, it is possible to jump back or forth within a process instance, 
   stop and resume it, and always maintaining full traceability.  
-- In-flight process migration: AgileXRM can run multiple versions of the same process at the 
+- In-flight process migration: **AgileXRM** can run multiple versions of the same process at the 
   same time and Process Manager can migrate a running process instance, or a selection of instances, 
   from one version to another. 
 

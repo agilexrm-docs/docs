@@ -9,7 +9,7 @@ This shape is used to launch a SubDialog.
 
 ## Configuration
 
-A SubDialog is similar to a sub-process in AgileXRM. SubDialogs always share the
+A SubDialog is similar to a sub-process in **AgileXRM**. SubDialogs always share the
 context with the parent dialog. They can be included anywhere in the parent
 dialog and multiple levels are allowed, so a SubDialog can contain other
 SubDialogs.

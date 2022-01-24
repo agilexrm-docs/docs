@@ -10,7 +10,7 @@ and set the data retrieved to page controls.
 XRM Search control can populate its items from one of these values:
 
 -   XRM: XRM Search control populates its items from the results of XRM query.
--   JSON: XRM Search control populates its items from AgileXRM variable which contains a JSON value.
+-   JSON: XRM Search control populates its items from **AgileXRM** variable which contains a JSON value.
 -   REST: XRM Search control populates its items performing a REST call and getting its elements from the response of REST service.
 
 

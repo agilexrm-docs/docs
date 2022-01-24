@@ -77,7 +77,7 @@ properties (bold, italic style for fonts, different font size, hyperlinks and
 many more features).
 
 Once the Email Template is configured, click ‘OK’ and it will be ready to be
-used on our template. AgileXRM shapes have some properties belonging to “Email
+used on our template. **AgileXRM** shapes have some properties belonging to “Email
 Notification” category, which can be attached to an Email Template.
 
 e.g. Given this process template diagram:
@@ -93,7 +93,7 @@ the desired template.
 ![](../media/EmailTemplateExampleEntryEmail.png)
 
 Lastly; There are certain shape whose functionality plays exactly as an email
-sender (Generic Email Activity, AgileXRM Email Activity). On those, just click
+sender (Generic Email Activity, **AgileXRM** Email Activity). On those, just click
 on its associated property to select the template to use for this shape on
 runtime (example for Generic Email Activity below):
 

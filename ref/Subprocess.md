@@ -14,7 +14,7 @@ reusability.
 It allows selecting any type of AgilePoint Process: **AgileXRM**, **AgileDialogs**,
 **Generic**, **SharePoint List**, **SharePoint Doc**.
 
-There are other AgileShapes that are better suited when calling an AgileXRM
+There are other AgileShapes that are better suited when calling an **AgileXRM**
 sub-process (namely the **[SubProcess](XRMSubProcess.md)** shape in *AgileXRM Automatic Activities*
 stencil) or an AgileDialog sub-process (namely **[SubDialog](SubDialog.md)** and
 **[Dialog Activity](DialogActivity.md)**).

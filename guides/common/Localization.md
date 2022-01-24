@@ -25,7 +25,7 @@ The elements that can be localized are:
 -   Display values for options, checkboxes and combos
 -   Question Tip (Description) and extended Help
 
-AgileDialogs localization is managed using Localization button in AgileXRM
+AgileDialogs localization is managed using Localization button in **AgileXRM**
 ribbon:
 
 ![](../media/AgileDialogsDesignGuide/Localization_01.png)

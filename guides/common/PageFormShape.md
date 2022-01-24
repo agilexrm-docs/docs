@@ -4,7 +4,7 @@ __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md)
 
 ![](../media/AgileDialogsDesignGuide/PageFormShape_01.png)
 
-This shape is only usable in AgileDialogs. It cannot be used in AgileXRM
+This shape is only usable in AgileDialogs. It cannot be used in **AgileXRM**
 processes.
 
 When a dialog is run, this shape presents a form to the user.

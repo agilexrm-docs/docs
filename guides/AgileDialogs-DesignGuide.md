@@ -32,8 +32,8 @@ AgileDialogs can be used for many purposes, for example:
 -   Create Surveys
 -   Create Tests & Exams
 
-AgileDialogs can be executed standalone, meaning the dialog is not part of an
-AgileXRM process, or they could be part of a business process, that is, the
+**AgileDialogs** can be executed standalone, meaning the dialog is not part of an
+**AgileXRM** process, or they could be part of a business process, that is, the
 execution of the dialog is a task assigned to an end-user.
 
 From the end-user's perspective, a dialog is a set of questions that he/she must
@@ -49,7 +49,7 @@ These are the basic concepts that an AgileDialog designer must know.
 
 An AgileDialog Model is a business process drawn and configured in Envision (MS
 Visio), used for "holding a conversation" with an end-user. This process is
-different from other AgileXRM processes, as all the tasks are executed
+different from other **AgileXRM** processes, as all the tasks are executed
 **synchronously** by the end-user; there are no task assignments or tasks lists
 involved.
 
@@ -255,16 +255,16 @@ the *XRM External Connector* stencil:
         In *CRM dialogs*, it is not possible go back to the parent dialog;
         limiting the end-user experience.
 
-4.  **[Dialog Task](common/DialogTask.md)**: is used in an AgileXRM Process (and not in an AgileDialog
+4.  **[Dialog Task](common/DialogTask.md)**: is used in an **AgileXRM** Process (and not in an AgileDialog
     model) as a Task for a Full User. Upon opening the task in CRM, the user is
     presented with the associated AgileDialog.
 
-5.  **[Intranet Dialog Task](common/IntranetDialogTask.md)**: is used in an AgileXRM Process as a Task for a
+5.  **[Intranet Dialog Task](common/IntranetDialogTask.md)**: is used in an **AgileXRM** Process as a Task for a
     Process Participant User. Upon opening the task in the Portal, the user is
     presented with the associated AgileDialog. The Task is *Completed* when the
     user completes the dialog.
 
-6.  **[Internet Dialog Task](common/InternetDialogTask.md)**: used in an AgileXRM Process (and not in an
+6.  **[Internet Dialog Task](common/InternetDialogTask.md)**: used in an **AgileXRM** Process (and not in an
     AgileDialog model) as a Task for an External User. Upon opening the task in
     the Portal, the user is presented with the associated AgileDialog. The Task
     is *Completed* when the user completes the dialog.

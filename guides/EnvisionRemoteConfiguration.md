@@ -15,7 +15,7 @@ This section defines how to create a RemoteApp connection  to **AgileXRM** Envis
 
 	![](media/EnvisionRemoteConfiguration/EnvisionRemoteConfiguration_01.png)
 
-- Configure a new remote app connection to AgileXRM Envision server:
+- Configure a new remote app connection to **AgileXRM** Envision server:
 	Connection URL value is: [https://envisiononline4a.autords.com/RDWeb/Feed/webfeed.aspx]()
 
 	![](media/EnvisionRemoteConfiguration/EnvisionRemoteConfiguration_02.png)
@@ -32,7 +32,7 @@ Once remote app connection is created, we strongly recommend create a desktop sh
 
 ## Connect to ENVISION RemoteApp
 
-RemoteApp will prompt if you trust in the application publisher. Choose "Connect" to launch AgileXRM Modeller - ENVISION.
+RemoteApp will prompt if you trust in the application publisher. Choose "Connect" to launch **AgileXRM** Modeller - ENVISION.
 
 ![](media/EnvisionRemoteConfiguration/EnvisionRemoteConfiguration_05.png)
 

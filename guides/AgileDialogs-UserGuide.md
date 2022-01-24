@@ -6,9 +6,9 @@ __[Home](/) --> AgileDialogs User Guide__
 
 ## Introduction
 
-This document describes the usage of AgileDialogs from end user's perspective.
+This document describes the usage of **AgileDialogs** from end user's perspective.
 
-With AgileDialogs Users can fill out dialogs to save information in Microsoft
+With **AgileDialogs** Users can fill out dialogs to save information in Microsoft
 Dynamics CRM or other systems.
 
 A dialog is a set of steps to be executed in a specific order as defined by the
@@ -27,7 +27,7 @@ An AgileDialog is a set of pages (forms) comprising of prompts and responses, to
 convey and get information from a user, using a flow modeled as a Business
 Process in MS Visio.
 
-AgileDialogs can be used for many purposes, for example:
+**AgileDialogs** can be used for many purposes, for example:
 
 -   Self-help guides
 
@@ -48,7 +48,7 @@ presented to the user using a web page.
 ## AgileDialogs concepts
 
 
-These are the basic concepts that an AgileDialogs user must know..
+These are the basic concepts that an **AgileDialogs** user must know..
 
 ### Page
 
@@ -241,13 +241,13 @@ group container, for functional and / or decorative purposes
 
   ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_26_02.png)
 
-- **[XRM Search control](common/XrmSearchControl.md)**: XRM Search control allows to perform a XRM FetchXML search in AgileDialogs page
+- **[XRM Search control](common/XrmSearchControl.md)**: XRM Search control allows to perform a XRM FetchXML search in **AgileDialogs** page
 and set the data retrieved to page controls.
 
 - **[Variable Control](common/VariableControl.md)**: Variable control allows to create process context variables.
 
 - **[Custom Control](common/WidgetControl.md)**: This type of question is for adding your own controls,
-    using AgileDialogs extension mechanisms
+    using **AgileDialogs** extension mechanisms
 
 Notes Container
 -
