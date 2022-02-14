@@ -1,0 +1,121 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "0.0.0.1",
+  "variables": {
+    "deploymentNameVN": "14CEEB61-0450-414F-9F44-96936B6D7991",
+    "deploymentNameVM": "14CEEB61-0450-414F-9F44-96936B6D7993",
+    "deploymentNameDB": "14CEEB61-0450-414F-9F44-96936B6D7992",
+    "nic_server_name": "axrm-server-nic",
+    "nic_modeler_name": "axrm-modeler-nic",
+    "networkSecurityGroups_frontend_st_nsg_name": "axrmfrontend-nsg"
+
+  },
+  "resources": [
+    {
+      "apiVersion": "2020-06-01",
+      "name": "pid-626323e5-6f3f-402b-be09-a835e781ef10-partnercenter",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
+      }
+    }, 
+    {
+      "apiVersion": "2019-03-01",
+      "name": "14CEEB61-0450-414F-9F44-96936B6D7991",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VN.json', parameters('_artifactsLocationSasToken')) )]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "location": { "value": "[parameters('location')]" },
+          "customer_deployment_name": { "value": "[parameters('customer_deployment_name')]" },
+          "networkSecurityGroups_frontend_st_nsg_name": { "value": "[variables('networkSecurityGroups_frontend_st_nsg_name')]" },
+          "publicIPAddresses_AXRM_SERVER_IP_name": { "value": "[parameters('publicIPAddresses_AXRM_SERVER_IP_name')]" },
+          "serverPublicIPResourceGroup": { "value": "[parameters('serverPublicIPResourceGroup')]" },
+          "serverPublicIPNewOrExisting": { "value": "[parameters('serverPublicIPNewOrExisting')]" },
+          "publicIPAddresses_AXRM_SERVER_IP_domainNameLabel": { "value": "[parameters('publicIPAddresses_AXRM_SERVER_IP_domainNameLabel')]" },
+          "publicIPAddresses_AXRM_MODELER_IP_name": { "value": "[parameters('publicIPAddresses_AXRM_MODELER_IP_name')]" },
+          "modelerPublicIPResourceGroup": { "value": "[parameters('modelerPublicIPResourceGroup')]" },
+          "modelerPublicIPNewOrExisting": { "value": "[parameters('modelerPublicIPNewOrExisting')]" },
+          "publicIPAddresses_AXRM_MODELER_IP_domainNameLabel": { "value": "[parameters('publicIPAddresses_AXRM_MODELER_IP_domainNameLabel')]" },
+          "nic_server_name": { "value": "[variables('nic_server_name')]" },
+          "nic_modeler_name": { "value": "[variables('nic_modeler_name')]" },
+          "virtualNetworksName": { "value": "[parameters('virtualNetworksName')]" },
+          "virtualNetworksResourceGroup": { "value": "[parameters('virtualNetworksResourceGroup')]" },
+          "virtualNetworkNewOrExisting": { "value": "[parameters('virtualNetworkNewOrExisting')]" },
+          "virtualNetworksAddressSize": { "value": "[parameters('virtualNetworksAddressSize')]" },
+          "virtualNetworksSubnetName": { "value": "[parameters('virtualNetworksSubnetName')]" },
+          "virtualNetworksSubnetAddressSize": { "value": "[parameters('virtualNetworksSubnetAddressSize')]" }
+        }
+      }
+    },
+    {
+      "apiVersion": "2019-03-01",
+      "name": "14CEEB61-0450-414F-9F44-96936B6D7992",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/DB.json', parameters('_artifactsLocationSasToken')) )]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "location": { "value": "[parameters('location')]" },
+          "excludeDBCreation": { "value": "[parameters('excludeDBCreation')]" },
+          "sqlInstanceName": { "value": "[parameters('sqlInstanceName')]" },
+          "adminPassword": { "value": "[parameters('adminPassword')]" },
+          "allowAzureIps": { "value": "[parameters('allowAzureIps')]" },
+          "singleAPDBSize": { "value": "[parameters('singleAPDBSize')]" },
+          "masterPortalDBSize": { "value": "[parameters('masterPortalDBSize')]" },
+          "singlePortalDBSize": { "value": "[parameters('singlePortalDBSize')]" },
+          "virtualNetworksAXrmId": { "value": "[reference(variables('deploymentNameVN')).outputs.virtualNetworksAXrmId.value]" }
+        }
+      }
+    },
+    {
+      "apiVersion": "2019-03-01",
+      "name": "14CEEB61-0450-414F-9F44-96936B6D7993",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VM.json', parameters('_artifactsLocationSasToken')) )]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "location": { "value": "[parameters('location')]" },
+          "customer_deployment_name": { "value": "[parameters('customer_deployment_name')]" },
+          "axrm_server_name": { "value": "[parameters('axrm_server_name')]" },
+          "axrm_modeler_name": { "value": "[parameters('axrm_modeler_name')]" },
+          "adminUsername": { "value": "[parameters('adminUsername')]" },
+          "adminPassword": { "value": "[parameters('adminPassword')]" },
+          "nic_server_name": { "value": "[variables('nic_server_name')]" },
+          "nic_modeler_name": { "value": "[variables('nic_modeler_name')]" },
+          "sqlConnectionString": { "value": "[reference(variables('deploymentNameDB')).outputs.sqlConnectionString.value]" },
+          "sqlServerFQDN": { "value": "[reference(variables('deploymentNameDB')).outputs.sqlServerFQDN.value]" },
+          "vmSizeServer": { "value": "[parameters('vmSizeServer')]" },
+          "vmSizeModeler": { "value": "[parameters('vmSizeModeler')]" },
+          "keyVaultId": { "value": "[parameters('keyVaultId')]" },
+          "certificateUrl": { "value": "[parameters('certificateUrl')]" },
+          "axrmStorageAccountName": { "value": "[parameters('axrmStorageAccountName')]" },
+          "axrmStorageAccountNewOrExisting": { "value": "[parameters('axrmStorageAccountNewOrExisting')]" },
+          "_artifactsLocation": { "value": "[parameters('_artifactsLocation')]" },
+          "_artifactsLocationSasToken": { "value": "[parameters('_artifactsLocationSasToken')]" }
+        }
+      },
+      "dependsOn": [
+        "[variables('deploymentNameDB')]"
+      ]
+    }
+  ],
+  "outputs": {
+  }
+}
