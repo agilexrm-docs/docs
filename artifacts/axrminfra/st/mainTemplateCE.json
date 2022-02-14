@@ -1,6 +1,194 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "0.0.0.1",
+ "parameters": {
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "string",
+      "metadata": {
+        "description": "Location for all resources",
+        "step": "GEN"
+      }
+    },
+    "customer_deployment_name": {
+      "defaultValue": "mycia",
+      "type": "string",
+      "metadata": {
+        "description": "Deployment name for customer: 'mycia'",
+        "step": "GEN"
+      }
+    },
+    "publicIPAddresses_AXRM_SERVER_IP_name": {
+      "defaultValue": "AXRM_SERVER-IP",
+      "type": "string",
+      "metadata": {
+        "description": "Public IP Address associated to Server VM",
+        "step": "VN"
+      }
+    },
+    "serverPublicIPResourceGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "Provides Resource Group where Server VM Public IP is"
+      }
+    },
+    "publicIPAddresses_AXRM_SERVER_IP_domainNameLabel": {
+      "type": "string",
+      "metadata": {
+        "description": "FQDN Label for AgileXRM Server VM",
+        "step": "VN"
+      }
+    },
+    "serverPublicIPNewOrExisting": {
+      "type": "string",
+      "metadata": {
+        "description": "Indicates whether Server VM Public IP already exists or needs to be created",
+        "step": "VN"
+      }
+    },
+    "publicIPAddresses_AXRM_MODELER_IP_name": {
+      "defaultValue": "AXRM_MODELER-IP",
+      "type": "string",
+      "metadata": {
+        "description": "Public IP Address associated to Modeler VM",
+        "step": "VN"
+      }
+    },
+    "modelerPublicIPResourceGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "Provides Resource Group where Modeler VM Public IP is"
+      }
+    },
+    "modelerPublicIPNewOrExisting": {
+      "type": "string",
+      "metadata": {
+        "description": "Indicates whether Modeler VM Public IP already exists or needs to be created",
+        "step": "VN"
+      }
+    },
+    "publicIPAddresses_AXRM_MODELER_IP_domainNameLabel": {
+      "type": "string",
+      "metadata": {
+        "description": "FQDN Label for AgileXRM Modeler VM",
+        "step": "VN"
+      }
+    },
+    "virtualNetworksName": {
+      "defaultValue": "AgileXRM-VN",
+      "type": "string",
+      "metadata": {
+        "description": "AgileXRM Virtual Network Name",
+        "step": "VN"
+      }
+    },
+    "virtualNetworkNewOrExisting": {
+      "type": "string",
+      "metadata": {
+        "description": "Boolean indicating whether the VNet is new or existing"
+      }
+    },
+    "virtualNetworksResourceGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "Resource Group where AgileXRM Virtual Network is deployed"
+      }
+    },
+    "axrm_server_name": {
+      "defaultValue": "AXRM-SERVER-VM",
+      "type": "string"
+    },
+    "axrm_modeler_name": {
+      "defaultValue": "AXRM-MODELER-VM",
+      "type": "string"
+    },
+    "adminUsername": {
+      "defaultValue": "adminaxrm",
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "string"
+    },
+    "allowAzureIps": {
+      "defaultValue": true,
+      "type": "bool"
+    },
+    "sqlConnectionString": {
+      "defaultValue": "",
+      "type": "string"
+    },
+    "virtualNetworksSubnetName": {
+      "defaultValue": "main",
+      "type": "string"
+    },
+    "virtualNetworksAddressSize": {
+      "defaultValue": "10.0.0.0/16",
+      "type": "string"
+    },
+    "virtualNetworksSubnetAddressSize": {
+      "defaultValue": "10.0.0.0/24",
+      "type": "string"
+    },
+    "vmSizeServer": {
+      "defaultValue": "Standard_B2ms",
+      "type": "string"
+    },
+    "vmSizeModeler": {
+      "defaultValue": "Standard_B2ms",
+      "type": "string"
+    },
+    "excludeDBCreation": {
+      "defaultValue": false,
+      "type": "bool"
+    },
+    "sqlInstanceName": {
+      "defaultValue": "sql-axrmcontoso",
+      "type": "string"
+    },
+    "singleAPDBSize": {
+      "defaultValue": 1,
+      "type": "int"
+    },
+    "masterPortalDBSize": {
+      "defaultValue": 1,
+      "type": "int"
+    },
+    "singlePortalDBSize": {
+      "defaultValue": 1,
+      "type": "int"
+    },
+    "keyVaultId": {
+      "type": "string"
+    },
+    "certificateUrl": {
+      "type": "string"
+    },
+    "axrmStorageAccountName": {
+      "type": "string"
+    },
+    "axrmStorageAccountNewOrExisting": {
+      "defaultValue": "new",
+      "type": "string"
+    },
+    "axrmStorageAccountType": {
+      "defaultValue": "Standard_LRS",
+      "type": "string"
+    },
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
+      },
+      "defaultValue": "[deployment().properties.templateLink.uri]"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+      },
+      "defaultValue": ""
+    }
+  },
   "variables": {
     "deploymentNameVN": "14CEEB61-0450-414F-9F44-96936B6D7991",
     "deploymentNameVM": "14CEEB61-0450-414F-9F44-96936B6D7993",
