@@ -233,6 +233,7 @@
     "accessPolicies": [
       {
         "tenantId": "[subscription().tenantId]",
+	      "objectId":"721d7029-4640-45c0-aa0f-1347c69c571b",
         "permissions": {
           "keys": [
             "encrypt", "decrypt", "wrapKey", "unwrapKey", "sign", "verify", "get", "list", "create", "update", "import",
