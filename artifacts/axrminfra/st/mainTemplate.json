@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "0.0.0.33",
-  "parameters": {
+  "contentVersion": "0.0.0.34",
+ "parameters": {
     "location": {
       "defaultValue": "[resourceGroup().location]",
       "type": "string",
@@ -160,6 +160,9 @@
     "keyVaultId": {
       "type": "string"
     },
+    "keyVaultName": {
+      "type": "string"
+    },
     "certificateUrl": {
       "type": "string"
     },
@@ -195,8 +198,9 @@
     "deploymentNameDB": "14CEEB61-0450-414F-9F44-96936B6D7992",
     "nic_server_name": "axrm-server-nic",
     "nic_modeler_name": "axrm-modeler-nic",
-    "networkSecurityGroups_frontend_st_nsg_name": "axrmfrontend-nsg"
-
+    "networkSecurityGroups_frontend_st_nsg_name": "axrmfrontend-nsg",
+	"adminPasswordSecretName":"axrmdep-adminpassword",
+	"adminPasswordValue":"[concat('AgileXRM@',uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
@@ -212,6 +216,17 @@
         }
       }
     }, 
+	{
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2021-04-01-preview",
+      "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
+      "properties": {
+        "value": "[variables('adminPasswordValue')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
+      ]
+    },
     {
       "apiVersion": "2019-03-01",
       "name": "14CEEB61-0450-414F-9F44-96936B6D7991",
@@ -264,7 +279,9 @@
           "singleAPDBSize": { "value": "[parameters('singleAPDBSize')]" },
           "masterPortalDBSize": { "value": "[parameters('masterPortalDBSize')]" },
           "singlePortalDBSize": { "value": "[parameters('singlePortalDBSize')]" },
-          "virtualNetworksAXrmId": { "value": "[reference(variables('deploymentNameVN')).outputs.virtualNetworksAXrmId.value]" }
+          "virtualNetworksAXrmId": { "value": "[reference(variables('deploymentNameVN')).outputs.virtualNetworksAXrmId.value]" },
+		  "keyVaultId": { "value": "[parameters('keyVaultId')]" },
+          "adminPasswordSecretName": { "value": "[variables('adminPasswordSecretName')]" }
         }
       }
     },
@@ -295,6 +312,7 @@
           "certificateUrl": { "value": "[parameters('certificateUrl')]" },
           "axrmStorageAccountName": { "value": "[parameters('axrmStorageAccountName')]" },
           "axrmStorageAccountNewOrExisting": { "value": "[parameters('axrmStorageAccountNewOrExisting')]" },
+          "adminPasswordSecretName": { "value": "[variables('adminPasswordSecretName')]" },
           "_artifactsLocation": { "value": "[parameters('_artifactsLocation')]" },
           "_artifactsLocationSasToken": { "value": "[parameters('_artifactsLocationSasToken')]" }
         }
