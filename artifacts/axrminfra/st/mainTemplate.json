@@ -222,10 +222,7 @@
       "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
       "properties": {
         "value": "[variables('adminPasswordValue')]"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
-      ]
+      }
     },
     {
       "apiVersion": "2019-03-01",
