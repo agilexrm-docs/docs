@@ -228,7 +228,27 @@
         	"family": "A",
         	"name": "Standard"
         	},
-	  "tenantId": "[subscription().tenantId]"
+	  "tenantId": "[subscription().tenantId]",
+		
+    "accessPolicies": [
+      {
+        "tenantId": "[subscription().tenantId]",
+        "permissions": {
+          "keys": [
+            "encrypt", "decrypt", "wrapKey", "unwrapKey", "sign", "verify", "get", "list", "create", "update", "import",
+            "delete", "backup", "restore", "recover", "purge"
+          ],
+          "secrets": [
+            "get", "list", "set", "delete", "backup", "restore", "recover", "purge"
+          ],
+          "certificates": [
+            "get", "list", "delete", "create", "import", "update",  "managecontacts", "getissuers", "listissuers",
+            "setissuers", "deleteissuers", "manageissuers", "recover", "purge"
+          ]
+        }
+      }
+    ]		
+		
   	}
  },
  {
