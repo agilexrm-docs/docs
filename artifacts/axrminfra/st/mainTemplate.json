@@ -320,7 +320,7 @@
 			"keyVault": {
 			  "id": "[parameters('keyVaultId')]"
 			},
-			"secretName": "[parameters('adminPasswordSecretName')]"
+			"secretName": "[variables('adminPasswordSecretName')]"
 		}
 	  }
         }
