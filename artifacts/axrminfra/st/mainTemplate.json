@@ -233,7 +233,7 @@
     "accessPolicies": [
       {
         "tenantId": "[subscription().tenantId]",
-	      "objectId":"721d7029-4640-45c0-aa0f-1347c69c571b",
+                                                                                                          "objectId":"721d7029-4640-45c0-aa0f-1347c69c571b",
         "permissions": {
           "keys": [
             "encrypt", "decrypt", "wrapKey", "unwrapKey", "sign", "verify", "get", "list", "create", "update", "import",
@@ -308,21 +308,12 @@
           "location": { "value": "[parameters('location')]" },
           "excludeDBCreation": { "value": "[parameters('excludeDBCreation')]" },
           "sqlInstanceName": { "value": "[parameters('sqlInstanceName')]" },
-          "adminPassword": { "value": "[parameters('adminPassword')]" },
+          "adminPassword": { "value": "[variables('adminPasswordValue')]" },
           "allowAzureIps": { "value": "[parameters('allowAzureIps')]" },
           "singleAPDBSize": { "value": "[parameters('singleAPDBSize')]" },
           "masterPortalDBSize": { "value": "[parameters('masterPortalDBSize')]" },
           "singlePortalDBSize": { "value": "[parameters('singlePortalDBSize')]" },
-          "virtualNetworksAXrmId": { "value": "[reference(variables('deploymentNameVN')).outputs.virtualNetworksAXrmId.value]" },
-		"administratorLoginPassword":
-		{
-		"reference": {
-			"keyVault": {
-			  "id": "[parameters('keyVaultId')]"
-			},
-			"secretName": "[variables('adminPasswordSecretName')]"
-		}
-	  }
+          "virtualNetworksAXrmId": { "value": "[reference(variables('deploymentNameVN')).outputs.virtualNetworksAXrmId.value]" }
         }
       }
     },
@@ -342,7 +333,7 @@
           "axrm_server_name": { "value": "[parameters('axrm_server_name')]" },
           "axrm_modeler_name": { "value": "[parameters('axrm_modeler_name')]" },
           "adminUsername": { "value": "[parameters('adminUsername')]" },
-          "adminPassword": { "value": "[parameters('adminPassword')]" },
+          "adminPassword": { "value": "[variables('adminPasswordValue')]" },
           "nic_server_name": { "value": "[variables('nic_server_name')]" },
           "nic_modeler_name": { "value": "[variables('nic_modeler_name')]" },
           "sqlConnectionString": { "value": "[reference(variables('deploymentNameDB')).outputs.sqlConnectionString.value]" },
@@ -353,7 +344,6 @@
           "certificateUrl": { "value": "[parameters('certificateUrl')]" },
           "axrmStorageAccountName": { "value": "[parameters('axrmStorageAccountName')]" },
           "axrmStorageAccountNewOrExisting": { "value": "[parameters('axrmStorageAccountNewOrExisting')]" },
-          "adminPasswordSecretName": { "value": "[variables('adminPasswordSecretName')]" },
           "_artifactsLocation": { "value": "[parameters('_artifactsLocation')]" },
           "_artifactsLocationSasToken": { "value": "[parameters('_artifactsLocationSasToken')]" }
         }
