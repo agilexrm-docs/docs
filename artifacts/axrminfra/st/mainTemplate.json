@@ -237,7 +237,7 @@
       "properties": {
         "value": "[variables('adminPasswordValue')]"
       },
-	"dependsOn":[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]
+	"dependsOn":["[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"]
     },
     {
       "apiVersion": "2019-03-01",
