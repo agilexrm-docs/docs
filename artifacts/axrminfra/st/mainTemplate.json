@@ -219,9 +219,9 @@
 
  {
         "type": "Microsoft.KeyVault/vaults",
-        "name": "parameters('keyVaultName')",
-        "apiVersion": "2015-06-01",
-        "location": "[resourceGroup().location]",
+        "name": "[parameters('keyVaultName')]",
+        "apiVersion": "2021-04-01-preview",
+        "location": "[parameters('location')]",
         "properties": {
    	     "sku": {
         	"family": "A",
