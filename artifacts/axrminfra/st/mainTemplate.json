@@ -227,7 +227,8 @@
    	     "sku": {
         	"family": "A",
         	"name": "Standard"
-        	}
+        	},
+	  "tenantId": "[subscription().tenantId]"
   	}
  },
  {
