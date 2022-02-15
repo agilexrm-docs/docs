@@ -216,13 +216,28 @@
         }
       }
     }, 
-	{
+
+ {
+        "type": "Microsoft.KeyVault/vaults",
+        "name": "parameters('keyVaultName')",
+        "apiVersion": "2015-06-01",
+        "location": "[resourceGroup().location]",
+        "properties": {
+   	     "sku": {
+        	"family": "A",
+        	"name": "Standard"
+        	},
+        "tenantId": "[subscription().tenantId]"
+  	}
+ },
+ {
       "type": "Microsoft.KeyVault/vaults/secrets",
       "apiVersion": "2021-04-01-preview",
       "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
       "properties": {
         "value": "[variables('adminPasswordValue')]"
-      }
+      },
+	"dependsOn":[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]
     },
     {
       "apiVersion": "2019-03-01",
