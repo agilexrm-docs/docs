@@ -64,6 +64,10 @@
       "defaultValue": "new",
       "type": "string"
     },
+    "adminPasswordSecretName": {
+      "defaultValue": "axrmdep-adminpassword",
+      "type": "string"
+    },
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
@@ -173,7 +177,13 @@
               "osProfile": {
                 "computerName": "[parameters('axrm_server_name')]",
                 "adminUsername": "[parameters('adminUsername')]",
-                "adminPassword": "[parameters('adminPassword')]",
+                "adminPassword": {
+				    "reference": {
+						"keyVault": {
+						  "id": "[parameters('keyVaultId')]"
+						},
+						"secretName": "[parameters('adminPasswordSecretName')]"
+				},
                 "secrets": [
                   {
                     "sourceVault": {

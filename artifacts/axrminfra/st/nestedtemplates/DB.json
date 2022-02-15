@@ -34,6 +34,12 @@
     },
     "virtualNetworksAXrmId": {
       "type": "string"
+    },
+    "adminPasswordSecretName": {
+      "type": "string"
+    },
+    "keyVaultId": {
+      "type": "string"
     }
   },
 
@@ -59,8 +65,14 @@
         "kind": "v12.0",
         "properties": {
           "administratorLogin": "[variables('adminUsername')]",
-          "administratorLoginPassword": "[parameters('adminPassword')]",
-
+          "administratorLoginPassword": 
+		  {
+				"reference": {
+					"keyVault": {
+					  "id": "[parameters('keyVaultId')]"
+					},
+					"secretName": "[parameters('adminPasswordSecretName')]"
+ 		  },
           "version": "12.0",
           "publicNetworkAccess": "Enabled"
         },
