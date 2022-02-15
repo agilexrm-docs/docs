@@ -15,9 +15,9 @@
       "defaultValue": "contoso",
       "type": "string"
     },
-    "administratorLoginPassword": {
+    "adminPassword": {
       "defaultValue": "",
-      "type": "secureString"
+      "type": "string"
     },
     "singleAPDBSize": {
       "type": "int"
@@ -59,7 +59,8 @@
         "kind": "v12.0",
         "properties": {
           "administratorLogin": "[variables('adminUsername')]",
-          "administratorLoginPassword":"[parameters('administratorLoginPassword')]",
+          "administratorLoginPassword": "[parameters('adminPassword')]",
+
           "version": "12.0",
           "publicNetworkAccess": "Enabled"
         },
