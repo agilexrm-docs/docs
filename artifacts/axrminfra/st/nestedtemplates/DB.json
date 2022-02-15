@@ -15,9 +15,9 @@
       "defaultValue": "contoso",
       "type": "string"
     },
-    "adminPassword": {
+    "administratorLoginPassword": {
       "defaultValue": "",
-      "type": "string"
+      "type": "secureString"
     },
     "singleAPDBSize": {
       "type": "int"
@@ -33,12 +33,6 @@
       "defaultValue": true
     },
     "virtualNetworksAXrmId": {
-      "type": "string"
-    },
-    "adminPasswordSecretName": {
-      "type": "string"
-    },
-    "keyVaultId": {
       "type": "string"
     }
   },
@@ -65,14 +59,7 @@
         "kind": "v12.0",
         "properties": {
           "administratorLogin": "[variables('adminUsername')]",
-          "administratorLoginPassword":{
-		"reference": {
-			"keyVault": {
-			  "id": "[parameters('keyVaultId')]"
-			},
-			"secretName": "[parameters('adminPasswordSecretName')]"
-		}
-	  },
+          "administratorLoginPassword":"[parameters('administratorLoginPassword')]",
           "version": "12.0",
           "publicNetworkAccess": "Enabled"
         },
