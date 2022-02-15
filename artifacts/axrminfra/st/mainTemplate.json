@@ -217,7 +217,8 @@
       }
     }, 
 
- {
+ {	
+	"id":"[parameters('keyVaultId')]",
         "type": "Microsoft.KeyVault/vaults",
         "name": "[parameters('keyVaultName')]",
         "apiVersion": "2021-04-01-preview",
