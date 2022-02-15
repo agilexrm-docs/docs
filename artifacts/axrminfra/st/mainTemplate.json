@@ -314,8 +314,15 @@
           "masterPortalDBSize": { "value": "[parameters('masterPortalDBSize')]" },
           "singlePortalDBSize": { "value": "[parameters('singlePortalDBSize')]" },
           "virtualNetworksAXrmId": { "value": "[reference(variables('deploymentNameVN')).outputs.virtualNetworksAXrmId.value]" },
-		  "keyVaultId": { "value": "[parameters('keyVaultId')]" },
-          "adminPasswordSecretName": { "value": "[variables('adminPasswordSecretName')]" }
+		"administratorLoginPassword":
+		{
+		"reference": {
+			"keyVault": {
+			  "id": "[parameters('keyVaultId')]"
+			},
+			"secretName": "[parameters('adminPasswordSecretName')]"
+		}
+	  }
         }
       }
     },
