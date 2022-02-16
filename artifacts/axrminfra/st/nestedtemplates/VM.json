@@ -1,98 +1,14 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "0.0.0.34",
- "parameters": {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
     "location": {
       "defaultValue": "[resourceGroup().location]",
-      "type": "string",
-      "metadata": {
-        "description": "Location for all resources",
-        "step": "GEN"
-      }
+      "type": "string"
     },
     "customer_deployment_name": {
-      "defaultValue": "mycia",
-      "type": "string",
-      "metadata": {
-        "description": "Deployment name for customer: 'mycia'",
-        "step": "GEN"
-      }
-    },
-    "publicIPAddresses_AXRM_SERVER_IP_name": {
-      "defaultValue": "AXRM_SERVER-IP",
-      "type": "string",
-      "metadata": {
-        "description": "Public IP Address associated to Server VM",
-        "step": "VN"
-      }
-    },
-    "serverPublicIPResourceGroup": {
-      "type": "string",
-      "metadata": {
-        "description": "Provides Resource Group where Server VM Public IP is"
-      }
-    },
-    "publicIPAddresses_AXRM_SERVER_IP_domainNameLabel": {
-      "type": "string",
-      "metadata": {
-        "description": "FQDN Label for AgileXRM Server VM",
-        "step": "VN"
-      }
-    },
-    "serverPublicIPNewOrExisting": {
-      "type": "string",
-      "metadata": {
-        "description": "Indicates whether Server VM Public IP already exists or needs to be created",
-        "step": "VN"
-      }
-    },
-    "publicIPAddresses_AXRM_MODELER_IP_name": {
-      "defaultValue": "AXRM_MODELER-IP",
-      "type": "string",
-      "metadata": {
-        "description": "Public IP Address associated to Modeler VM",
-        "step": "VN"
-      }
-    },
-    "modelerPublicIPResourceGroup": {
-      "type": "string",
-      "metadata": {
-        "description": "Provides Resource Group where Modeler VM Public IP is"
-      }
-    },
-    "modelerPublicIPNewOrExisting": {
-      "type": "string",
-      "metadata": {
-        "description": "Indicates whether Modeler VM Public IP already exists or needs to be created",
-        "step": "VN"
-      }
-    },
-    "publicIPAddresses_AXRM_MODELER_IP_domainNameLabel": {
-      "type": "string",
-      "metadata": {
-        "description": "FQDN Label for AgileXRM Modeler VM",
-        "step": "VN"
-      }
-    },
-    "virtualNetworksName": {
-      "defaultValue": "AgileXRM-VN",
-      "type": "string",
-      "metadata": {
-        "description": "AgileXRM Virtual Network Name",
-        "step": "VN"
-      }
-    },
-    "virtualNetworkNewOrExisting": {
-      "type": "string",
-      "metadata": {
-        "description": "Boolean indicating whether the VNet is new or existing"
-      }
-    },
-    "virtualNetworksResourceGroup": {
-      "type": "string",
-      "metadata": {
-        "description": "Resource Group where AgileXRM Virtual Network is deployed"
-      }
+      "defaultValue": "contoso",
+      "type": "string"
     },
     "axrm_server_name": {
       "defaultValue": "AXRM-SERVER-VM",
@@ -109,58 +25,33 @@
     "adminPassword": {
       "type": "string"
     },
-    "allowAzureIps": {
-      "defaultValue": true,
-      "type": "bool"
+    "nic_server_name": {
+      "defaultValue": "axrm-server-nic",
+      "type": "string"
+    },
+    "nic_modeler_name": {
+      "defaultValue": "axrm-modeler-nic",
+      "type": "string"
     },
     "sqlConnectionString": {
-      "defaultValue": "",
-      "type": "string"
+      "type": "string",
+      "metadata": {
+        "description": "Azure DB SQL Connection String"
+      }
     },
-    "virtualNetworksSubnetName": {
-      "defaultValue": "main",
-      "type": "string"
-    },
-    "virtualNetworksAddressSize": {
-      "defaultValue": "10.0.0.0/16",
-      "type": "string"
-    },
-    "virtualNetworksSubnetAddressSize": {
-      "defaultValue": "10.0.0.0/24",
-      "type": "string"
+    "sqlServerFQDN": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure DB SQL Connection String"
+      }
     },
     "vmSizeServer": {
-      "defaultValue": "Standard_B2ms",
       "type": "string"
     },
     "vmSizeModeler": {
-      "defaultValue": "Standard_B2ms",
       "type": "string"
-    },
-    "excludeDBCreation": {
-      "defaultValue": false,
-      "type": "bool"
-    },
-    "sqlInstanceName": {
-      "defaultValue": "sql-axrmcontoso",
-      "type": "string"
-    },
-    "singleAPDBSize": {
-      "defaultValue": 1,
-      "type": "int"
-    },
-    "masterPortalDBSize": {
-      "defaultValue": 1,
-      "type": "int"
-    },
-    "singlePortalDBSize": {
-      "defaultValue": 1,
-      "type": "int"
     },
     "keyVaultId": {
-      "type": "string"
-    },
-    "keyVaultName": {
       "type": "string"
     },
     "certificateUrl": {
@@ -173,167 +64,270 @@
       "defaultValue": "new",
       "type": "string"
     },
-    "axrmStorageAccountType": {
-      "defaultValue": "Standard_LRS",
-      "type": "string"
-    },
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
         "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
-      },
-      "defaultValue": "[deployment().properties.templateLink.uri]"
+      }
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
       "metadata": {
         "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
-      },
-      "defaultValue": ""
+      }
     }
   },
   "variables": {
-    "deploymentNameVN": "14CEEB61-0450-414F-9F44-96936B6D7991",
-    "deploymentNameVM": "14CEEB61-0450-414F-9F44-96936B6D7993",
-    "deploymentNameDB": "14CEEB61-0450-414F-9F44-96936B6D7992",
-    "nic_server_name": "axrm-server-nic",
-    "nic_modeler_name": "axrm-modeler-nic",
-    "networkSecurityGroups_frontend_st_nsg_name": "axrmfrontend-nsg",
-	"adminPasswordSecretName":"axrmdep-adminpassword",
-	"adminPasswordValue":"[concat('AgileXRM@',uniqueString(resourceGroup().id))]"
+    "serverScriptFileName": "StartVM.ps1",
+    "serverScriptArgs": "[concat('-test \"',parameters('sqlConnectionString'), '\"','-apServiceAccountPassword \"',parameters('adminPassword'),'\" -regionNumber \"\" -poolNumber \"\" -redisAccessKey \"\" -azureServiceBusConnectionString \"\" -defaultGateway \"10.0.0.1\" -sqlServer \"',parameters('sqlServerFQDN'),'\" -sqlServerPort \"1433\" -appUrlSeparator \"-\" -domainUrl \"agilexrmonline.com\" -mainHostName \"','axrm',parameters('customer_deployment_name'),'\" -deploymentMode \"ST\" -deploymentType \"PrivateCloud\" -localUsersPassword \"Default@1\" -singleTenantCrmOrgUniqueId \"orgXXXXX\" -singleTenantCrmOrgFullUrl \"https://myorg.crm4.dynamics.com\"' )]",
+    "modelerScriptFileName": "Envision-PostInstallation-Tasks.ps1",
+    "modelerScriptArgs": "[concat('-deploymentType \"PrivateCloud\"')]"
   },
-  "resources": [
-    {
-      "apiVersion": "2020-06-01",
-      "name": "pid-626323e5-6f3f-402b-be09-a835e781ef10-partnercenter",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    }, 
-	{
-        "apiVersion": "2017-05-10",
-        "name": "nestedTemplate",
-        "type": "Microsoft.Resources/deployments",
-        "resourceGroup": "[parameters('keyVaultId')]",
-        "subscriptionId": "subscription().tenantId",
+    "resources":[
+      {
+        "condition": "[equals(parameters('axrmStorageAccountNewOrExisting'), 'new')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "name": "[parameters('axrmStorageAccountName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "StorageV2",
         "properties": {
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {},
-                "resources": [
-                    {
-					  "type": "Microsoft.KeyVault/vaults/secrets",
-					  "apiVersion": "2021-04-01-preview",
-					  "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
-					  "properties": {
-						"value": "[variables('adminPasswordValue')]"
-					  }
-                    }
-                ]
-            }
-        }
-    },
-    {
-      "apiVersion": "2019-03-01",
-      "name": "14CEEB61-0450-414F-9F44-96936B6D7991",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VN.json', parameters('_artifactsLocationSasToken')) )]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "location": { "value": "[parameters('location')]" },
-          "customer_deployment_name": { "value": "[parameters('customer_deployment_name')]" },
-          "networkSecurityGroups_frontend_st_nsg_name": { "value": "[variables('networkSecurityGroups_frontend_st_nsg_name')]" },
-          "publicIPAddresses_AXRM_SERVER_IP_name": { "value": "[parameters('publicIPAddresses_AXRM_SERVER_IP_name')]" },
-          "serverPublicIPResourceGroup": { "value": "[parameters('serverPublicIPResourceGroup')]" },
-          "serverPublicIPNewOrExisting": { "value": "[parameters('serverPublicIPNewOrExisting')]" },
-          "publicIPAddresses_AXRM_SERVER_IP_domainNameLabel": { "value": "[parameters('publicIPAddresses_AXRM_SERVER_IP_domainNameLabel')]" },
-          "publicIPAddresses_AXRM_MODELER_IP_name": { "value": "[parameters('publicIPAddresses_AXRM_MODELER_IP_name')]" },
-          "modelerPublicIPResourceGroup": { "value": "[parameters('modelerPublicIPResourceGroup')]" },
-          "modelerPublicIPNewOrExisting": { "value": "[parameters('modelerPublicIPNewOrExisting')]" },
-          "publicIPAddresses_AXRM_MODELER_IP_domainNameLabel": { "value": "[parameters('publicIPAddresses_AXRM_MODELER_IP_domainNameLabel')]" },
-          "nic_server_name": { "value": "[variables('nic_server_name')]" },
-          "nic_modeler_name": { "value": "[variables('nic_modeler_name')]" },
-          "virtualNetworksName": { "value": "[parameters('virtualNetworksName')]" },
-          "virtualNetworksResourceGroup": { "value": "[parameters('virtualNetworksResourceGroup')]" },
-          "virtualNetworkNewOrExisting": { "value": "[parameters('virtualNetworkNewOrExisting')]" },
-          "virtualNetworksAddressSize": { "value": "[parameters('virtualNetworksAddressSize')]" },
-          "virtualNetworksSubnetName": { "value": "[parameters('virtualNetworksSubnetName')]" },
-          "virtualNetworksSubnetAddressSize": { "value": "[parameters('virtualNetworksSubnetAddressSize')]" }
-        }
-      }
-    },
-    {
-      "apiVersion": "2019-03-01",
-      "name": "14CEEB61-0450-414F-9F44-96936B6D7992",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/DB.json', parameters('_artifactsLocationSasToken')) )]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "location": { "value": "[parameters('location')]" },
-          "excludeDBCreation": { "value": "[parameters('excludeDBCreation')]" },
-          "sqlInstanceName": { "value": "[parameters('sqlInstanceName')]" },
-          "adminPassword": { "value": "[variables('adminPasswordValue')]" },
-          "allowAzureIps": { "value": "[parameters('allowAzureIps')]" },
-          "singleAPDBSize": { "value": "[parameters('singleAPDBSize')]" },
-          "masterPortalDBSize": { "value": "[parameters('masterPortalDBSize')]" },
-          "singlePortalDBSize": { "value": "[parameters('singlePortalDBSize')]" },
-          "virtualNetworksAXrmId": { "value": "[reference(variables('deploymentNameVN')).outputs.virtualNetworksAXrmId.value]" }
-        }
-      }
-    },
-    {
-      "apiVersion": "2019-03-01",
-      "name": "14CEEB61-0450-414F-9F44-96936B6D7993",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VM.json', parameters('_artifactsLocationSasToken')) )]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "location": { "value": "[parameters('location')]" },
-          "customer_deployment_name": { "value": "[parameters('customer_deployment_name')]" },
-          "axrm_server_name": { "value": "[parameters('axrm_server_name')]" },
-          "axrm_modeler_name": { "value": "[parameters('axrm_modeler_name')]" },
-          "adminUsername": { "value": "[parameters('adminUsername')]" },
-          "adminPassword": { "value": "[variables('adminPasswordValue')]" },
-          "nic_server_name": { "value": "[variables('nic_server_name')]" },
-          "nic_modeler_name": { "value": "[variables('nic_modeler_name')]" },
-          "sqlConnectionString": { "value": "[reference(variables('deploymentNameDB')).outputs.sqlConnectionString.value]" },
-          "sqlServerFQDN": { "value": "[reference(variables('deploymentNameDB')).outputs.sqlServerFQDN.value]" },
-          "vmSizeServer": { "value": "[parameters('vmSizeServer')]" },
-          "vmSizeModeler": { "value": "[parameters('vmSizeModeler')]" },
-          "keyVaultId": { "value": "[parameters('keyVaultId')]" },
-          "certificateUrl": { "value": "[parameters('certificateUrl')]" },
-          "axrmStorageAccountName": { "value": "[parameters('axrmStorageAccountName')]" },
-          "axrmStorageAccountNewOrExisting": { "value": "[parameters('axrmStorageAccountNewOrExisting')]" },
-          "_artifactsLocation": { "value": "[parameters('_artifactsLocation')]" },
-          "_artifactsLocationSasToken": { "value": "[parameters('_artifactsLocationSasToken')]" }
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "virtualNetworkRules": [],
+            "ipRules": [],
+            "defaultAction": "Allow"
+          },
+          "supportsHttpsTrafficOnly": true,
+          "encryption": {
+            "services": {
+              "file": {
+                "keyType": "Account",
+                "enabled": true
+              },
+              "blob": {
+                "keyType": "Account",
+                "enabled": true
+              }
+            },
+            "keySource": "Microsoft.Storage"
+          },
+          "accessTier": "Hot"
         }
       },
-      "dependsOn": [
-        "[variables('deploymentNameDB')]"
-      ]
-    }
-  ],
-  "outputs": {
-  }
+      {
+        "condition": "[equals(parameters('axrmStorageAccountNewOrExisting'), 'new')]",
+        "type": "Microsoft.Storage/storageAccounts/blobServices",
+        "apiVersion": "2019-06-01",
+        "name": "[concat(parameters('axrmStorageAccountName'), '/default')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('axrmStorageAccountName'))]"
+        ],
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "properties": {
+          "cors": {
+            "corsRules": []
+          },
+          "deleteRetentionPolicy": {
+            "enabled": false
+          }
+        }
+      },
+      {
+        "condition": "[equals(parameters('axrmStorageAccountNewOrExisting'), 'new')]",
+        "type": "Microsoft.Storage/storageAccounts/fileServices",
+        "apiVersion": "2019-06-01",
+        "name": "[concat(parameters('axrmStorageAccountName'), '/default')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('axrmStorageAccountName'))]"
+        ],
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "properties": {
+          "cors": {
+            "corsRules": []
+          }
+        }
+      },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-07-01",
+            "name": "[parameters('axrm_server_name')]",
+            "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/StorageAccounts',parameters('axrmStorageAccountName'))]"
+          ],
+            "properties": {
+              "hardwareProfile": {
+                "vmSize": "[parameters('vmSizeServer')]"
+              },
+              "osProfile": {
+                "computerName": "[parameters('axrm_server_name')]",
+                "adminUsername": "[parameters('adminUsername')]",
+                "adminPassword": "[parameters('adminPassword')]",
+                "secrets": [
+                  {
+                    "sourceVault": {
+                      "id": "[parameters('keyVaultId')]"
+                    },
+                    "vaultCertificates": [
+                      {
+                        "certificateUrl": "[parameters('certificateUrl')]",
+                        "certificateStore": "My"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "storageProfile": {
+                "imageReference": {
+                  "offer": "axrm-st-vm",
+                  "publisher": "agiledialogssl1603791911858",
+                  "sku": "p_axrm-server-st",
+                  "version": "latest"
+                },
+                "osDisk": {
+                  "osType": "Windows",
+                  "createOption": "fromImage",
+                  "caching": "ReadWrite"
+                },
+                "dataDisks": []
+              },
+              "networkProfile": {
+                "networkInterfaces": [
+                  {
+                    "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nic_server_name'))]",
+                    "properties": {
+                      "primary": true
+                    }
+                  }
+                ]
+              },
+              "diagnosticsProfile": {
+                "bootDiagnostics": {
+                  "enabled": true,
+                  "storageUri": "[concat('https://', parameters('axrmStorageAccountName'), '.blob.core.windows.net/')]"
+                }
+              }
+            },
+            "resources": [
+              {
+                "type": "extensions",
+                "name": "configScript",
+                "apiVersion": "2020-06-01",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                  "[parameters('axrm_server_name')]"
+                ],
+                "properties": {
+                  "publisher": "Microsoft.Compute",
+                  "type": "CustomScriptExtension",
+                  "typeHandlerVersion": "1.9",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {
+                    "fileUris": [
+                      "[uri(parameters('_artifactsLocation'), concat('scripts/',  concat(variables('serverScriptFileName'),parameters('_artifactsLocationSasToken'))))]"
+                    ]
+                  },
+                  "protectedSettings": {
+                    "commandToExecute": "[concat('echo powershell -ExecutionPolicy Unrestricted -file ./scripts/', variables('serverScriptFileName'), ' ', variables('serverScriptArgs'))]"
+                  }
+                }
+              }
+            ],
+            "plan": {
+                "name": "p_axrm-server-st",
+                "publisher": "agiledialogssl1603791911858",
+                "product": "axrm-st-vm"
+            }			
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-07-01",
+            "name": "[parameters('axrm_modeler_name')]",
+            "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/StorageAccounts',parameters('axrmStorageAccountName'))]"
+          ],
+            "properties": {
+              "hardwareProfile": {
+                "vmSize": "[parameters('vmSizeModeler')]"
+              },
+              "osProfile": {
+                "computerName": "[parameters('axrm_modeler_name')]",
+                "adminUsername": "[parameters('adminUsername')]",
+                "adminPassword": "[parameters('adminPassword')]"
+              },
+              "storageProfile": {
+                "imageReference": {
+                  "offer": "axrm-st-vm",
+                  "publisher": "agiledialogssl1603791911858",
+                  "sku": "p_axrm-modeler-st",
+                  "version": "latest"
+                },
+                "osDisk": {
+                  "osType": "Windows",
+                  "createOption": "fromImage",
+                  "caching": "ReadWrite"
+                },
+                "dataDisks": []
+              },
+              "networkProfile": {
+                "networkInterfaces": [
+                  {
+                    "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nic_modeler_name'))]",
+                    "properties": {
+                      "primary": true
+                    }
+                  }
+                ]
+              },
+              "diagnosticsProfile": {
+                "bootDiagnostics": {
+                  "enabled": true,
+                  "storageUri": "[concat('https://', parameters('axrmStorageAccountName'), '.blob.core.windows.net/')]"
+                }
+              }
+            },
+            "resources": [
+              {
+                "type": "extensions",
+                "name": "configScript",
+                "apiVersion": "2020-06-01",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                  "[parameters('axrm_modeler_name')]"
+                ],
+                "properties": {
+                  "publisher": "Microsoft.Compute",
+                  "type": "CustomScriptExtension",
+                  "typeHandlerVersion": "1.9",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {
+                    "fileUris": [
+                      "[uri(parameters('_artifactsLocation'), concat('scripts/', variables('modelerScriptFileName'), parameters('_artifactsLocationSasToken')))]"
+                    ]
+                  },
+                  "protectedSettings": {
+                    "commandToExecute": "[concat('echo powershell -ExecutionPolicy Unrestricted -file ./scripts/', variables('modelerScriptFileName'), ' ', variables('modelerScriptArgs'))]"
+                  }
+                }
+              }
+            ],
+            "plan": {
+                "name": "p_axrm-modeler-st",
+                "publisher": "agiledialogssl1603791911858",
+                "product": "axrm-st-vm"
+            }
+        }
+    ]
 }
