@@ -216,50 +216,31 @@
         }
       }
     }, 
-
- {	
-	"id":"[parameters('keyVaultId')]",
-        "type": "Microsoft.KeyVault/vaults",
-        "name": "[parameters('keyVaultName')]",
-        "apiVersion": "2021-04-01-preview",
-        "location": "[parameters('location')]",
+	{
+        "apiVersion": "2017-05-10",
+        "name": "nestedTemplate",
+        "type": "Microsoft.Resources/deployments",
+        "resourceGroup": "[parameters('keyVaultId')]",
+        "subscriptionId": "subscription().tenantId",
         "properties": {
-   	     "sku": {
-        	"family": "A",
-        	"name": "Standard"
-        	},
-	  "tenantId": "[subscription().tenantId]",
-		
-    "accessPolicies": [
-      {
-        "tenantId": "[subscription().tenantId]",
-                                                                                                          "objectId":"721d7029-4640-45c0-aa0f-1347c69c571b",
-        "permissions": {
-          "keys": [
-            "encrypt", "decrypt", "wrapKey", "unwrapKey", "sign", "verify", "get", "list", "create", "update", "import",
-            "delete", "backup", "restore", "recover", "purge"
-          ],
-          "secrets": [
-            "get", "list", "set", "delete", "backup", "restore", "recover", "purge"
-          ],
-          "certificates": [
-            "get", "list", "delete", "create", "import", "update",  "managecontacts", "getissuers", "listissuers",
-            "setissuers", "deleteissuers", "manageissuers", "recover", "purge"
-          ]
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "variables": {},
+                "resources": [
+                    {
+					  "type": "Microsoft.KeyVault/vaults/secrets",
+					  "apiVersion": "2021-04-01-preview",
+					  "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
+					  "properties": {
+						"value": "[variables('adminPasswordValue')]"
+					  }
+                    }
+                ]
+            }
         }
-      }
-    ]		
-		
-  	}
- },
- {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2021-04-01-preview",
-      "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
-      "properties": {
-        "value": "[variables('adminPasswordValue')]"
-      },
-	"dependsOn":["[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"]
     },
     {
       "apiVersion": "2019-03-01",
