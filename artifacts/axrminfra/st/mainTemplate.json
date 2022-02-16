@@ -221,7 +221,7 @@
         "name": "nestedTemplate",
         "type": "Microsoft.Resources/deployments",
         "resourceGroup": "[resourceGroup().name]",
-        "subscriptionId": "[subscription().tenantId]",
+        "subscriptionId": "[subscription().subscriptionId]",
         "properties": {
             "mode": "Incremental",
             "template": {
