@@ -221,7 +221,7 @@
         "name": "nestedTemplate",
         "type": "Microsoft.Resources/deployments",
         "resourceGroup": "[parameters('keyVaultId')]",
-        "subscriptionId": "subscription().tenantId",
+        "subscriptionId": "[subscription().tenantId]",
         "properties": {
             "mode": "Incremental",
             "template": {
