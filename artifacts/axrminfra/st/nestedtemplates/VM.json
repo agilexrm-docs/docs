@@ -64,6 +64,15 @@
       "defaultValue": "new",
       "type": "string"
     },
+    "d365OrgUniqueName": {
+      "type": "string"
+    },
+    "d365OrgUrl": {
+      "type": "string"
+    },
+    "azPortalAppSecretKey": {
+      "type": "string"
+    },
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
@@ -79,7 +88,7 @@
   },
   "variables": {
     "serverScriptFileName": "StartVM.ps1",
-    "serverScriptArgs": "[concat('-test \"',parameters('sqlConnectionString'), '\"','-apServiceAccountPassword \"',parameters('adminPassword'),'\" -regionNumber \"\" -poolNumber \"\" -redisAccessKey \"\" -azureServiceBusConnectionString \"\" -defaultGateway \"10.0.0.1\" -sqlServer \"',parameters('sqlServerFQDN'),'\" -sqlServerPort \"1433\" -appUrlSeparator \"-\" -domainUrl \"agilexrmonline.com\" -mainHostName \"','axrm',parameters('customer_deployment_name'),'\" -deploymentMode \"ST\" -deploymentType \"PrivateCloud\" -localUsersPassword \"Default@1\" -singleTenantCrmOrgUniqueId \"orgXXXXX\" -singleTenantCrmOrgFullUrl \"https://myorg.crm4.dynamics.com\"' )]",
+    "serverScriptArgs": "[concat('-test \"',parameters('sqlConnectionString'), '\"','-apServiceAccountPassword \"',parameters('adminPassword'),'\" -regionNumber \"\" -poolNumber \"\" -redisAccessKey \"\" -azureServiceBusConnectionString \"\" -defaultGateway \"10.0.0.1\" -sqlServer \"',parameters('sqlServerFQDN'),'\" -sqlServerPort \"1433\" -appUrlSeparator \"-\" -domainUrl \"agilexrmonline.com\" -mainHostName \"','axrm',parameters('customer_deployment_name'),'\" -deploymentMode \"ST\" -deploymentType \"PrivateCloud\" -localUsersPassword \"Default@1\" -waadWcfAppId \"7ed24fdc-7936-47f9-99d6-bac77f4f426d\" -waadWcfAppIdUri \"https://wsce.agilexrmonline.com:13487/AgilePointServer\" -waadApplicationId \"60e47b82-33aa-41b8-8d2f-0293ae7839b8\" -waadApplicationIdPassword \"',parameters('azPortalAppSecretKey'),'\" -azureAdRealm \"https://axrmce.agilexrmonline.com\" -singleTenantCrmOrgUniqueId \"',parameters('d365OrgUniqueName'),'\" -singleTenantCrmOrgFullUrl \"',parameters('d365OrgUrl'),'\"' )]",
     "modelerScriptFileName": "Envision-PostInstallation-Tasks.ps1",
     "modelerScriptArgs": "[concat('-deploymentType \"PrivateCloud\"')]"
   },
