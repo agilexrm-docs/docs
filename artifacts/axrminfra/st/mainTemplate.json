@@ -209,7 +209,7 @@
     "nic_modeler_name": "axrm-modeler-nic",
     "networkSecurityGroups_frontend_st_nsg_name": "axrmfrontend-nsg",
 	"adminPasswordSecretName":"axrmdep-adminpassword",
-	"adminPasswordValue":"[concat('AgileXRM@',uniqueString(resourceGroup().id), utcNow('Hmmss'))]"
+	"adminPasswordValue":"[concat('AgileXRM@',uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
