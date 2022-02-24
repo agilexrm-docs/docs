@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "0.0.0.34",
  "parameters": {
@@ -177,6 +177,15 @@
       "defaultValue": "Standard_LRS",
       "type": "string"
     },
+    "d365OrgUniqueName": {
+      "type": "string"
+    },
+    "d365OrgUrl": {
+      "type": "string"
+    },
+    "azPortalAppSecretKey": {
+      "type":"string"
+    },
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
@@ -200,7 +209,7 @@
     "nic_modeler_name": "axrm-modeler-nic",
     "networkSecurityGroups_frontend_st_nsg_name": "axrmfrontend-nsg",
 	"adminPasswordSecretName":"axrmdep-adminpassword",
-	"adminPasswordValue":"[concat('AgileXRM@',uniqueString(resourceGroup().id))]"
+	"adminPasswordValue":"[concat('AgileXRM@',uniqueString(resourceGroup().id), utcNow('Hmmss'))]"
   },
   "resources": [
     {
@@ -231,12 +240,12 @@
                 "variables": {},
                 "resources": [
                     {
-					  "type": "Microsoft.KeyVault/vaults/secrets",
-					  "apiVersion": "2018-02-14",
-					  "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
-					  "properties": {
-						"value": "[variables('adminPasswordValue')]"
-					  }
+					            "type": "Microsoft.KeyVault/vaults/secrets",
+					            "apiVersion": "2018-02-14",
+					            "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
+					            "properties": {
+						              "value": "[variables('adminPasswordValue')]"
+					            }
                     }
                 ]
             }
@@ -325,6 +334,9 @@
           "certificateUrl": { "value": "[parameters('certificateUrl')]" },
           "axrmStorageAccountName": { "value": "[parameters('axrmStorageAccountName')]" },
           "axrmStorageAccountNewOrExisting": { "value": "[parameters('axrmStorageAccountNewOrExisting')]" },
+          "d365OrgUniqueName": { "value": "[parameters('d365OrgUniqueName')]" },
+          "d365OrgUrl": { "value": "[parameters('d365OrgUrl')]" },
+          "azPortalAppSecretKey": { "value": "[parameters('azPortalAppSecretKey')]" },
           "_artifactsLocation": { "value": "[parameters('_artifactsLocation')]" },
           "_artifactsLocationSasToken": { "value": "[parameters('_artifactsLocationSasToken')]" }
         }
