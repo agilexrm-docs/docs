@@ -2113,6 +2113,9 @@ Create-Local-Users
 #Force Machine Local Time to "UTC"
 Set-TimeZone -Id "UTC" -PassThru
 
+# Check DB Connection to SingleApDB
+$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+
 Start-Services;
 
 Apply-Post-Installation;
