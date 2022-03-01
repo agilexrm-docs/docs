@@ -49,7 +49,8 @@ Param(
 	$masterPortalDB = "MasterPortalDB",
 	$singlePortalDB = "SinglePortalDB",
 	[string]$dbUserName="apservice",
-	[string]$dbUserPassword=""
+	[string]$dbUserPassword="",
+	[bool]$isSqlAzure = $false
 
 )
 
@@ -144,6 +145,7 @@ $pmConnectorName = "XRMProcessViewer";
 $crmConnectorName ="CrmConnector";
 
 $portalInstallationName="DEFAULTTENANT";
+$sqlServerAliasName = "SQL400";
 
 ###################### FUNCTIONS########################################################################
 
@@ -941,7 +943,7 @@ function Set-SQLServer-Alias-Instance()
 
 	if(Test-Path -Path $sqlServerAliasPath)
 	{
-		Set-ItemProperty -Path $sqlServerAliasPath -Name "SQL400" -Value $dataBaseValue
+		Set-ItemProperty -Path $sqlServerAliasPath -Name $sqlServerAliasName -Value $dataBaseValue
 		Write-Host "SQL Server Alias Path $sqlServerAliasPath successfully changed!";
 	}
 	else
@@ -1516,6 +1518,14 @@ function Update-netflow-Cfg-File()
 	$node.SetAttribute("sysadm", $poolNotificationMailbox)
 	$node.SetAttribute("mailServer", $mailServer)
 	$node.SetAttribute("smtpService", $smtpService)
+	
+	if($deploymentMode -eq "ST" -and $isSqlAzure)
+	{
+		$azureInstanceName = $sqlServer.Split(".")[0];
+		$singleApDbConnectingString = [string]::Format("application name=AgilePoint Server;connection lifetime=5;min pool size=10;server={0};database={1};User ID={2};Password={3}3", $sqlServerAliasName, $singleApDB, "$dbUserName@$azureInstanceName", $dbUserPassword);
+		$node = $file.SelectSingleNode("descendant::database");
+		$node.SetAttribute("connectingString", $singleApDbConnectingString);
+	}
 
 	$file.Save($appEntryXML);
 	Write-Host "Update-netflow-Cfg-File>> Done" -ForegroundColor DarkGreen;
