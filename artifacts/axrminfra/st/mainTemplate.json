@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "0.0.0.34",
- "parameters": {
+  "parameters": {
     "location": {
       "defaultValue": "[resourceGroup().location]",
       "type": "string",
@@ -184,7 +184,7 @@
       "type": "string"
     },
     "azPortalAppSecretKey": {
-      "type":"string"
+      "type": "string"
     },
     "_artifactsLocation": {
       "type": "string",
@@ -208,8 +208,7 @@
     "nic_server_name": "axrm-server-nic",
     "nic_modeler_name": "axrm-modeler-nic",
     "networkSecurityGroups_frontend_st_nsg_name": "axrmfrontend-nsg",
-	"adminPasswordSecretName":"axrmdep-adminpassword",
-	"adminPasswordValue":"[concat('AgileXRM@',uniqueString(resourceGroup().id))]"
+	"adminPasswordSecretName":"axrmdep-adminpassword"
   },
   "resources": [
     {
@@ -244,7 +243,7 @@
 					            "apiVersion": "2018-02-14",
 					            "name": "[format('{0}/{1}', parameters('keyVaultName'), variables('adminPasswordSecretName'))]",
 					            "properties": {
-						              "value": "[variables('adminPasswordValue')]"
+						              "value": "[parameters('adminPassword')]"
 					            }
                     }
                 ]
@@ -298,7 +297,7 @@
           "location": { "value": "[parameters('location')]" },
           "excludeDBCreation": { "value": "[parameters('excludeDBCreation')]" },
           "sqlInstanceName": { "value": "[parameters('sqlInstanceName')]" },
-          "adminPassword": { "value": "[variables('adminPasswordValue')]" },
+          "adminPassword": { "value": "[parameters('adminPassword')]" },
           "allowAzureIps": { "value": "[parameters('allowAzureIps')]" },
           "singleAPDBSize": { "value": "[parameters('singleAPDBSize')]" },
           "masterPortalDBSize": { "value": "[parameters('masterPortalDBSize')]" },
@@ -323,7 +322,7 @@
           "axrm_server_name": { "value": "[parameters('axrm_server_name')]" },
           "axrm_modeler_name": { "value": "[parameters('axrm_modeler_name')]" },
           "adminUsername": { "value": "[parameters('adminUsername')]" },
-          "adminPassword": { "value": "[variables('adminPasswordValue')]" },
+          "adminPassword": { "value": "[parameters('adminPassword')]" },
           "nic_server_name": { "value": "[variables('nic_server_name')]" },
           "nic_modeler_name": { "value": "[variables('nic_modeler_name')]" },
           "sqlConnectionString": { "value": "[reference(variables('deploymentNameDB')).outputs.sqlConnectionString.value]" },
