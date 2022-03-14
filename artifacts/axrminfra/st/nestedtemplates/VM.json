@@ -64,13 +64,29 @@
       "defaultValue": "new",
       "type": "string"
     },
+    "gatewayPrefix": {
+  	  "defaultValue":"10.0.0.",
+      "type": "string"
+    },
     "d365OrgUniqueName": {
       "type": "string"
     },
     "d365OrgUrl": {
       "type": "string"
     },
+    "azPortalAppId": {
+      "defaultValue": "f3026625-67d4-4a9a-b8de-999bb8c381d5",
+      "type": "string"
+    },
     "azPortalAppSecretKey": {
+      "type": "string"
+    },
+    "azServiceAppId": {
+      "defaultValue": "54ce9aa0-f0fd-4ae1-8e85-b9d539f7fcce",
+      "type": "string"
+    },
+    "azServiceAppUri": {
+      "defaultValue": "https://wsce.agilexrm.com:13487/AgilePointServer",
       "type": "string"
     },
     "_artifactsLocation": {
@@ -88,7 +104,7 @@
   },
   "variables": {
     "serverScriptFileName": "StartVM.ps1",
-    "serverScriptArgs": "[concat('-test \"',parameters('sqlConnectionString'), '\"','-apServiceAccountPassword \"',parameters('adminPassword'),'\" -regionNumber \"\" -poolNumber \"\" -redisAccessKey \"\" -azureServiceBusConnectionString \"\" -defaultGateway \"10.0.0.1\" -sqlServer \"',parameters('sqlServerFQDN'),'\" -sqlServerPort \"1433\" -appUrlSeparator \"-\" -domainUrl \"agilexrmonline.com\" -mainHostName \"','axrm',parameters('customer_deployment_name'),'\" -deploymentMode \"ST\" -deploymentType \"PrivateCloud\" -localUsersPassword \"Default@1\" -waadWcfAppId \"7ed24fdc-7936-47f9-99d6-bac77f4f426d\" -waadWcfAppIdUri \"https://wsce.agilexrmonline.com:13487/AgilePointServer\" -waadApplicationId \"60e47b82-33aa-41b8-8d2f-0293ae7839b8\" -waadApplicationIdPassword \"',parameters('azPortalAppSecretKey'),'\" -azureAdRealm \"https://axrmce.agilexrmonline.com\" -singleTenantCrmOrgUniqueId \"',parameters('d365OrgUniqueName'),'\" -singleTenantCrmOrgFullUrl \"',parameters('d365OrgUrl'),'\"' )]",
+    "serverScriptArgs": "[concat('-test \"',parameters('sqlConnectionString'), '\"','-apServiceAccountPassword \"DefaultPass@w0rd\" -regionNumber \"\" -poolNumber \"\" -redisAccessKey \"\" -azureServiceBusConnectionString \"\" -defaultGateway \"',parameters('gatewayPrefix'),'1','\" -sqlServer \"',parameters('sqlServerFQDN'),'\" -sqlServerPort \"1433\" -appUrlSeparator \"-\" -domainUrl \"agilexrmonline.com\" -mainHostName \"',parameters('customer_deployment_name'),'\" -deploymentMode \"ST\" -deploymentType \"PrivateCloud\" -localUsersPassword \"',parameters('adminPassword'),'\" -waadWcfAppId \"',parameters('azServiceAppId'),'\" -waadWcfAppIdUri \"',parameters('azServiceAppUri'),'\" -waadApplicationId \"',parameters('azPortalAppId'),'\" -waadApplicationIdPassword \"',parameters('azPortalAppSecretKey'),'\" -azureAdRealm \"https://axrmce.agilexrm.com\" -singleTenantCrmOrgUniqueId \"',parameters('d365OrgUniqueName'),'\" -singleTenantCrmOrgFullUrl \"',parameters('d365OrgUrl'),'\" -singleTenantAdminUser \"Tenant-Admin\" -dbUserPassword \"',parameters('adminPassword'),'\" -certificateSubjectName \"CN=',parameters('customer_deployment_name'),'.agilexrmonline.com\" -isSqlAzure $true')]",
     "modelerScriptFileName": "Envision-PostInstallation-Tasks.ps1",
     "modelerScriptArgs": "[concat('-deploymentType \"PrivateCloud\"')]"
   },
