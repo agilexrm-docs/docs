@@ -54,8 +54,25 @@ Param(
 
 )
 
-Install-Module -Name Microsoft.Xrm.Data.PowerShell
-Install-Module -Name SqlServer
+if (Get-Module -ListAvailable -Name Microsoft.Xrm.Data.PowerShell) 
+{
+	Write-Host "Module 'Microsoft.Xrm.Data.PowerShell' already installed" -ForegroundColor DarkGreen;
+}
+else
+{
+	Write-Host "Module 'Microsoft.Xrm.Data.PowerShell' NOT Found. Installing..." -ForegroundColor DarkCyan;
+	Install-Module -Name Microsoft.Xrm.Data.PowerShell -force
+}
+
+if (Get-Module -ListAvailable -Name Microsoft.Xrm.Data.PowerShell) 
+{
+	Write-Host "Module 'SqlServer ' already installed" -ForegroundColor DarkGreen;
+}
+else
+{
+	Write-Host "Module 'SqlServer ' NOT Found. Installing..." -ForegroundColor DarkCyan;
+	Install-Module -Name SqlServer -force
+}
 
 if($svcPrincipalAppId -eq $null)
 {
@@ -70,10 +87,11 @@ if($svcPrincipalSecretKey -eq $null)
 
 #Global Parameters
 $global:debugMode = $false
+$internalDomainValue = "INTERNAL"
 
 #Script Parameters
 $currentVmSSInstance = "$env:ComputerName"
-[bool]$vmBelongsToDomain =  $apServiceAccountDomain.ToLower() -ne "internal"
+[bool]$vmBelongsToDomain =  $apServiceAccountDomain.ToLower() -ne $internalDomainValue.ToLower()
 
 [string]$global:primaryNicIpAddress1 = $null
 [string]$global:primaryNicIpAddress2 = $null
@@ -1085,6 +1103,13 @@ function Start-Services()
 	Set-Service -Name $apService.Name -Status Running -StartMode Automatic
 }
 
+function Check-AP-Service-Status()
+{
+	Write-Host "Checking AP Service Status....";
+	$apService = Get-Service -Name "AgilePointServerInstance"
+	return $apService.Status -eq "Running";
+}
+
 function Update-Hosts-File()
 {
 	$path = "$env:windir\System32\drivers\etc\hosts";
@@ -1366,7 +1391,7 @@ function Configure-AgileXRMSites()
 	if($deploymentMode -ne "ST")
 	{
 		Modify-WebSite-Binding -siteName "PortalAgileXRM" -ipAddress $fifthNicIpAddress;
-		Update-AppPool-User -apAppPoolName "PortalAppPool" -fullUserName "INTERNAL\adminportal" -applyAdvancedSettings $false
+		Update-AppPool-User -apAppPoolName "PortalAppPool" -fullUserName "$internalDomainValue\adminportal" -applyAdvancedSettings $false
 	}
 	Configure-Services-SSLCert ;
 	Update-AppPool-User -apAppPoolName "AgilePointAppPool";
@@ -1522,7 +1547,7 @@ function Update-netflow-Cfg-File()
 	if($deploymentMode -eq "ST" -and $isSqlAzure)
 	{
 		$azureInstanceName = $sqlServer.Split(".")[0];
-		$singleApDbConnectingString = [string]::Format("application name=AgilePoint Server;connection lifetime=5;min pool size=10;server={0};database={1};User ID={2};Password={3}3", $sqlServerAliasName, $singleApDB, "$dbUserName@$azureInstanceName", $dbUserPassword);
+		$singleApDbConnectingString = [string]::Format("application name=AgilePoint Server;connection lifetime=5;min pool size=10;server={0};database={1};User ID={2};Password={3};", $sqlServerAliasName, $singleApDB, "$dbUserName@$azureInstanceName", $dbUserPassword);
 		$node = $file.SelectSingleNode("descendant::database");
 		$node.SetAttribute("connectingString", $singleApDbConnectingString);
 	}
@@ -1700,7 +1725,16 @@ function Get-NIC-IpAddress()
 }
 function Check-APService-Password()
 {
-	Install-Module CredentialManager -force
+	if (Get-Module -ListAvailable -Name CredentialManager) 
+	{
+		Write-Host "Module 'CredentialManager" -ForegroundColor DarkGreen;
+	}
+	else
+	{
+		Write-Host "Module 'CredentialManager' NOT Found. Installing..." -ForegroundColor DarkCyan;
+		Install-Module CredentialManager -force
+	}
+
 	[Windows.Security.Credentials.PasswordVault,Windows.Security.Credentials,ContentType=WindowsRuntime]
 	if($global:apServiceAccountPassword -eq $null)
 	{
@@ -1782,8 +1816,15 @@ function Apply-Post-Installation()
 		Write-Host "This is NOT a Single Tenant Deployment. 'Apply-Post-Installation' configuration doesn't apply" -foregroundcolor darkCyan
 		return;
 	}
+	
 
 	#X - Check AP Service is Up & Running (Check Connection to Some Servcice)
+	$isApServiceUpAndRunning = Check-AP-Service-Status;
+	if(! $isApServiceUpAndRunning)
+	{
+		Write-Error "Service is not running. Provisioning has failed. Please review and reexecute";
+		exit -1;
+	}
 	
 	#X - Check DB Connection to MasterPortalDB
 	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $masterPortalDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
@@ -1795,12 +1836,12 @@ function Apply-Post-Installation()
 	$attemp = 0;
 	$nxPortalStatus = Create-NX-Portal-Orchard;
 	Write-Host "Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
-	while ($nxPortalStatus -ne 0 -and $attemp -lt 5)
+	while ($nxPortalStatus -ne 0 -and $attemp -lt 15)
 	{
 		$nxPortalStatus = Create-NX-Portal-Orchard;
 		Write-Host "--Attemp $attemp .Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
 		$attemp++;
-		Start-Sleep -Milliseconds 1000;
+		Start-Sleep -Milliseconds 5000;
 	}
 
 	#X - Provide Portal (login -?-)
@@ -1811,26 +1852,50 @@ function Apply-Post-Installation()
 	Insert-PM-Connector -sqlInstance $sqlServer -processManagerURL $processManagerUrl;
 	Insert-CRM-Connector -sqlInstance $sqlServer -azureAppId $waadApplicationId -azureAppSecretKey $waadApplicationIdPassword -d365UniqueName $singleTenantCrmOrgUniqueId -d365Url $singleTenantCrmOrgFullUrl;
 	
+	if ($singleTenantAdminUser.ToLower() -ne $apServiceAccountUser.ToLower())
+	{
+		Upsert-TenantAdminUser
+	}
 }
 function Check-NX-Portal-Status()
 {
-	
 	$provisioningStatusQuery = "SELECT * FROM [dbo].[AgilePoint_Portal_Core_ProvisionInfoRecord] WHERE TenantName='$portalInstallationName'"; 
-	$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $masterPortalDB -Username $dbUserName -Password $dbUserPassword -Query $provisioningStatusQuery;
+	$portalDeploymentCheckQuery="SELECT count(*) FROM [dbo].[Settings_ShellDescriptorRecord]";
+	$portalSettingsQuery= "SELECT * FROM [$masterPortalDB].[dbo].[AgilePoint_Portal_Core_ShellSettingsRecord] WHERE NAME = '$portalInstallationName'"
+
+	$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $masterPortalDB -Username $dbUserName -Password $dbUserPassword -Query $portalDeploymentCheckQuery -ErrorAction Ignore; 
 	if($queryOutput -eq $null)
 	{
-		Write-Host "No Provisioning Record is found" -ForegroundColor DarkCyan;
+		Write-Host "No 'Settings_ShellDescriptorRecord' Record is found. Portal has not been deployed" -ForegroundColor DarkCyan;
 		
 		return -1
 	}
 	else
 	{
-		$portalStatus = $queryOutput.Status;
-		$portalProgress = $queryOutput.Progress;
-		if($portalStatus.ToLower() -ne "completed" -and $portalProgress -ne 100)
+		$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $masterPortalDB -Username $dbUserName -Password $dbUserPassword -Query $portalSettingsQuery -ErrorAction Ignore; 
+		
+		if($queryOutput -eq $null)
 		{
-			Write-Host "Provisioning Record is found but status is '$portalStatus' and progress is '$portalProgress'" -ForegroundColor DarkCyan;
+			Write-Host "Portal Setting Record is NOT found " -ForegroundColor DarkCyan;
 			return -2;
+		}
+		else
+		{
+			$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $masterPortalDB -Username $dbUserName -Password $dbUserPassword -Query $provisioningStatusQuery -ErrorAction Ignore; 
+			if($queryOutput -eq $null)
+			{
+				Write-Host "Provisioning Record is NOT found" -ForegroundColor DarkCyan;
+				return -3;
+			}
+			else
+			{
+				$portalStatus = $queryOutput.Status;
+				$portalProgress = $queryOutput.Progress;
+				if($portalStatus.ToLower() -ne "completed")
+				{
+					Write-Host "Provisioning Record is found but status is '$portalStatus' and progress is '$portalProgress'" -ForegroundColor DarkCyan;
+				}
+			}
 		}
 	}
 	return 0;
@@ -1868,17 +1933,56 @@ function Create-NX-Portal-Orchard()
 	if($nxPortalStatus -eq 0)
 	{
 		Write-Host "NX Portal has already provided. Just Skip" -ForegroundColor Magenta;
-		return;
 	}
 	if($nxPortalStatus -eq -1)
 	{
 		Write-Host "NX Portal needs to be provided..." -ForegroundColor Magenta;
-		Execute-NX-Portal-Recipe -sqlInstance string:Format("{0}:{1}", $sqlServer,$sqlServerPort);
+		$sqlInstance = [string]::Format("{0}:{1}", $sqlServer,$sqlServerPort)
+		Execute-NX-Portal-Recipe -sqlInstance $sqlServer;
 	}
 	if($nxPortalStatus -eq -2)
 	{
 		Upsert-NX-Portal-ShellSettingRecord
 	}
+	if($nxPortalStatus -eq -3)
+	{
+		#Provisioning Portal for the First Time
+		Write-Host "NX Portal web request '$agilePointPortalUrl'...." -ForegroundColor Magenta;
+		$responsePortal = Invoke-WebRequest -Uri $agilePointPortalUrl
+		$statusCode = $responsePortal.StatusCode
+		Write-Host "NX Portal web request status Code: $statusCode" -ForegroundColor DarkGreen;
+	}
+	
+	if($nxPortalStatus -eq -4)
+	{
+		#Status should be updated. Let's wait a while
+		Write-Host "Provisioning has not been Started. Log into the Portal with Active Credential..." -ForegroundColor DarkCyan
+		$urlLoginRequest = "$agilePointPortalUrl/login/ActiveDirectory?ReturnUrl=%2F"
+		$Body = @{
+			domain=$apServiceAccountDomain
+			userNameOrEmail=$apServiceAccountUser
+			password=$apServiceAccountPassword};
+	
+		Write-Debug-Message -functionName "Create-NX-Portal-Orchard" -message "Login Body: $Body"
+		Write-Debug-Message -functionName "Create-NX-Portal-Orchard" -message "Login URL Request: $urlLoginRequest"
+
+		$contentType = 'application/x-www-form-urlencoded' 
+		
+		$loginResponse = Invoke-WebRequest -Uri $urlLoginRequest -Body $Body -Method POST -ContentType $contentType
+		$loginStatusCode = $loginResponse.StatusCode
+
+		Write-Host "Login Response Status Code: $loginStatusCode" -ForegroundColor DarkCyan
+		Start-Sleep -Seconds 30
+	}
+
+	if($nxPortalStatus -eq -5)
+	{
+		#Status should be updated. Let's wait a while
+		Write-Host "Provisioning is on their way. Let't wait a while..." -ForegroundColor DarkCyan
+		Start-Sleep -Seconds 30
+	}
+	
+	return $nxPortalStatus;
 }
 
 function Execute-NX-Portal-Recipe()
@@ -1886,18 +1990,22 @@ function Execute-NX-Portal-Recipe()
 	param([string]$sqlInstance)
 
 	$exeFile = "$agilePointPortalWebFolder\bin\orchard.exe"
-	$argumentList = [string]::Format("setup /SiteName:""""NXone"""" /AdminUsername:""""{0}"""" /AdminPassword:""""{1}"""" /DatabaseProvider:""""SQLServer"""" /Recipe:""""AgilePoint - Master"""" /DatabaseConnectionString:""""Data Source={2};Initial Catalog={5};Persist Security Info=True;User ID={3};Password={4}"""" /verbose:true",$apServiceAccountUser, $apServiceAccountPassword, $sqlInstance, $dbUserName, $dbUserPassword.Replace('"','\\""""'), $masterPortalDB);
+	
+	$parsedDbUserPassword = $dbUserPassword.Replace('"','\"');
+	$parsedApServiceAccountPassword = $apServiceAccountPassword.Replace('"','\"')
+
+	$argumentList = @("setup","/SiteName:""NXone""","/AdminUsername:""$apServiceAccountUser""","/AdminPassword:""$parsedApServiceAccountPassword""","/DatabaseProvider:""SQLServer""","/Recipe:""AgilePoint - Master""","/DatabaseConnectionString:""Data Source=$sqlInstance;Initial Catalog=$masterPortalDB;Persist Security Info=True;User ID=$dbUserName;Password=$parsedDbUserPassword;""","/verbose:true");
 	
 	Write-Debug-Message -functionName "Execute-NX-Portal-Recipe" -message "Argument List: $argumentList"
 
-	$settingsFile = "$agilePointPortalWebFolder\AgilePointPortal\Config\settings.txt"
+	$settingsFile = "$agilePointPortalWebFolder\Config\settings.txt"
 
 	if(Test-Path $settingsFile)
 	{
 		Remove-Item $settingsFile
 	}
+
 	& $exeFile $argumentList
-	#Start-Process -FilePath $exeFile -ArgumentList $argumentList
 }
 
 
@@ -2005,6 +2113,59 @@ function Test-Db-Connection()
 	}
 }
 
+function Disable-NetflowFile-TaskScheduler()
+{
+	if($deploymentMode -eq "ST")
+	{
+		Write-Host "Disabling Task Scheduler for netflow file..." -ForegroundColor DarkCyan
+		$taskName = "Update netflow.cfg"
+		Disable-ScheduledTask -TaskName $taskName
+		Stop-ScheduledTask -TaskName $taskName
+		Get-ScheduledTask -TaskName $taskName
+		Write-Host "Task Scheduler for netflow file has been disabled!" -ForegroundColor DarkGreen
+	}
+	else
+	{
+		Write-Host "Disable-NetflowFile-TaskScheduler ONLY Applies to ST deployments" -ForegroundColor Magenta
+	}
+}
+
+
+function Upsert-TenantAdminUser()
+{
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+	$query= "SELECT * FROM [$singleApDB].[dbo].[WF_REG_USERS] WHERE [USER_NAME] = '$portalInstallationName'"
+	$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $query
+	
+	$userAlias = [string]::Format("{0}\{1}",$internalDomainValue,$singleTenantAdminUser)
+	$userAliasUppercase = $userAlias.ToUpper()
+	
+	if($queryOutput -eq $null)
+	{
+		Write-Host "Inserting Record in table 'WF_REG_USERS' from '$singleApDB'...."
+		$insertQuery = "INSERT INTO [$singleApDB].[dbo].[WF_REG_USERS] ([USER_NAME_UPCASE], [USER_NAME], [FULL_NAME], [LOCALE], [DISABLED], [REGISTERED_DATE])  VALUES ( '$userAlias', '$userAliasUppercase',  'ST Tenant Admin User', 'es-us','NO',getdate())"
+		$insertOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $insertQuery
+		Write-Host "Record successfully inserted in table 'WF_REG_USERS' from '$singleApDB'" -ForegroundColor DarkGreen
+	}
+	else
+	{
+		Write-Host "Record in table 'WF_REG_USERS' from '$singleApDB' already exists. Updating..." -ForegroundColor DarkCyan
+		$updateQuery = "UPDATE [$singleApDB].[dbo].[WF_REG_USERS] SET [USER_NAME_UPCASE]='$userAliasUppercase', [USER_NAME]='$userAlias', [FULL_NAME]='ST Tenant Admin User' WHERE [USER_NAME] = '$userAlias'"
+		$udpateOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $updateQuery
+		Write-Debug-Message -functionName "Upsert-TenantAdminUser" -message "Record Content: $queryOutput"
+	}
+
+	$query="SELECT * FROM WF_ASSIGNED_OBJECTS where (WF_ASSIGNED_OBJECTS.ROLE_NAME = N'ADMINISTRATORS') and (WF_ASSIGNED_OBJECTS.ASSIGNEE = N'$userAliasUppercase') and (WF_ASSIGNED_OBJECTS.ASSIGNEE_TYPE = 'User') and (WF_ASSIGNED_OBJECTS.OBJECT_ID = '00000000000000000000000000000000')"
+	$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $query
+	if($queryOutput -eq $null)
+	{
+		Write-Host "Inserting Record in table 'WF_ASSIGNED_OBJECTS' from '$singleApDB'...."
+		$insertQuery = "INSERT INTO [$singleApDB].[dbo].[WF_ASSIGNED_OBJECTS] ([ROLE_NAME],[ASSIGNEE], [ASSIGNEE_TYPE], [OBJECT_ID], [OBJECT_TYPE])  VALUES ( 'ADMINISTRATORS', '$userAliasUppercase',  'User', '00000000000000000000000000000000','All')"
+		$insertOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $insertQuery
+		Write-Host "Record successfully inserted in table 'WF_ASSIGNED_OBJECTS' from '$singleApDB'" -ForegroundColor DarkGreen
+	}
+
+}
 
 
 ######################END FUNCTIONS########################################################################
@@ -2096,7 +2257,8 @@ Write-Host "3rd IP: $thirdNicIpAddress" -f DarkGreen;
 Write-Host "4th IP: $fourthNicIpAddress" -f DarkGreen;
 Write-Host "5th IP: $fifthNicIpAddress" -f DarkGreen;
 
-Check-APService-Password
+Disable-NetflowFile-TaskScheduler;
+Check-APService-Password;
 Remove-Old-AgileXRMOnline-Certs;
 Configure-AgilePointService;
 Configure-AgilePointPortal;
@@ -2117,6 +2279,9 @@ Set-TimeZone -Id "UTC" -PassThru
 $dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
 
 Start-Services;
+
+
+
 
 Apply-Post-Installation;
 
