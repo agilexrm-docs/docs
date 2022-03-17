@@ -149,8 +149,6 @@ function Remove-WebViewDll-FromOfficeFolder
 
 function Map-Azure-UnitDrive([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
 {
-	$unitDriveToMap = "Z"
-	
 	if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
 	{
 		Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for 'azStorageAccountName', 'azStorageAccountSharedKey' and 'azFileShareName'" -ForegroundColor DarkCyan
@@ -162,9 +160,15 @@ function Map-Azure-UnitDrive([string]$storageAccountName,[int]$storageAccountPor
 	if ($connectTestResult.TcpTestSucceeded) 
 	{
 		# Save the password so the drive will persist on reboot
-		cmd.exe /C "cmdkey /add:`"$storageAccountName.file.core.windows.net`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
+        $commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
+		cmd.exe /C $commandParameters
+        Write-Host "Parameters: $commandParameters"
+
 		# Mount the drive
-		New-PSDrive -Name $unitDriveToMap -PSProvider FileSystem -Root "\\$computerName\$fileShareName" -Persist
+        $rootPath = "\\$computerName\$fileShareName"
+        Write-Host "Root Path: $rootPath"
+		New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
+
 		Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
 
 	} else {
