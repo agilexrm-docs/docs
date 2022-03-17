@@ -63,13 +63,14 @@ function Set-Envision-Config-Keys()
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "UserWorkspaceTempFolder" -keyValue "%AppData%\AgileXRM\Temp";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "DeploymentType" -keyValue "PrivateCloud";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AgilePointServerServicesAssembly" -keyValue "Ascentn.Crm.Envision.AzureAD.Services.AgilePointServices, Ascentn.Crm.Envision, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
-		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageTableName" -keyValue "$azureStorageTableName";
-		
-		$azureStorageConnectionString = Get-SA-Connection-String -storageAccountName $azStorageAccountName -storageAccountSharedKey $azStorageAccountSharedKey
 
+		$azureStorageConnectionString = Get-SA-Connection-String -storageAccountName $azStorageAccountName -storageAccountSharedKey $azStorageAccountSharedKey
+		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageTableName" -keyValue "$azureStorageTableName";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnectionString";
-		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageAccountName" -keyValue "$azStorageAccountName";
+
+		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageAccountName" -keyValue "";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureRepositoryConnectionString" -keyValue "";
+
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureEnvisionAppId" -keyValue "$azureEnvisionAppId";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AgileDialogsServerPaaSFormat" -keyValue "";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AgilePointServerPaaSFormat" -keyValue "";
