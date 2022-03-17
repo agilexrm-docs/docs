@@ -68,7 +68,7 @@ function Set-Envision-Config-Keys()
 		$azureStorageConnectionString = Get-SA-Connection-String -storageAccountName $azStorageAccountName -storageAccountSharedKey $azStorageAccountSharedKey
 
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnectionString";
-		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageAccountName" -keyValue "";
+		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureStorageAccountName" -keyValue "$azStorageAccountName";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureRepositoryConnectionString" -keyValue "";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AzureEnvisionAppId" -keyValue "$azureEnvisionAppId";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AgileDialogsServerPaaSFormat" -keyValue "";
@@ -121,7 +121,7 @@ function Deploy-License()
 	if((Test-Path -Path $sourceLicenseFile) -eq $false)
 	{
 		write-host "License File $sourceLicenseFile Not Found!" 
-		exit -1;	
+		return -1;	
 	}
 
     Copy-Item -Path $sourceLicenseFile -Destination $targetLicenseFile -Force
