@@ -6,6 +6,7 @@ param([string]$deploymentType="PrivateCloud", [string]$licenseProductId, [string
 function Get-SA-Connection-String([string]$storageAccountName, [string]$storageAccountSharedKey)
 {
 	$connectionString = [string]::Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix=core.windows.net",$storageAccountName,$storageAccountSharedKey)
+	return $connectionString
 }
 
 
@@ -180,4 +181,3 @@ Remove-WebViewDll-FromOfficeFolder
 Map-Azure-UnitDrive -storageAccountName $azStorageAccountName -storageAccountSharedKey $azStorageAccountSharedKey -fileShareName $azFileShareName
 
 exit 0
-	
