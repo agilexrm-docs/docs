@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "0.0.0.34",
   "parameters": {
@@ -129,10 +129,11 @@
       "defaultValue": "10.0.0.0/24",
       "type": "string"
     },
-       "gatewayPrefix": {
-                    "defaultValue": "10.5.0"           
-       },
-	  "vmSizeServer": {
+    "gatewayPrefix": {
+      "defaultValue": "10.0.0",
+      "type": "string"
+    },
+    "vmSizeServer": {
       "defaultValue": "Standard_B2ms",
       "type": "string"
     },
@@ -260,8 +261,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/VN.json') )]",
-          "contentVersion": "1.0.0.0"
+					"uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/VN.json') )]",
+                    "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "location": { "value": "[parameters('location')]" },
@@ -336,6 +337,7 @@
           "certificateUrl": { "value": "[parameters('certificateUrl')]" },
           "axrmStorageAccountName": { "value": "[parameters('axrmStorageAccountName')]" },
           "axrmStorageAccountNewOrExisting": { "value": "[parameters('axrmStorageAccountNewOrExisting')]" },
+          "gatewayPrefix": { "value": "[parameters('gatewayPrefix')]" },
           "d365OrgUniqueName": { "value": "[parameters('d365OrgUniqueName')]" },
           "d365OrgUrl": { "value": "[parameters('d365OrgUrl')]" },
           "azPortalAppSecretKey": { "value": "[parameters('azPortalAppSecretKey')]" },
