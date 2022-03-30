@@ -50,7 +50,8 @@ Param(
 	$singlePortalDB = "SinglePortalDB",
 	[string]$dbUserName="apservice",
 	[string]$dbUserPassword="",
-	[bool]$isSqlAzure = $false
+	[bool]$isSqlAzure = $false,
+	[bool]$customizeNxPortal = $true
 
 )
 
@@ -899,18 +900,31 @@ function Configure-OrgUrl-Section()
 		$axrmOrgsNode = $file.CreateNode("element",$axrmOrgsNodeName,"")
 		$file.configuration.AppendChild($axrmOrgsNode)
 	}
-	$addOrgNode = $axrmOrgsNode.SelectSingleNode("descendant::add[@key=""$orgUniqueId""]");
-	if($addOrgNode -ne $null)
-	{
-		$addOrgNode.SetAttribute("value", $orgFullUrl)
-	}
 	else
 	{
-		$addOrgNode = $file.CreateNode("element","add","")
-		$addOrgNode.SetAttribute("key",$orgUniqueId)
-		$addOrgNode.SetAttribute("value",$orgFullUrl)
-		$axrmOrgsNode.AppendChild($addOrgNode)
-		$file.configuration.AppendChild($axrmOrgsNode)
+		$axrmOrgsNode.RemoveAll();
+	}
+
+	$orgsUniqueId = $orgUniqueId.split(";");
+	$orgsFullUrl = $orgFullUrl.split(";");
+	for ($counter=0; $counter -lt $orgsUniqueId.Length; $counter++)
+	{
+		$currentOrgUniqueId = $orgsUniqueId[$counter];
+		$currentOrgFullUrl =  $orgsFullUrl[$counter]; 
+		
+		$addOrgNode = $axrmOrgsNode.SelectSingleNode("descendant::add[@key=""$currentOrgUniqueId""]");
+		if($addOrgNode -ne $null)
+		{
+			$addOrgNode.SetAttribute("value", $currentOrgFullUrl)
+		}
+		else
+		{
+			$addOrgNode = $file.CreateNode("element","add","")
+			$addOrgNode.SetAttribute("key",$currentOrgUniqueId)
+			$addOrgNode.SetAttribute("value",$currentOrgFullUrl)
+			$axrmOrgsNode.AppendChild($addOrgNode)
+			$file.configuration.AppendChild($axrmOrgsNode)
+		}
 	}
 
 	$file.Save($configFilePath);
@@ -984,7 +998,7 @@ function Modify-XML-Node()
 	$node = $file.SelectSingleNode("descendant::Property[Name=""$nodeName""]");
 	$node.Value = $nodeValue;
 	$file.Save($xmlFilePath);
-	Write-Host "Document $xmlFilePath Succesfully update with value: $nodeValue" -ForegroundColor DarkGreen;
+	Write-Host "Document $xmlFilePath node '$nodeName' succesfully updated with value: $nodeValue" -ForegroundColor DarkGreen;
 }
 
 function Modify-WebSite-Binding()
@@ -1531,6 +1545,20 @@ function Update-netflow-Cfg-File()
 		$poolNotificationMailbox = [string]::Format( "pool{0}{1}.notification@agilexrmonline.com", $regionNumber,$poolNumber);
 	}
 	[xml]$file = Get-Content $appEntryXML
+	
+	if($deploymentMode -eq "ST")
+	{
+		if($isSqlAzure)
+		{
+			$azureInstanceName = $sqlServer.Split(".")[0];
+			$singleApDbConnectingString = [string]::Format("application name=AgilePoint Server;connection lifetime=5;min pool size=10;server={0};database={1};User ID={2};Password={3};", $sqlServerAliasName, $singleApDB, "$dbUserName@$azureInstanceName", $dbUserPassword);
+			$node = $file.SelectSingleNode("descendant::database");
+			$node.SetAttribute("connectingString", $singleApDbConnectingString);
+		}
+		$domainName = [string]::Format("WinNT://{0}",$env:computername);
+		$node = $file.SelectSingleNode("descendant::domain");
+		$node.SetAttribute("name", $domainName);
+	}
 
 	$node = $file.SelectSingleNode("descendant::notification");
 	if($node -eq $null)
@@ -1543,14 +1571,6 @@ function Update-netflow-Cfg-File()
 	$node.SetAttribute("sysadm", $poolNotificationMailbox)
 	$node.SetAttribute("mailServer", $mailServer)
 	$node.SetAttribute("smtpService", $smtpService)
-	
-	if($deploymentMode -eq "ST" -and $isSqlAzure)
-	{
-		$azureInstanceName = $sqlServer.Split(".")[0];
-		$singleApDbConnectingString = [string]::Format("application name=AgilePoint Server;connection lifetime=5;min pool size=10;server={0};database={1};User ID={2};Password={3};", $sqlServerAliasName, $singleApDB, "$dbUserName@$azureInstanceName", $dbUserPassword);
-		$node = $file.SelectSingleNode("descendant::database");
-		$node.SetAttribute("connectingString", $singleApDbConnectingString);
-	}
 
 	$file.Save($appEntryXML);
 	Write-Host "Update-netflow-Cfg-File>> Done" -ForegroundColor DarkGreen;
@@ -2066,11 +2086,20 @@ function Insert-CRM-Connector()
 {
 	param($sqlInstance, $azureAppId, $azureAppSecretKey, $d365UniqueName, $d365Url)
 
-	$connectorConfig = [string]::Format("<?xml version=""1.0"" encoding=""utf-8""?><ConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><DefaultServerUrl /><LogOnAsOtherUser>false</LogOnAsOtherUser><CrmDomain /><CrmUsername /><CrmPassword /><LogExceptionsToCrm>true</LogExceptionsToCrm><LicenseSynchronizerStartHour>0</LicenseSynchronizerStartHour><RetrierConfiguration><MaxNumberOfRetries>10</MaxNumberOfRetries><WaitTimeForRetry>500</WaitTimeForRetry></RetrierConfiguration><DeploymentType>PrivateCloud</DeploymentType><AzureClientSecret>{1}</AzureClientSecret><AzureApplicationId>{0}</AzureApplicationId><OrganizationUrls><NameValue><Name>{2}</Name><Value xsi:type=""xsd:string"">{3}</Value></NameValue></OrganizationUrls></ConnectorConfiguration>",$azureAppId,$azureAppSecretKey, $d365UniqueName, $d365Url)
+	$orgsUniqueId = $d365UniqueName.split(";");
+	$orgsFullUrl = $d365Url.split(";");
+	$crmConnectorDataFormat = "<NameValue><Name>{0}</Name><Value xsi:type=""xsd:string"">{1}</Value></NameValue>";
+	$crmConnectorData="";
+	$counter=0
+	for ($counter=0; $counter -lt $orgsUniqueId.Length; $counter++)
+	{
+		$crmConnectorData += [string]::Format($crmConnectorDataFormat, $orgsUniqueId[$counter] ,$orgsFullUrl[$counter] );
+	}
+
+	$connectorConfig = [string]::Format("<?xml version=""1.0"" encoding=""utf-8""?><ConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><DefaultServerUrl /><LogOnAsOtherUser>false</LogOnAsOtherUser><CrmDomain /><CrmUsername /><CrmPassword /><LogExceptionsToCrm>true</LogExceptionsToCrm><LicenseSynchronizerStartHour>0</LicenseSynchronizerStartHour><RetrierConfiguration><MaxNumberOfRetries>10</MaxNumberOfRetries><WaitTimeForRetry>500</WaitTimeForRetry></RetrierConfiguration><DeploymentType>PrivateCloud</DeploymentType><AzureClientSecret>{1}</AzureClientSecret><AzureApplicationId>{0}</AzureApplicationId><OrganizationUrls>{2}</OrganizationUrls></ConnectorConfiguration>",$azureAppId,$azureAppSecretKey, $crmConnectorData)
 
 	Insert-ConnectorRecord -connectorName $crmConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig
 }
-
 
 function Test-Db-Connection()
 {
@@ -2129,16 +2158,15 @@ function Disable-NetflowFile-TaskScheduler()
 		Write-Host "Disable-NetflowFile-TaskScheduler ONLY Applies to ST deployments" -ForegroundColor Magenta
 	}
 }
-
-
 function Upsert-TenantAdminUser()
 {
-	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
-	$query= "SELECT * FROM [$singleApDB].[dbo].[WF_REG_USERS] WHERE [USER_NAME] = '$portalInstallationName'"
-	$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $query
-	
 	$userAlias = [string]::Format("{0}\{1}",$internalDomainValue,$singleTenantAdminUser)
 	$userAliasUppercase = $userAlias.ToUpper()
+
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+	$query= "SELECT * FROM [$singleApDB].[dbo].[WF_REG_USERS] WHERE [USER_NAME_UPCASE] = '$userAliasUppercase'"
+	$queryOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $query
+	
 	
 	if($queryOutput -eq $null)
 	{
@@ -2160,11 +2188,79 @@ function Upsert-TenantAdminUser()
 	if($queryOutput -eq $null)
 	{
 		Write-Host "Inserting Record in table 'WF_ASSIGNED_OBJECTS' from '$singleApDB'...."
-		$insertQuery = "INSERT INTO [$singleApDB].[dbo].[WF_ASSIGNED_OBJECTS] ([ROLE_NAME],[ASSIGNEE], [ASSIGNEE_TYPE], [OBJECT_ID], [OBJECT_TYPE])  VALUES ( 'ADMINISTRATORS', '$userAliasUppercase',  'User', '00000000000000000000000000000000','All')"
+		$insertQuery = "INSERT INTO [$singleApDB].[dbo].[WF_ASSIGNED_OBJECTS] ([ROLE_NAME],[ASSIGNEE], [ASSIGNEE_TYPE], [OBJECT_ID], [OBJECT_TYPE], [CREATED_DATE], [CREATED_BY])  VALUES ( 'ADMINISTRATORS', '$userAliasUppercase',  'User', '00000000000000000000000000000000','All',getdate(),'$userAliasUppercase')"
 		$insertOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $insertQuery
 		Write-Host "Record successfully inserted in table 'WF_ASSIGNED_OBJECTS' from '$singleApDB'" -ForegroundColor DarkGreen
 	}
+}
 
+function Modify-Role-Access-Rights($roleName ="Administrators")
+{
+	if($deploymentMode -eq "MT")
+	{
+		Write-Host "Modify-Role-Access-Rights doesn't apply to 'MT' deployments. Skipped." -ForegroundColor Magenta
+		return;
+	}
+
+	if($roleName -eq "" -or $roleName -eq $null)
+	{
+		Write-Host "Parameter 'roleName' can't be empty to update access Rights." -ForegroundColor Magenta
+		return;
+	}
+
+	$accessRightFlags="YYYNYNYYYYYYYYYYYYYYNYYYYYYYYNNNNNNYYNYYYNYYYYYYYYYYYYYYYYYYYYYYYYYYYYNNNNNNNNYNYNNNNYNNNNYYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+	Write-Host "Updating AccessRights for Role '$roleName'..." -ForegroundColor DarkCyan
+	$updateQuery = [string]::Format("UPDATE [{0}].[dbo].[WF_ROLES] SET [RIGHT_FLAGS]='{1}' WHERE [NAME_UPCASE] = '{2}'", $singleApDB, $accessRightFlags, $roleName.ToUpper());
+	$udpateOutput = Invoke-Sqlcmd -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $updateQuery
+	Write-Debug-Message -functionName "Modify-Role-Access-Rights" -message "Record Content: $queryOutput"	
+	Write-Host "AccessRights has been updated for Role '$roleName'!" -ForegroundColor DarkGreen
+
+}
+
+function Customize-Nx-Portal-For-AgileXRM()
+{
+	if($customizeNxPortal -eq $false)
+	{
+		Write-Host "Customizing NX Portal is disabled for this execution. Please set variable 'customizeNxPortal' to true if you want to use this feature" -ForegroundColor Magenta
+		return;
+	}
+
+	#Web Config Portal Configurations
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "AppBuilderAppPath" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ReportsAppPath" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ReportsAppPath" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ReportsAuthMode" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ReportsExternalAppPath" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ReportsSecureKeyAppPath" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "sf:AuthorizationEndpoint_sandbox" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "sf:TokenEndpoint_sandbox" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "sf:UserinfoEndpoint_sandbox" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "AmazonRegion" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "SalesEmailID" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "Office365Store" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "AppleStoreUrl" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "WindowsPhoneStoreUrl" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "DemoAppsPackageEnabled" -keyValue "false" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "AndroidStoreUrl" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ShowWelcomePopup" -keyValue "false" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "MarketPlaceUrl" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "DocumentationHelpLink" -keyValue "https://docs.agilexrm.com" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "FAQHelpLink" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ShowEvaluationMessage" -keyValue "false" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "sf:UserinfoEndpoint" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "SalesforceAppUrl" -keyValue "" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ShowHowToVideos" -keyValue "false" ;
+	Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "StatusPageUrl" -keyValue "" ;
+	
+	#em.settings.xml File Configuration
+	Modify-XML-Node -xmlFilePath "$agilePointPortalWebFolder\Modules\AgilePoint.Portal.Manage\Content\em.settings.xml" -nodePath "" -nodeName "Debug" -nodeValue "false" ;
+	Modify-XML-Node -xmlFilePath "$agilePointPortalWebFolder\Modules\AgilePoint.Portal.Manage\Content\em.settings.xml" -nodePath "" -nodeName "enableEventServices" -nodeValue "false" ;
+	Modify-XML-Node -xmlFilePath "$agilePointPortalWebFolder\Modules\AgilePoint.Portal.Manage\Content\em.settings.xml" -nodePath "" -nodeName "enableDataTracking" -nodeValue "false" ;
+	
+	#Modify Admin Role Access Rights
+	Modify-Role-Access-Rights
 }
 
 
@@ -2280,10 +2376,9 @@ $dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singl
 
 Start-Services;
 
-
-
-
 Apply-Post-Installation;
+
+Customize-Nx-Portal-For-AgileXRM
 
 if($autoRestart)
 {
