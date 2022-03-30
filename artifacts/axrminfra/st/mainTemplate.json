@@ -257,7 +257,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VN.json', parameters('_artifactsLocationSasToken')) )]",
+          "uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/VN.json') )]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -290,7 +290,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/DB.json', parameters('_artifactsLocationSasToken')) )]",
+          "uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/DB.json') )]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -313,7 +313,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VM.json', parameters('_artifactsLocationSasToken')) )]",
+          "uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/VM.json') )]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
