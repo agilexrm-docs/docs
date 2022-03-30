@@ -129,7 +129,10 @@
       "defaultValue": "10.0.0.0/24",
       "type": "string"
     },
-    "vmSizeServer": {
+       "gatewayPrefix": {
+                    "defaultValue": "10.5.0"           
+       },
+	  "vmSizeServer": {
       "defaultValue": "Standard_B2ms",
       "type": "string"
     },
