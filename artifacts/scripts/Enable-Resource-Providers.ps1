@@ -1,3 +1,12 @@
+<#
+    .DESCRIPTION
+        This script will enable all Azure Resource Providers required for any AgileXRM Infraestructure Installation
+
+    .NOTES
+        AUTHOR: AgileXRM Team
+        LASTEDIT: April 1st,2022
+#>
+
 Write-Host "Retrieving info from Environment. Please wait...." -ForegroundColor DarkCyan
 $policyValue = Get-ExecutionPolicy -Scope "CurrentUser"
 Write-Host "ExecutionPolicy for 'CurrentUser' is $policyValue" -ForegroundColor DarkGreen
