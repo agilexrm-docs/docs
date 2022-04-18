@@ -268,7 +268,7 @@
                     ]
                   },
                   "protectedSettings": {
-                    "commandToExecute": "[concat('echo powershell -ExecutionPolicy Unrestricted -file ', variables('serverScriptFileName'), ' ', variables('serverScriptArgs'))]"
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ', variables('serverScriptFileName'), ' ', variables('serverScriptArgs'))]"
                   }
                 }
               }
@@ -347,7 +347,7 @@
                     ]
                   },
                   "protectedSettings": {
-                    "commandToExecute": "[concat('echo powershell -ExecutionPolicy Unrestricted -file ./scripts/', variables('modelerScriptFileName'), ' ', variables('modelerScriptArgs'))]"
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ', variables('modelerScriptFileName'), ' ', variables('modelerScriptArgs'))]"
                   }
                 }
               }
