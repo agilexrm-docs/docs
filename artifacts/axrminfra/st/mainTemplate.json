@@ -109,6 +109,9 @@
     "adminPassword": {
       "type": "string"
     },
+    "apServiceAccountPassword": {
+      "type": "string"
+    },
     "allowAzureIps": {
       "defaultValue": true,
       "type": "bool"
@@ -261,8 +264,8 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-					"uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/VN.json') )]",
-                    "contentVersion": "1.0.0.0"
+          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VN.json', parameters('_artifactsLocationSasToken')) )]",
+          "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "location": { "value": "[parameters('location')]" },
@@ -294,7 +297,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/DB.json') )]",
+          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/DB.json', parameters('_artifactsLocationSasToken')) )]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -317,7 +320,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri('https://raw.githubusercontent.com/agilexrm-docs/docs/master/artifacts/axrminfra/st/',  concat('nestedtemplates/VM.json') )]",
+          "uri": "[uri(parameters('_artifactsLocation'),  concat('nestedtemplates/VM.json', parameters('_artifactsLocationSasToken')) )]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -327,6 +330,7 @@
           "axrm_modeler_name": { "value": "[parameters('axrm_modeler_name')]" },
           "adminUsername": { "value": "[parameters('adminUsername')]" },
           "adminPassword": { "value": "[parameters('adminPassword')]" },
+          "apServiceAccountPassword": { "value": "[parameters('apServiceAccountPassword')]" },
           "nic_server_name": { "value": "[variables('nic_server_name')]" },
           "nic_modeler_name": { "value": "[variables('nic_modeler_name')]" },
           "sqlConnectionString": { "value": "[reference(variables('deploymentNameDB')).outputs.sqlConnectionString.value]" },
