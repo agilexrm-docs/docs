@@ -25,6 +25,9 @@
     "adminPassword": {
       "type": "string"
     },
+    "apServiceAccountPassword": {
+      "type": "string"
+    },
     "nic_server_name": {
       "defaultValue": "axrm-server-nic",
       "type": "string"
@@ -65,7 +68,7 @@
       "type": "string"
     },
     "gatewayPrefix": {
-  	  "defaultValue":"10.0.0.",
+      "defaultValue": "10.0.0.",
       "type": "string"
     },
     "d365OrgUniqueName": {
@@ -108,9 +111,9 @@
   },
   "variables": {
     "serverScriptFileName": "StartVM.ps1",
-    "serverScriptArgs": "[concat('-test \"',parameters('sqlConnectionString'), '\"',' -apServiceAccountPassword \"DefaultPass@w0rd\" -regionNumber \"\" -poolNumber \"\" -redisAccessKey \"\" -azureServiceBusConnectionString \"\" -defaultGateway \"',parameters('gatewayPrefix'),'.1','\" -sqlServer \"',parameters('sqlServerFQDN'),'\" -sqlServerPort \"1433\" -appUrlSeparator \"-\" -domainUrl \"agilexrmonline.com\" -mainHostName \"',parameters('customer_deployment_name'),'\" -deploymentMode \"ST\" -deploymentType \"PrivateCloud\" -localUsersPassword \"',parameters('adminPassword'),'\" -waadWcfAppId \"',parameters('azServiceAppId'),'\" -waadWcfAppIdUri \"',parameters('azServiceAppUri'),'\" -waadApplicationId \"',parameters('azPortalAppId'),'\" -waadApplicationIdPassword \"',parameters('azPortalAppSecretKey'),'\" -envisionAppId \"',parameters('azModelerAppId'),'\" -azureAdRealm \"https://axrmce.agilexrm.com\" -singleTenantCrmOrgUniqueId \"',parameters('d365OrgUniqueName'),'\" -singleTenantCrmOrgFullUrl \"',parameters('d365OrgUrl'),'\" -singleTenantAdminUser \"Tenant-Admin\" -dbUserPassword \"',parameters('adminPassword'),'\" -certificateSubjectName \"CN=',parameters('customer_deployment_name'),'.agilexrmonline.com\" -isSqlAzure $true -customizeNxPortal $true')]",
+    "serverScriptArgs": "[concat('-apServiceAccountPassword:\"',parameters('apServiceAccountPassword'),'\" -regionNumber:\"\" -poolNumber:\"\" -redisAccessKey:\"\" -azureServiceBusConnectionString:\"\" -defaultGateway:\"',parameters('gatewayPrefix'),'.1','\" -sqlServer:\"',parameters('sqlServerFQDN'),'\" -sqlServerPort:\"1433\" -appUrlSeparator:\"-\" -domainUrl:\"agilexrmonline.com\" -mainHostName:\"',parameters('customer_deployment_name'),'\" -deploymentMode:\"ST\" -deploymentType:\"PrivateCloud\" -localUsersPassword:\"',parameters('adminPassword'),'\" -waadWcfAppId:\"',parameters('azServiceAppId'),'\" -waadWcfAppIdUri:\"',parameters('azServiceAppUri'),'\" -waadApplicationId:\"',parameters('azPortalAppId'),'\" -waadApplicationIdPassword:\"',parameters('azPortalAppSecretKey'),'\" -envisionAppId:\"',parameters('azModelerAppId'),'\" -azureAdRealm:\"https://axrmce.agilexrm.com\" -singleTenantCrmOrgUniqueId:\"',parameters('d365OrgUniqueName'),'\" -singleTenantCrmOrgFullUrl:\"',parameters('d365OrgUrl'),'\" -singleTenantAdminUser:\"Tenant-Admin\" -dbUserPassword:\"',parameters('adminPassword'),'\" -certificateSubjectName:\"CN=',parameters('customer_deployment_name'),'.agilexrmonline.com\" -isSqlAzure:$true -customizeNxPortal:$true')]",
     "modelerScriptFileName": "Envision-PostInstallation-Tasks.ps1",
-    "modelerScriptArgs": "[concat('-deploymentType \"PrivateCloud\"')]"
+    "modelerScriptArgs": "[concat('-deploymentType:\"PrivateCloud\"')]"
   },
     "resources":[
       {
@@ -268,7 +271,7 @@
                     ]
                   },
                   "protectedSettings": {
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ', variables('serverScriptFileName'), ' ', variables('serverScriptArgs'))]"
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -Command ./', variables('serverScriptFileName'), ' ', variables('serverScriptArgs'))]"
                   }
                 }
               }
@@ -347,7 +350,7 @@
                     ]
                   },
                   "protectedSettings": {
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ', variables('modelerScriptFileName'), ' ', variables('modelerScriptArgs'))]"
+                    "commandToExecute": "[concat('echo powershell -ExecutionPolicy Unrestricted -Command ./', variables('modelerScriptFileName'), ' ', variables('modelerScriptArgs'))]"
                   }
                 }
               }
