@@ -51,7 +51,7 @@ Param(
 	[string]$dbUserName="apservice",
 	[string]$dbUserPassword="",
 	[bool]$isSqlAzure = $false,
-	[bool]$customizeNxPortal = $true
+	[bool]$customizeNxPortal = $false
 
 )
 
@@ -1255,6 +1255,8 @@ function Configure-AgileXRMSites()
 		Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "AgileXRMGlobalOndemandStorage";	
 		Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
 	}
+
+	Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AllowTestPage" -keyValue "true";	
 	
 	Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\AgileDialogs\web.config" -keyName "MyNotificationsServiceUrl" -keyValue $notificationReceiverUrl ;
 	Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\AgileDialogs\web.config" -keyName "SignFetchXml" -keyValue $signFetchXML ;
@@ -1309,6 +1311,7 @@ function Configure-AgileXRMSites()
 		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "AgileXRMGlobalOndemandStorage";	
 		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
 	}
+	Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AllowTestPage" -keyValue "false";	
 	
 	Configure-OrgUrl-Section -configFilePath "$publicAgileXrmWebFolder\web.config"  -orgUniqueId $singleTenantCrmOrgUniqueId -orgFullUrl $singleTenantCrmOrgFullUrl
 
@@ -1372,6 +1375,7 @@ function Configure-AgileXRMSites()
 		Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "";	
 		Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "";	
 	}
+	Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "AllowTestPage" -keyValue "false";	
 
 	#Bindings
 	if($deploymentMode -eq "ST")
@@ -2372,7 +2376,10 @@ Create-Local-Users
 Set-TimeZone -Id "UTC" -PassThru
 
 # Check DB Connection to SingleApDB
-$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+if($deploymentMode -eq "ST")
+{
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+}
 
 Start-Services;
 
