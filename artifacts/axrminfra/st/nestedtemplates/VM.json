@@ -230,6 +230,9 @@
                 "osDisk": {
                   "osType": "Windows",
                   "createOption": "fromImage",
+				  "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS"
+                  },
                   "caching": "ReadWrite"
                 },
                 "dataDisks": []
@@ -309,6 +312,9 @@
                 "osDisk": {
                   "osType": "Windows",
                   "createOption": "fromImage",
+				  "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS"
+                  },
                   "caching": "ReadWrite"
                 },
                 "dataDisks": []
