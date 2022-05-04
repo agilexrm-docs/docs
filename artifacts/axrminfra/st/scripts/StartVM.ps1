@@ -85,6 +85,11 @@ if($svcPrincipalSecretKey -eq $null)
 	write-host "ServicePrincipal KEY is Null" -foregroundcolor DarkCyan
 	$svcPrincipalSecretKey = $waadApplicationIdPassword
 }
+if($deploymentMode -eq "ST")
+{
+ 	$regionNumber=""
+	$poolNumber=""
+} 
 
 #Global Parameters
 $global:debugMode = $false
