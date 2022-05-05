@@ -1,5 +1,9 @@
-param([string]$deploymentType="PrivateCloud", [string]$licenseProductId, [string]$azureStorageTableName="AgileXRMGlobalOndemandStorageST",[string]$azureEnvisionAppId="583a4e00-bcf2-4fbb-b346-6c90c376f160", [string]$agilePointServicesAppIdUri ="https://ws.agilexrmonline.com:13487/AgilePointServer", [string]$azStorageAccountName="",[string]$azStorageAccountSharedKey="",[string]$azFileShareName="axrmrepository")
+param([string]$deploymentType="PrivateCloud", [string]$licenseProductId, [string]$azureStorageTableName="AgileXRMGlobalOndemandStorageST",[string]$azureEnvisionAppId="583a4e00-bcf2-4fbb-b346-6c90c376f160", [string]$agilePointServicesAppIdUri ="https://ws.agilexrmonline.com:13487/AgilePointServer", [string]$azStorageAccountName="",[string]$azStorageAccountSharedKey="",[string]$azFileShareName="axrmrepository", [string]$userName = 'adminaxrm', [string]$userPassword = "", [string]$userDomain = "")
 
+if($userDomain -eq "")
+{
+	$userDomain = $env:COMPUTERNAME
+}
 
 ######################################FUNCTIONS################################################################################################
 
@@ -149,31 +153,42 @@ function Remove-WebViewDll-FromOfficeFolder
 
 function Map-Azure-UnitDrive([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
 {
+
 	if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
 	{
 		Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for 'azStorageAccountName', 'azStorageAccountSharedKey' and 'azFileShareName'" -ForegroundColor DarkCyan
 		return;
 	}
+    
+    [securestring]$secStringPassword = ConvertTo-SecureString $userPassword -AsPlainText -Force
+    [pscredential]$adminCredential = New-Object System.Management.Automation.PSCredential ("$userDomain\$userName", $secStringPassword)
 
-	$computerName = [string]::Format("{0}.file.core.windows.net",$storageAccountName)
-	$connectTestResult = Test-NetConnection -ComputerName $computerName -Port $storageAccountPort
-	if ($connectTestResult.TcpTestSucceeded) 
-	{
-		# Save the password so the drive will persist on reboot
-        $commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
-		cmd.exe /C $commandParameters
-        Write-Host "Parameters: $commandParameters"
+    $scriptBlock = {
+        param([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
+    	
+        $computerName = [string]::Format("{0}.file.core.windows.net",$storageAccountName)
+    	$connectTestResult = Test-NetConnection -ComputerName $computerName -Port $storageAccountPort
+    	if ($connectTestResult.TcpTestSucceeded) 
+    	{
+		    # Save the password so the drive will persist on reboot
+            $commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
+		    cmd.exe /C $commandParameters
+            Write-Host "Parameters: $commandParameters"
 
-		# Mount the drive
-        $rootPath = "\\$computerName\$fileShareName"
-        Write-Host "Root Path: $rootPath"
-		New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
+		    # Mount the drive
+            $rootPath = "\\$computerName\$fileShareName"
+            Write-Host "Root Path: $rootPath"
+		    New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
 
-		Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
+		    Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
 
-	} else {
-		Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
-	}	
+	    } else {
+		    Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+	    }	
+    }
+
+    Invoke-Command -Credential $adminCredential -ScriptBlock $scriptBlock -ArgumentList $storageAccountName $storageAccountPort $storageAccountSharedKey $fileShareName -ComputerName $env:COMPUTERNAME 
+     
 }
 
 #################################################END FUNCTIONS#################################################################333
@@ -182,6 +197,8 @@ Remove-Old-Stencils-Folders
 Set-Envision-Config-Keys
 Deploy-License
 Remove-WebViewDll-FromOfficeFolder
+
+
 Map-Azure-UnitDrive -storageAccountName $azStorageAccountName -storageAccountSharedKey $azStorageAccountSharedKey -fileShareName $azFileShareName
 
 exit 0
