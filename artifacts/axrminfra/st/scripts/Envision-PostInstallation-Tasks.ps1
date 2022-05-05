@@ -197,7 +197,7 @@ function Map-Azure-UnitDrive([string]$storageAccountName,[int]$storageAccountPor
 	    }	
     }
 
-    Invoke-Command -Credential $adminCredential -ScriptBlock $scriptBlock -ArgumentList $storageAccountName $storageAccountPort $storageAccountSharedKey $fileShareName -ComputerName $env:COMPUTERNAME 
+    Invoke-Command -Credential $adminCredential -ScriptBlock $scriptBlock -ArgumentList $storageAccountName,$storageAccountPort,$storageAccountSharedKey,$fileShareName -ComputerName $env:COMPUTERNAME 
      
 }
 
