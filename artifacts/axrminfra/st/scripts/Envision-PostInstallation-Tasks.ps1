@@ -218,7 +218,7 @@ $scripBlock = @'
 	
 	# logon/logoff scripts
 	$userScriptsPath = Join-Path $gpRoot "User\Scripts\psscripts.ini"
-	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName $azStorageAccountName -storageAccountPort 445 -storageAccountSharedKey $azStorageAccountSharedKey -fileShareName $azFileShareName"
+	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName:$azStorageAccountName -storageAccountPort:445 -storageAccountSharedKey:$azStorageAccountSharedKey -fileShareName:$azFileShareName"
 
 	Set-Content -Path $userScriptsPath `
 						   -Value $contentLogonScript
