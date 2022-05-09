@@ -175,6 +175,9 @@ function Write-LogonScript
 
 $scripBlock = @'
 	param([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
+	
+	Start-Transcript -Path "c:\temp\PSlog.txt"
+	
 	if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
 	{
 		Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for azStorageAccountName, azStorageAccountSharedKey and azFileShareName" -ForegroundColor DarkCyan
@@ -200,6 +203,7 @@ $scripBlock = @'
 	} else {
 		Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
 	}	
+	Stop-Transcript
 '@
 
 	# paths
