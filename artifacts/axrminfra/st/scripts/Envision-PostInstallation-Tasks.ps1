@@ -1,19 +1,5 @@
-param([string]$deploymentType="PrivateCloud", 
-[string]$licenseProductId, 
-[string]$azureStorageTableName="AgileXRMGlobalOndemandStorageST",
-[string]$azureEnvisionAppId="583a4e00-bcf2-4fbb-b346-6c90c376f160", 
-[string]$agilePointServicesAppIdUri="https://ws.agilexrmonline.com:13487/AgilePointServer", 
-[string]$azStorageAccountName="",
-[string]$azStorageAccountSharedKey="",
-[string]$azFileShareName="axrmrepository",
-[string]$userName="adminaxrm",
-[string]$userPassword="",
-[string]$userDomain="")
+param([string]$deploymentType="PrivateCloud", [string]$licenseProductId, [string]$azureStorageTableName="AgileXRMGlobalOndemandStorageST",[string]$azureEnvisionAppId="583a4e00-bcf2-4fbb-b346-6c90c376f160", [string]$agilePointServicesAppIdUri ="https://ws.agilexrmonline.com:13487/AgilePointServer", [string]$azStorageAccountName="",[string]$azStorageAccountSharedKey="",[string]$azFileShareName="axrmrepository", [string]$adminUserName)
 
-if($userDomain -eq "")
-{
-	$userDomain = $env:COMPUTERNAME
-}
 
 ######################################FUNCTIONS################################################################################################
 
@@ -161,54 +147,85 @@ function Remove-WebViewDll-FromOfficeFolder
 	Get-ChildItem -Path $officePath -Filter "webview2loader*" | Remove-Item -Force -ErrorAction Ignore
 }
 
-function Map-Azure-UnitDrive([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
+function Trust-EnvisionAddIn-ForAllUsers
 {
+	param([string]$currentPath="")
 
-	if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
+	$fullPath = "Registry::HKEY_USERS\.DEFAULT\Software\Microsoft\Office\16.0\Visio\Security"
+
+	if (!(Test-Path -Path $fullPath ))
 	{
-		Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for 'azStorageAccountName', 'azStorageAccountSharedKey' and 'azFileShareName'" -ForegroundColor DarkCyan
-		return;
+		New-item -Path $fullPath -Force
+		New-ItemProperty -Path $fullPath -Name 'VBAWarnings' -Value 1 -PropertyType DWord
+		
 	}
-    
-    [securestring]$secStringPassword = ConvertTo-SecureString $userPassword -AsPlainText -Force
-    [pscredential]$adminCredential = New-Object System.Management.Automation.PSCredential ("$userDomain\$userName", $secStringPassword)
-
-    $scriptBlock = {
-        param([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
-    	
-        $computerName = [string]::Format("{0}.file.core.windows.net",$storageAccountName)
-    	$connectTestResult = Test-NetConnection -ComputerName $computerName -Port $storageAccountPort
-    	if ($connectTestResult.TcpTestSucceeded) 
-    	{
-		    # Save the password so the drive will persist on reboot
-            $commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
-		    cmd.exe /C $commandParameters
-            Write-Host "Parameters: $commandParameters"
-
-		    # Mount the drive
-            $rootPath = "\\$computerName\$fileShareName"
-            Write-Host "Root Path: $rootPath"
-		    New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
-
-		    Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
-
-	    } else {
-		    Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
-	    }	
-    }
-
-    Invoke-Command -Credential $adminCredential -ScriptBlock $scriptBlock -ArgumentList $storageAccountName,$storageAccountPort,$storageAccountSharedKey,$fileShareName -ComputerName $env:COMPUTERNAME 
-     
+	else
+	{
+		Set-ItemProperty -Path $fullPath -Name 'VBAWarnings' -Value 1
+	}
 }
 
-#################################################END FUNCTIONS#################################################################333
+function Write-LogonScript
+{
+	if($deploymentType -ne "PrivateCloud")
+	{
+		Write-Host "Write-LogonScript doesn't apply to NON Private Cloud Environments" -ForegroundColor DarkCyan
+		return;
+	}
+
+$scripBlock = @'
+	param([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
+	if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
+	{
+		Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for azStorageAccountName, azStorageAccountSharedKey and azFileShareName" -ForegroundColor DarkCyan
+		return;
+	}
+
+	$computerName = [string]::Format("{0}.file.core.windows.net",$storageAccountName)
+	$connectTestResult = Test-NetConnection -ComputerName $computerName -Port $storageAccountPort
+	if ($connectTestResult.TcpTestSucceeded) 
+	{
+		# Save the password so the drive will persist on reboot
+        $commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
+		cmd.exe /C $commandParameters
+        Write-Host "Parameters: $commandParameters"
+
+		# Mount the drive
+        $rootPath = "\\$computerName\$fileShareName"
+        Write-Host "Root Path: $rootPath"
+		New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
+
+		Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
+
+	} else {
+		Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+	}	
+'@
+
+	# paths
+	$gpRoot = "${env:SystemRoot}\System32\GroupPolicy"
+		
+	$fileName = Join-Path $gpRoot "User\Scripts\Logon\LogonScript.ps1";
+	$content = Set-Content -Path $fileName `
+						   -Value $scripBlock
+	
+	# logon/logoff scripts
+	$userScriptsPath = Join-Path $gpRoot "User\Scripts\psscripts.ini"
+	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName $storageAccountName -storageAccountPort 445 -storageAccountSharedKey $storageAccountSharedKey -fileShareName $fileShareName"
+
+	Set-Content -Path $userScriptsPath `
+		   -Value $contentLogonScript
+	gpupdate
+
+}
+
+#################################################END FUNCTIONS#################################################################
 
 Remove-Old-Stencils-Folders
 Set-Envision-Config-Keys
 Deploy-License
 Remove-WebViewDll-FromOfficeFolder
-
-
-#Map-Azure-UnitDrive -storageAccountName $azStorageAccountName -storageAccountSharedKey $azStorageAccountSharedKey -fileShareName $azFileShareName
+Trust-EnvisionAddIn-ForAllUsers
+Write-LogonScript
 
 exit 0
