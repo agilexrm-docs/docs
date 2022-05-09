@@ -177,6 +177,22 @@ $scripBlock = @'
 	param([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
 	
 	Start-Transcript -Path "c:\temp\PSlog.txt"
+	function Trust-EnvisionAddIn
+	{
+		$fullPath = "Registry::HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Visio\Security"
+
+		if (!(Test-Path -Path $fullPath ))
+		{
+			New-item -Path $fullPath -Force
+			New-ItemProperty -Path $fullPath -Name 'VBAWarnings' -Value 1 -PropertyType DWord
+		}
+		else
+		{
+			Set-ItemProperty -Path $fullPath -Name 'VBAWarnings' -Value 1
+		}
+	}
+	Trust-EnvisionAddIn
+
 	
 	if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
 	{
