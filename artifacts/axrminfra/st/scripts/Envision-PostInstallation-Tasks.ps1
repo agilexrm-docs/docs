@@ -220,12 +220,18 @@ $scripBlock = @'
 	$content = Set-Content -Path $fileName `
 						   -Value $scripBlock
 	
+	#gpInit file
+	$contentgpInitFile = "[General]`r`ngPCUserExtensionNames=[{42B5FAAE-6536-11D2-AE5A-0000F87571E3}{40B66650-4972-11D1-A7CA-0000F87571E3}]`r`nVersion=524288`r`n"
+	$gpInitFilePath = Join-Path $gpRoot "gpInit.ini"
+	Set-Content -Path $gpInitFilePath `
+		   -Value $contentgpInitFile
+	
 	# logon/logoff scripts
 	$userScriptsPath = Join-Path $gpRoot "User\Scripts\psscripts.ini"
 	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName:$azStorageAccountName -storageAccountPort:445 -storageAccountSharedKey:$azStorageAccountSharedKey -fileShareName:$azFileShareName"
 
 	Set-Content -Path $userScriptsPath `
-						   -Value $contentLogonScript
+		   -Value $contentLogonScript
 	gpupdate
 
 }
