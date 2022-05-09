@@ -1,11 +1,5 @@
 param([string]$deploymentType="PrivateCloud", [string]$licenseProductId, [string]$azureStorageTableName="AgileXRMGlobalOndemandStorageST",[string]$azureEnvisionAppId="583a4e00-bcf2-4fbb-b346-6c90c376f160", [string]$agilePointServicesAppIdUri ="https://ws.agilexrmonline.com:13487/AgilePointServer", [string]$azStorageAccountName="",[string]$azStorageAccountSharedKey="",[string]$azFileShareName="axrmrepository", [string]$adminUserName)
 
-Write-Host "DeploymentType: $deploymentType"
-Write-Host "azStorageAccountName: $azStorageAccountName"
-Write-Host "zStorageAccountSharedKey: $azStorageAccountSharedKey"
-Write-Host "azStorageAccountSharedKey: $agilePointServicesAppIdUri"
-Write-Host "azureEnvisionAppId: $azureEnvisionAppId"
-
 
 ######################################FUNCTIONS################################################################################################
 
@@ -224,7 +218,7 @@ $scripBlock = @'
 	
 	# logon/logoff scripts
 	$userScriptsPath = Join-Path $gpRoot "User\Scripts\psscripts.ini"
-	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName $storageAccountName -storageAccountPort 445 -storageAccountSharedKey $storageAccountSharedKey -fileShareName $fileShareName"
+	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName $azStorageAccountName -storageAccountPort 445 -storageAccountSharedKey $azStorageAccountSharedKey -fileShareName $azFileShareName"
 
 	Set-Content -Path $userScriptsPath `
 						   -Value $contentLogonScript
