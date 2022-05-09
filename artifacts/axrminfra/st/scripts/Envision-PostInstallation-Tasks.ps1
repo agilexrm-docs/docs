@@ -221,10 +221,10 @@ $scripBlock = @'
 						   -Value $scripBlock
 	
 	#gpInit file
-	$contentgpInitFile = "[General]`r`ngPCUserExtensionNames=[{42B5FAAE-6536-11D2-AE5A-0000F87571E3}{40B66650-4972-11D1-A7CA-0000F87571E3}]`r`nVersion=524288`r`n"
-	$gpInitFilePath = Join-Path $gpRoot "gpInit.ini"
-	Set-Content -Path $gpInitFilePath `
-		   -Value $contentgpInitFile
+	$contentgptIniFile = "[General]`r`ngPCUserExtensionNames=[{42B5FAAE-6536-11D2-AE5A-0000F87571E3}{40B66650-4972-11D1-A7CA-0000F87571E3}]`r`nVersion=524288`r`n"
+	$gptIniFilePath = Join-Path $gpRoot "gpt.ini"
+	Set-Content -Path $gptIniFilePath `
+		   -Value $contentgptIniFile
 	
 	# logon/logoff scripts
 	$userScriptsPath = Join-Path $gpRoot "User\Scripts\psscripts.ini"
