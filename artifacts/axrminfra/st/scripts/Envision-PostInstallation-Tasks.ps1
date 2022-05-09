@@ -1,5 +1,11 @@
 param([string]$deploymentType="PrivateCloud", [string]$licenseProductId, [string]$azureStorageTableName="AgileXRMGlobalOndemandStorageST",[string]$azureEnvisionAppId="583a4e00-bcf2-4fbb-b346-6c90c376f160", [string]$agilePointServicesAppIdUri ="https://ws.agilexrmonline.com:13487/AgilePointServer", [string]$azStorageAccountName="",[string]$azStorageAccountSharedKey="",[string]$azFileShareName="axrmrepository", [string]$adminUserName)
 
+Write-Host "DeploymentType: $deploymentType"
+Write-Host "azStorageAccountName: $azStorageAccountName"
+Write-Host "zStorageAccountSharedKey: $azStorageAccountSharedKey"
+Write-Host "azStorageAccountSharedKey: $agilePointServicesAppIdUri"
+Write-Host "azureEnvisionAppId: $azureEnvisionAppId"
+
 
 ######################################FUNCTIONS################################################################################################
 
