@@ -205,7 +205,14 @@ $scripBlock = @'
 	# paths
 	$gpRoot = "${env:SystemRoot}\System32\GroupPolicy"
 		
-	$fileName = Join-Path $gpRoot "User\Scripts\Logon\LogonScript.ps1";
+	$fileNamePath = Join-Path $gpRoot "User\Scripts\Logon";
+	
+	if(!(Test-Path -Path $fileNamePath))
+	{
+	  New-Item $fileNamePath -ItemType Directory -Force
+	}
+	
+	$fileName = Join-Path $fileNamePath "LogonScript.ps1"
 	$content = Set-Content -Path $fileName `
 						   -Value $scripBlock
 	
@@ -214,7 +221,7 @@ $scripBlock = @'
 	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName $storageAccountName -storageAccountPort 445 -storageAccountSharedKey $storageAccountSharedKey -fileShareName $fileShareName"
 
 	Set-Content -Path $userScriptsPath `
-		   -Value $contentLogonScript
+						   -Value $contentLogonScript
 	gpupdate
 
 }
