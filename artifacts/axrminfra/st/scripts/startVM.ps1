@@ -54,7 +54,7 @@ Param(
 	[bool]$customizeNxPortal = $false
 
 )
-
+Write-Host "ApserVice Acc Pass is: <begin> $apServiceAccountPassword <end>"
 if (Get-Module -ListAvailable -Name Microsoft.Xrm.Data.PowerShell) 
 {
 	Write-Host "Module 'Microsoft.Xrm.Data.PowerShell' already installed" -ForegroundColor DarkGreen;
