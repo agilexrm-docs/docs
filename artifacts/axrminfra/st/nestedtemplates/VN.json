@@ -68,7 +68,12 @@
     },
     "virtualNetworksSubnetAddressSize": {
       "type": "string"
-    }
+    },
+    "ipAddressAllowed": {
+      "defaultValue": "85.50.39.4",
+      "type": "string"
+    },
+
   },
   "variables": {
     "serveralias": "[concat(parameters('publicIPAddresses_AXRM_SERVER_IP_domainNameLabel'))]",
@@ -219,7 +224,7 @@
           "protocol": "*",
           "sourcePortRange": "*",
           "destinationPortRange": "*",
-          "sourceAddressPrefix": "85.50.39.4",
+          "sourceAddressPrefix": "[parameters('ipAddressAllowed')]",
           "destinationAddressPrefix": "VirtualNetwork",
           "access": "Allow",
           "priority": 100,
