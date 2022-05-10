@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "0.0.0.34",
   "parameters": {
@@ -134,6 +134,9 @@
     },
     "gatewayPrefix": {
       "defaultValue": "10.0.0",
+      "type": "string"
+    },
+    "ipAddressAllowed": {
       "type": "string"
     },
     "vmSizeServer": {
@@ -286,7 +289,8 @@
           "virtualNetworkNewOrExisting": { "value": "[parameters('virtualNetworkNewOrExisting')]" },
           "virtualNetworksAddressSize": { "value": "[parameters('virtualNetworksAddressSize')]" },
           "virtualNetworksSubnetName": { "value": "[parameters('virtualNetworksSubnetName')]" },
-          "virtualNetworksSubnetAddressSize": { "value": "[parameters('virtualNetworksSubnetAddressSize')]" }
+          "virtualNetworksSubnetAddressSize": { "value": "[parameters('virtualNetworksSubnetAddressSize')]" },
+		  "ipAddressAllowed": { "value": "[parameters('ipAddressAllowed')]" }
         }
       }
     },
