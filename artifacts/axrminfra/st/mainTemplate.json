@@ -107,10 +107,10 @@
       "type": "string"
     },
     "adminPassword": {
-      "type": "string"
+      "type": "securestring"
     },
     "apServiceAccountPassword": {
-      "type": "string"
+      "type": "securestring"
     },
     "allowAzureIps": {
       "defaultValue": true,
@@ -194,7 +194,7 @@
       "type": "string"
     },
     "azPortalAppSecretKey": {
-      "type": "string"
+      "type": "securestring"
     },
     "_artifactsLocation": {
       "type": "string",
