@@ -7,6 +7,11 @@ param([string]$deploymentType="PrivateCloud",
 [string]$azStorageAccountSharedKey="",
 [string]$azFileShareName="axrmrepository")
 
+$now = Get-Date -Format "yyyyMMddHHmmss"
+$transcriptFileName = [string]::Format("PSWStartVM_{0}.log",$now)
+$transcriptFilePath = Join-Path "C:\Temp" $transcriptFileName
+Start-Transcript -Path $transcriptFilePath
+
 
 ######################################FUNCTIONS################################################################################################
 
@@ -259,6 +264,32 @@ $scripBlock = @'
 
 }
 
+function Register-EnvisionAddIn-Dll()
+{
+	Write-Host "Register-EnvisionAddIn-Dll>> Trying to Registrer 'EnvisionAddIn.dll'. Wait..." -ForegroundColor DarkCyan
+
+	$envisionPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Ascentn\Envision"
+	if(!(Test-Path -Path $envisionPath))
+	{
+		Write-Host "Register-EnvisionAddIn-Dll>> Unable to find Envision Path for this Machine" -ForegroundColor yellow
+		return;
+	}
+	try
+	{
+		$envisionKey = Get-ItemProperty -Path $envisionPath
+		$envisionPath = Join-Path -Path $envisionKey.location "EnvisionAddIn.dll"
+		$assembly = [System.Reflection.Assembly]::LoadFrom($envisionPath);
+		$registrationService = New-Object -TypeName System.Runtime.InteropServices.RegistrationServices
+		$registerStatus = $registrationService.RegisterAssembly($assembly, [System.Runtime.InteropServices.AssemblyRegistrationFlags]::SetCodeBase);
+		Write-Host "Register-EnvisionAddIn-Dll>> Done with status: $registerStatus !" -ForegroundColor DarkGreen
+	}
+	catch
+	{
+		Write-Host "Register-EnvisionAddIn-Dll>> Error Happens" -ForegroundColor Reds
+		Write-Host "$($_.Exception)" -ForegroundColor Red
+	}
+}
+
 #################################################END FUNCTIONS#################################################################
 
 Remove-Old-Stencils-Folders
@@ -267,5 +298,8 @@ Deploy-License
 Remove-WebViewDll-FromOfficeFolder
 Trust-EnvisionAddIn-ForAllUsers
 Write-LogonScript
+Register-EnvisionAddIn-Dll
+
+Stop-Transcript
 
 exit 0
