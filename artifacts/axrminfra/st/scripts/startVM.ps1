@@ -54,8 +54,10 @@ Param(
 	[bool]$customizeNxPortal = $false
 
 )
-
-Start-Transcript -Path "C:\Temp\PSWStartVM.log"
+$now = Get-Date -Format "yyyyMMddHHmmss"
+$transcriptFileName = [string]::Format("PSWStartVM_{0}.log",$now)
+$transcriptFilePath = Join-Path "C:\Temp" $transcriptFileName
+Start-Transcript -Path $transcriptFilePath
 
 if (Get-Module -ListAvailable -Name Microsoft.Xrm.Data.PowerShell) 
 {
