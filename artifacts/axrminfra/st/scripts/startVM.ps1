@@ -89,6 +89,7 @@ if($deploymentMode -eq "ST")
  	$regionNumber=""
 	$poolNumber=""
 } 
+Start-Transcript -Path "c:\temp\PSStartVMlog.txt"
 
 #Global Parameters
 $global:debugMode = $false
@@ -2390,7 +2391,7 @@ Start-Services;
 Apply-Post-Installation;
 
 Customize-Nx-Portal-For-AgileXRM
-
+Stop-Transcript
 if($autoRestart)
 {
 	Restart-Computer -Force;
