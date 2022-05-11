@@ -54,6 +54,9 @@ Param(
 	[bool]$customizeNxPortal = $false
 
 )
+
+Start-Transcript -Path "C:\Temp\PSWStartVM.log"
+
 if (Get-Module -ListAvailable -Name Microsoft.Xrm.Data.PowerShell) 
 {
 	Write-Host "Module 'Microsoft.Xrm.Data.PowerShell' already installed" -ForegroundColor DarkGreen;
@@ -89,7 +92,6 @@ if($deploymentMode -eq "ST")
  	$regionNumber=""
 	$poolNumber=""
 } 
-Start-Transcript -Path "c:\temp\PSStartVMlog.txt"
 
 #Global Parameters
 $global:debugMode = $false
@@ -1090,23 +1092,28 @@ function Update-AppImpersonationEntry-File()
 function Update-AppPool-User()
 {
 	param([string]$apAppPoolName = "AgilePointAppPool", [string]$fullUserName = "$apServiceAccountDomain\$apServiceAccountUser", [bool]$applyAdvancedSettings=$true)
-	
+
+	Write-Host "Update-AppPool-User>> Updating PoolName '$apAppPoolName' for user $fullUserName. Wait..." -ForegroundColor Yellow;
 	Import-Module WebAdministration
 	
 	#Set APservice User password in Given Pool
 	$apPool = Get-ItemProperty "iis:\\AppPools\$apAppPoolName" -Name "ProcessModel"
 	$apPool.userName = $fullUserName
-	$apPool.password = $global:apServiceAccountPassword;
+	$apPool.password = $global:apServiceAccountPassword
 	Set-ItemProperty -Path "IIS:\AppPools\$apAppPoolName" -Name "ProcessModel" -Value $apPool
+
+	Write-Host "Update-AppPool-User>> Properties set for ProcessModel" -ForegroundColor DarkGreen;
 	
 	if($applyAdvancedSettings)
 	{
+		Write-Host "Update-AppPool-User>>Setting Advanced properties. Wait..." -ForegroundColor DarkCyan;
 		#Set Max Memory for pool:
 		$totalMemory =  gwmi Win32_OperatingSystem | % {$_.TotalVisibleMemorySize}
 		$apPool = Get-ItemProperty "iis:\\AppPools\$apAppPoolName" -Name "Recycling"
 		#Memory should be set in kb
 		$apPool.periodicRestart.privateMemory = [int][Math]::Round(($totalMemory/2));
 		Set-ItemProperty -Path "IIS:\AppPools\$apAppPoolName" -Name "Recycling" -Value $apPool
+		Write-Host "Update-AppPool-User>>Advanced properties set." -ForegroundColor DarkGreen
 	}
 	Start-WebAppPool -Name $apAppPoolName
 }
@@ -1977,7 +1984,7 @@ function Create-NX-Portal-Orchard()
 	{
 		#Provisioning Portal for the First Time
 		Write-Host "NX Portal web request '$agilePointPortalUrl'...." -ForegroundColor Magenta;
-		$responsePortal = Invoke-WebRequest -Uri $agilePointPortalUrl
+		$responsePortal = Invoke-WebRequest -Uri $agilePointPortalUrl -UseBasicParsing
 		$statusCode = $responsePortal.StatusCode
 		Write-Host "NX Portal web request status Code: $statusCode" -ForegroundColor DarkGreen;
 	}
@@ -2391,7 +2398,9 @@ Start-Services;
 Apply-Post-Installation;
 
 Customize-Nx-Portal-For-AgileXRM
+
 Stop-Transcript
+
 if($autoRestart)
 {
 	Restart-Computer -Force;
