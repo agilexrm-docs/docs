@@ -17,7 +17,7 @@
     },
     "adminPassword": {
       "defaultValue": "",
-      "type": "string"
+      "type": "securestring"
     },
     "singleAPDBSize": {
       "type": "int"

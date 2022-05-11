@@ -23,10 +23,10 @@
       "type": "string"
     },
     "adminPassword": {
-      "type": "string"
+      "type": "securestring"
     },
     "apServiceAccountPassword": {
-      "type": "string"
+      "type": "securestring"
     },
     "nic_server_name": {
       "defaultValue": "axrm-server-nic",
@@ -82,7 +82,7 @@
       "type": "string"
     },
     "azPortalAppSecretKey": {
-      "type": "string"
+      "type": "securestring"
     },
     "azServiceAppId": {
       "defaultValue": "54ce9aa0-f0fd-4ae1-8e85-b9d539f7fcce",
