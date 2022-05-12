@@ -1099,10 +1099,10 @@ function Update-AppPool-User()
 	Import-Module WebAdministration
 	
 	#Set APservice User password in Given Pool
-	$apPool = Get-ItemProperty "iis:\\AppPools\$apAppPoolName" -Name "ProcessModel"
+	$apPool = Get-ItemProperty "IIS:\\AppPools\$apAppPoolName" -Name "ProcessModel"
 	$apPool.userName = $fullUserName
 	$apPool.password = $global:apServiceAccountPassword
-	Set-ItemProperty -Path "IIS:\AppPools\$apAppPoolName" -Name "ProcessModel" -Value $apPool
+	Set-ItemProperty -Path "IIS:\\AppPools\$apAppPoolName" -Name "ProcessModel" -Value $apPool
 
 	Write-Host "Update-AppPool-User>> Properties set for ProcessModel" -ForegroundColor DarkGreen;
 	
@@ -1111,10 +1111,10 @@ function Update-AppPool-User()
 		Write-Host "Update-AppPool-User>>Setting Advanced properties. Wait..." -ForegroundColor DarkCyan;
 		#Set Max Memory for pool:
 		$totalMemory =  gwmi Win32_OperatingSystem | % {$_.TotalVisibleMemorySize}
-		$apPool = Get-ItemProperty "iis:\\AppPools\$apAppPoolName" -Name "Recycling"
+		$apPool = Get-ItemProperty "IIS:\\AppPools\$apAppPoolName" -Name "Recycling"
 		#Memory should be set in kb
 		$apPool.periodicRestart.privateMemory = [int][Math]::Round(($totalMemory/2));
-		Set-ItemProperty -Path "IIS:\AppPools\$apAppPoolName" -Name "Recycling" -Value $apPool
+		Set-ItemProperty -Path "IIS:\\AppPools\$apAppPoolName" -Name "Recycling" -Value $apPool
 		Write-Host "Update-AppPool-User>>Advanced properties set." -ForegroundColor DarkGreen
 	}
 	Start-WebAppPool -Name $apAppPoolName
