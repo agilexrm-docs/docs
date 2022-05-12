@@ -481,6 +481,29 @@ function Configure-AzureServiceBus()
 	Write-Host $messageText -ForegroundColor DarkGreen;
 }
 
+function Configure-Site-Custom-Errors()
+{
+	param([string]$configFilePath="",[ValidateSet('Off', 'RemoteOnly')][string]$errorMode)
+	if(!(Test-Path -Path $configFilePath))
+	{
+		Write-Host "Unable to find document: $configFilePath" -ForegroundColor Magenta;
+		return;
+	}
+	[xml]$file = Get-Content $configFilePath;
+
+	$node = $file.SelectSingleNode("descendant::system.web/customErrors");
+	if($node -eq $null)
+	{
+		Write-Host "Unable to find subnode 'customErrors' for node 'system.web' in document $configFilePath" -ForegroundColor Magenta;
+		return;
+	}
+
+	$node.SetAttribute("mode", $errorMode);
+
+	$file.Save($configFilePath);
+	Write-Host "Custom Error in document $configFilePath succesfully update with value: $errorMode" -ForegroundColor DarkGreen;
+}
+
 function Configure-Federation-Connection()
 {
 	param([string]$configFilePath="",[string]$realm, [string]$endPoint, [string]$subDomain, [string]$issuer = "")
@@ -1331,6 +1354,7 @@ function Configure-AgileXRMSites()
 		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
 	}
 	Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AllowTestPage" -keyValue "false";	
+	Configure-Site-Custom-Errors -configFilePath "$publicAgileXrmWebFolder\web.config" -errorMode RemoteOnly
 	
 	Configure-OrgUrl-Section -configFilePath "$publicAgileXrmWebFolder\web.config"  -orgUniqueId $singleTenantCrmOrgUniqueId -orgFullUrl $singleTenantCrmOrgFullUrl
 
