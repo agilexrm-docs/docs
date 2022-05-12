@@ -1095,14 +1095,19 @@ function Update-AppPool-User()
 {
 	param([string]$apAppPoolName = "AgilePointAppPool", [string]$fullUserName = "$apServiceAccountDomain\$apServiceAccountUser", [bool]$applyAdvancedSettings=$true)
 
+	#Perform iisreset to avoid issues with error 'Keyset does not exist', tha forces generate Crypto/RSA files again
+	iisreset
+
 	Write-Host "Update-AppPool-User>> Updating PoolName '$apAppPoolName' for user $fullUserName. Wait..." -ForegroundColor Yellow;
 	Import-Module WebAdministration
 	
+    $iisPoolPath = "IIS:\AppPools\$apAppPoolName"
 	#Set APservice User password in Given Pool
-	$apPool = Get-ItemProperty "IIS:\\AppPools\$apAppPoolName" -Name "ProcessModel"
+	$apPool = Get-ItemProperty $iisPoolPath -Name "ProcessModel"
 	$apPool.userName = $fullUserName
 	$apPool.password = $global:apServiceAccountPassword
-	Set-ItemProperty -Path "IIS:\\AppPools\$apAppPoolName" -Name "ProcessModel" -Value $apPool
+    $apPool.identitytype=3
+	Set-ItemProperty -Path $iisPoolPath -Name "ProcessModel" -Value $apPool
 
 	Write-Host "Update-AppPool-User>> Properties set for ProcessModel" -ForegroundColor DarkGreen;
 	
@@ -1111,10 +1116,10 @@ function Update-AppPool-User()
 		Write-Host "Update-AppPool-User>>Setting Advanced properties. Wait..." -ForegroundColor DarkCyan;
 		#Set Max Memory for pool:
 		$totalMemory =  gwmi Win32_OperatingSystem | % {$_.TotalVisibleMemorySize}
-		$apPool = Get-ItemProperty "IIS:\\AppPools\$apAppPoolName" -Name "Recycling"
+		$apPool = Get-ItemProperty $iisPoolPath -Name "Recycling"
 		#Memory should be set in kb
 		$apPool.periodicRestart.privateMemory = [int][Math]::Round(($totalMemory/2));
-		Set-ItemProperty -Path "IIS:\\AppPools\$apAppPoolName" -Name "Recycling" -Value $apPool
+		Set-ItemProperty -Path $iisPoolPath -Name "Recycling" -Value $apPool
 		Write-Host "Update-AppPool-User>>Advanced properties set." -ForegroundColor DarkGreen
 	}
 	Start-WebAppPool -Name $apAppPoolName
