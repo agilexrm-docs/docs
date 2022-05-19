@@ -233,8 +233,8 @@ $scripBlock = @'
 	}	
 	
 	#Manually Added
-        & 'C:\AgileXRM\gpo\DeployGPOLocally.cmd'
-	Stop-Transcript
+	Start-Process -FilePath "C:\AgileXRM\gpo\DeployGPOLocally.cmd" -WorkingDirectory "C:\AgileXRM\gpo"
+        Stop-Transcript
 '@
 
 	# paths
