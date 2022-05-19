@@ -233,7 +233,7 @@ $scripBlock = @'
 	}	
 	
 	#Manually Added
-        & 'C:\AgileXRM\gpo\DeployGPOLocally.bat'
+        & 'C:\AgileXRM\gpo\DeployGPOLocally.cmd'
 	Stop-Transcript
 '@
 
