@@ -1403,6 +1403,59 @@ DialogsEngine.saveDialogContext(5000, function (){
 });
 ```
 
+## Define min a max values for Calendar control
+
+
+AgileDialgos calendar controls can define a range of valid inputs by setting minimum and maximum values. These values can by set using DialogsEngine by this way:
+
+```javascript
+DialogsEngine.setMinValue(<controlname>, <value>);
+```
+
+```javascript
+DialogsEngine.setMaxValue(<controlname>, <value>);
+```
+
+> Where:
+> - controlname, is the name of the control in which apply the expression.
+> - value, its the value to set in controlname. Can be a valid ISO-8601 dateexpression or a date object
+
+```javascript
+/* set Min value */
+DialogsEngine.setMaxValue("datetime_2", '2021-12-25T14:55:37Z');
+```
+
+```javascript
+/* set Min value */
+DialogsEngine.setMinValue("datetime_2", '2021-12-25T14:55:37Z');
+```
+
+Also, DialogsEngine API defines methods to get the configured values for `Min Value` and `Max Value`
+
+```javascript
+DialogsEngine.getMinValue(<controlname>);
+```
+
+```javascript
+DialogsEngine.getMaxValue(<controlname>);
+```
+> Where:
+> - controlname, is the name of the control to get the value.
+
+By the same way, we can get thats values
+
+```javascript
+/* Get Min value */
+var min = DialogsEngine.getMinValue("datetime_2");
+// Return a min date expressed as ISO-8601. Example: returns '2021-12-25T14:55:37Z'
+```
+
+```javascript
+/* Get Min value */
+var min = DialogsEngine.getMaxValue("datetime_2");
+// Return a min date expressed as ISO-8601. Example: returns '2021-12-25T14:55:37Z'
+```
+
 <!--
 ### Advanced Engine customizations
 

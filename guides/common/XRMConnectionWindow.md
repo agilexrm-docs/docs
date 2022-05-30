@@ -138,6 +138,19 @@ button to cancel the current dialog. ![](../media/AgileDialogsDesignGuide/XRMCon
 - **Save history**: If selected, AgileDialogs will save the execution history in order to show it in ProcessManager.
 
 	![](../media/ProcessManagerUserGuide/ProcessManagerUserGuide_29_5.png)
+
+- **Page Width**: This setting allows define the width of AgileDialogs. When its rendered within CRM/CDS this setting applies to window frame size, otherwhise this setting defines the page width within browser.
+
+- **Page Height**: This setting allows define the height of AgileDialogs when its rendered within CRM/CDS. Otherwise this setting is ignored.
+
+  > Page Height setting is ignored when AgileDialogs is executed outside CRM/CDS
+
+
+`Page Width` and `Page Height` settings applies to window frame size when AgileDialogs is within CRM/CDS, and when not is within CRM/CDS defines the page within browser.
+
+![](../media/AgileDialogsDesignGuide/XRMConnectionWindow_16.png)
+
+![](../media/AgileDialogsDesignGuide/XRMConnectionWindow_17.png)
  
 ### Naming Convention tab
 

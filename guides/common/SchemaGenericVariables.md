@@ -34,6 +34,7 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 |**CrmBeId**| This is the record id of the main entity. <br />Sample value:**|
 |**CrmBeType**| This is the type of the process main entity, for example *account* or *incident*.|
 |**organizationname**| This is the name of the CRM organization that the process record belongs to.|
+|**userlcid**| This is used lcid for AgileDialogs process template.|
 |**DialogTaskCRMActivityId**| If part of Dialog Activity, this property holds the CRM Activity ID that launched the current dialog instance.|
 
 ## Disclaimer of warranty

@@ -8,7 +8,14 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 
 It is usually used for questions that can be answered with approve / reject.
 
--   **ShowItemsMode**: Set  how items are rendered within AgileDialogs. Possible values are `Vertical` and `Horizontal`. If this property does not have value items are rendered in vertical way.
+We can customize the texts shown for each option using `Configure` button
+
+![](../media/AgileDialogsDesignGuide/yesno_03.png)
+![](../media/AgileDialogsDesignGuide/yesno_04.png)
+
+YesNo control also has these properties
+
+- **ShowItemsMode**: Set  how items are rendered within AgileDialogs. Possible values are `Vertical` and `Horizontal`. If this property does not have value items are rendered in vertical way.
 
 ![](../media/AgileDialogsDesignGuide/yesno_02.png)
 

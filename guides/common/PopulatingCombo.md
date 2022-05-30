@@ -28,8 +28,7 @@ And the variables used can be semicolon-separated list of values.
 
 ## XRM. Dynamic values using a XRM query
 
-When the dynamic option is selected, the `Configure` button opens the Advanced
-Find window to configure a query to get the values to be shown in the
+When the dynamic option is selected, the `Configure` button opens the `Query expression` window to configure a FetchXML query to get the values to be shown in the
 control:
 
 ![](../media/AgileDialogsDesignGuide/PopulatingControls_04.png)
@@ -66,10 +65,11 @@ in the other tabs, as well as allows using a custom **FetchXML**, by setting the
 
 For custom **FetchXML**, use the `Validate FetchXML` Query button to make sure it is valid and there are no errors.
 
+<!--
 Note that an attribute called *ReturnInternalValue* is used in the XML that is not standard FetchXML, and defines if the Formatted Value/Display Value of a field is returned or the internal value (e.g. for Date, Currency,Number, OptionSet, etc. ).
 
 ![](../media/AgileDialogsDesignGuide/PopulatingControls_09.png)
-
+-->
 > Also we can run the query within different user context using the `Run Query on behalf of CRM user`option.
 ### Dynamic values from an Option Set in XRM
 
