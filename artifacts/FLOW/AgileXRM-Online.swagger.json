@@ -1,0 +1,1249 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "AgileXRM Online",
+    "description": "AgileXRM Online"
+  },
+  "host": "pool499.api.agilexrmonline.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/AgilePointServer/Workflow/GetUUID": {
+      "get": {
+        "summary": "GetUUID",
+        "description": "GetUUID",
+        "operationId": "GetUUID",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "/pd:AP/pd:formFields/pd:MyDate": {
+                  "type": "string",
+                  "description": "/pd:AP/pd:formFields/pd:MyDate"
+                },
+                "/pd:AP/pd:formFields/pd:MyDatePlainText": {
+                  "type": "string",
+                  "description": "/pd:AP/pd:formFields/pd:MyDatePlainText"
+                },
+                "/pd:AP/pd:formFields/pd:BasicDate": {
+                  "type": "string",
+                  "description": "/pd:AP/pd:formFields/pd:BasicDate"
+                }
+              }
+            }
+          }
+        },
+        "x-ms-visibility": "internal"
+      }
+    },
+    "/AgilepointServer/Workflow/CreateProcInst": {
+      "post": {
+        "summary": "CreateProcInst",
+        "description": "CreateProcInst",
+        "operationId": "CreateProcInst",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": " application/json",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ProcessID": {
+                  "type": "string",
+                  "description": "ProcessID",
+                  "x-ms-summary": "ProcessID"
+                },
+                "ProcessInstID": {
+                  "type": "string",
+                  "description": "ProcessInstID",
+                  "x-ms-summary": "ProcessInstID"
+                },
+                "ProcInstName": {
+                  "type": "string",
+                  "description": "ProcInstName",
+                  "x-ms-summary": "ProcInstName"
+                },
+                "WorkObjID": {
+                  "type": "string",
+                  "description": "WorkObjID",
+                  "x-ms-summary": "WorkObjID"
+                },
+                "WorkObjInfo": {
+                  "type": "string",
+                  "description": "WorkObjInfo",
+                  "x-ms-summary": "WorkObjInfo"
+                },
+                "SuperProcInstID": {
+                  "type": "string",
+                  "description": "SuperProcInstID",
+                  "x-ms-summary": "SuperProcInstID"
+                },
+                "Initiator": {
+                  "type": "string",
+                  "description": "Initiator",
+                  "x-ms-summary": "Initiator"
+                },
+                "CustomID": {
+                  "type": "string",
+                  "description": "CustomID",
+                  "x-ms-summary": "CustomID"
+                },
+                "Attributes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string",
+                        "description": "Name",
+                        "x-ms-summary": "Name"
+                      },
+                      "Value": {
+                        "type": "string",
+                        "description": "Value",
+                        "x-ms-summary": "Value"
+                      }
+                    }
+                  },
+                  "description": "Attributes",
+                  "x-ms-summary": "Attributes"
+                },
+                "blnStartImmediately": {
+                  "type": "boolean",
+                  "description": "blnStartImmediately",
+                  "x-ms-summary": "blnStartImmediately"
+                }
+              },
+              "default": {
+                "ProcessID": "81250EE5E6162BBF1166AFD1E5611BAD",
+                "ProcessInstID": "81260EE5E6162BBF11777D0A06F1D69A",
+                "ProcInstName": "Flow Test - 81260EE5E6162BBF11777D0A06F1D69A",
+                "WorkObjID": "81260EE5E6162BBF11777D0A06F1D69A",
+                "WorkObjInfo": "",
+                "SuperProcInstID": "",
+                "Initiator": "NXONE\\daniel.quijada",
+                "CustomID": "81260EE5E6162BBF11777D0A06F1D69A",
+                "Attributes": [
+                  {
+                    "Name": "OtherTest",
+                    "Value": "David"
+                  },
+                  {
+                    "Name": "OtherTest",
+                    "Value": "David"
+                  }
+                ],
+                "blnStartImmediately": true
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/AgilePointServer/Workflow/GetReleasedPID/{ProcessTemplateName}": {
+      "get": {
+        "summary": "GetReleasedPID",
+        "description": "GetReleasedPID",
+        "operationId": "GetReleasedPID",
+        "parameters": [
+          {
+            "name": "ProcessTemplateName",
+            "default": "",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "x-ms-summary": "ProcessTemplateName"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "GetReleasedPIDResult": {
+                  "type": "string",
+                  "description": "GetReleasedPIDResult",
+                  "x-ms-summary": "GetReleasedPIDResult"
+                }
+              }
+            }
+          }
+        },
+        "x-ms-visibility": "internal"
+      }
+    },
+    "/api/HttpTrigger1": {
+      "x-ms-notification-content": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Username": {
+                    "type": "string",
+                    "description": "Username"
+                  }
+                }
+              },
+              "description": "data"
+            }
+          }
+        },
+        "description": "MyWebhookResponse"
+      }
+    },
+    "/AgilePointServer/Admin/CreateAndActivateWebhook": {
+      "x-ms-notification-content": {
+        "description": "MyWebhookResponse",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "ID"
+            },
+            "Trigger": {
+              "type": "string",
+              "description": "Trigger"
+            },
+            "WebhookID": {
+              "type": "string",
+              "description": "WebhookID"
+            },
+            "WebhookName": {
+              "type": "string",
+              "description": "WebhookName"
+            },
+            "needCallback": {
+              "type": "boolean",
+              "description": "needCallback"
+            },
+            "processInstanceID": {
+              "type": "string",
+              "description": "processInstanceID"
+            },
+            "workItemID": {
+              "type": "string",
+              "description": "workItemID"
+            },
+            "WorkObjectID": {
+              "type": "string",
+              "description": "WorkObjectID"
+            },
+            "Source": {
+              "type": "object",
+              "properties": {
+                "ProcInstID": {
+                  "type": "string",
+                  "description": "ProcInstID"
+                },
+                "ProcInstName": {
+                  "type": "string",
+                  "description": "ProcInstName"
+                },
+                "ProcessInitiator": {
+                  "type": "string",
+                  "description": "ProcessInitiator"
+                },
+                "StartedDate": {
+                  "type": "string",
+                  "description": "StartedDate"
+                },
+                "DefName": {
+                  "type": "string",
+                  "description": "DefName"
+                },
+                "Version": {
+                  "type": "string",
+                  "description": "Version"
+                },
+                "SuperProcInstID": {
+                  "type": "string",
+                  "description": "SuperProcInstID"
+                },
+                "WorkObjectID": {
+                  "type": "string",
+                  "description": "WorkObjectID"
+                }
+              },
+              "description": "Source"
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {},
+        "summary": "Triggers when a process instance is started",
+        "description": "Triggers when a new process instance is started",
+        "operationId": "StartProcessInstance",
+        "x-ms-trigger": "single",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "type": "string",
+                  "description": "Name",
+                  "title": "Name"
+                },
+                "NotificationAddressUrl": {
+                  "type": "string",
+                  "description": "NotificationAddressUrl",
+                  "title": "",
+                  "x-ms-notification-url": true,
+                  "x-ms-visibility": "internal"
+                },
+                "Description": {
+                  "type": "string",
+                  "description": "Description",
+                  "title": ""
+                },
+                "Status": {
+                  "type": "string",
+                  "description": "Status",
+                  "title": "",
+                  "default": "ACTIVE",
+                  "x-ms-visibility": "internal"
+                },
+                "TriggerCategory": {
+                  "type": "string",
+                  "description": "TriggerCategory",
+                  "title": "",
+                  "default": "WorkflowInstanceBased",
+                  "x-ms-visibility": "internal"
+                },
+                "StrTriggers": {
+                  "type": "string",
+                  "description": "StrTriggers",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "default": "[\"StartProcessInstance\"]"
+                },
+                "StrTargetApplications": {
+                  "type": "string",
+                  "description": "StrTargetApplications",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "default": "[\"*\"]"
+                }
+              },
+              "required": [
+                "NotificationAddressUrl",
+                "StrTargetApplications",
+                "StrTriggers",
+                "Status",
+                "TriggerCategory",
+                "Name",
+                "Description"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/AgilePointServer/Workflow/GetReleasedProcDefs": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "GetReleasedProcDefsResult": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Key": {
+                        "type": "string",
+                        "description": "Key",
+                        "title": "ID"
+                      },
+                      "Value": {
+                        "type": "string",
+                        "description": "Value",
+                        "title": "Name"
+                      }
+                    }
+                  },
+                  "description": "GetReleasedProcDefsResult"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Released Process Templates",
+        "description": "Get Released Process Templates",
+        "operationId": "GetReleasedProcDefs",
+        "parameters": [],
+        "x-ms-visibility": "internal"
+      }
+    },
+    "/AgilePointServer/Admin/CreateAndActivateWebhookTest": {
+      "x-ms-notification-content": {
+        "description": "MyWebhookResponse",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "description": "ID"
+            },
+            "Trigger": {
+              "type": "string",
+              "description": "Trigger"
+            },
+            "WebhookID": {
+              "type": "string",
+              "description": "WebhookID"
+            },
+            "WebhookName": {
+              "type": "string",
+              "description": "WebhookName"
+            },
+            "Source": {
+              "type": "object",
+              "properties": {
+                "ProcInstID": {
+                  "type": "string",
+                  "description": "ProcInstID"
+                },
+                "ProcInstName": {
+                  "type": "string",
+                  "description": "ProcInstName"
+                },
+                "ProcessInitiator": {
+                  "type": "string",
+                  "description": "ProcessInitiator"
+                },
+                "StartedDate": {
+                  "type": "string",
+                  "description": "StartedDate"
+                },
+                "DefName": {
+                  "type": "string",
+                  "description": "DefName"
+                },
+                "Version": {
+                  "type": "string",
+                  "description": "Version"
+                },
+                "SuperProcInstID": {
+                  "type": "string",
+                  "description": "SuperProcInstID"
+                },
+                "WorkObjectID": {
+                  "type": "string",
+                  "description": "WorkObjectID"
+                }
+              },
+              "description": "Source"
+            }
+          }
+        }
+      }
+    },
+    "/AgilePointServer/Admin/{operation}": {
+      "x-ms-notification-content": {
+        "description": "WebhookResponse",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "needCallback": {
+              "type": "boolean",
+              "description": "needCallback"
+            },
+            "workItemID": {
+              "type": "string",
+              "description": "workItemID"
+            },
+            "processInstanceID": {
+              "type": "string",
+              "description": "processInstanceID"
+            },
+            "WorkObjectID": {
+              "type": "string",
+              "description": "WorkObjectID"
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {},
+        "summary": "Triggered by AgilePoint activity",
+        "operationId": "AgilePart",
+        "x-ms-trigger": "single",
+        "parameters": [
+          {
+            "name": "operation",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "CreateAndActivateWebhook",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "type": "string",
+                  "description": "Name",
+                  "title": ""
+                },
+                "NotificationAddressUrl": {
+                  "type": "string",
+                  "description": "NotificationAddressUrl",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "x-ms-notification-url": true
+                },
+                "Description": {
+                  "type": "string",
+                  "description": "Description"
+                },
+                "Status": {
+                  "type": "string",
+                  "description": "Status",
+                  "title": "",
+                  "default": "ACTIVE",
+                  "x-ms-visibility": "internal"
+                },
+                "TriggerCategory": {
+                  "type": "string",
+                  "description": "TriggerCategory",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "default": "WorkflowInstanceBased"
+                },
+                "StrTriggers": {
+                  "type": "string",
+                  "description": "StrTriggers",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "default": "[\"ResumeProcessInstance\"]"
+                },
+                "StrTargetApplications": {
+                  "type": "string",
+                  "description": "StrTargetApplications",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "default": "[\"AgilePart.Flow\"]"
+                }
+              },
+              "required": [
+                "Name",
+                "Status",
+                "StrTargetApplications",
+                "StrTriggers",
+                "TriggerCategory",
+                "NotificationAddressUrl"
+              ]
+            }
+          }
+        ],
+        "description": "Triggered by AgilePoint activity"
+      }
+    },
+    "/AgilePointServer/Workflow/CompleteProcedure/{WorkItemID}": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ActivityInstID": {
+                  "type": "string",
+                  "description": "ActivityInstID"
+                },
+                "AutoStart": {
+                  "type": "boolean",
+                  "description": "AutoStart"
+                },
+                "CustomAttributes": {
+                  "type": "string",
+                  "description": "CustomAttributes"
+                },
+                "Diagnostic": {
+                  "type": "boolean",
+                  "description": "Diagnostic"
+                },
+                "EndDate": {
+                  "type": "string",
+                  "description": "EndDate"
+                },
+                "Entries": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Entries"
+                },
+                "Error": {
+                  "type": "string",
+                  "description": "Error"
+                },
+                "EventID": {
+                  "type": "string",
+                  "description": "EventID"
+                },
+                "EventName": {
+                  "type": "string",
+                  "description": "EventName"
+                },
+                "HighPriority": {
+                  "type": "boolean",
+                  "description": "HighPriority"
+                },
+                "ParamsXml": {
+                  "type": "string",
+                  "description": "ParamsXml"
+                },
+                "ParentProcInstID": {
+                  "type": "string",
+                  "description": "ParentProcInstID"
+                },
+                "ProcDefID": {
+                  "type": "string",
+                  "description": "ProcDefID"
+                },
+                "ProcInstID": {
+                  "type": "string",
+                  "description": "ProcInstID"
+                },
+                "ProcInstName": {
+                  "type": "string",
+                  "description": "ProcInstName"
+                },
+                "Sender": {
+                  "type": "string",
+                  "description": "Sender"
+                },
+                "SentDate": {
+                  "type": "string",
+                  "description": "SentDate"
+                },
+                "SourceWorkItemID": {
+                  "type": "string",
+                  "description": "SourceWorkItemID"
+                },
+                "Status": {
+                  "type": "string",
+                  "description": "Status"
+                },
+                "TenantID": {
+                  "type": "string",
+                  "description": "TenantID"
+                },
+                "UserID": {
+                  "type": "string",
+                  "description": "UserID"
+                },
+                "WorkItemID": {
+                  "type": "string",
+                  "description": "WorkItemID"
+                },
+                "WorkObjectID": {
+                  "type": "string",
+                  "description": "WorkObjectID"
+                },
+                "WorkObjectInfo": {
+                  "type": "string",
+                  "description": "WorkObjectInfo"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Complete Automatic Activity",
+        "description": "Complete Automatic Activity",
+        "operationId": "CompleteProcedure",
+        "parameters": [
+          {
+            "name": "WorkItemID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/AgilePointServer/Workflow/GetCustomAttrsByID/{customID}": {},
+    "/agilepointserver/test/{customID}": {},
+    "/agilepointserver/test/{paramID}": {},
+    "/AgilePointServer/MetadataService/GetCustomAttributeNames/{applicationName}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "/pd:AP/pd:formFields/pd:MyDate": {
+                  "type": "string",
+                  "description": "/pd:AP/pd:formFields/pd:MyDate"
+                },
+                "/pd:AP/pd:formFields/pd:MyDatePlainText": {
+                  "type": "string",
+                  "description": "/pd:AP/pd:formFields/pd:MyDatePlainText"
+                },
+                "/pd:AP/pd:formFields/pd:BasicDate": {
+                  "type": "string",
+                  "description": "/pd:AP/pd:formFields/pd:BasicDate"
+                }
+              }
+            }
+          }
+        },
+        "summary": "GetCustomAttributeNames",
+        "operationId": "GetCustomAttributeNames",
+        "parameters": [
+          {
+            "name": "applicationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-dynamic-values": {
+              "operationId": "GetEnabledApps",
+              "value-path": "AppName",
+              "value-collection": "GetAllEnabledApplicationsResult",
+              "value-title": "AppName"
+            }
+          },
+          {
+            "name": "readOnlyAttributes",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "description": "GetCustomAttributeNames"
+      }
+    },
+    "/AgilePointServer/Extension/GetAllEnabledApplications": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "GetAllEnabledApplicationsResult": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "AppID": {
+                        "type": "string",
+                        "description": "AppID"
+                      },
+                      "AppLocale": {
+                        "type": "string",
+                        "description": "AppLocale"
+                      },
+                      "AppName": {
+                        "type": "string",
+                        "description": "AppName"
+                      },
+                      "AppType": {
+                        "type": "string",
+                        "description": "AppType"
+                      },
+                      "ContentType": {
+                        "type": "string",
+                        "description": "ContentType"
+                      },
+                      "CreatedBy": {
+                        "type": "string",
+                        "description": "CreatedBy"
+                      },
+                      "CreatedDate": {
+                        "type": "string",
+                        "description": "CreatedDate"
+                      },
+                      "Description": {
+                        "type": "string",
+                        "description": "Description"
+                      },
+                      "DisplayName": {
+                        "type": "string",
+                        "description": "DisplayName"
+                      },
+                      "Folders": {
+                        "type": "string",
+                        "description": "Folders"
+                      },
+                      "ImageIcon": {
+                        "type": "string",
+                        "description": "ImageIcon"
+                      },
+                      "ParentApplicationId": {
+                        "type": "string",
+                        "description": "ParentApplicationId"
+                      },
+                      "Status": {
+                        "type": "string",
+                        "description": "Status"
+                      },
+                      "Visibility": {
+                        "type": "string",
+                        "description": "Visibility"
+                      }
+                    }
+                  },
+                  "description": "GetAllEnabledApplicationsResult"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Applications",
+        "description": "Get AgilePoint Applications",
+        "operationId": "GetEnabledApps",
+        "parameters": [],
+        "x-ms-visibility": "internal"
+      }
+    },
+    "/AgilePointServer/Workflow/SetCustomAttrs/{CustomID}": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Set Process Data",
+        "operationId": "SetProcessData",
+        "parameters": [
+          {
+            "name": "CustomID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ApplicationName",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "x-ms-dynamic-values": {
+              "operationId": "GetApplicationNames",
+              "value-path": "Value",
+              "value-collection": "GetApplicationNamesResult",
+              "value-title": "Name"
+            }
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "attributes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string",
+                        "description": "Name",
+                        "title": "",
+                        "x-ms-dynamic-values": {
+                          "operationId": "GetCustomAttributeNames",
+                          "value-path": "Value",
+                          "value-collection": "GetCustomAttributeNamesResult",
+                          "value-title": "Name",
+                          "parameters": {
+                            "applicationName": {
+                              "parameter": "ApplicationName"
+                            },
+                            "readOnlyAttributes": false
+                          }
+                        }
+                      },
+                      "Value": {
+                        "type": "string",
+                        "properties": {},
+                        "description": "Value"
+                      }
+                    }
+                  },
+                  "description": "attributes"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/AgilePointServer/Workflow/GetProcInst/{ProcInstID}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "GetProcInstResult": {
+                  "type": "object",
+                  "properties": {
+                    "ApplName": {
+                      "type": "string",
+                      "description": "ApplName"
+                    },
+                    "ApplicationDisplayName": {
+                      "type": "string",
+                      "description": "ApplicationDisplayName"
+                    },
+                    "CompletedDate": {
+                      "type": "string",
+                      "description": "CompletedDate"
+                    },
+                    "DefID": {
+                      "type": "string",
+                      "description": "DefID"
+                    },
+                    "DefName": {
+                      "type": "string",
+                      "description": "DefName"
+                    },
+                    "DueDate": {
+                      "type": "string",
+                      "description": "DueDate"
+                    },
+                    "LastModifiedBy": {
+                      "type": "string",
+                      "description": "LastModifiedBy"
+                    },
+                    "LastModifiedDate": {
+                      "type": "string",
+                      "description": "LastModifiedDate"
+                    },
+                    "LastRunningEndTime": {
+                      "type": "string",
+                      "description": "LastRunningEndTime"
+                    },
+                    "LastRunningStartTime": {
+                      "type": "string",
+                      "description": "LastRunningStartTime"
+                    },
+                    "LastSwapDate": {
+                      "type": "string",
+                      "description": "LastSwapDate"
+                    },
+                    "ProcInitiator": {
+                      "type": "string",
+                      "description": "ProcInitiator"
+                    },
+                    "ProcInitiatorLoc": {
+                      "type": "string",
+                      "description": "ProcInitiatorLoc"
+                    },
+                    "ProcInstID": {
+                      "type": "string",
+                      "description": "ProcInstID"
+                    },
+                    "ProcInstName": {
+                      "type": "string",
+                      "description": "ProcInstName"
+                    },
+                    "ProcessDefinitionDisplayName": {
+                      "type": "string",
+                      "description": "ProcessDefinitionDisplayName"
+                    },
+                    "ProcessInitiator": {
+                      "type": "string",
+                      "description": "ProcessInitiator"
+                    },
+                    "ProcessInitiatorLocation": {
+                      "type": "string",
+                      "description": "ProcessInitiatorLocation"
+                    },
+                    "SourceProcInstID": {
+                      "type": "string",
+                      "description": "SourceProcInstID"
+                    },
+                    "StartedDate": {
+                      "type": "string",
+                      "description": "StartedDate"
+                    },
+                    "Status": {
+                      "type": "string",
+                      "description": "Status"
+                    },
+                    "SuperProcInstID": {
+                      "type": "string",
+                      "description": "SuperProcInstID"
+                    },
+                    "TargetProcInstID": {
+                      "type": "string",
+                      "description": "TargetProcInstID"
+                    },
+                    "ToplevelProcInstID": {
+                      "type": "string",
+                      "description": "ToplevelProcInstID"
+                    },
+                    "Version": {
+                      "type": "string",
+                      "description": "Version"
+                    },
+                    "WorkObjectID": {
+                      "type": "string",
+                      "description": "WorkObjectID"
+                    },
+                    "WorkObjectInfo": {
+                      "type": "string",
+                      "description": "WorkObjectInfo"
+                    }
+                  },
+                  "description": "GetProcInstResult"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Process Instance Details",
+        "operationId": "GetProcInst",
+        "parameters": [
+          {
+            "name": "ProcInstID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Process Instance ID"
+          }
+        ],
+        "description": "Get Process Instance Details"
+      }
+    },
+    "/AgilePointServer/MetadataService/GetCustomAttributeValues/{processInstanceID}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "x-ms-dynamic-schema": {
+                "operationId": "GetApplicationOpenApiSchema",
+                "parameters": {
+                  "applicationName": {
+                    "parameter": "ApplicationName"
+                  },
+                  "readOnlyAttributes": true
+                },
+                "value-path": "items"
+              }
+            }
+          }
+        },
+        "summary": "Get Process Data",
+        "description": "Get Process Data",
+        "operationId": "GetProcessData",
+        "parameters": [
+          {
+            "name": "processInstanceID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ApplicationName",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "x-ms-dynamic-values": {
+              "operationId": "GetApplicationNames",
+              "value-path": "Value",
+              "value-collection": "GetApplicationNamesResult",
+              "value-title": "Name"
+            }
+          }
+        ]
+      }
+    },
+    "/AgilePointServer/MetadataService/GetApplicationOpenApiSchema/{applicationName}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "type"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "type"
+                    },
+                    "properties": {
+                      "type": "object",
+                      "properties": {
+                        "/pd:AP/pd:formFields/pd:SelectFLOW": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "type"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "description"
+                            }
+                          },
+                          "description": "/pd:AP/pd:formFields/pd:SelectFLOW"
+                        },
+                        "/pd:AP/pd:formFields/pd:Wait": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "type"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "description"
+                            }
+                          },
+                          "description": "/pd:AP/pd:formFields/pd:Wait"
+                        },
+                        "/pd:AP/pd:formFields/pd:Result": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "type"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "description"
+                            }
+                          },
+                          "description": "/pd:AP/pd:formFields/pd:Result"
+                        }
+                      },
+                      "description": "properties"
+                    }
+                  },
+                  "description": "items"
+                }
+              }
+            }
+          }
+        },
+        "summary": "GetApplicationOpenApiSchema",
+        "operationId": "GetApplicationOpenApiSchema",
+        "parameters": [
+          {
+            "name": "applicationName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "readOnlyAttributes",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "x-ms-visibility": "internal"
+      }
+    },
+    "/AgilePointServer/MetadataService/GetApplicationNames": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "GetApplicationNamesResult": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string",
+                        "description": "Name"
+                      },
+                      "Value": {
+                        "type": "string",
+                        "description": "Value"
+                      }
+                    }
+                  },
+                  "description": "GetApplicationNamesResult"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Application Names",
+        "description": "Get Application Names",
+        "operationId": "GetApplicationNames",
+        "x-ms-visibility": "internal",
+        "parameters": []
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "basic_auth": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "basic_auth": []
+    }
+  ],
+  "tags": []
+}
