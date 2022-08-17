@@ -97,7 +97,10 @@ function Set-Envision-Config-Keys()
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "Translation_SubscriptionKey" -keyValue "";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "Translation_EndPoint" -keyValue "";
 		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "Translation_Location" -keyValue "";
-		
+
+		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "EnableEnvironmentExplorerImport" -keyValue "true";
+		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "AdvancedConfig" -keyValue "true" -createNode $true;
+	
 	}
 }
 
