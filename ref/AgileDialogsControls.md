@@ -21,14 +21,14 @@ __[Home](/) --> Reference__
 - [Password](../guides/common/Password.md)
 - [Tab container control](../guides/common/TabContainer.md)
 - [Group container control](../guides/common/GroupContainer.md)
-- [IFrame control](../guides/common/Iframe.md)
+- [IFrame control](../guides/common/IFrame.md)
 - [XRM Search control](../guides/common/XrmSearchControl.md)
 - [Variable Control](../guides/common/VariableControl.md)
 - [Custom Control](../guides/common/WidgetControl.md)
 
 ## Related
 - [Page Form](../ref/PageForm.md)
-- [Start Page Shape](../guides/Common/StartPageShape.md)
+- [Start Page Shape](../guides/common/StartPageShape.md)
 
 ## Disclaimer of warranty
 
