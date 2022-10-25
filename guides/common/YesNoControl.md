@@ -1,6 +1,10 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> YesNo Control__
 
-### YesNo Control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## YesNo Control
 
 **YesNo** control allows user gets a boolean answer for question by fastest way. 
 

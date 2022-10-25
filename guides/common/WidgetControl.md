@@ -1,6 +1,11 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Widget Control__
 
-# Widget Control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## Widget Control
 
 This allows adding custom controls to the Page to extend beyond the
 out-of-the-box controls provided by the AgileDialogs.

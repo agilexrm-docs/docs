@@ -1,6 +1,10 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Textbox__
 
-### Textbox
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Textbox
 
 -   **MaxLengh**: This is the maximum length of characters allowed in the textbox.
 -   **Lines**: The number of lines used to show the control in form. When it's greater than 1 multiline property is set to true.

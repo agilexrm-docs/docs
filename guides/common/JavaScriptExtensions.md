@@ -43,7 +43,7 @@ DialogsEngine.getSelectedValue(<controlName>);
 >Where:
 > - controlName is the value of `ValueVariable` parameter in the target control.
 
-If the control is mapped to data (for instance in a XRM Grid control), this
+If the control is mapped to data (for instance in a Grid control), this
 method will return the value of the column that is mapped to the Value Variable.
 
 ### Get Display Value
@@ -57,7 +57,7 @@ DialogsEngine.getDisplayValue(<controlName>);
 >Where:
 > - controlName is the value of `ValueVariable` parameter in the target control.
 
-If the control is mapped to data (for instance in a XRM Grid control), this
+If the control is mapped to data (for instance in a Grid control), this
 method will return the value of the column that is mapped to the Display
 Variable.
 
@@ -260,9 +260,9 @@ The following controls are compatible with the *register* functionality:
 -   Combo
 -   Radio
 -   Checkbox
--   XRM Grid
--   XRM Lookup
--   XRM Search
+-   Grid
+-   Lookup
+-   Search
 -   IFrame
 -->
 >   **Note**: If the source control allows multiple selections (checkbox, XRM
@@ -1077,7 +1077,7 @@ In order to do so, this code should be added:
 
 In complex controls (like a Grid), we could want to get all the information
 about the item or items (if any) that we have selected. There is a way to do
-that using DialogsEngine API (meant to be used against XRMGrid controls):
+that using DialogsEngine API (meant to be used against Grid controls):
 
 ```javascript
  DialogsEngine.getSelectedDataItem(<control>);
@@ -1326,17 +1326,17 @@ functionality to avoid check some javascript values like null and undefinied, an
 DialogsEngine.isNullOrEmpty('value');
 ```
 
-### Enable/Disable selected data filter for XRM Grid controls
+### Enable/Disable selected data filter for Grid controls
 
 DialogsEngine API allow to activate and disactivate the selected data filter of
-XRM Grid controls. This method will be ignored for control of any other type.
+Grid controls. This method will be ignored for control of any other type.
 
 ```javascript
 DialogsEngine.filterSelection(<xrm_grid_control_name> , value );
 ```
 
 > Where:
->-  *xrm_grid_control_name* is the name of the XRM Grid control on which we want
+>-  *xrm_grid_control_name* is the name of the Grid control on which we want
     activate or deactivate the filter
 >-  *value* Boolean value to activate or deactivate the filter.
 

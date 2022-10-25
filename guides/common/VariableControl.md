@@ -1,6 +1,10 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Variable Control__
 
-### Variable Control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Variable Control
 
 **Variable control** allows user to create a new variable in process context.  
 **Variable control** will create its value when AgileDialogs page is submitted using Next button.
@@ -12,7 +16,7 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 To set the value for control use one of these methods:
 -	Set default value property
 -	Use DialogsEngine API
--	Set the variable control as target of XRM Search control. 
+-	Set the variable control as target of Search control. 
 
 **Variable control** cannot be required, and does not have a display variable.
 To create multiple variables use multiple controls.

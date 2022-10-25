@@ -1,24 +1,24 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> XRM  Search Control__
 
-# XRM Search control
+## Search control
 
-XRM Search control allows to perform a XRM FetchXML search in AgileDialogs page
+Search control allows to perform a XRM FetchXML, JSON and REST search in AgileDialogs page
 and set the data retrieved to page controls.
 
 > **Important**: FetchXML query must to retrieve a single record.
 
-XRM Search control can populate its items from one of these values:
+Search control can populate its items from one of these values:
 
--   XRM: XRM Search control populates its items from the results of XRM query.
--   JSON: XRM Search control populates its items from **AgileXRM** variable which contains a JSON value.
--   REST: XRM Search control populates its items performing a REST call and getting its elements from the response of REST service.
+-   XRM: Search control populates its items from the results of XRM query.
+-   JSON: Search control populates its items from **AgileXRM** variable which contains a JSON value.
+-   REST: Search control populates its items performing a REST call and getting its elements from the response of REST service.
 
 
-XRM Search control does not create variables in process context.
+Search control does not create variables in process context.
 
 ![](../media/AgileDialogsDesignGuide/XRMSearchControl_01.png)
 
-To configure XRM Search control:
+To configure Search control:
 
 -   Click on configure button to build a FetchXML query, as any other data
     control.
@@ -49,7 +49,7 @@ To configure XRM Search control:
             ![](../media/AgileDialogsDesignGuide/XRMSearchControl_03.png)
 
     -   **TriggerControls**. This property defines which controls in the same
-        AgileDialogs page will perform the Xrm search control when its value
+        AgileDialogs page will perform the Search control when its value
         changes. Multiple controls will perform multiple query operations.  
         
         ![](../media/AgileDialogsDesignGuide/XRMSearchControl_04.png)

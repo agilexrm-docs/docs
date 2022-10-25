@@ -1,6 +1,10 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Info__
 
-# Info control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Info control
 
 This control is used to present information to the user. There is no input
 associated with this control. Dynamic values can be included using

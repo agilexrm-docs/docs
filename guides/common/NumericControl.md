@@ -1,6 +1,11 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Numeric Control__
 
-# Numeric Control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## Numeric Control
 
 This control shows a numeric input to the user to store numeric data. This control stores an invariant numeric data in ValueVariable property and the displayed text in the DisplayVariable property.
 

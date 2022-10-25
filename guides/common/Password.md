@@ -1,6 +1,10 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Password__
 
-# Password control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Password control
 
 This control is used to present a control to get passwords.
 

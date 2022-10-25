@@ -1,6 +1,11 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Checkbox__
 
-# Checkbox control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## Checkbox control
 
 This control is used to show a set of checkboxes to the user and allows multiple selections.
 

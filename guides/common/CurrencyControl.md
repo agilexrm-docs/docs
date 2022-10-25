@@ -1,6 +1,10 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Currency Control__
 
-# Currency Control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Currency Control
 
 The Currency control is helpful for entering non-string currency values into
 our Page Form (image below). It is composed of a customizable Textbox that does

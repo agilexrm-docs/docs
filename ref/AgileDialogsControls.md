@@ -15,16 +15,18 @@ __[Home](/) --> Reference__
 - [Checkbox](../guides/common/Check.md)
 - [Yes/No](../guides/common/YesNoControl.md)
 - [Calendar](../guides/common/Calendar.md)
-- [XRMLookup](../guides/common/XRMLookup.md)
-- [XRMgrid](../guides/common/XRMGrid.md)
+- [Lookup](../guides/common/XRMLookup.md)
+- [Grid](../guides/common/XRMGrid.md)
 - [File](../guides/common/File.md)
 - [Password](../guides/common/Password.md)
 - [Tab container control](../guides/common/TabContainer.md)
 - [Group container control](../guides/common/GroupContainer.md)
-- [IFrame control](../guides/common/IFrame.md)
-- [XRM Search control](../guides/common/XrmSearchControl.md)
+- [IFrame control](../guides/common/Iframe.md)
+- [HTML Control](../guides/common/HtmlControl.md)
+- [Search control](../guides/common/XrmSearchControl.md)
 - [Variable Control](../guides/common/VariableControl.md)
 - [Custom Control](../guides/common/WidgetControl.md)
+
 
 ## Related
 - [Page Form](../ref/PageForm.md)

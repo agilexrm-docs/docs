@@ -1,19 +1,23 @@
-__[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> XRM Lookup__
+__[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Lookup__
 
-# XRM Lookup
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Lookup
 
 This control allows looking up records in XRM repository and provides an
 auto-complete feature to help user select a value.
 
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_01.png)
 
-XRMLookup control can populate its items from one of these values:
+Lookup control can populate its items from one of these values:
 
--   XRM: XRMLookup control populates its items from the results of XRM query.
--   JSON: XRMLookup control populates its items from **AgileXRM** variable which contains a JSON value.
--   REST: XRMLookup control populates its items performing a REST call and getting its elements from the response of REST service.
+-   XRM: Lookup control populates its items from the results of XRM query.
+-   JSON: Lookup control populates its items from **AgileXRM** variable which contains a JSON value.
+-   REST: Lookup control populates its items performing a REST call and getting its elements from the response of REST service.
 
-XRMLookup control has the *MinLength* property that allows users to set the numberX
+Lookup control has the *MinLength* property that allows users to set the numberX
 of characters typed to fire the auto-complete feature.
 
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_02.png)
@@ -56,7 +60,7 @@ The **UseRelativeDataFormat** property determines how Datetime columns are shown
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_07.png)
 <br>When its set to *true*, Datetime column are shown as friendly relative text and we can get the Datetime value by cross button.
 ![](../media/AgileDialogsDesignGuide/XRMLookupControl_08.png)
-> **Note** When XRMGrid control is configured with UseRelativeDateFormat, we can use the cross button to show the Datetime value
+> **Note** When Grid control is configured with UseRelativeDateFormat, we can use the cross button to show the Datetime value
 
 ## Related
 

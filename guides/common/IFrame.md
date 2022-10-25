@@ -1,6 +1,11 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> IFrame__
 
-# IFrame
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## IFrame
 
 This control allows to show an external web page, file or application inside the
 AgileDialogs page. Very useful for information purposes, we could attach to our

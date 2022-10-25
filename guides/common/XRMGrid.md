@@ -1,6 +1,11 @@
-__[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> XRM Grid__
+__[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Grid__
 
-# XRM Grid control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## Grid control
 
 This control presents a grid with the records selected with a query configured
 using the *Configure* button.
@@ -8,11 +13,11 @@ using the *Configure* button.
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_01.png)
 
 
-XRMGrid control can populate its items from one of these values:
+Grid control can populate its items from one of these values:
 
--   XRM: XRMGrid control populates its items from the results of XRM query.
--   JSON: XRMGrid control populates its items from **AgileXRM** variable which contains a JSON value.
--   REST: XRMGrid control populates its items performing a REST call and getting its elements from the response of REST service.
+-   XRM: Grid control populates its items from the results of XRM query.
+-   JSON: Grid control populates its items from **AgileXRM** variable which contains a JSON value.
+-   REST: Grid control populates its items performing a REST call and getting its elements from the response of REST service.
 
 
 It has Paging functionality with Page Navigation buttons. The ***PageSize***
@@ -23,10 +28,10 @@ paging and returns all records.
 
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_03.png)
 
-## XRM Grid control configuration
+## Grid control configuration
 ### Data configuration
 
-XRM Grid control can show data from by 2 ways:
+Grid control can show data from by 2 ways:
 
 - **Dynamic**: Choose *Dynamic* option and use *Configure* button to open the editor. 
 <br>![](../media/AgileDialogsDesignGuide/XRMGridControl_03_01.png)
@@ -92,21 +97,23 @@ and configuration in the *Columns* tab:
 When multiple selection is allowed, the values selected by the user are stored
 in the *ValueVariable* and *DisplayVariable* separated by semicolons. This
 format can be used in other **AgileXRM** shapes like *Update Entity (Multi)*.<br>
-When multiple values are selected in XRM Grid control , selected values can be
+When multiple values are selected in Grid control , selected values can be
 located in different grid pages depending of the user selection. We can filter
-selected data clicking the filter button of XRM Grid control placed at bottom
+selected data clicking the filter button of Grid control placed at bottom
 left.
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_10.png)
-Once XRM Grid control is filtered, control only shows selected data. Click the
+Once Grid control is filtered, control only shows selected data. Click the
 filter button again to remove the filter.
 ![](../media/AgileDialogsDesignGuide/XRMGridControl_11.png)
 
 - The **UseRelativeDataFormat** property determines how Datetime columns are shown.
 <br>When its set to *false*, Datetime column are shown using the CRM/CDS date format.
-![](../media/AgileDialogsDesignGuide/XRMGridControl_12.png)
+
+    ![](../media/AgileDialogsDesignGuide/XRMGridControl_12.png)
 <br>When its set to *true*, Datetime column are shown as friendly relative text and we can get the Datetime value by cross button.
-![](../media/AgileDialogsDesignGuide/XRMGridControl_13.png)
-> **Note** When XRMGrid control is configured with UseRelativeDateFormat, we can use the cross button to show the Datetime value
+
+    ![](../media/AgileDialogsDesignGuide/XRMGridControl_13.png)
+  > **Note** When Grid control is configured with UseRelativeDateFormat, we can use the cross button to show the Datetime value
 
 
 ## Related

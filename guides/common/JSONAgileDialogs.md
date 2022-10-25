@@ -5,9 +5,9 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 AgileDialogs allows show JSON data from **AgileXRM** variable or REST calls within AgileDialogs Controls.
 
 These controls are compatible with this feature:
-- XRM Grid Control
-- XRM Lookup Control
-- XRM Search Control
+- Grid Control
+- Lookup Control
+- Search Control
 
 We can get data from existing JSON data (**AgileXRM** variable) or REST call (REST Shape)
 
@@ -17,11 +17,11 @@ This option allows show JSON data from an **AgileXRM** variable. This use case i
 
 Process model should be similar to this:
 - A step to store the JSON data in **AgileXRM** variable (usually REST shape).Check [REST Shape](../../ref/REST.md) configuration if needed.
-- An AgileDialogs Page Form with compatible control (XRM Grid) to consume the data.
+- An AgileDialogs Page Form with compatible control (Grid) to consume the data.
 
   ![](../media/AgileDialogsDesignGuide/AgileDialogsRestCalls_49.png)
 
-Configure the AgileDialogs XRM Grid Control by this way:
+Configure the AgileDialogs Grid Control by this way:
 
   Under Source group, choose the JSON option and click `Configure` button:  
  
@@ -55,7 +55,7 @@ AgileDialogs shows the data as expected.
 
 AgileDialogs can performs a inline REST call to fill controls with the response data.
 
-Configure the AgileDialogs XRM Grid Control by this way:
+Configure the AgileDialogs Grid Control by this way:
 
   Under Source group, choose the REST option and click `Configure` button:  
 

@@ -1,6 +1,11 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Calendar__
 
-# Calendar control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## Calendar control
 
 This control shows a date picker and an optional time picker to the user:
 

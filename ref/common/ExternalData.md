@@ -2,7 +2,7 @@ __[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back())
 
 ### External data
 
-Some AgileDialogs controls as [XRM Grid](../../guides/common/XRMGrid.md) and [XRM Lookup](../../guides/common/XRMLookup.md) can show data from external systems.
+Some AgileDialogs controls as [Grid](../../guides/common/XRMGrid.md) and [Lookup](../../guides/common/XRMLookup.md) can show data from external systems.
 
 In order to show external data is needed to perform these steps :
  
@@ -15,7 +15,7 @@ but always we can use any other way to get this **JSON** value (like a SharePoin
 
 Here we will show an example of how to use external data in an AgileDialogs process. 
 
-First of all we need to build an AgileDialogs process with a [**REST activity**](../REST.md) - used to get the external data - and a [**Page activity**](../../guides/common/PageFormShape.md) - used to show the data in [XRM Grid](../../guides/common/XRMGrid.md) control -.
+First of all we need to build an AgileDialogs process with a [**REST activity**](../REST.md) - used to get the external data - and a [**Page activity**](../../guides/common/PageFormShape.md) - used to show the data in [Grid](../../guides/common/XRMGrid.md) control -.
 
 ![](../media/ExternalData_Sample_01.png)
 
@@ -48,11 +48,11 @@ For this sample the variable name is *"restShapeOutput"*.
 ]
 ```
 
-Once done, we need to configure the [**Page activity**](../../guides/common/PageFormShape.md). Add a  [XRM Grid](../../guides/common/XRMGrid.md) control and configure it to extenal data:
+Once done, we need to configure the [**Page activity**](../../guides/common/PageFormShape.md). Add a  [Grid](../../guides/common/XRMGrid.md) control and configure it to extenal data:
 
 ![](../media/ExternalData_Sample_03.png)
 
-> **Note**: Preview data is not available at designtime when  [XRM Grid](../../guides/common/XRMGrid.md)  control is configured to show external data.
+> **Note**: Preview data is not available at designtime when  [Grid](../../guides/common/XRMGrid.md)  control is configured to show external data.
 
 Next, click `Configure` button to show configuration window, and under data section, set the runtime variable that contains the JSON value to show in control. Type here the same value that you puts previously in REST activity shape.
 
@@ -75,7 +75,7 @@ Next within configuration window wills provide the following information:
 > **Note**: The values typed in the *Value Variable* and *Display Variable* mappings must exist in the JSON data structure that is going to display. 
 For this reason the window shows at the bottom, an example of how the JSON content should be for a correct configuration.
 
-- Show this column in results: By default, XRM Grid and XRM Lookup controls hides the column with entity ID. Check this options to change the behaviour and show it.
+- Show this column in results: By default, Grid and Lookup controls hides the column with entity ID. Check this options to change the behaviour and show it.
 
 ![](../media/ExternalData_Sample_05.png)
 

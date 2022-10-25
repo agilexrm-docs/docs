@@ -158,6 +158,10 @@ These are the question types that this container can include:
 
     ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10.png)
 
+-   **[HTML](common/HTMLControl.md)**: this question type is used to introduce a HTML value
+
+    ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10_02.png)
+
 -   **[Numeric](common/NumericControl.md)**: this question type is used to introduce a numeric value
 
     ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_10_01.png)
@@ -241,7 +245,7 @@ group container, for functional and / or decorative purposes
 
   ![](media/AgileDialogsUserGuide/AgileDialogsUserGuide_26_02.png)
 
-- **[XRM Search control](common/XrmSearchControl.md)**: XRM Search control allows to perform a XRM FetchXML search in **AgileDialogs** page
+- **[Search control](common/XrmSearchControl.md)**: Search control allows to perform a XRM FetchXML, JSON and REST search in **AgileDialogs** page
 and set the data retrieved to page controls.
 
 - **[Variable Control](common/VariableControl.md)**: Variable control allows to create process context variables.

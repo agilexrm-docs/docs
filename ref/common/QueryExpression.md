@@ -108,8 +108,8 @@ in this shape will be performed on behalf of given user on runtime.
 ![](../media/QueryExpression_13a.png)
 
 ##### Variable mapping Tab (Available in AgileDialogs Page Form Only)
-In AgileDialogs designer, there are certain user-selectable controls (XRMGrid, XRMlookup, Combo, RadioButton and
-Checkbox) that may be configured to access CRM data. When configuring one of these controls (e.g. XRMGrid):
+In AgileDialogs designer, there are certain user-selectable controls (Grid, Lookup, Combo, RadioButton and
+Checkbox) that may be configured to access CRM data. When configuring one of these controls (e.g. Grid):
 
 ![](../media/QueryExpression_14.png)
 

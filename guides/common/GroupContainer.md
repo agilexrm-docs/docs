@@ -1,6 +1,10 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Group Container Control__
 
-# Group Container control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Group Container control
 
 The Group Container allows us to build a certain set of controls inside a same
 group container, for functional and / or decorative purposes. We can group

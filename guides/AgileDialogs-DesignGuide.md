@@ -294,13 +294,15 @@ configuration besides the common properties.
 - [Radio](common/Radio.md)
 - [Tab Container](common/TabContainer.md)
 - [Textbox](common/Textbox.md)
+- [HTML](common/HtmlControl.md)
 - [Numeric](common/NumericControl.md)
 - [Widget Control](common/WidgetControl.md)
-- [XRM Grid](common/XRMGrid.md)
-- [XRM Lookup](common/XRMLookup.md)
-- [XRM Search](common/XrmSearchControl.md)
+- [Grid](common/XRMGrid.md)
+- [Lookup](common/XRMLookup.md)
+- [Search](common/XrmSearchControl.md)
 - [Variable Control](common/VariableControl.md)
 - [Yes/No](common/YesNoControl.md)
+
 
 ### Advanced Features
 

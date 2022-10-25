@@ -9,7 +9,7 @@ twitter_username: AgileXRM
 github_username:  AgileXRM
 
 # Build settings
-theme: jekyll-theme-slate
+remote_theme: just-the-docs/just-the-docs
 encoding: utf-8
 markdown: kramdown
 highlighter: rouge

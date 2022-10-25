@@ -1,6 +1,11 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Combo__
 
-# Combo control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## Combo control
 
 This control presents a set of options in a combo box (Currently the edit part
 of the combo is disabled and the combo control behaves as a standard drop-down

@@ -1,5 +1,10 @@
 __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Radio__
-# Radio control
+
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+## Radio control
 
 This control is used to show a set of options to the user and allows selecting
 only one of them.
@@ -33,8 +38,8 @@ select one of the options.
 ![](../media/AgileDialogsDesignGuide/Radio_03.png)
 
 
-It is possible to move forward / backwards on our process using the keyboard
-(pressing **AvPag** / **RePag**. Please note that, If we move forward using the
+> It is possible to move forward / backwards on our process using the keyboard
+(pressing `AvPag` / `RePag`. Please note that, If we move forward using the
 keyboard instead of pressing one of the buttons, the last value of the available
 items in the Radio Control will be the selected one (*item3* in the example
 shown above).
@@ -66,7 +71,7 @@ This property can be used with `ShowAsButtonSet` too.
 > This property is ignored when RadioControl is configured with `ShowInButtonBar`.
 
 ## Related 
-- [Populating a Combo](../common/PopulatingCombo.md) 
+- [Populating a Combo](PopulatingCombo.md) 
 
 ## Disclaimer of warranty
 

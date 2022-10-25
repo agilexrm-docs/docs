@@ -1,6 +1,11 @@
 __[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> File__
 
-# File control
+## Common properties:
+
+- [AgileDialogs control common properties](ControlCommonProperties.md)
+
+
+## File control
 
 This control is used to allow the user to upload files.
 
