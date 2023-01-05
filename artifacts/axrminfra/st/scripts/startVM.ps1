@@ -1,3 +1,4 @@
+### AgileXRMVersion 8.0.22339.20200
 Param(
 	[string]$apServiceAccountDomain ="INTERNAL",
 	[string]$apServiceAccountUser ="apservice",
@@ -51,8 +52,8 @@ Param(
 	[string]$dbUserName="apservice",
 	[string]$dbUserPassword="",
 	[bool]$isSqlAzure = $false,
-	[bool]$customizeNxPortal = $false
-
+	[bool]$customizeNxPortal = $false,
+	[string]$sqlServerAliasName = "SQL400"
 )
 $now = Get-Date -Format "yyyyMMddHHmmss"
 $transcriptFileName = [string]::Format("PSWStartVM_{0}.log",$now)
@@ -69,7 +70,7 @@ else
 	Install-Module -Name Microsoft.Xrm.Data.PowerShell -force
 }
 
-if (Get-Module -ListAvailable -Name Microsoft.Xrm.Data.PowerShell) 
+if (Get-Module -ListAvailable -Name SqlServer) 
 {
 	Write-Host "Module 'SqlServer ' already installed" -ForegroundColor DarkGreen;
 }
@@ -78,6 +79,21 @@ else
 	Write-Host "Module 'SqlServer ' NOT Found. Installing..." -ForegroundColor DarkCyan;
 	Install-Module -Name SqlServer -force
 }
+
+Write-Host "Importing Module 'ServerManager' ..." -ForegroundColor DarkCyan;
+Import-Module ServerManager
+if(Get-WindowsFeature -Name Web-Scripting-Tools)
+{
+	Write-Host "Feature 'Web-Scripting-Tools' already installed" -ForegroundColor DarkGreen;
+}
+else
+{
+	Write-Host "Feature 'Web-Scripting-Tools' NOT Found. Installing..." -ForegroundColor DarkCyan;
+	Install-WindowsFeature web-scripting-tools
+}
+
+Write-Host "Importing Module 'IISAdministration' ..." -ForegroundColor DarkCyan;
+Import-Module IISAdministration
 
 if($svcPrincipalAppId -eq $null)
 {
@@ -140,6 +156,7 @@ $externalAXrmHostName = [string]::Format( "{0}{1}{2}.{3}", $hostName,$appUrlSepa
 $agileXrmWildcardHostName = [string]::Format( "{0}.{1}", "*", $domainUrl);
 $adminPortalWildcardHostName = [string]::Format( "{0}{1}{2}.{3}", "*", $appUrlSeparator, $adminPortalAlias, $domainUrl);
 $apiWildcardHostName = [string]::Format( "{0}{1}{2}.{3}", "*", $appUrlSeparator, $apiAlias, $domainUrl);
+$apiWsWildcardHostName = [string]::Format( "{0}{1}{2}.{3}:13487", "*", $appUrlSeparator, $apiAlias, $domainUrl);
 $publicWildcardHostName = [string]::Format( "{0}{1}{2}.{3}", "*", $appUrlSeparator, $publicAlias, $domainUrl);
 $externalWildcardHostName = [string]::Format( "{0}{1}{2}.{3}", "*", $appUrlSeparator, $externalAlias, $domainUrl);
 $portalWildcardHostName = [string]::Format( "{0}{1}{2}.{3}", "*", $appUrlSeparator, $portalAlias, $domainUrl);
@@ -173,7 +190,7 @@ $pmConnectorName = "XRMProcessViewer";
 $crmConnectorName ="CrmConnector";
 
 $portalInstallationName="DEFAULTTENANT";
-$sqlServerAliasName = "SQL400";
+
 
 ###################### FUNCTIONS########################################################################
 
@@ -182,7 +199,6 @@ function Create-Adapter-IP-Addresses()
 	param([string]$primaryIP="10.0.0.4", [string]$secondaryIP="10.0.0.12")
 	
 	Write-Host "Create-Adapter-IP-Addresses>> Execution for IP1 $primaryIP and IP2 $secondaryIP" -foregroundcolor DarkCyan
-	$MaskBits = 28 # This means subnet mask = 255.255.255.240
 	$dnsAddresses = @("168.63.129.16","8.8.8.8")
 	$IPType = "IPv4"
 
@@ -202,6 +218,9 @@ function Create-Adapter-IP-Addresses()
 		Write-Host "Create-Adapter-IP-Addresses>> 2 IP Addresses have been found in Adapter $adapterName . Exit without touching anything " -foregroundcolor DarkGray
 		return;
 	}
+
+	#Before to recreate, save current PrefixLength:
+	$prefixLength = ($adapter | Get-NetIPConfiguration).IPv4Address.PrefixLength.ToString();
 	
 	# Remove any existing IP, gateway from our ipv4 adapter
 	If (($adapter | Get-NetIPConfiguration).IPv4Address.IPAddress) {
@@ -217,7 +236,7 @@ function Create-Adapter-IP-Addresses()
 		$adapter | New-NetIPAddress `
 			-AddressFamily $IPType `
 			-IPAddress $primaryIP `
-			-PrefixLength $MaskBits `
+			-PrefixLength $prefixLength `
 			-DefaultGateway $defaultGateway
 	}
 
@@ -226,7 +245,7 @@ function Create-Adapter-IP-Addresses()
 		$adapter | New-NetIPAddress `
 			-AddressFamily $IPType `
 			-IPAddress $secondaryIP `
-			-PrefixLength $MaskBits 
+			-PrefixLength $prefixLength 
 	}
 	
 	# Configure the DNS client server IP addresses
@@ -737,6 +756,9 @@ function Add-sslcert-entries()
 		$hostnameport =[string]::Format("*.{0}:{1}", $domainUrl, "443")
 		Add-sslcert-entry -hostnameport $hostnameport -certHash $certHash -appId $appId
 
+		$hostnameport =[string]::Format("*.{0}.{1}:{2}",$adminPortalAlias,$domainUrl,"443")
+		Add-sslcert-entry -hostnameport $hostnameport -certHash $certHash -appId $appId
+
 		$hostnameport =[string]::Format("*.{0}.{1}:{2}",$externalAlias,$domainUrl,"443")
 		Add-sslcert-entry -hostnameport $hostnameport -certHash $certHash -appId $appId
 	
@@ -1039,7 +1061,7 @@ function Modify-WebSite-Binding()
 	$binding = Get-WebBinding -Name $siteName -Protocol "https";
 	if($binding -eq $null)
 	{
-		Write-Host "Unable to find $siteName for https protocol" -ForegroundColor Magenta;
+		Write-Warning "Unable to find $siteName for https protocol";
 		return;
 	}
 	$currentBindingInfo = $binding.bindingInformation;
@@ -1108,8 +1130,6 @@ function Update-AppImpersonationEntry-File()
 		}
 	}
 
-	
-
 	$file.Save($appEntryXML);
 	Write-Host "Function 'Update-AppImpersonationEntry-File' is done";
 }
@@ -1122,30 +1142,45 @@ function Update-AppPool-User()
 	iisreset
 
 	Write-Host "Update-AppPool-User>> Updating PoolName '$apAppPoolName' for user $fullUserName. Wait..." -ForegroundColor Yellow;
-	Import-Module WebAdministration
 	
-    $iisPoolPath = "IIS:\AppPools\$apAppPoolName"
-	#Set APservice User password in Given Pool
-	$apPool = Get-ItemProperty $iisPoolPath -Name "ProcessModel"
-	$apPool.userName = $fullUserName
-	$apPool.password = $global:apServiceAccountPassword
-    $apPool.identitytype=3
-	Set-ItemProperty -Path $iisPoolPath -Name "ProcessModel" -Value $apPool
-
+	Update-IISAppPoolConfigAttribute -appPoolName $apAppPoolName -elementName "processModel" -attributeName "userName" -attributeValue $fullUserName
+	Update-IISAppPoolConfigAttribute -appPoolName $apAppPoolName -elementName "processModel" -attributeName "password" -attributeValue $global:apServiceAccountPassword
+	Update-IISAppPoolConfigAttribute -appPoolName $apAppPoolName -elementName "processModel" -attributeName "identitytype" -attributeValue "SpecificUser"
 	Write-Host "Update-AppPool-User>> Properties set for ProcessModel" -ForegroundColor DarkGreen;
 	
 	if($applyAdvancedSettings)
 	{
 		Write-Host "Update-AppPool-User>>Setting Advanced properties. Wait..." -ForegroundColor DarkCyan;
 		#Set Max Memory for pool:
-		$totalMemory =  gwmi Win32_OperatingSystem | % {$_.TotalVisibleMemorySize}
-		$apPool = Get-ItemProperty $iisPoolPath -Name "Recycling"
-		#Memory should be set in kb
-		$apPool.periodicRestart.privateMemory = [int][Math]::Round(($totalMemory/2));
-		Set-ItemProperty -Path $iisPoolPath -Name "Recycling" -Value $apPool
-		Write-Host "Update-AppPool-User>>Advanced properties set." -ForegroundColor DarkGreen
+		$totalMemory =  Get-WmiObject -Class Win32_OperatingSystem | % {$_.TotalVisibleMemorySize}
+		$appPool = Get-IISConfigSection -SectionPath "system.applicationHost/applicationPools" | Get-IISConfigCollection  | Get-IISConfigCollectionElement -ConfigAttribute @{"name"="AgilePointAppPool"}
+		if($appPool -eq $null)
+		{
+			Write-Warning "Unable to find any pool with name '$appPoolName'. Ensure your config is right otherwise ignore this message";
+		}
+		else
+		{
+			$periodicRestart = Get-IISConfigElement -ConfigElement $appPool -ChildElementName "Recycling" | Get-IISConfigElement -ChildElementName "periodicRestart"
+			Set-IISConfigAttributeValue -ConfigElement $periodicRestart -AttributeName "privateMemory" -AttributeValue ([int][Math]::Round(($totalMemory/2))) 
+			Write-Host "Update-AppPool-User>>Advanced properties set." -ForegroundColor DarkGreen
+		}
 	}
-	Start-WebAppPool -Name $apAppPoolName
+	if(Test-Path IIS:\AppPools\$apAppPoolName)
+	{
+		Start-WebAppPool -Name $apAppPoolName -ErrorAction Continue
+	}
+}
+
+function Update-IISAppPoolConfigAttribute([string]$appPoolName, [string]$elementName, [string]$attributeName, [string]$attributeValue)
+{
+	$appPool = Get-IISConfigSection -SectionPath "system.applicationHost/applicationPools" | Get-IISConfigCollection  | Get-IISConfigCollectionElement -ConfigAttribute @{"name"=$appPoolName}
+	if($appPool -eq $null)
+	{
+		Write-Warning "Unable to find any pool with name '$appPoolName'. Ensure your config is right otherwise ignore this message";
+		return;
+	}
+    $element = Get-IISConfigElement -ConfigElement $appPool -ChildElementName $elementName
+	Set-IISConfigAttributeValue -ConfigElement $element -AttributeName $attributeName -AttributeValue $attributeValue
 }
 
 function Start-Services()
@@ -1242,6 +1277,18 @@ function Configure-AgilePointPortal()
 	{
 		Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ida:Password" -keyValue "$waadApplicationIdPassword" ;
 	}
+	
+	if($deploymentMode -eq "MT" -and $isSqlAzure -eq $false)
+	{
+		Write-Host "Configuring Portal's 'setting.txt' file..." -ForegroundColor Magenta
+		$currentDBConnectionString="DataConnectionString: Server=$sqlServerAliasName;database=$masterPortalDB;Integrated security=SSPI"
+		$settingsFile = "$agilePointPortalWebFolder\Config\settings.txt"
+
+		$output = Get-Content $settingsFile | Foreach-Object {$_ -replace '^DataConnectionString:.+$', $currentDBConnectionString}
+		$output | Set-Content $settingsFile
+		Write-Host "Portal's 'setting.txt' file configured!" -ForegroundColor DarkGreen
+	}
+	
 	Write-Host "Function 'Configure-AgilePointPortal' is done";
 }
 function Configure-AgileXRMSites()
@@ -1285,6 +1332,11 @@ function Configure-AgileXRMSites()
 	if($deploymentMode -eq "ST")
 	{
 		Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "IsMultiTenant" -keyValue "false" -createNode $true
+	}
+
+	if($deploymentMode -eq "MT")
+	{
+		Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "IsMultiTenant" -keyValue "true" -createNode $true
 	}
 
 	if($deploymentType -ne "Cloud")
@@ -1342,6 +1394,10 @@ function Configure-AgileXRMSites()
 	{
 		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "IsMultiTenant" -keyValue "false" -createNode $true
 	}
+	if($deploymentMode -eq "MT")
+	{
+		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "IsMultiTenant" -keyValue "true" -createNode $true
+	}
 	if($deploymentType -ne "Cloud")
 	{
 		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AnonymousUser" -keyValue $anonymousUser -createNode $true
@@ -1391,6 +1447,10 @@ function Configure-AgileXRMSites()
 	{
 		Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "IsMultiTenant" -keyValue "false" -createNode $true
 	}
+	if($deploymentMode -eq "MT")
+	{
+		Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "IsMultiTenant" -keyValue "true" -createNode $true
+	}
 
 	if($storageType -eq "Local")
 	{
@@ -1429,6 +1489,7 @@ function Configure-AgileXRMSites()
 	else
 	{
 		Modify-WebSite-Binding -siteName "AgileXRM" -ipAddress $primaryNicIpAddress;
+		Modify-WebSite-Binding -siteName "AgilePoint" -hostName $adminPortalWildcardHostName;
 	}
 	Modify-WebSite-Binding -siteName "AgilePoint.NX.EFormsApp" -hostName $nxAppsHostName;
 	Modify-WebSite-Binding -siteName "AgileReports" -hostName $reportsHostName;
@@ -1456,6 +1517,7 @@ function Configure-AgileXRMSites()
 	}
 	Configure-Services-SSLCert ;
 	Update-AppPool-User -apAppPoolName "AgilePointAppPool";
+	Update-AppPool-User -apAppPoolName "AgileXRMAppPool";
 	Write-Host "Function 'Configure-AgileXRMSites' is done";
 }
 
@@ -1524,10 +1586,14 @@ function Configure-AgilePointService-ServicesAddresses()
 {
 	param([string]$configFilePath)
 
-	if($deploymentMode -ne "ST")
+	$currentWsUrl = $apiWsUrl;
+	$currentRestUrl = $apiRestUrl;
+	
+	if($deploymentMode -eq "MT")
 	{
-		Write-Host "Configure-AgilePointService-ServicesAddresses only applies to Single Tenant Deployments and current setup is $deploymentMode" -ForegroundColor Magenta
-		return
+		Write-Host "Configure-AgilePointService-ServicesAddresses needs to be updated for MultiTenant Environments...." -ForegroundColor Magenta
+		$currentWsUrl =  [string]::Format("https://{0}/AgilePointServer/",$apiWsWildcardHostName)
+		$currentRestUrl = [string]::Format("https://{0}/AgilePointServer/",$apiWildcardHostName) 
 	}
 	[xml]$file = Get-Content $configFilePath;
 
@@ -1540,8 +1606,8 @@ function Configure-AgilePointService-ServicesAddresses()
 			"Ascentn.Crm.Connector.Services.RestLicenseCheckingService","AgilePoint.Xrm.MetadataConnector.MetadataService","AgilePoint.AgileConnector.ProcessManager.Services.ProcessViewerHtml5Service")
 
 	$file = Update-baseAddress-Attribute -file $file -serviceNames $wcfServicesNames -urlValue $nettcpAgilePointUrl -protocolSearchFilter "net.tcp://"
-	$file = Update-baseAddress-Attribute -file $file -serviceNames $wcfServicesNames -urlValue $apiWsUrl 
-	$file = Update-baseAddress-Attribute -file $file -serviceNames $restServicesNames -urlValue $apiRestUrl
+	$file = Update-baseAddress-Attribute -file $file -serviceNames $wcfServicesNames -urlValue $currentWsUrl 
+	$file = Update-baseAddress-Attribute -file $file -serviceNames $restServicesNames -urlValue $currentRestUrl
 	
 	$file.Save($configFilePath);
 
@@ -1563,6 +1629,11 @@ function Configure-AgilePointService()
 	{
 		Modify-AppSetings-Key -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config" -keyName "AzureStorageTableName" -keyValue "";	
 		Modify-AppSetings-Key -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config" -keyName "AzureStorageConnectionString" -keyValue "";	
+	}
+	else
+	{
+		Modify-AppSetings-Key -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config" -keyName "AzureStorageTableName" -keyValue $azureStorageTableName;
+		Modify-AppSetings-Key -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config" -keyName "AzureStorageConnectionString" -keyValue $azureStorageConnString;
 	}
 
 	#WAAD
@@ -1605,6 +1676,15 @@ function Update-netflow-Cfg-File()
 		$domainName = [string]::Format("WinNT://{0}",$env:computername);
 		$node = $file.SelectSingleNode("descendant::domain");
 		$node.SetAttribute("name", $domainName);
+	}
+	if($deploymentMode -eq "MT")
+	{
+		if($isSqlAzure -eq $false)
+		{
+			$masterApDbConnectingString = [string]::Format("application name=AgilePoint Server;connection lifetime=5;Max Pool Size=800;min pool size=10;server={0};database=MasterAPDB;trusted_Connection=yes", $sqlServerAliasName);
+			$node = $file.SelectSingleNode("descendant::database");
+			$node.SetAttribute("connectingString", $masterApDbConnectingString);
+		}
 	}
 
 	$node = $file.SelectSingleNode("descendant::notification");
@@ -2195,9 +2275,9 @@ function Disable-NetflowFile-TaskScheduler()
 	{
 		Write-Host "Disabling Task Scheduler for netflow file..." -ForegroundColor DarkCyan
 		$taskName = "Update netflow.cfg"
-		Disable-ScheduledTask -TaskName $taskName
-		Stop-ScheduledTask -TaskName $taskName
-		Get-ScheduledTask -TaskName $taskName
+		Disable-ScheduledTask -TaskName $taskName -ErrorAction Ignore
+		Stop-ScheduledTask -TaskName $taskName -ErrorAction Ignore
+		Get-ScheduledTask -TaskName $taskName -ErrorAction Ignore
 		Write-Host "Task Scheduler for netflow file has been disabled!" -ForegroundColor DarkGreen
 	}
 	else

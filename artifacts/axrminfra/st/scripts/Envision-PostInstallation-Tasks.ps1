@@ -292,7 +292,7 @@ function Register-EnvisionAddIn-Dll()
 	}
 	catch
 	{
-		Write-Host "Register-EnvisionAddIn-Dll>> Error Happens" -ForegroundColor Reds
+		Write-Host "Register-EnvisionAddIn-Dll>> Error Happens" -ForegroundColor Red
 		Write-Host "$($_.Exception)" -ForegroundColor Red
 	}
 }
