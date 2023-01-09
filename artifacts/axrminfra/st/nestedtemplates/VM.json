@@ -224,7 +224,7 @@
                 "imageReference": {
                   "offer": "axrm-st-vm",
                   "publisher": "agiledialogssl1603791911858",
-                  "sku": "p_axrm-server-st",
+                  "sku": "pgen2_axrm-server-st",
                   "version": "latest"
                 },
                 "osDisk": {
@@ -362,7 +362,7 @@
               }
             ],
             "plan": {
-                "name": "p_axrm-modeler-st",
+                "name": "pgen2_axrm-modeler-st",
                 "publisher": "agiledialogssl1603791911858",
                 "product": "axrm-st-vm"
             }
