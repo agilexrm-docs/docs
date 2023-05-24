@@ -1,4 +1,4 @@
-### AgileXRMVersion 8.0.23052.20200
+### AgileXRMVersion 8.0.23142.2040
 Param(
 	[string]$apServiceAccountDomain ="INTERNAL",
 	[string]$apServiceAccountUser ="apservice",
@@ -1955,6 +1955,16 @@ function Write-Debug-Message()
 	}
 }
 
+function ModifyReadCommittedSnapshot()
+{
+	param([string]$sqlInstanceName, [string]$sqlDbName,[string]$sqlUserName, [string]$sqlUserPassword)
+	
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlInstanceName -sqlDbName "master" -sqlUserName $sqlUserName -sqlUserPassword $sqlUserPassword;
+	Write-Host "Modifying $sqlDbName READ_COMMITED_SNAPSHOT ..." 
+	$alterQuery = [string]::Format("ALTER DATABASE {0} SET READ_COMMITTED_SNAPSHOT OFF WITH ROLLBACK IMMEDIATE", $sqlDbName)
+	
+	Invoke-Sqlcmd -ServerInstance $sqlInstanceName -Database $sqlDbName -Username $sqlUserName -Password $sqlUserPassword -Query $alterQuery
+}
 
 function Apply-Post-Installation()
 {
@@ -2164,7 +2174,7 @@ function Insert-ConnectorRecord()
 	{
 		throw "Unknown '$connectorName' parameter value"
 	}
-	
+
 	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlInstance -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword;
 	if($recreateRecord)
 	{
@@ -2502,6 +2512,9 @@ Set-TimeZone -Id "UTC" -PassThru
 if($deploymentMode -eq "ST")
 {
 	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+
+    #X - Modify SingleAPDB "READ_COMMITED_SNAPSHOT" property
+	ModifyReadCommittedSnapshot -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword
 }
 
 Start-Services;
