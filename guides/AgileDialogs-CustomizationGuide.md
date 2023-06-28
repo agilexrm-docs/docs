@@ -556,6 +556,7 @@ See AgileDialogs Customization variables list here: [AgileDialogs Customization 
 @loading-panel-color: #ffffff;
 @splitbar-background-color: #daecf4;
 ```
+
 </details>
 
 
