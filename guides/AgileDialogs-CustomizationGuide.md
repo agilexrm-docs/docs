@@ -158,7 +158,7 @@ Below list represents **Text Control** layout:
         - .questionCaption
         - div[rel=tooltip]
     - <span>.AgileDialogsControlContainer</span>**.TextControlContainer**
-        - input | textarea
+        - <span>input | textarea</span>
         - .k-widget.k-widget-validation
         - .watermark
 
@@ -442,7 +442,7 @@ Below list represents **IFrame Control** layout:
         - iframe.iframe-widget
        
 
-See here: [IFrame control](common/Iframe.md)
+See here: [IFrame control](common/IFrame.md)
 
 ---
 ### HTML Control Layout
