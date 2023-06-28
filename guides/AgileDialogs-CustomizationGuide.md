@@ -236,10 +236,8 @@ Below list represents **Combo Control** layout:
     - **.k-list-container** /* k-popup k-group k-reset */
         - ul
             - li 
-            - ... li items
+            - ...
             - li
-
-k-animation-container k-list-container k-popup k-group k-reset k-list k-reset k-item k-state-selected k-state-focused
 
 See here: [Combo control](common/Combo.md)
 
@@ -258,7 +256,7 @@ Below list represents **Radio button Control** layout:
         - .optionsContainer
             - fieldset
                 - input[type=radio]
-                - ... input items
+                - ...
                 - input[type=radio]
                 - .k-widget.k-tooltip-validation
 
@@ -279,7 +277,7 @@ Below list represents **Checkbox Control** layout:
         - .optionsContainer
             - fieldset
                 - input[type=check]
-                - ... input items
+                - ...
                 - input[type=check]
                 - .k-widget.k-tooltip-validation
 
@@ -420,9 +418,9 @@ Below list represents **Group Container Control** layout:
         - .AgileDialogsWidget
         - ...
         - .AgileDialogsWidget
-> AgileDialogs group control contains as many .AgileDialogsWidget elements as controls have added at design time.
+> AgileDialogs group control contains as many .AgileDialogsWidget elements as controls that have been added at design time.
 
-> When AgileDialogs group control has configured with `GroupType`property set to _fieldset_, the controls will be rendered wrapped inside _fieldset_ element.
+> When AgileDialogs group control is configured with `GroupType` property set to _fieldset_, the controls will be rendered wrapped inside a _fieldset_ element.
 
 See here: [Group container control](common/GroupContainer.md)
 
@@ -469,7 +467,7 @@ Creating a new theme is done in this way:
 - Write custom CSS rules, if needed
 - Deploy the theme
  
-In this file set values for needed variables values ... 
+In this file set values for needed variables: 
 
 ```css
 @widget-background-color: #ffffff;
@@ -483,7 +481,6 @@ In this file set values for needed variables values ...
 @group-border-color: #94c0d2;
 
 /* Full variable list */
-
 ```
 > It is possible to include in the theme, all elements that are needed: CSS rules, mixings, new variables ...
 
@@ -492,7 +489,7 @@ See AgileDialogs Customization variables list here: [AgileDialogs Customization 
 When custom theme is ready, it can be tested in these ways:
 - Set _theme_ parameter to the theme name in the query string. This only applies to the particular dialog being run
   > For example:
-  > https://domain.com/.../AgileDialogsKendoRuntime.aspx?...__&theme=mytheme
+  > https://domain.com/.../AgileDialogsKendoRuntime.aspx?...&**theme=mytheme**
   
 - Configure AgileDialogs theme using [AgileXRM Administration tool](XRMAdministrationTool-UserGuide.md) and set theme name as value.
   > This setting will apply to all dialogs.
@@ -886,7 +883,7 @@ h1#dialogTitle {
 ---
 ### Customize background image
 
-```css
+```less
 #ADBackground 
 {
     display: block !important;
