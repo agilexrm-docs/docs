@@ -206,35 +206,40 @@ $scripBlock = @'
 			Set-ItemProperty -Path $fullPath -Name 'VBAWarnings' -Value 1
 		}
 	}
-	Trust-EnvisionAddIn
 
-	
-	if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
+	function Deploy-LogonScript([string]$storageAccountName, [string]$storageAccountSharedKey, [string]$fileShareName, [int]$storageAccountPort=445)
 	{
-		Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for azStorageAccountName, azStorageAccountSharedKey and azFileShareName" -ForegroundColor DarkCyan
-		return;
+		if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
+		{
+			Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for azStorageAccountName, azStorageAccountSharedKey and azFileShareName" -ForegroundColor DarkCyan
+			return;
+		}
+
+		$computerName = [string]::Format("{0}.file.core.windows.net",$storageAccountName)
+		$connectTestResult = Test-NetConnection -ComputerName $computerName -Port $storageAccountPort
+		if ($connectTestResult.TcpTestSucceeded) 
+		{
+			# Save the password so the drive will persist on reboot
+			$commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
+			cmd.exe /C $commandParameters
+			Write-Host "Parameters: $commandParameters"
+
+			# Mount the drive
+			$rootPath = "\\$computerName\$fileShareName"
+			Write-Host "Root Path: $rootPath"
+			New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
+
+			Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
+
+		} else {
+			Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+		}	
 	}
 
-	$computerName = [string]::Format("{0}.file.core.windows.net",$storageAccountName)
-	$connectTestResult = Test-NetConnection -ComputerName $computerName -Port $storageAccountPort
-	if ($connectTestResult.TcpTestSucceeded) 
-	{
-		# Save the password so the drive will persist on reboot
-        $commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
-		cmd.exe /C $commandParameters
-        Write-Host "Parameters: $commandParameters"
+	Deploy-LogonScript -storageAccountName $storageAccountName -storageAccountSharedKey $storageAccountSharedKey -fileShareName $fileShareName
 
-		# Mount the drive
-        $rootPath = "\\$computerName\$fileShareName"
-        Write-Host "Root Path: $rootPath"
-		New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
+	Trust-EnvisionAddIn
 
-		Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
-
-	} else {
-		Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
-	}	
-	
 	#Deploy GPO Policy to simplify Visio UX
 	Start-Process -FilePath "C:\AgileXRM\gpo\DeployGPOLocally.cmd" -WorkingDirectory "C:\AgileXRM\gpo"
 
@@ -297,6 +302,30 @@ function Register-EnvisionAddIn-Dll()
 	}
 }
 
+function Set-RemoteDesktop-Configuration()
+{
+	if($deploymentType -ne "Cloud")
+	{
+		Write-Host "Set-RemoteDesktop-Configuration doesn't apply to NON 'Cloud' Environments" -ForegroundColor DarkCyan
+		return;
+	}
+
+	$fullPath = "Registry::HKEY_LOCAL_MACHINE\Software\Microsoft\Ole\AppCompat"
+
+	if (!(Test-Path -Path $fullPath ))
+	{
+		New-item -Path $fullPath -Force
+		New-ItemProperty -Path $fullPath -Name 'RequireIntegrityActivationAuthenticationLevel' -Value 0 -PropertyType DWord
+		
+	}
+	else
+	{
+		Set-ItemProperty -Path $fullPath -Name 'RequireIntegrityActivationAuthenticationLevel' -Value 0
+	}
+
+	Write-Host "Set-RemoteDesktop-Configuration successfully executed! 'RequireIntegrityActivationAuthenticationLevel' has been set to '0'" -ForegroundColor DarkGreen
+}
+
 #################################################END FUNCTIONS#################################################################
 
 Remove-Old-Stencils-Folders
@@ -306,6 +335,7 @@ Remove-WebViewDll-FromOfficeFolder
 Trust-EnvisionAddIn-ForAllUsers
 Write-LogonScript
 Register-EnvisionAddIn-Dll
+Set-RemoteDesktop-Configuration
 
 Stop-Transcript
 

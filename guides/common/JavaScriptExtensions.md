@@ -8,16 +8,16 @@ AgileDialogs page includes a reference to jQuery 1.9, so jQuery can be used whil
 
 To add code to a Dialog click *On Load Script* in AgileDialogs form window:
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_01.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_01.png)
 
 When the current form has a script set, the tab item shows an icon to indicate
 this.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_02.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_02.png)
 
 Doing so the script editor is opened to include custom code:
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_03.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_03.png)
 
 The code included in this window is executed after the form has been loaded in
 the client.
@@ -196,7 +196,7 @@ To add an option to a combo, radio or checkbox control, add this code:
 
 The new item would be shown on screen immediately (picture below):
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_04.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_04.png)
 
 Examples:
 ```javascript
@@ -232,7 +232,7 @@ DialogsEngine.register("sourceComboControl", "targetComboControl");
 > - sourceComboControl is the name of the control that triggers the change.
 > - targetComboControl is the name if the subcribed control.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_05.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_05.png)
 
 Optionally, we can specify a callback function to execute:
 
@@ -250,7 +250,7 @@ DialogsEngine.register("sourceComboControl", "targetComboControl",
 });
 
 ```
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_06.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_06.png)
 
 **Important**: Use of the *register* method implies an http(s) call to the
 AgileDialogs server.
@@ -269,7 +269,7 @@ The following controls are compatible with the *register* functionality:
 >   Grid), the query in the target control should cater for it using operator IN
 >   or NOT IN.
 
-<!--![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_07.png)-->
+<!--![](../media/AgileDialogsDesignGuide/JavascriptExtensions_07.png)-->
 
 ### Check if a control has a value
 
@@ -322,7 +322,7 @@ Example:
       "Value cannot be longer that 5");
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_08.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_08.png)
 
 Also, we can return a localized string with the custom validation error message. To do this, first we must configure the CustomValidationMessage property of the control and use the location mechanism of AgileDialogs.
 Once the property is configured and localized, we can use the DialogsEngine.getCustomValidationMessage (<controlname>) method to return the localized message.
@@ -376,7 +376,7 @@ myValidationFunction) will receive 2 parameters:
 To show a validation message the validation function should return a string
 message.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_09.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_09.png)
 
 ### Apply format to control
 
@@ -406,7 +406,7 @@ DialogsEngine.applyFormat("currencyControl", theFormat);
 
 Which will show as such at runtime:
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_10.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_10.png)
 
 **Note**: See customization Guide
 
@@ -434,8 +434,8 @@ DialogsEngine.addChangeEventHandler("gender", conditionalFormat );
 
 Runtime:
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_11.png)
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_12.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_11.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_12.png)
 
 ### Show/Hide Notes control
 
@@ -451,7 +451,7 @@ DialogsEngine.setNotesVisible(<value>);
 > Where:
 > -   value, *true* if we want the *notes* tab to be shown, *false* otherwise.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_13.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_13.png)
 
 ### Collapse/Expand Notes control
 
@@ -507,7 +507,7 @@ Example:
 DialogsEngine.setNotes('New Notes added to our form');
 ```
 > Output:
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_14.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_14.png)
 
 ### Show a message window
 
@@ -528,7 +528,7 @@ Example:
 ```
 > Output
 > 
->![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_15.png)
+>![](../media/AgileDialogsDesignGuide/JavascriptExtensions_15.png)
 
 #### Show a formatted message window
 
@@ -541,7 +541,7 @@ To show a formatted message, use this code.
 
 > Output
 > 
->![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_16.png)
+>![](../media/AgileDialogsDesignGuide/JavascriptExtensions_16.png)
 
 ### Enable/Disable the **You are leaving the Page** warning message
 
@@ -568,7 +568,7 @@ aspects can be customized and extended.
 To do this the customization using javascript can be added to the file
 *AgileDialogs.custom.js*, which is initially empty.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_17.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_17.png)
 -->
 
 It is recommended to use objects to encapsulate functions.
@@ -599,9 +599,9 @@ custom functionality:
  });
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_18.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_18.png)
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_19.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_19.png)
 
 
 <!--
@@ -664,7 +664,7 @@ In this example we have created a new file called *01.jsfile.js* which contains
 the definition of the function *Foo.* Using *DialogsEngine.require()* we are
 loading this file and calling the *hello* method of *Foo.*
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_20.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_20.png)
 
 OnLoadScript code:
 
@@ -686,7 +686,7 @@ CSS files can be loaded in a similar way to javascript files, except that we
 need to add a prefix of *css!* to the resource and the files should be hosted
 somewhere under the CSS directory in the AgileDialogs site.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_21.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_21.png)
 
 Example:
 
@@ -724,7 +724,7 @@ Example (we want to know the value of a system context variable called
 DialogsEngine.getDialogContextValue('dialogRootCulture');
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_22.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_22.png)
 
 We can also pass a set of variables to this method in order to get all their
 values, instead of a single variable.
@@ -771,7 +771,7 @@ Example:
 ```
 > Output
 > 
-> ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_23.png)
+> ![](../media/AgileDialogsDesignGuide/JavascriptExtensions_23.png)
 
 In the opposite case (setting the value to false) we would not need to set any
 message, so we can leave out the *message* parameter from the function:
@@ -806,7 +806,7 @@ DialogsEngine.setRegularExpression(
     "You should enter a valid U.S. phone number");
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_24.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_24.png)
 
 ### Arrange a custom set of actions before every navigation callback
 
@@ -839,7 +839,7 @@ DialogsEngine.beforeNavigate(function () {
 });
 ```
 
-<!-- ![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_25.png)-->
+<!-- ![](../media/AgileDialogsDesignGuide/JavascriptExtensions_25.png)-->
 
 
 <!--
@@ -874,7 +874,7 @@ DialogsEngine.addInitHandler(function (data) {
 });
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_26.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_26.png)
 
 -->
 
@@ -938,7 +938,7 @@ Example:
 ```
 > Output
 >
->![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_28.png)
+>![](../media/AgileDialogsDesignGuide/JavascriptExtensions_28.png)
 
 ### Set a watermark literal inside our text controls
 
@@ -962,7 +962,7 @@ Example (we are setting a description text to be shown on a textbox called
 DialogsEngine.setWatermark("text_1", "Enter address");
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_29.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_29.png)
 
 ### Find out if a control exists
 
@@ -997,7 +997,7 @@ DialogsEngine.setNextButtonText(<value>);
 >
 > -   *value*, text that we want to set as the caption for the *next* button.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_30.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_30.png)
 
 The result will be immediately updated on AgileDialogs *Next* button, showing
 the new caption:
@@ -1007,7 +1007,7 @@ the new caption:
 ```
 > Output
 > 
->![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_31.png)
+>![](../media/AgileDialogsDesignGuide/JavascriptExtensions_31.png)
 
 ### Change the text of the *Back* button 
 
@@ -1023,7 +1023,7 @@ DialogsEngine.setBackButtonText(<value>);
 >
 > -   *value*, text that we want to set as the caption for the *back* button.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_30_1.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_30_1.png)
 
 The result will be immediately updated on AgileDialogs *Next* button, showing
 the new caption:
@@ -1033,7 +1033,7 @@ the new caption:
 ```
 > Output
 > 
->![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_31_1.png)
+>![](../media/AgileDialogsDesignGuide/JavascriptExtensions_31_1.png)
 
 
 ### Disable / Enable the Form navigation buttons and commands
@@ -1051,7 +1051,7 @@ In order to disable them:
 DialogsEngine.off();
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_32.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_32.png)
 
 It has an immediate effect over the buttons. To get the opposite effect, the
 engine command is:
@@ -1088,7 +1088,7 @@ that using DialogsEngine API (meant to be used against Grid controls):
 > -   *control*, stands for the control id that we want to collect the selected data
     from.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_33.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_33.png)
 
 Example: 
 ```javascript
@@ -1112,7 +1112,7 @@ In case we have a Grid with its *AllowMultipleSelection* property set to
 *true,* we would also receive all the needed details for each selected row
 (**Important**: only for the current grid page being shown on screen):
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_35.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_35.png)
 
 ``` json
 [
@@ -1182,7 +1182,7 @@ To show/hide the page spinner, use this code:
 
 > Output
 >
->![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_36.png)
+>![](../media/AgileDialogsDesignGuide/JavascriptExtensions_36.png)
 
 ### Change the required fields default validation message for customized messages.
 
@@ -1190,11 +1190,11 @@ When the user moves through the AgileDialogs forms sequence, the AgileDialogs
 runtime engine configures automatically some validation messages that pop up in
 case some required field has not been filled in (images below).
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_37.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_37.png)
 
 Figure 12. A required textbox is not filled in before pressing "Next"
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_38.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_38.png)
 
 Figure 13. Default message shown when the required fields have not been filled
 in.
@@ -1208,15 +1208,15 @@ information for a particular page, we should:
 
 Open AgileDialogs Designer, and click on **OnLoad Script**.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_39.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_39.png)
 
 Manipulate the properties described below to change the messages:
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_40.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_40.png)
 
 Once published, the page will show the desired messages when needed:
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_41.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_41.png)
 
 ### Create customized confirmation messages associated to events
 
@@ -1252,7 +1252,7 @@ Example. Let's suppose we have a Page form with a combo, which is composed of
 different values. We want to configure the page in a way that will warn us if we
 try to change the combo's selected value.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_42.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_42.png)
 
 For that goal, we should open the OnLoad Task inside AgileDialogs designer, and
 type the following command (image below):
@@ -1267,18 +1267,18 @@ DialogsEngine.addChangeEventHandler( "combo", function (value, display){
 });
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_43.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_43.png)
 
 As we can see, when the combo changes its value, we have set a personalized
 confirmation message, composed of the title, the customized message, the message
 after the user has pressed **OK** and the analog message for the **Cancel** handler.
 The result (after such changes are published) is easy to see:
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_44.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_44.png)
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_45.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_45.png)
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_46.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_46.png)
 
 ### Check if a condition is true
 
@@ -1346,7 +1346,7 @@ Example:
 DialogsEngine.filterSelection("MyGridControl",true);
 ```
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_47.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_47.png)
 
 ### Resume an unfinished previous Process 
 
@@ -1467,7 +1467,7 @@ This allows changing the behavior of at the engine level.
 Such customization code would be added to the *AgileDialogs.custom.js* file in
 the *Scripts* directory.
 
-![](../media/AgileDialogsDesignGuide/JavaScriptExtensions_48.png)
+![](../media/AgileDialogsDesignGuide/JavascriptExtensions_48.png)
 
 Example:
 

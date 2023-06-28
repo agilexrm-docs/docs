@@ -397,7 +397,7 @@ The format of this URL is:
 When the user opens this URL the dialog is either started (the first time that
 the user opens this URL) or resumed if the user is returning to this dialog.
 
-[Customizing Look and Feel](common/CustomizingLookAndFeel.md)
+[Customizing Look and Feel](AgileDialogs-CustomizationGuide.md)
 <!--
 [Custom Controls SDK](common/CustomControlsSDK.md)
 -->

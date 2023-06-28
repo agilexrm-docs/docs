@@ -31,6 +31,7 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [Quick Start Guide](guides/Quick-Start.md): Create your first process and dialog to experience the ease and power of **AgileXRM**
 - [AgileDialogs User Guide](guides/AgileDialogs-UserGuide.md)
 - [AgileDialogs Design Guide](guides/AgileDialogs-DesignGuide.md)
+- [AgileDialogs Customization Guide](guides/AgileDialogs-CustomizationGuide.md)
 - [Process Manager User Guide](guides/ProcessManager-UserGuide.md)
 - [AgileXRM Administration tool](guides/XRMAdministrationTool-UserGuide.md)
 - [AgileXRM Import/Export Utility](guides/ImportExportUtility.md)
@@ -76,9 +77,8 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [XRM Connection Window](guides/common/XRMConnectionWindow.md)
 - [AgileDialogs Security](guides/common/AgileDialogsSecurity.md)
 - [AgileDialogs Localization](guides/common/AgileDialogsLocalization.md)
-<!-- - [AgileDialogs Localization - Deprecated](guides/common/Localization.md) -->
 - [Hosting AgileDialogs inside a Portal](guides/common/HostingAgileDialogsInsidePortal.md) Needs update
-- [Customizing Look and Feel](guides/common/CustomizingLookAndFeel.md) Needs update
+- [Customizing Look and Feel](guides/AgileDialogs-CustomizationGuide.md)
 - [AgileDialogs Breadcrumbs](guides/common/Breadcrumbs.md)
 - [User Feedback](guides/common/UserFeeback.md)
 - [Schema Generic variables](guides/common/SchemaGenericVariables.md)
