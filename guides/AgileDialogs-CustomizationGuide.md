@@ -542,7 +542,6 @@ From Process Modeller, open the `CSS Editor`from the AgileXRM `Ribbon`.
 
     background-color: #FF0000;
 }
-
 ```
 > A theme can block its customization using **@allow-custom-css** variable. 
 
@@ -574,7 +573,6 @@ Also, pseudo-elements can be used to prevent CSS affecting controls overlay:
     z-index: -1;
     background-size: contain;
 }
-
 ```
 
 ---
@@ -727,7 +725,6 @@ AgileDialogs Progress window can be customizeed in this way:
 #ADAppWrapper .imageSpin .notification-wrap .notification-bar{
     background-color: rgb(206 18 162 / 65%);
 }
-
 ```
 
 Also, from Process Modller `Progress Message Editor`, a custom `CssClass` can be set for each message. 
@@ -745,7 +742,6 @@ So say, for "my-class" as class name, it can be customized in this way:
 #ADAppWrapper .imageSpin.my-class .notification-wrap .notification-bar{
     background-color: rgb(206 18 162 / 65%);
 }
-
 ```
 
 ---
@@ -755,7 +751,6 @@ So say, for "my-class" as class name, it can be customized in this way:
 #notesWindow {
     /* Custom CSS ... */
 }
-
 ```
 
 ---
