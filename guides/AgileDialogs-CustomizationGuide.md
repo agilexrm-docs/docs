@@ -525,7 +525,7 @@ From Process Modeller, open the `CSS Editor`from the AgileXRM `Ribbon`.
   box-shadow: none;
   background-color: #ffffff;
   color: #cf114d;
-  top: calc(100% + 1px);
+  top: 1rem;
 }
 
 .my.control-01{
