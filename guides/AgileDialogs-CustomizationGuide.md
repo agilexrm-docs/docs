@@ -748,7 +748,6 @@ So say, for "my-class" as class name, it can be customized in this way:
 
 ```
 
-
 ---
 ### Notes window
 
@@ -758,6 +757,7 @@ So say, for "my-class" as class name, it can be customized in this way:
 }
 
 ```
+
 ---
 ## Customization Samples
 
@@ -776,6 +776,7 @@ AgileDialogs Loading spinner can be customized in this way:
                 center;
 }
 ```
+
 ---
 ### Customize validation message
 
@@ -811,6 +812,7 @@ Or override the CSS rule and extend it:
     zoom:0.5;
 }
 ```
+
 ---
 ### Customize Required indicator
 
@@ -844,6 +846,7 @@ To place the Required icon on the right-side, use a CSS snippet like this:
     line-height: 0.5rem;
 }
 ```
+
 ---
 ### Customize Help icon
 
@@ -856,6 +859,7 @@ To customize AgileDialogs help icon use a CSS snippet like this:
     background-size: contain;
 }
 ```
+
 ---
 ### Customize Page Title
 
@@ -878,17 +882,17 @@ h1#dialogTitle {
     background-color: #ffffff !important;
     padding-left: 10px;
 }
-
 ```
+
 ---
 ### Customize background image
 
-```less
-#ADBackground 
-{
+```css
+#ADBackground {
     display: block !important;
+}
 
-    span {
+#ADBackground span {
         display: inherit;
         background-image: url("https://.../myimage.png") !important;
         background-size: 100% 100%;
@@ -896,8 +900,8 @@ h1#dialogTitle {
         position: absolute;
         width: 100%;
     }
-}
 ```
+
 ---
 ### Customize form margins
 
