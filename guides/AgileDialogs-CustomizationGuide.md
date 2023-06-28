@@ -601,7 +601,7 @@ TO DO
 ---
 ## Customize AgileDialogs windows.
 
-### <a id="a1">Lookup window </a>
+### <a id="a1"></a>Lookup window
 
 
 AgileDialogs lookup window is shown from AgileDialogs lookup controls.
