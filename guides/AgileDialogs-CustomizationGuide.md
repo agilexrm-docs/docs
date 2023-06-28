@@ -6,7 +6,7 @@
 
 AgileDialogs allows customization of look & feel.
 
-AgileDialogs customization is based in themes. A theme is a LESS file which defines the look & feel of the AgileDialogs pages.
+AgileDialogs customization is based on themes. A theme is a LESS file which defines the look & feel of the AgileDialogs pages.
 > LESS is a CSS preprocessor that extends the standard CSS language by adding variables, rule nesting, mixins, and math operations.
 
 > CSS knowledge is required to customize AgileDialogs
@@ -61,6 +61,7 @@ This image represents the AgileDialogs page layout:
 
 > Some advanced functionalities, such as Popup Render, use a different DOM layout, but they maintain the same CSS selectors.
 
+
 | CSS Selector          | Description |
 | --------------------- | ----------- |
 | __#ADBackground__     | Background image. Hidden by default |
@@ -72,7 +73,7 @@ This image represents the AgileDialogs page layout:
 | __#Output__           | This section is where AgileDialogs page will be rendered |
 | __h2.pageCaption__    | Page Title |
 | __#ADWidgetsWrapper__ | This is the element where all controls defined in a Page will be shown |
-<!--- Add the size of the icons above --->
+
 
 AgileDialogs page layout is represented in this image:
 
@@ -470,7 +471,7 @@ Creating a new theme is done in this way:
  
 In this file set values for needed variables values ... 
 
-```less
+```css
 @widget-background-color: #ffffff;
 @widget-border-color: #94c0d2;
 @widget-text-color: #003f59;
@@ -491,7 +492,7 @@ See AgileDialogs Customization variables list here: [AgileDialogs Customization 
 <details>
 <summary>Full theme sample:</summary>
 
-```less
+```css
 @widget-background-color: #ffffff;
 @widget-border-color: #94c0d2;
 @widget-text-color: #003f59;
@@ -554,7 +555,6 @@ See AgileDialogs Customization variables list here: [AgileDialogs Customization 
 @link-text-color: #003f59;
 @loading-panel-color: #ffffff;
 @splitbar-background-color: #daecf4;
-
 ```
 </details>
 
@@ -588,7 +588,6 @@ From Process Modeller, open the `CSS Editor`from the AgileXRM `Ribbon`.
 
 
 ```css
-
 #ADAppWrapper #ADWidgetsWrapper .AgileDialogsWidget .k-widget.k-tooltip-validation {
   width: 100%;
   font-style: italic;
@@ -808,7 +807,6 @@ Also, from Process Modller `Progress Message Editor`, a custom `CssClass` can be
 So say, for "my-class" as class name, it can be customized in this way:
 
 ```css 
-
 #ADAppWrapper .imageSpin.my-class .notification-wrap .notification-text{
     font-style: italic;
 }
@@ -858,7 +856,7 @@ AgileDialogs validation message can be customized in these ways:
 
 Assigning variable values:
 
-```less
+```css
 @validation-background-color: #246dbb;
 @validation-border-color: #ffa500;
 @validation-text-color: #ffffff;
@@ -924,7 +922,7 @@ To place the Required icon on the right-side, use a CSS snippet like this:
 
 To customize AgileDialogs help icon use a CSS snippet like this:
 
-```
+```css
 #ADWidgetsWrapper .AgileDialogsWidget.hastooltip div[rel=tooltip] .widget-help-click-image 
 {
     background: url(https://.../myimage.png);
@@ -943,11 +941,11 @@ h1#dialogTitle {
 }
 ```
 > Not visible when in Hosted mode
+
 ---
 ### Customize Page Caption
 
-```css
- 
+```css 
 #ADAppWrapper #widgetContainer #Output h2.pageCaption {
     color: #b73b65 !important;
     background-color: #ffffff !important;
@@ -958,7 +956,7 @@ h1#dialogTitle {
 ---
 ### Customize background image
 
-```less
+```css
 #ADBackground 
 {
     display: block !important;
@@ -978,7 +976,7 @@ h1#dialogTitle {
 
 Assigning value for **@ad-centered-margin-background-color** variable (only can be used in theme file):
 
-```less
+```css
 @ad-centered-margin-background-color: #246dbb
 ```
 
@@ -1003,7 +1001,6 @@ div#ADAppWrapper::after {
 TO DO
 
 ```css
-
 #ADAppWrapper #widgetContainer #Output 
     .AgileDialogsWidget .ComboControlContainer 
         .k-dropdown .k-dropdown-warp
