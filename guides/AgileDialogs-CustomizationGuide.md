@@ -491,6 +491,7 @@ See AgileDialogs Customization variables list here: [AgileDialogs Customization 
 
 <details>
 <summary>Full theme sample:</summary>
+<div>
 
 ```css
 @widget-background-color: #ffffff;
@@ -556,7 +557,7 @@ See AgileDialogs Customization variables list here: [AgileDialogs Customization 
 @loading-panel-color: #ffffff;
 @splitbar-background-color: #daecf4;
 ```
-
+</div>
 </details>
 
 
