@@ -211,7 +211,7 @@ See here: [Currency control](common/CurrencyControl.md)
 ---
 ### Combo Control Layout
 
-![AgileDialogsPageLayout](media/CustomizationGuide/AgileDialogsControlLayout_Combo_01.png)
+![AgileDialogsPageLayout](media/CustomizationGuide/AgileDialogsControlLayout_combo_01.png)
 
 > Important: AgileDialogs internally uses KendoUI framework, hence
 > the control layout is not as one can expect using select tag, instead, 
