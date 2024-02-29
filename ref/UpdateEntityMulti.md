@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Update Entity Multi__
+**[Home](/) --> [Reference](/ref) --> Update Entity Multi**
 
 # Update Entity Multi
 
@@ -17,10 +17,10 @@ The set of records that are affected are selected by either:
 
 | Property | Description |
 | -------- | ----------- |
-| __EntityIDs__ | [Entity IDs](common/EntityIds.md)  |
-| __EntitySpecification__ | [Entity Specification](common/EntitySpecification.md)  |
-| __EntityType__   |[Entity Type](common/EntityType.md)    |
-| __OnBehalfOf__   |[On Behalf Of](common/OnBehalfOf.md)    |
+| **EntityIDs** | [Entity IDs](common/EntityIds.md)  |
+| **EntitySpecification** | [Entity Specification](common/EntitySpecification.md)  |
+| **EntityType**   |[Entity Type](common/EntityType.md)    |
+| **OnBehalfOf**   |[On Behalf Of](common/OnBehalfOf.md)    |
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

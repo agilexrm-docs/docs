@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Update Parent Process activity Configuration__
+**[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Update Parent Process activity Configuration**
 
 # Update Parent Process Attributes property
 

@@ -1,6 +1,8 @@
-__[Home](/) --> [Reference](/ref) --> DateTime Operations__
-
 # DateTime Operations
+
+**[Home](/) --> [Reference](/ref) --> DateTime Operations**
+
+---
 
 ![DateTime Operations](media/DatetimeOperations.png)
 
@@ -8,19 +10,27 @@ An activity that lets you specify dates and times, and then uses your rules to m
 
 Shape configuration is done through the *Configuration* property.
 
-> __NOTE__: This activity is available under  *Miscellaneous Extension.*
+> **NOTE**: This activity is available under  *Miscellaneous Extension.*
 
 ## Shape-Specific Properties
 
 | Property | Description |
 | -------- | ----------- |
-| __Configuration__ | Opens the  [DateTime Operations Configuration](common/DateTimeOperationsConfiguration.md) dialog box, where you can configure date calculations. |
+| **Configuration** | Opens the  [DateTime Operations Configuration](common/DateTimeOperationsConfiguration.md) dialog box, where you can configure date calculations. |
+
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
+
+---
 
 ## Disclaimer of warranty
 

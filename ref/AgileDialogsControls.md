@@ -1,10 +1,10 @@
-__[Home](/) --> Reference__
+# AgileDialogs Controls
 
-# Reference Documentation
+**[Home](/) --> AgileDialogs Controls**
+
+---
 
 ## AgileDialogs Controls Reference
-
-### AgileDialogs Controls
 
 - [Info control](../guides/common/Info.md)
 - [Textbox control](../guides/common/Textbox.md)
@@ -27,13 +27,15 @@ __[Home](/) --> Reference__
 - [Variable Control](../guides/common/VariableControl.md)
 - [Custom Control](../guides/common/WidgetControl.md)
 
+---
 
 ## Related
+
 - [Page Form](../ref/PageForm.md)
 - [Start Page Shape](../guides/common/StartPageShape.md)
+
+---
 
 ## Disclaimer of warranty
 
 [Disclaimer of warranty](../guides/common/DisclaimerOfWarranty.md)
- 
-

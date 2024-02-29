@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Update Custom Attributes activity Configuration__
+**[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Update Custom Attributes activity Configuration**
 
 # Update Custom Attributes Configuration property
 

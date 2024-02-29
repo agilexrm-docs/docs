@@ -7,9 +7,12 @@ Please feel free to go to the GitHub repository and create an issue to discuss i
 ## Disclaimer of warranty
 
 [Disclaimer of warranty](guides/common/DisclaimerOfWarranty.md)
- 
+
+---
+
 ## Project Scope
-![](concepts/media/AgileXRM_Concepts_01.png)
+
+![AgileXRM_Concepts_01.png](concepts/media/AgileXRM_Concepts_01.png)
 
 Topics currently in this repository's scope:
 
@@ -46,7 +49,7 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 
 - [How to enable/disable a CDS entity/ task to execute AgileXRM process](howto/EnableDisableEntities.md)
 - [How to define an email template](ref/common/DefiningAnEmailTemplate.md)
-
+- [How to send process parameters](ref/common/ProcessParams.md)
 - [How to execute an AgileXRM process against CDS entity]
 - [How to execute an AgileDialogs process against CDS entity]
 - [How to execute a standalone AgileXRM process]
@@ -55,8 +58,8 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [How to get context information about entity (CrmBeID & CrmBeType)]
 - [How to show CDS data within AgileDialogs process]
 - [How to set image picture for existing CRM entity]
-- [How to define different paths (Conditional activity)]
-- [How to define different paths (Conditional activity multiple)]
+- [How to define different paths (Conditional activity)](ref/SingleCondition.md)
+- [How to define different paths (Conditional activity multiple)](ref/MultipleCondition.md)
 - [How to execute a remote service from AgileXRM/AgileDIalogs process (ASMX, WCF and REST)]
 - [How to transfer files from CDS]
 - [How to transfer files to CDS]
@@ -83,6 +86,6 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 - [User Feedback](guides/common/UserFeeback.md)
 - [Schema Generic variables](guides/common/SchemaGenericVariables.md)
 - [Populating Combo, Radio-button and Checkbox controls](guides/common/PopulatingCombo.md)
-- [Performance Window](guides/common/PerformanceWindow.md) 
+- [Performance Window](guides/common/PerformanceWindow.md)
 - [Show JSON data in AgileDialogs](guides/common/JSONAgileDialogs.md)
 - [AgileDialogs client API](guides/common/JavaScriptExtensions.md)

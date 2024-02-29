@@ -1,6 +1,6 @@
-__[Home](/) --> Reference__
-
 # Reference Documentation
+
+**[Home](/) --> Reference**
 
 ## AgileDialogs Shape Reference
 

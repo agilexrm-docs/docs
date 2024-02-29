@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()) --> Text__
+**[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()) --> Text**
 
 ### Text property
 

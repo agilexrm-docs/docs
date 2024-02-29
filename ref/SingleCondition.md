@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Single Condition__
+**[Home](/) --> [Reference](/ref) --> Single Condition**
 
 # Single Condition
 

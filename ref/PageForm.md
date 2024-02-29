@@ -1,6 +1,8 @@
-__[Home](/) --> [Reference](/ref) --> Page Form__
-
 # Page Form
+
+**[Home](/) --> [Reference](/ref) --> Page Form**
+
+---
 
 ![Page Form](media/PageFormShape.png)
 
@@ -10,6 +12,7 @@ group of controls) in an AgileDialog.
 For a detailed explanation of how to use this and other AgileDialog shapes,
 please see **[AgileDialogs Design Guide](../guides/AgileDialogs-DesignGuide.md)**.
 
+---
 
 ## Shape-Specific Properties
 
@@ -17,17 +20,25 @@ please see **[AgileDialogs Design Guide](../guides/AgileDialogs-DesignGuide.md)*
 | -------- | ----------- |
 | **FormConfiguration** | Click the ellipsis to open the [Form Configuration dialog](../guides/common/PageFormShape.md).|
 
-
-
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
 
+---
+
 ## Related
-- [AgileDialogs Page controls](../ref/AgileDialogsControls.md) 
+
+[AgileDialogs Page controls](../ref/AgileDialogsControls.md)
+
+---
 
 ## Disclaimer of warranty
 

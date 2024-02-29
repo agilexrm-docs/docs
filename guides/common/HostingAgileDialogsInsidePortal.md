@@ -1,6 +1,8 @@
-__[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Hosting AgileDialogs inside portals__
-
 # Hosting AgileDialogs inside a Portal
+
+**[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Hosting AgileDialogs inside portals**
+
+---
 
 ## Hosting inside an IFRAME
 
@@ -206,6 +208,107 @@ Host page code:
 ```
 
 ![](../media/AgileDialogsDesignGuide/HostingAgileDialogsInsidePortal_05.png)
+
+## AgileDialogs lifecicle messages.
+
+AgileDialogs emits messages to communicate it lifecicle status when its placed into a container `iframe` element.
+
+> If AgileDialogs is not hosted into iframe element, the messages will not been send
+
+These are the message list:
+
+- **DialogsReady** When AgileDialog page content frame is ready. This is the first message send.
+
+```json
+{
+    "action":"DialogsReady"
+}
+```
+
+> At this time AgileDialogs is showing the loading spinner. 
+> Can use this message to remove any temporal CSS applied to container iframe to avoid a white block space in page while page is loading. 
+
+> This message is not sent when AgileDialogs error page is displayed. 
+
+- **app_loaded** When AgileDialogs application is loaded. 
+```json
+{
+    "action":"app_loaded",
+    "piid":"47fe6121314eee11b54c0050562195fa"
+}
+```
+> Ocurrs inmeately after `DialogsReady` providing process instance id of executing dialog.
+> This message is sent even if the AgileDialogs error page is displayed.  
+
+- **new_proccessinstance** When AgileDiallgs process instance has been created. 
+```json
+{
+    "action":"new_proccessinstance",
+    "piid":"47fe6121314eee11b54c0050562195fa",
+    "startpiid":"47fe6121314eee11b54c0050562195fa"
+}
+```
+> It behaves differently depending on whether the AgileDialogs model contains a StartPage shape or not:
+> - If the model contains a StartPage shape this message is sent when the first AgileDialogs form has been completed and the next page is displayed to the user.
+> - If the model does not contain a StartPage it will be executed after app_loaded message.
+
+- **render_ends** When AgileDialogs first form is shown and have finished its render.
+```json
+{
+    "action":"render_ends"
+}
+```
+- This message is sent even if the AgileDialogs error page is displayed. 
+
+- **AgileDialogs.DialogCompleted** When AgileDialogs is completed.
+```json
+{
+    "action":"AgileDialogs.DialogCompleted",
+    "piid":"47fe6121314eee11b54c0050562195fa"
+}
+```
+
+- **AgileDialogs.DialogFaulting** When AgileDialogs process is in Faulting status.
+```json
+{
+    "action":"AgileDialogs.DialogFaulting",
+    "piid":"47fe6121314eee11b54c0050562195fa"
+}
+```
+
+- **AgileDialogs.DialogSuspended** When AgileDialogs process is in Suspended status.
+```json
+{
+    "action":"AgileDialogs.DialogSuspended",
+    "piid":"47fe6121314eee11b54c0050562195fa"
+}
+```
+
+- **AgileDialogs.DialogCancelled** When AgileDialogs process is cancelled.
+```json
+{
+    "action":"AgileDialogs.DialogSuspended",
+    "piid":"47fe6121314eee11b54c0050562195fa"
+}
+```
+
+- **DialogErrored** When AgileDialogs process triggers an error.
+```json
+{
+    "action":"DialogErrored"     
+}
+```
+
+## Listening
+
+```javascript
+window.top.addEventListener("message", function (event) {
+    var dialogData = JSON.parse(event.data);
+    console.log(dialogData.action ); 
+    
+});
+```
+
 
 ## Disclaimer of warranty
 

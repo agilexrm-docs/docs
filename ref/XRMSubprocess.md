@@ -1,29 +1,22 @@
-__[Home](/) --> [Reference](/ref) --> XRM SubProcess__
-
 # XRM SubProcess
+
+**[Home](/) --> [Reference](/ref) --> XRM SubProcess**
+
+---
 
 ![XRM SubProcess](media/XRMSubProcess.png)
 
-When entered, this AgileShape will initiate another **AgileXRM** process instance as
-a sub-process.
+When entered, this AgileShape will initiate another **AgileXRM** process instance as a sub-process.
 
-This functionality is useful for breaking complex processes to more manageable
-chunks and also allows creating more modular processes, and enhances
-reusability.
+This functionality is useful for breaking complex processes to more manageable chunks and also allows creating more modular processes, and enhances reusability.
 
-It allows selecting any Proceess of type *AgileXRM*. For initiating other types
-of processes, use the **[SubProcess](SubProcess.md)** shape in the Generic stencil.
+It allows selecting any Proceess of type *AgileXRM*. For initiating other types of processes, use the **[SubProcess](SubProcess.md)** shape in the Generic stencil.
 
-This shape does NOT share the context of the caller with the child, assuming
-that the Main Entity of the child is different. If the Main Entity of the child 
-process is the same as the calling parent process, then set the *Share Attibutes* property yo *True*.
+This shape does NOT share the context of the caller with the child, assuming that the Main Entity of the child is different. If the Main Entity of the child process is the same as the calling parent process, then set the *Share Attibutes* property yo *True*.
 
-However, if Main Entity for child process is different, then to pass individual
-variables to the child process use the *SubProcessParams* property.
+However, if Main Entity for child process is different, then to pass individual variables to the child process use the *SubProcessParams* property.
 
-When selecting a sub-process, it is possible to initiate the latest version or a
-particular version. Please see below for details of choosing which version of
-the sub-process template to initiate.
+When selecting a sub-process, it is possible to initiate the latest version or a particular version. Please see below for details of choosing which version of the sub-process template to initiate.
 
 ## Configuration Dialogs
 
@@ -48,11 +41,16 @@ See the *SubProcessParams* property.
 | **SubProcessParams**        | [SubProcess Params](common/SubProcessParams.md)        |
 | **Wait**                    | [Wait](common/Wait.md)                    |
 
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
 
 ## Disclaimer of warranty

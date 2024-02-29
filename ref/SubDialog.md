@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> SubDialog__
+**[Home](/) --> [Reference](/ref) --> SubDialog**
 
 # SubDialog
 

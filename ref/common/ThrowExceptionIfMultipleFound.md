@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Throw Exception If Multiple Found__
+**[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Throw Exception If Multiple Found**
 
 ### ThrowExceptionIfMultipleFound property 
 

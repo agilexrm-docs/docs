@@ -1,6 +1,8 @@
-__[Home](/) --> [Reference](/ref) --> Add Note__
-
 # Add Note
+
+**[Home](/) --> [Reference](/ref) --> Add Note**
+
+---
 
 ![Add Note](media/AddNote.png)
 
@@ -12,17 +14,24 @@ For file attachments, please use the [Attach Document](AttachDocument.md) or [De
 
 | Property | Description |
 | -------- | ----------- |
-| __EntityId__| [Entity Id](common/EntityId.md)|
-| __EntityType__ | [Entity Type](common/EntityType.md) |
-| __Subject__ | [Subject](common/Subject.md) |
-| __Text__ | [Text](common/Text.md) |
+| **EntityId**| [Entity Id](common/EntityId.md)|
+| **EntityType** | [Entity Type](common/EntityType.md) |
+| **Subject** | [Subject](common/Subject.md) |
+| **Text** | [Text](common/Text.md) |
 
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
+
+---
 
 ## Disclaimer of warranty
 

@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Upsert Entity__
+**[Home](/) --> [Reference](/ref) --> Upsert Entity**
 
 # Upsert Entity
 
@@ -14,13 +14,13 @@ The set of records that are affected are selected by the ones returned by the qu
 
 | Property | Description |
 | -------- | ----------- |
-| __EntitySpecification__ 				| [Entity Specification](common/EntitySpecification.md)  |
-| __EntityType__   						|[Entity Type](common/EntityType.md)    |
-| __OnBehalfOf__   						|[On Behalf Of](common/OnBehalfOf.md)    |
+| **EntitySpecification** 				| [Entity Specification](common/EntitySpecification.md)  |
+| **EntityType**   						|[Entity Type](common/EntityType.md)    |
+| **OnBehalfOf**   						|[On Behalf Of](common/OnBehalfOf.md)    |
 | **QueryExpression** 					| [QueryExpression](common/QueryExpression.md) |
 | **RecordCreatedValueTo** 				| [Record Created Value To](common/RecordCreatedValueTo.md) |
-| __SaveEntityIdTo__       				| [Save Entity Id To](common/SaveEntityIdTo.md) |
-| __ThrowExceptionIfMultipleFound__ 	| [Throw Exception If Multiple Found](common/ThrowExceptionIfMultipleFound.md) |
+| **SaveEntityIdTo**       				| [Save Entity Id To](common/SaveEntityIdTo.md) |
+| **ThrowExceptionIfMultipleFound** 	| [Throw Exception If Multiple Found](common/ThrowExceptionIfMultipleFound.md) |
 
 
 ## Other Common Properties

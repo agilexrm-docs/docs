@@ -1,8 +1,12 @@
-__[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Entity Name__
+# EntityName property
 
-### EntityName property 
+**[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Entity Name**
+
+---
 
 Select the entity type. This can be a static or dynamic value.
+
+---
 
 ## Disclaimer of warranty
 

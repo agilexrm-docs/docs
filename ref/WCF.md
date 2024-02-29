@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> WCF Service Activity__
+**[Home](/) --> [Reference](/ref) --> WCF Service Activity**
 
 # WCF Service Activity
 
@@ -185,7 +185,7 @@ changes by pressing **OK** and save the model.
 
 | Property | Description |
 | -------- | ----------- |
-| __Configure__ | Opens configuration window |
+| **Configure** | Opens configuration window |
 
 ## Other Common Properties
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)

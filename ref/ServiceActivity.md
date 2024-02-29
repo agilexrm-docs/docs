@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Service Activity__
+**[Home](/) --> [Reference](/ref) --> Service Activity**
 
 # Service Activity
 

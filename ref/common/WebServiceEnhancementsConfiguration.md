@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Delay activity Configure__
+**[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Delay activity Configure**
 
 # Web Service Enhancements Configure property
 

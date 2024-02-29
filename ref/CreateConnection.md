@@ -1,10 +1,10 @@
-__[Home](/) --> [Reference](/ref) --> Create Connection__
-
 # Create Connection
+
+**[Home](/) --> [Reference](/ref) --> Create Connection**
 
 ![Create Connection](media/CreateConnection.png)
 
-This shapes is used to create Connections between two entity records 
+This shapes is used to create Connections between two entity records
 
 ![Create Connection](media/CreateConnection1.png)
 
@@ -25,12 +25,18 @@ This shapes is used to create Connections between two entity records
 
 | Property | Description |
 | -------- | ----------- |
-| __Configuration__ | Click the ellipsis button to open the Configuration dialog |
+| **Configuration** | Click the ellipsis button to open the Configuration dialog |
+
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
 
 ## Disclaimer of warranty

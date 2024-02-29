@@ -1,6 +1,8 @@
-__[Home](/) --> [Reference](/ref) --> Dialog Activity__
-
 # Dialog Activity
+
+**[Home](/) --> [Reference](/ref) --> Dialog Activity**
+
+---
 
 ![Dialog Activity](media/DialogActivity.png)
 
@@ -19,10 +21,15 @@ continues.
 Use this shape rather than one of the other CRM Activities shapes, when a single Page
 Form may not suffice or the user needs to be guided to complete the task.
 
+---
+
 ## Participants
+
 The property *ConfigureParticipants* allows to set the Activity owner and (optionally) assign the activity to a queue, just clicking on the ellipsis button.
 
 To see full configuration navigate to the [Participants](./common/Participants.md) detailed section.
+
+---
 
 ## Shape-Specific Properties
 
@@ -42,12 +49,19 @@ To see full configuration navigate to the [Participants](./common/Participants.m
 | **Subject**                       |[Subject](common/Subject.md)|
 | **TaskDescription**               |[Task Description](common/TaskDescription.md)|
 
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
+
+---
 
 ## Disclaimer of warranty
 

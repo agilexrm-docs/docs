@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Wait For Update__
+**[Home](/) --> [Reference](/ref) --> Wait For Update**
 
 # Wait For Update
 

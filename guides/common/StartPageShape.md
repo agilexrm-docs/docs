@@ -1,8 +1,9 @@
-__[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Start Page Shape__
-
 # Start Page Shape
 
-![](../media/AgileDialogsDesignGuide/StartPageShape_01.png)
+**[Home](/) --> [AgileDialogs Design Guide](/guides/AgileDialogs-DesignGuide.md) --> Start Page Shape**
+
+---
+![StartPageShape_01.png](../media/AgileDialogsDesignGuide/StartPageShape_01.png)
 
 This shape allows to show an AgileDialog Page without creating a process instance until this activity is completed.
 
@@ -11,7 +12,7 @@ processes.
 
 The Start Page can only be placed immediately after the Start shape.
 
-![](../media/AgileDialogsDesignGuide/StartPageShape_02.png)
+![StartPageShape_02.png](../media/AgileDialogsDesignGuide/StartPageShape_02.png)
 
 An AgileDialogs process model can only have one Start Page shape.
 
@@ -27,23 +28,25 @@ When we use Start Page shapes within scenarios that contains subprocesses, the S
 
 ## Start Page shape limitations
 
-A Start page shape must be the unique activity after the Start shape. 
+A Start page shape must be the unique activity after the Start shape.
 
 When AgileDialogs does not contains the Start Page shape, we can model using automatic activities outgoing from the Start Shape. But when an Start Page is present in our model, this configuration will throw a validation error.
 
-![](../media/AgileDialogsDesignGuide/StartPageShape_03.png)
+![StartPageShape_03.png](../media/AgileDialogsDesignGuide/StartPageShape_03.png)
 
 In order to perform automatic activities on process starts, use parallel shapes from the Start Page shape instead of the Start shape as picture shown:
 
-![](../media/AgileDialogsDesignGuide/StartPageShape_04.png)
+![StartPageShape_04.png](../media/AgileDialogsDesignGuide/StartPageShape_04.png)
+
+---
 
 ## Related
-- [AgileDialogs Page Form](../../ref/PAgeForm.md) 
-- [AgileDialogs Page controls](../../ref/AgileDialogsControls.md) 
+
+- [AgileDialogs Page Form](../../ref/PAgeForm.md)
+- [AgileDialogs Page controls](../../ref/AgileDialogsControls.md)
+
+---
 
 ## Disclaimer of warranty
 
 [Disclaimer of warranty](DisclaimerOfWarranty.md)
-
-
-

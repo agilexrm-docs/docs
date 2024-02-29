@@ -1,6 +1,8 @@
-__[Home](/) --> [Reference](/ref) --> Delete Entity Multi__
-
 # Delete Entity Multi
+
+**[Home](/) --> [Reference](/ref) --> Delete Entity Multi**
+
+---
 
 ![Delete Entity Multi](media/DeleteEntityMulti.png)
 
@@ -14,6 +16,7 @@ The set of records that are affected are selected by either:
 > **NOTE**: Standard CRM rules and restrictions apply (e.g. Role, Referential
 integrity etc).
 
+---
 
 ## Shape-Specific Properties
 
@@ -21,15 +24,22 @@ integrity etc).
 | -------- | ----------- |
 | **EntityIds**       | [Entity IDs](common/EntityIds.md) |
 | **EntityName**      | [Entity name](common/EntityName.md)|
-| __OnBehalfOf__      | [On Behalf Of](common/OnBehalfOf.md)    |
+| **OnBehalfOf**      | [On Behalf Of](common/OnBehalfOf.md)    |
 | **QueryExpression** | [QueryExpression](common/QueryExpression.md) |
 
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
+
+---
 
 ## Disclaimer of warranty
 

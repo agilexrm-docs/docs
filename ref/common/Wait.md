@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()) --> Wait__
+**[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()) --> Wait**
 
 ### Wait property
 

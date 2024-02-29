@@ -1,6 +1,8 @@
-﻿__[Home](/) --> AgileXRM Concepts__
+﻿# AgileXRM Concepts
 
-# AgileXRM Concepts
+**[Home](/) --> AgileXRM Concepts**
+
+---
 
 ## What is AgileXRM?
 

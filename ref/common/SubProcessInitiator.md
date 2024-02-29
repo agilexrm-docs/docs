@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()) --> SubProcess Initiator__
+**[Home](/) --> [Reference](/ref)  -->  [Parent Shape](javascript:history.back()) --> SubProcess Initiator**
 
 ### SubProcessInitiator property
 

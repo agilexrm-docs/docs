@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Trigger Flow__
+**[Home](/) --> [Reference](/ref) --> Trigger Flow**
 
 # Trigger Flow
 

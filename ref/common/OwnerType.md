@@ -1,8 +1,12 @@
-__[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Owner Type__
+# OwnerType property
 
-### OwnerType property 
+**[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Owner Type**
+
+---
 
 This can be either **User** or **Team**
+
+---
 
 ## Disclaimer of warranty
 

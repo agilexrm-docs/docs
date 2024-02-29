@@ -1,6 +1,8 @@
-__[Home](/) --> [Reference](/ref) --> XRM SubProcess Multi__
-
 # XRM SubProcess Multi
+
+**[Home](/) --> [Reference](/ref) --> XRM SubProcess Multi**
+
+---
 
 ![XRM SubProcess Multi](media/XRMSubProcessMulti.png)
 
@@ -33,7 +35,7 @@ See the *SubProcessParams* property.
 | -------- | ----------- |
 | **EntityIds**               | [Entity Ids](common/EntityIds.md)               |
 | **EntityName**              | [Entity Name](common/EntityName.md)              |
-| **ExecutionMode**           | Default value: **Parallel**<br />- **Parallel** : All subprocesses are started in parallel in no particular order<br />- **Sequential** : subprocesses are initiated one by one so next subprocess is not started until previous subprocess is completed (or cancelled)|
+| **ExecutionMode**           | Default value: **Parallel** <br /> - **Parallel** : All subprocesses are started in parallel in no particular order <br /> - **Sequential** : subprocesses are initiated one by one so next subprocess is not started until previous subprocess is completed (or cancelled)|
 | **NamePrefix**              | [Name Prefix](common/NamePrefix.md)              |
 | **QueryExpression**         | [Query Expression](common/QueryExpression.md)         |
 | **RunProcessIndependently** | [Run Process Independently](common/RunProcessIndependently.md) |
@@ -41,14 +43,19 @@ See the *SubProcessParams* property.
 | **Sub Process**             | [SubProcess](common/SubProcess.md)             |
 | **SubProcessInitiator**     | [SubProcess Initiator](common/SubProcessInitiator.md)     |
 | **SubProcessParams**        | [SubProcess Params](common/SubProcessParams.md)        |
-| **TargetVariableName**      | Optional<br>This property allows every child process instance to receive the ID of the entity against which the subprocess is executed, in a variable inside the child process (default: *CrmBeId*) |
+| **TargetVariableName**      | Optional<br> This property allows every child process instance to receive the ID of the entity against which the subprocess is executed, in a variable inside the child process (default: *CrmBeId*) |
 | **Wait**                    | [Wait](common/Wait.md)                    |
 
+---
 
 ## Other Common Properties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
+---
+
 ## Actions
+
 See [Actions](common/Actions.md)
 
 ## Disclaimer of warranty

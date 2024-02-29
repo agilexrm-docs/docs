@@ -1,6 +1,8 @@
-__[Home](/) --> Process Manager__
-
 # Process Manager
+
+**[Home](/) --> Process Manager**
+
+---
 
 Process Manager is an integrated **AgileXRM** tool that allows you manage **AgileXRM** and **AgileDialogs** process instances in real time.
 

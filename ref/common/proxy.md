@@ -1,12 +1,16 @@
-__[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Proxy property__
+# Proxy property
 
-### Proxy property
+**[Home](/) --> [Reference](/ref) -->  [Parent Shape](javascript:history.back()) --> Proxy property**
+
+---
 
 Allows to configura a Proxy conexion to execute activity.
 
-![](../media/ProxyWindow.png)
+![ProxyWindow.png](../media/ProxyWindow.png)
 
 Also we can provide a credentials to connect Proxy.
+
+---
 
 ## Disclaimer of warranty
 

@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Set Status__
+**[Home](/) --> [Reference](/ref) --> Set Status**
 
 # Set Status
 
@@ -18,8 +18,8 @@ This shape is used to change the *Status* & *Status Reason* of a record in CRM.
 | **Closing Task Subject** |[Closing Task Subject](common/ClosingTaskSubject.md) |
 | **EntityId**             |[Entity Id](common/EntityId.md) |
 | **EntityName**           |[Entity Name](common/EntityName.md) |
-| __ExecuteAsync__         | [Execute Async](common/ExecuteAsync.md) |
-| __OnBehalfOf__           |[On Behalf Of](common/OnBehalfOf.md)    |
+| **ExecuteAsync**         | [Execute Async](common/ExecuteAsync.md) |
+| **OnBehalfOf**           |[On Behalf Of](common/OnBehalfOf.md)    |
 | **Status**               |[Status](common/Status.md)  |
 | **StatusStateValue**     |[Status State Value](common/StatusStateValue.md)  |
 

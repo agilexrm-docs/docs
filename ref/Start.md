@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Start__
+**[Home](/) --> [Reference](/ref) --> Start**
 
 # Start
 

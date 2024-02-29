@@ -1,6 +1,8 @@
-__[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Javascript Extensions__
-
 # JavaScript Extensions (OnLoadScript)
+
+**[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Javascript Extensions**
+
+---
 
 Process modeler can add JavaScript code in order to extend AgileDialogs default behavior.
 
@@ -8,19 +10,21 @@ AgileDialogs page includes a reference to jQuery 1.9, so jQuery can be used whil
 
 To add code to a Dialog click *On Load Script* in AgileDialogs form window:
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_01.png)
+![JavascriptExtensions_01.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_01.png)
 
 When the current form has a script set, the tab item shows an icon to indicate
 this.
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_02.png)
+![JavascriptExtensions_02.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_02.png)
 
 Doing so the script editor is opened to include custom code:
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_03.png)
+![JavascriptExtensions_03.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_03.png)
 
 The code included in this window is executed after the form has been loaded in
 the client.
+
+---
 
 ## Using context variables in OnLoadScript
 
@@ -32,6 +36,8 @@ of customs attributes directly in OnLoadScript:
  // user code ...
 ```
 
+---
+
 ### Get Control Value
 
 To get a control's value, use this code:
@@ -40,11 +46,13 @@ To get a control's value, use this code:
 DialogsEngine.getSelectedValue(<controlName>);
 ```
 
->Where:
-> - controlName is the value of `ValueVariable` parameter in the target control.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.
 
 If the control is mapped to data (for instance in a Grid control), this
 method will return the value of the column that is mapped to the Value Variable.
+
+---
 
 ### Get Display Value
 
@@ -54,13 +62,14 @@ To get a control's display value, use this code:
 DialogsEngine.getDisplayValue(<controlName>);
 ```
 
->Where:
-> - controlName is the value of `ValueVariable` parameter in the target control.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.
 
 If the control is mapped to data (for instance in a Grid control), this
 method will return the value of the column that is mapped to the Display
 Variable.
 
+---
 
 ### Get and set question label
 
@@ -69,20 +78,21 @@ To get a control's label, use this code:
 ```javascript
 DialogsEngine.getLabel(<controlName>);
 ```
-Where:
 
--   controlName is the value of `ValueVariable` parameter in the target control.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.
 
 To set a control's label, use this code:
+
 ```javascript
 DialogsEngine.setLabel(<controlName>, <value>);
 ```
 
-> Where:
-> - controlName is the value of `ValueVariable` parameter in the target control.
-> - value is the value to set in control´s question label. Value can be a literal string or HTML content as string.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.  
+> **value** is the value to set in control´s question label. Value can be a literal string or HTML content as string.
 
-
+---
 
 ### Change Control Value
 
@@ -92,9 +102,11 @@ To change a control's value, use this code:
 DialogsEngine.setSelectedValue(<controlName>, <newValue>);
 ```
 
-> Where:
-> -   controlName is the value of `ValueVariable` parameter in the target control.
-> -   newValue is the value to set.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.  
+> **newValue** is the value to set.
+
+---
 
 ### Check if a control is read-only
 
@@ -107,10 +119,12 @@ This would be the method to use:
 DialogsEngine.isReadOnly(<control>);
 ```
 
-> Where:
-> - control, is the control that we want to check
+> Where:  
+> **control**, is the control that we want to check
 
 Returns *true* or *false*, depending on the read-only property of the control
+
+---
 
 ### Toggle a control read-only property
 
@@ -123,9 +137,11 @@ In order to perform this, this code should be added:
 DialogsEngine.setReadOnly(<control>,<value>);
 ```
 
-> Where:
-> -   control, meaning the control we want to modify.
-> -   value, *true* to convert the control to read-only, *false* otherwise.
+> Where:  
+> **control**, meaning the control we want to modify.  
+> **value**, *true* to convert the control to read-only, *false* otherwise.
+
+---
 
 ### Enable/disable a control
 
@@ -137,8 +153,8 @@ DialogsEngine.disable(<controlName>); // Disable
 DialogsEngine.enable(<controlName>); // Enable
 ```
 
-> Where:
-> -   controlName is the value of `ValueVariable` parameter in the target control.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.
 
 Also, we can use the setEnabled method as such:
 
@@ -146,12 +162,14 @@ Also, we can use the setEnabled method as such:
    DialogsEngine.setEnabled(<controlName>, <isEnabled>);
 ```
 
-> Where:
-> -   controlName is the value of `ValueVariable` parameter in the target control.
-> -   isEnabled Boolean value, true to enable control, false to disable control.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.  
+> **isEnabled** Boolean value, true to enable control, false to disable control.
 
 If a control is disabled, its validation event is not fired. So say, it is
 Required or has a RegEx, these will not be executed and are ignored.
+
+---
 
 ### Hide/Show controls
 
@@ -161,24 +179,28 @@ To hide or show a control and its caption, add this code:
    DialogsEngine.setVisible(<controlName>, <isVisible>);
 ```
 
-> Where:
-> -   controlName is the value of `ValueVariable` parameter in the target control.
-> -   isVisible Boolean value, true to show control, false to Hide control.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.  
+> **isVisible** Boolean value, true to show control, false to Hide control.
 
 If a control is hidden, its validation event is not fired. So say, it is
 Required or has a RegEx, these will not be executed and are ignored.
 
+---
+
 ### Subscribe to control value changes
 
 In order to manage value changes in a control this code must be added:
+
 ```javascript
 
     DialogsEngine.addChangeEventHandler(<controlName>, function (value,display){
         // user code ...
     });
 ```
-> Where:
-> -   controlName is the value of `ValueVariable` parameter in the target control.
+
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.
 
 ### Add options to a selection control
 
@@ -188,25 +210,29 @@ To add an option to a combo, radio or checkbox control, add this code:
  DialogsEngine.addOption(<controlName>, <newOptionDisplay>,<newOptionValue>, <index>);
 ```
 
->Where:
->-   controlName is the value of `ValueVariable` parameter in the target control.
->-   newOptionDisplay is the display value of the new option.
->-   newOptionValue is the value of the new option.
->-   Index is the list index in which we want to add the new value.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.  
+> **newOptionDisplay** is the display value of the new option.  
+> **newOptionValue** is the value of the new option.  
+> **index** is the list index in which we want to add the new value.
 
 The new item would be shown on screen immediately (picture below):
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_04.png)
+![JavascriptExtensions_04.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_04.png)
 
 Examples:
+
 ```javascript
 /* Adds a new option to "option_1" control */
 DialogsEngine.addOption("option_1", "New Value","NV");
 ```
+
 ```javascript
 /* Adds a new option to "option_1" control at the first psotion in the list */
 DialogsEngine.addOption("option_1", "New Value","NV", 0);
 ```
+
+---
 
 ### Remove options from a selection control
 
@@ -216,9 +242,11 @@ To remove an option from a combo, radio or checkbox control, add this code:
 DialogsEngine.removeOption(<controlName>, <optionValue>);
 ```
 
-> Where:
-> -   controlName is the value of `ValueVariable` parameter in the target control.
-> -   optionValue is the value of the option to remove.
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.  
+> **optionValue** is the value of the option to remove.
+
+---
 
 ### Inter-Control dependency
 
@@ -228,11 +256,12 @@ as such:
 ```javascript
 DialogsEngine.register("sourceComboControl", "targetComboControl");
 ```
-> Where:
-> - sourceComboControl is the name of the control that triggers the change.
-> - targetComboControl is the name if the subcribed control.
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_05.png)
+> Where:  
+> **sourceComboControl** is the name of the control that triggers the change.  
+> **targetComboControl** is the name if the subcribed control.
+
+![JavascriptExtensions_05.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_05.png)
 
 Optionally, we can specify a callback function to execute:
 
@@ -240,36 +269,21 @@ Example: Add an option to the target combo control when register invoke ends:
 
 ```javascript
 DialogsEngine.register("sourceComboControl", "targetComboControl",
-
     function (source, target){
-
         DialogsEngine.addOption(target, "-- Choose value --", "");
-
         DialogsEngine.setSelectedValue(target, "");
-
 });
 
 ```
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_06.png)
 
-**Important**: Use of the *register* method implies an http(s) call to the
+![JavascriptExtensions_06.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_06.png)
+
+> **Important**: Use of the *register* method implies an http(s) call to the
 AgileDialogs server.
-<!--
-The following controls are compatible with the *register* functionality:
 
--   Combo
--   Radio
--   Checkbox
--   Grid
--   Lookup
--   Search
--   IFrame
--->
->   **Note**: If the source control allows multiple selections (checkbox, XRM
->   Grid), the query in the target control should cater for it using operator IN
->   or NOT IN.
+> **Note**: If the source control allows multiple selections (checkbox, XRM Grid), the query in the target control should cater for it using operator IN or NOT IN.
 
-<!--![](../media/AgileDialogsDesignGuide/JavascriptExtensions_07.png)-->
+---
 
 ### Check if a control has a value
 
@@ -277,15 +291,16 @@ Through the API, it is also possible to know if a control to be filled in has
 already a value in runtime. The method to do so would be the following one:
 
 ```javascript
-  DialogsEngine.hasValue(<control>);
+DialogsEngine.hasValue(<control>);
 ```
 
-> Where:
-> -   control is a control that can contain a value at runtime.
+> Where:  
+> **control** is a control that can contain a value at runtime.  
 
-Returns:
+> Returns:  
+> **true** if the control is filled in with a value, **false** otherwise.
 
-*true* if the control is filled in with a value, *false* otherwise.
+---
 
 ### Add custom validation for a single control
 
@@ -302,11 +317,11 @@ In order to subscribe to validation events add this code:
    DialogsEngine.addCustomValidation( <key>,<control>, <function>,<message>);
 ```
 
-> Where:
-> -   Key, is the validation key, can be any a unique string to identify the validation.
-> -   Control, is the value of `ValueVariable` parameter in the target control to apply the custom validation.
-> -   handler, is the function with the validation. If validation fails, this function must return a non empty string. If validation success, return an empty string.
-> -  [Optional] Message,  is the error message to be show if validation fail. If this parameter is ommited, the return of `handler` parameter will shown as error message.
+> Where:  
+> **Key**, is the validation key, can be any a unique string to identify the validation.  
+> **Control**, is the value of `ValueVariable` parameter in the target control to apply the custom validation.  
+> **handler**, is the function with the validation. If validation fails, this function must return a non empty string. If validation success, return an empty string.  
+> **Message** [Optional],  is the error message to be show if validation fail. If this parameter is ommited, the return of `handler` parameter will shown as error message.
 
 Example:
 
@@ -322,13 +337,15 @@ Example:
       "Value cannot be longer that 5");
 ```
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_08.png)
+![JavascriptExtensions_08.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_08.png)
 
-Also, we can return a localized string with the custom validation error message. To do this, first we must configure the CustomValidationMessage property of the control and use the location mechanism of AgileDialogs.
-Once the property is configured and localized, we can use the DialogsEngine.getCustomValidationMessage (<controlname>) method to return the localized message.
+Also, we can return a localized string with the custom validation error message. To do this, first we must configure the CustomValidationMessage property of the control and use the location mechanism of AgileDialogs.  
+Once the property is configured and localized, we can use the DialogsEngine.getCustomValidationMessage (*controlname*) method to return the localized message.
+
 ```javascript
    DialogsEngine.getCustomValidationMessage(<controlname>);
 ```
+
 ```javascript
   // add custom validation to control called textControl
  
@@ -337,10 +354,12 @@ Once the property is configured and localized, we can use the DialogsEngine.getC
      "textControl",  
      function (controlname, value, display){  
        if (value.length > 5 ) {
-	    return DialogsEngine.getCustomValidationMessage(controlname);
-	   }
+        return DialogsEngine.getCustomValidationMessage(controlname);
+        }
      });
 ```
+
+---
 
 ### Add validation extensions for all controls in the page
 
@@ -369,14 +388,16 @@ In order to subscribe to validation events add this code:
 by AgileDialogs Runtime Engine. The method added (in this sample
 myValidationFunction) will receive 2 parameters:
 
--   controlName: Name of the control to be validated.
-
--   controValue: Current value of the control.
+> Where:  
+> **controlName**: Name of the control to be validated.  
+> **controValue**: Current value of the control.  
 
 To show a validation message the validation function should return a string
 message.
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_09.png)
+![JavascriptExtensions_09.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_09.png)
+
+---
 
 ### Apply format to control
 
@@ -386,11 +407,11 @@ To apply custom format to a control use this code:
  DialogsEngine.applyFormat(<controlName>,<format>);
 ```
 
-> Where:
-> -   controlName is the value of `ValueVariable` parameter in the target control.
-> -   format is the format to apply to control. Can be:
->      - Valid JSON object. See <http://api.jquery.com/css/>
->      - CSS rule (the CSS rule must exists, see customization Guide).
+> Where:  
+> **controlName** is the value of `ValueVariable` parameter in the target control.
+> **format** is the format to apply to control. Can be:  
+> \- Valid JSON object. See <http://api.jquery.com/css/>  
+> \- CSS rule (the CSS rule must exists, see customization Guide).
 
 Example:
 
@@ -406,9 +427,9 @@ DialogsEngine.applyFormat("currencyControl", theFormat);
 
 Which will show as such at runtime:
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_10.png)
+![JavascriptExtensions_10.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_10.png)
 
-**Note**: See customization Guide
+**Note**: See [Customization Guide](../AgileDialogs-CustomizationGuide.md)
 
 ### Apply conditional format to a control
 
@@ -418,15 +439,11 @@ Example:
 
 ```javascript
 // apply contitional format to textcontrol
-
 // depending on the value of a combo
 
 var conditionalFormat = function (value, display){
-
     var format = { "color" : (value == "M" ? "blue" : "pink") };
-
     DialogsEngine.applyFormat("textControl", format)
-
 };
 
 DialogsEngine.addChangeEventHandler("gender", conditionalFormat );
@@ -434,12 +451,12 @@ DialogsEngine.addChangeEventHandler("gender", conditionalFormat );
 
 Runtime:
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_11.png)
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_12.png)
+![JavascriptExtensions_11.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_11.png)
+![JavascriptExtensions_12.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_12.png)
+
+---
 
 ### Show/Hide Notes control
-
-
 
 This is different to .toggleNotes() in the way that it hides the control
 totally, not just collapse it:
@@ -448,10 +465,12 @@ totally, not just collapse it:
 DialogsEngine.setNotesVisible(<value>);
 ```
 
-> Where:
-> -   value, *true* if we want the *notes* tab to be shown, *false* otherwise.
+> Where:  
+> **value**, *true* if we want the *notes* tab to be shown, *false* otherwise.
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_13.png)
+![JavascriptExtensions_13.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_13.png)
+
+---
 
 ### Collapse/Expand Notes control
 
@@ -460,6 +479,8 @@ Use to expand or collapse the Notes control using this code:
 ```javascript
  DialogsEngine.toggleNotes();
 ```
+
+---
 
 ### Get Notes content
 
@@ -470,6 +491,9 @@ In order to do so, this code should be added:
 ```javascript
  var myNotes = DialogsEngine.getNotes();
 ```
+
+---
+
 ### Append Notes content
 
 To append to the content of the Notes programmatically.
@@ -480,14 +504,14 @@ In order to do so, this code should be added:
   DialogsEngine.appendNotes(<notes>);
 ```
 
-> Where:
-> -   notes, stands for the literal we want to add to the note.
-
-Example: 
+> Where:  
+> **notes**, stands for the literal we want to add to the note.
 
 ``` javascript
 DialogsEngine.appendNotes("Add this to my notes");
 ```
+
+---
 
 ### Set Notes content
 
@@ -499,15 +523,17 @@ In order to do so, this code should be added:
   DialogsEngine.setNotes(<notes>);
 ```
 
-> Where:
-> -   notes, stands for the literal we want to add as a note.
+> Where:  
+> **notes**, stands for the literal we want to add as a note.
 
-Example:
 ```javascript
 DialogsEngine.setNotes('New Notes added to our form');
 ```
-> Output:
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_14.png)
+
+> Output:  
+> ![JavascriptExtensions_14.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_14.png)
+
+---
 
 ### Show a message window
 
@@ -517,18 +543,21 @@ To show a simple message window to user we need to use this code:
  DialogsEngine.message(<title>, <message>);
 ```
 
-> Where
-> - *title* is the title of message window.
-> - *message* is the content of message window.
+> Where:  
+> **title** is the title of message window.
+> **message** is the content of message window.
 
 Example:
 
 ```javascript
  DialogsEngine.message("The title", "The message body");
 ```
-> Output
-> 
->![](../media/AgileDialogsDesignGuide/JavascriptExtensions_15.png)
+
+> Output:  
+>
+> ![JavascriptExtensions_15.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_15.png)
+
+---
 
 #### Show a formatted message window
 
@@ -539,9 +568,11 @@ To show a formatted message, use this code.
  DialogsEngine.message("The title", theMessage);
 ```
 
-> Output
-> 
->![](../media/AgileDialogsDesignGuide/JavascriptExtensions_16.png)
+> Output:  
+>
+>![JavascriptExtensions_16.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_16.png)
+
+---
 
 ### Enable/Disable the **You are leaving the Page** warning message
 
@@ -560,16 +591,12 @@ And re-enabled using:
  DialogsEngine.enableBeforeUnloadScript();
 ```
 
+---
+
 ### Global validations
 
 The Engine can be personalized and extended similar to the way that the visual
 aspects can be customized and extended.
-<!--
-To do this the customization using javascript can be added to the file
-*AgileDialogs.custom.js*, which is initially empty.
-
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_17.png)
--->
 
 It is recommended to use objects to encapsulate functions.
 
@@ -584,11 +611,9 @@ Example:
 ```
 
 > **Important**: Errors in the custom code can cause the whole application to
-fail, given the way javascript works. 
->
-> Errors in user custom code are NOT supported. 
-> 
-> Modifications to the DOM are NOT supported.
+fail, given the way javascript works.  
+> **Errors in user custom code are NOT supported**.  
+> **Modifications to the DOM are NOT supported**.  
 
 Once our code is in this file, we can use the *OnLoadScript* event to invoke our
 custom functionality:
@@ -599,10 +624,11 @@ custom functionality:
  });
 ```
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_18.png)
+![JavascriptExtensions_18.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_18.png)
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_19.png)
+![JavascriptExtensions_19.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_19.png)
 
+---
 
 <!--
 ### Load external resources
@@ -755,23 +781,22 @@ added:
  DialogsEngine.setRequired(<control>, <value>, <message>);
 ```
 
-> Where:
-> - *control*, stands for the control id that we want to customize.
-> - *value*, true in case we want the control to be required or false in the
-    opposite case.
-> - *message* is the error message to be shown to request the user to fill in the
-    required value for the control.
-
-Example:
+> Where:  
+> **control**, stands for the control id that we want to customize.  
+> **value**, true in case we want the control to be required or false in the
+    opposite case.  
+> **message** is the error message to be shown to request the user to fill in the
+    required value for the control.  
 
 ```javascript
  // enable validation to control called textbox_1
  
  DialogsEngine.setRequired("textbox_1", true, "A default value is required for this field");
 ```
-> Output
-> 
-> ![](../media/AgileDialogsDesignGuide/JavascriptExtensions_23.png)
+
+> Output:
+>
+> ![JavascriptExtensions_23.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_23.png)
 
 In the opposite case (setting the value to false) we would not need to set any
 message, so we can leave out the *message* parameter from the function:
@@ -779,6 +804,8 @@ message, so we can leave out the *message* parameter from the function:
 ```javascript
 DialogsEngine.setRequired("textbox_1",false);
 ```
+
+---
 
 ### Set a regular expression in a control to be validated
 
@@ -791,11 +818,11 @@ In order to perform the advanced control validation, this code should be added:
  DialogsEngine.setRegularExpression(<control>, <regularExpression>, <message>);
 ```
 
-> Where:
-> -  *control*, stands for the control id that we want to customize.
->-   *regularExpression*, string that conforms the regular expression
->-   *message* is the error message to be shown to request the user to fill in the
-    required value for the control.
+> Where:  
+> **control**, stands for the control id that we want to customize.  
+> **regularExpression**, string that conforms the regular expression.  
+> **message** is the error message to be shown to request the user to fill in the
+    required value for the control.  
 
 Example (we are setting a text field to be validated as an US phone number):
 
@@ -806,7 +833,9 @@ DialogsEngine.setRegularExpression(
     "You should enter a valid U.S. phone number");
 ```
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_24.png)
+![JavascriptExtensions_24.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_24.png)
+
+---
 
 ### Arrange a custom set of actions before every navigation callback
 
@@ -822,9 +851,8 @@ Script**:
 DialogsEngine.beforeNavigate(<function>);
 ```
 
-> Where:
-> 
-> - *function*, stands for the function that we want to pass as a parameter. This
+> Where:  
+> **function**, stands for the function that we want to pass as a parameter. This
     anonymous function will contain the commands to be performed before every
     navigation inside the process.
 
@@ -833,14 +861,11 @@ Example (we want to show an informative message to the user everytime we press
 
 ```javascript
 DialogsEngine.beforeNavigate(function () {
-
     window.alert ('Form process finished. Moving to the next step...');
-
 });
 ```
 
-<!-- ![](../media/AgileDialogsDesignGuide/JavascriptExtensions_25.png)-->
-
+---
 
 <!--
 
@@ -890,17 +915,16 @@ In order to perform this, this code should be added:
    DialogsEngine.addStartHanlder(<function>);
 ```
 
-Where:
-
--   Function, stands for the anonymous function which will contain the routine
+> Where:  
+> **function**, stands for the anonymous function which will contain the routine
     or custom functionality that we want to add our process.
 
 Things are going to be clearer using one example. For this example, we need to
 load a logo URL that will be placed on a form inside our process, inside an
 element already created and called *logoContainer*. For that goal, we already
 have a defined variable that contains the URL address:
-```javascript
 
+```javascript
  DialogsEngine.addStartHandler(function () {
 
     // Accesing the already created variable, containing the logo url
@@ -908,10 +932,12 @@ have a defined variable that contains the URL address:
 
     // now we are setting our image to be shown on our container "logoContainer",
     // on the initial loading of the page.
-    $("\#logoContainer").css("background-image", "url(" + url + ")");
+    $("#logoContainer").css("background-image", "url(" + url + ")");
 
    });
 ```
+
+---
 
 ### Arrange a new *Description* literal for our controls
 
@@ -919,26 +945,24 @@ If we want to add or update a previous tooltip description that is being shown
 when positioning on a page control, we can do so by using the predefined engine
 method *setDescription*.
 
-
-
 ```javascript
    DialogsEngine.setDescription(<control>,<description_value>);
 ```
 
-> Where:
-> -  *control*, is the control that we want to modify
->-   *description_value*, is the new message that we want for our control to be
+> Where:  
+> **control**, is the control that we want to modify
+> **description_value**, is the new message that we want for our control to be
     shown when changing the focus on it.
-
-
-Example:
 
 ```javascript
     DialogsEngine.setDescription("text_2","this is the new description");
 ```
-> Output
->
->![](../media/AgileDialogsDesignGuide/JavascriptExtensions_28.png)
+
+> Output  
+>  
+> ![JavascriptExtensions_28.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_28.png)
+
+---
 
 ### Set a watermark literal inside our text controls
 
@@ -951,9 +975,9 @@ To do so, this code should be added:
 DialogsEngine.setWatermark(<control>, <literal>);
 ```
 
-> Where:
-> -  *control*, stands for the control id that we want to customize.
-> -  *literal*, string that conforms the literal we want to appear on the control
+> Where:  
+> **control**, stands for the control id that we want to customize.  
+> **literal**, string that conforms the literal we want to appear on the control  
 
 Example (we are setting a description text to be shown on a textbox called
 *text_1* :
@@ -962,7 +986,9 @@ Example (we are setting a description text to be shown on a textbox called
 DialogsEngine.setWatermark("text_1", "Enter address");
 ```
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_29.png)
+![JavascriptExtensions_29.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_29.png)
+
+---
 
 ### Find out if a control exists
 
@@ -976,14 +1002,15 @@ To do so, this code should be added:
 DialogsEngine.exists(<control>);
 ```
 
-> Where:
-> -   *control*, stands for the id of the control we want to look for.
+> Where:  
+> **control**, stands for the id of the control we want to look for.
 
->Returns:
->
->  *true* if the control exists, *false* otherwise.
+> Returns:  
+> **true** if the control exists, *false* otherwise.  
 
-### Change the text of the *Next* button 
+---
+
+### Change the text of the *Next* button
 
 If we want to change the text of the predefined *Next* button inside a form
 (picture below), we have a method using the Engine that covers that
@@ -993,48 +1020,50 @@ functionality.
 DialogsEngine.setNextButtonText(<value>);
 ```
 
-> Where:
->
-> -   *value*, text that we want to set as the caption for the *next* button.
-
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_30.png)
+> Where:  
+> **value**, text that we want to set as the caption for the *next* button.  
+>  
+> ![JavascriptExtensions_30.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_30.png)
 
 The result will be immediately updated on AgileDialogs *Next* button, showing
 the new caption:
 
 ```javascript
-	DialogsEngine.setNextButtonText("Click To Continue");
+DialogsEngine.setNextButtonText("Click To Continue");
 ```
-> Output
-> 
->![](../media/AgileDialogsDesignGuide/JavascriptExtensions_31.png)
 
-### Change the text of the *Back* button 
+> Output:  
+>  
+> ![JavascriptExtensions_31.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_31.png)
+
+---
+
+### Change the text of the *Back* button
 
 If we want to change the text of the predefined *Back* button inside a form
 (picture below), we have a method using the Engine that covers that
 functionality.
 
-```javascript
+```xml
 DialogsEngine.setBackButtonText(<value>);
 ```
 
-> Where:
->
-> -   *value*, text that we want to set as the caption for the *back* button.
-
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_30_1.png)
+> Where:  
+> **value**, text that we want to set as the caption for the *back* button.  
+>  
+> ![JavascriptExtensions_30_1.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_30_1.png)
 
 The result will be immediately updated on AgileDialogs *Next* button, showing
 the new caption:
 
 ```javascript
-	DialogsEngine.setBackButtonText("Click To Back");
+DialogsEngine.setBackButtonText("Click To Back");
 ```
-> Output
-> 
->![](../media/AgileDialogsDesignGuide/JavascriptExtensions_31_1.png)
 
+> Output  
+> ![JavascriptExtensions_31_1.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_31_1.png)
+
+---
 
 ### Disable / Enable the Form navigation buttons and commands
 
@@ -1051,7 +1080,7 @@ In order to disable them:
 DialogsEngine.off();
 ```
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_32.png)
+![JavascriptExtensions_32.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_32.png)
 
 It has an immediate effect over the buttons. To get the opposite effect, the
 engine command is:
@@ -1060,7 +1089,9 @@ engine command is:
 DialogsEngine.on();
 ```
 
-### Moving forward and backwards 
+---
+
+### Moving forward and backwards
 
 In a defined process, we could move through its different stages using the
 *Next* and *Back* buttons. But we also can achieve the same results
@@ -1071,26 +1102,24 @@ In order to do so, this code should be added:
 ```javascript
    DialogsEngine.next(); //moves forward to the next Page in our dialog
    DialogsEngine.back(); //moves backwards to the previous Page in our dialog
-
 ```
+
+---
+
 ### Get all the data of the selected Control
 
 In complex controls (like a Grid), we could want to get all the information
 about the item or items (if any) that we have selected. There is a way to do
 that using DialogsEngine API (meant to be used against Grid controls):
 
-```javascript
+```xml
  DialogsEngine.getSelectedDataItem(<control>);
 ```
 
-> Where:
->
-> -   *control*, stands for the control id that we want to collect the selected data
-    from.
+> Where:  
+> **control**, stands for the control id that we want to collect the selected data from.  
+> ![JavascriptExtensions_33.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_33.png)
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_33.png)
-
-Example: 
 ```javascript
 /* we want to know all the inner details about the selected item chosen by the user, 
 inside a grid called guid_1 */
@@ -1112,7 +1141,7 @@ In case we have a Grid with its *AllowMultipleSelection* property set to
 *true,* we would also receive all the needed details for each selected row
 (**Important**: only for the current grid page being shown on screen):
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_35.png)
+![JavascriptExtensions_35.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_35.png)
 
 ``` json
 [
@@ -1136,6 +1165,8 @@ In case we have a Grid with its *AllowMultipleSelection* property set to
 
 In case no row is selected, we will receive a *null* as the return value.
 
+---
+
 ### Set focus in a specific control
 
 To set the focus in a specific control we should use this method:
@@ -1144,9 +1175,10 @@ To set the focus in a specific control we should use this method:
    DialogsEngine.setFocus(<control>);
 ```
 
-> Where:
-> 
-> -   *control* is the value of ValueVariable property of control.
+> Where:  
+> **control** is the value of ValueVariable property of control.
+
+---
 
 ### Check if a control is required
 
@@ -1159,13 +1191,11 @@ method:
   DialogsEngine.isRequired(<control>);
 ```
 
-> Where:
-> 
->-   *control* is the name of the control at runtime we want to know about.
+> Where:  
+>**control** is the name of the control at runtime we want to know about.
 
->Returns:
->
->  *true* if the control is required, *false* otherwise.
+> Returns:  
+> **true** if the control is required, **false** otherwise.
 
 ### Show/hide page spinner
 
@@ -1175,26 +1205,26 @@ To show/hide the page spinner, use this code:
    DialogsEngine.spinner(<value>);
 ```
 
-> Where:
+> Where:  
+> **value** is a *true/false* expression. Use true to show the spinner and false
+    to hide it.  
 
--   *value* is a *true/false* expression. Use true to show the spinner and false
-    to hide it.
+> Output:  
+> ![JavascriptExtensions_36.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_36.png)
 
-> Output
->
->![](../media/AgileDialogsDesignGuide/JavascriptExtensions_36.png)
+---
 
-### Change the required fields default validation message for customized messages.
+### Change the required fields default validation message for customized messages
 
 When the user moves through the AgileDialogs forms sequence, the AgileDialogs
 runtime engine configures automatically some validation messages that pop up in
 case some required field has not been filled in (images below).
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_37.png)
+![JavascriptExtensions_37.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_37.png)
 
 Figure 12. A required textbox is not filled in before pressing "Next"
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_38.png)
+![JavascriptExtensions_38.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_38.png)
 
 Figure 13. Default message shown when the required fields have not been filled
 in.
@@ -1208,15 +1238,17 @@ information for a particular page, we should:
 
 Open AgileDialogs Designer, and click on **OnLoad Script**.
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_39.png)
+![JavascriptExtensions_39.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_39.png)
 
 Manipulate the properties described below to change the messages:
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_40.png)
+![JavascriptExtensions_40.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_40.png)
 
 Once published, the page will show the desired messages when needed:
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_41.png)
+![JavascriptExtensions_41.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_41.png)
+
+---
 
 ### Create customized confirmation messages associated to events
 
@@ -1226,33 +1258,33 @@ button, selecting a Grid's element), moreover, if the information to show has to
 be specific, we need a method to perform that task. For that goal, use this
 code:
 
-```javascript
+```xml
    DialogsEngine.confirm(<title>,<message>,<confirmFunc>,<cancelFunc>, <okButtonText>, <cancelButtonText>);
 ```
 
-> Where:
->-   title is a **mandatory** parameter. Represents the message title header that
-    we want to show inside the confirm frame.
->-   message is a **mandatory** parameter. Represents the message body that we
-    want to show inside the confirm frame.
->-   confirmFunc is a **mandatory** parameter. Represents the handler function in
+> Where:  
+> **title** is a **mandatory** parameter. Represents the message title header that
+    we want to show inside the confirm frame.  
+> **message** is a **mandatory** parameter. Represents the message body that we
+    want to show inside the confirm frame.  
+> **confirmFunc** is a **mandatory** parameter. Represents the handler function in
     which we will group the action or actions that we want to perform when the
     user will press the **OK** button inside the confirm frame (explained in
-    detail in the practical example below).
->-   cancelFunc is an **optional** parameter. Represents the handler function in
+    detail in the practical example below).  
+> **cancelFunc** is an **optional** parameter. Represents the handler function in
     which we will group the action or actions that we want to perform when the
     user will press the **Cancel** button inside the confirm frame (explained in
-    detail in the practical example below).
->-   okButtonText is an **optional** parameter. Represents the text for the **OK**
-    button of confirmation window.
->-   cancelButtonText is an **optional** parameter. Represents the text for the
-    **Cancel** button of confirmation window
+    detail in the practical example below).  
+> *okButtonText* is an **optional** parameter. Represents the text for the **OK**
+    button of confirmation window.  
+> **cancelButtonText** is an **optional** parameter. Represents the text for the
+    **Cancel** button of confirmation window.  
 
 Example. Let's suppose we have a Page form with a combo, which is composed of
 different values. We want to configure the page in a way that will warn us if we
 try to change the combo's selected value.
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_42.png)
+![JavascriptExtensions_42.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_42.png)
 
 For that goal, we should open the OnLoad Task inside AgileDialogs designer, and
 type the following command (image below):
@@ -1267,18 +1299,18 @@ DialogsEngine.addChangeEventHandler( "combo", function (value, display){
 });
 ```
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_43.png)
+![JavascriptExtensions_43.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_43.png)
 
 As we can see, when the combo changes its value, we have set a personalized
 confirmation message, composed of the title, the customized message, the message
 after the user has pressed **OK** and the analog message for the **Cancel** handler.
 The result (after such changes are published) is easy to see:
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_44.png)
+![JavascriptExtensions_44.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_44.png)
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_45.png)
+![JavascriptExtensions_45.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_45.png)
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_46.png)
+![JavascriptExtensions_46.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_46.png)
 
 ### Check if a condition is true
 
@@ -1290,19 +1322,19 @@ functionality for multiple purposes, and it is simple to implement.
    DialogsEngine.bool(<value>);
 ```
 
-> Where:
->-   value is a string literal that conforms a condition, property or value to be
-    checked.
+> Where:  
+> **value** is a string literal that conforms a condition, property or value to be
+    checked.  
 
-> Returns
-> 
-> *true* if the value is true, True, TRUE or combination of upper/lowercase,
-*false* otherwise.
+> Returns:
+> **true** if the value is true, True, TRUE or combination of upper/lowercase,
+**false** otherwise.  
 
-Example
 ```javascript
 DialogsEngine.bool('True');
 ```
+
+---
 
 ### Check if variable contains value
 
@@ -1313,18 +1345,18 @@ functionality to avoid check some javascript values like null and undefinied, an
    DialogsEngine.isNullOrEmpty(<value>);
 ```
 
-> Where:
-> -   value is a string literal that conforms a condition, property or value to be
-    checked.
+> Where:  
+> **value** is a string literal that conforms a condition, property or value to be
+    checked.  
 
-> Returns:
->
->*true* if the value has content,
-*false* otherwise, that is when does not have content, or its null or undefined.
+> Returns:  
+> **true** if the value has content, **false** otherwise, that is when does not have content, or its null or undefined.
 
 ```javascript
 DialogsEngine.isNullOrEmpty('value');
 ```
+
+---
 
 ### Enable/Disable selected data filter for Grid controls
 
@@ -1335,20 +1367,21 @@ Grid controls. This method will be ignored for control of any other type.
 DialogsEngine.filterSelection(<xrm_grid_control_name> , value );
 ```
 
-> Where:
->-  *xrm_grid_control_name* is the name of the Grid control on which we want
-    activate or deactivate the filter
->-  *value* Boolean value to activate or deactivate the filter.
+> Where:  
+> **xrm_grid_control_name** is the name of the Grid control on which we want
+    activate or deactivate the filter.  
+> **value** Boolean value to activate or deactivate the filter.  
 
-Example:
 
 ```javascript
 DialogsEngine.filterSelection("MyGridControl",true);
 ```
 
-![](../media/AgileDialogsDesignGuide/JavascriptExtensions_47.png)
+![JavascriptExtensions_47.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_47.png)
 
-### Resume an unfinished previous Process 
+---
+
+### Resume an unfinished previous Process
 
 **AgileXRM** gives us the possibility of picking up a process inside our current
 form, needing a unique identifier. This is really useful for continuing
@@ -1360,25 +1393,27 @@ In order to perform this, this code should be added:
 DialogsEngine.resume(<unique_identifier>);
 ```
 
-> Where:
-> - *unique_identifier*, process identifier belonging to the actual process that
+> Where:  
+> **unique_identifier**, process identifier belonging to the actual process that
     we want to take over of, in our current flow.
 
 Once set, we will continue through the recovered process in the exact point it
 was abandoned before.
 
-### Sava data explicity 
+---
+
+### Sava data explicity
 
 By default, AgileDialgs saves all data when the "Next" button is clicked. However, sometimes we need to save the current data to continue with the work later.
+
 ```javascript
 DialogsEngine.saveDialogContext(<interval>, <callback>);
 ```
 
-> Where:
-> - interval, `optional` set the interval os time to save data. This value is mesured in miliseconds. Minimum value for this param is 1500.
-> - callback, `optional` a function to execute when data is succesfully saved.
+> Where:  
+> **interval**, `optional` set the interval os time to save data. This value is mesured in miliseconds. Minimum value for this param is 1500.  
+> **callback**, `optional` a function to execute when data is succesfully saved.  
 
-Examples: 
 ```javascript
 /* Saves AgileDialogs data explicity, single time */
 DialogsEngine.saveDialogContext();
@@ -1392,19 +1427,20 @@ DialogsEngine.saveDialogContext(5000);
 ```javascript
 /* Saves AgileDialogs data explicity , single time and executes a callback function */
 DialogsEngine.saveDialogContext(function (){
-	/* your code goes here*/
+/* your code goes here*/
 });
 ```
 
 ```javascript
 /* Saves AgileDialogs data each 5 seconds and executes a callback function */
 DialogsEngine.saveDialogContext(5000, function (){
-	/* your code goes here*/
+/* your code goes here*/
 });
 ```
 
-## Define min a max values for Calendar control
+---
 
+### Define min a max values for Calendar control
 
 AgileDialgos calendar controls can define a range of valid inputs by setting minimum and maximum values. These values can by set using DialogsEngine by this way:
 
@@ -1416,9 +1452,9 @@ DialogsEngine.setMinValue(<controlname>, <value>);
 DialogsEngine.setMaxValue(<controlname>, <value>);
 ```
 
-> Where:
-> - controlname, is the name of the control in which apply the expression.
-> - value, its the value to set in controlname. Can be a valid ISO-8601 dateexpression or a date object
+> Where:  
+> **controlname**, is the name of the control in which apply the expression.  
+> **value**, its the value to set in controlname. Can be a valid ISO-8601 dateexpression or a date object.  
 
 ```javascript
 /* set Min value */
@@ -1439,8 +1475,9 @@ DialogsEngine.getMinValue(<controlname>);
 ```javascript
 DialogsEngine.getMaxValue(<controlname>);
 ```
-> Where:
-> - controlname, is the name of the control to get the value.
+
+> Where:  
+> **controlname**, is the name of the control to get the value.
 
 By the same way, we can get thats values
 
@@ -1498,6 +1535,8 @@ KendoTextBoxWidget = UpperCaseTextBoxWidget;
 ```
 -->
 
+---
+
 ### Deprecated functions
 
 #### Subscribe to control value changes (Deprecated - Use addChangeEventHandler Instead)
@@ -1519,11 +1558,10 @@ fieldChangeHandler.addHandler(myChangeHandler);
 changed. The method added (in this example: *myChangeHandler*) will receive 2
 parameters:
 
-> Where:
-> -   *controlName*: Name of the control to be validated.
-> -   *controValue*: Current value of the control.
+> Where:  
+> **controlName**: Name of the control to be validated.  
+> **controValue**: Current value of the control.  
 
 ## Disclaimer of warranty
 
 [Disclaimer of warranty](DisclaimerOfWarranty.md)
-

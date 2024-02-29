@@ -1,6 +1,8 @@
-__[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Schema Generic variables
+# Schema Generic variables
 
-### Schema Generic variables
+**[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md) --> Schema Generic variables**
+
+---
 
 |Name|Description|
 |-|-|
@@ -28,7 +30,7 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 |**TaskParticipantFullName**| Gets the full name of current task participant|
 |**TaskParticipantUserName**| Gets the user name of current task participant|
 |**Session**| Gets the session value for current activity. Each time activity is executed this number is ingeased. |
-|**SystemUserEmailAddress**| Gets the email address of system user.<br />Sample value:*username@domain.com*|
+|**SystemUserEmailAddress**| Gets the email address of system user.<br />Sample value: *username@domain.com*|
 |**SystemUserName**| Gets the name of system user.<br />Sample value:*DOMAIN\UserName*|
 |**WorkItemID**| Gets the current workitem ID. <br />Sample value:*826D0050562195FA1199DA139CD1AFBF* |
 |**CrmBeId**| This is the record id of the main entity. <br />Sample value:**|
@@ -37,7 +39,8 @@ __[Home](/) --> [AgileDialogs design guide](/guides/AgileDialogs-DesignGuide.md)
 |**userlcid**| This is used lcid for AgileDialogs process template.|
 |**DialogTaskCRMActivityId**| If part of Dialog Activity, this property holds the CRM Activity ID that launched the current dialog instance.|
 
+---
+
 ## Disclaimer of warranty
 
 [Disclaimer of warranty](DisclaimerOfWarranty.md)
-

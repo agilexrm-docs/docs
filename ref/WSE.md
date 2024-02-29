@@ -1,11 +1,13 @@
+# Web Service Enhancements
+
 **[Home](/) --> [Reference](../ref) --> Web Service Enhancements**
 
-# Web Service Enhancements 
+---
 
 ![Web Service Enhancements ](media/WebServiceEnhancements.png)
 
-An AgilePart activity that accesses a Web Service and its methods which are registered in AgilePoint Envision. 
-The user can select the appropriate Web Service and its specific method using the Web Service shape. 
+An AgilePart activity that accesses a Web Service and its methods which are registered in AgilePoint Envision.
+The user can select the appropriate Web Service and its specific method using the Web Service shape.
 The Web Service Extension uses SOAP calls over HTTP and allows for schema mapping between the AgilePoint application schema and the Web method's request schema.
 
 > **Note**: This activity is available under *Web Services*
@@ -21,9 +23,11 @@ The Web Service Extension uses SOAP calls over HTTP and allows for schema mappin
 |**Timeout**|Specifies the maximum amount of time (in seconds) that should be allowed for the completion of the web service call for this AgileShape.<br />Default value: 600|
 
 ## Other Common Proporties
+
 All shapes have many other common properties. Look them up here: [Common Poperties](common/README.md)
 
 ## Actions
+
 See [Actions](common/Actions.md)
 
 ## Disclaimer of warranty

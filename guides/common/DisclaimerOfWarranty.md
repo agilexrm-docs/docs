@@ -1,6 +1,9 @@
-__[Home](/) --> [Guides](/guides) --> Disclaimer of warranty__
 
 # Disclaimer of warranty
+
+**[Home](/) --> Disclaimer of warranty**
+
+---
 
 **AgileXRM** makes no representations or warranties, either express or
 implied, by or with respect to anything in this document, and shall not be

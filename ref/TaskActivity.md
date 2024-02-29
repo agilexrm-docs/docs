@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> Task Activity__
+**[Home](/) --> [Reference](/ref) --> Task Activity**
 
 # Task Activity
 

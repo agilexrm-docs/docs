@@ -24,7 +24,12 @@ This property can be set to the following specific values:
 #### Length
 
 The number of *Time Units* represented by the *Time Span*
-> **_NOTE:_**  For Activities, to set the **Due Date** column to a specific value dynamically, instead of an integer, one can pass a variable here. The variable should contain a _datetime_ value. In such a case, all the other properties of _TimeSpan_ have no effect.  
+
+A variable can be used here that is either an *integer* or a *datetime*.
+
+> **_NOTE:_**  Use a variable containing a *datetime* to set the **Due Date** column in Activities to a specific value dynamically.
+ In such a case, the properties _Business Time_ and _Time Unit_ have no effect.  
+
 
 #### Time Unit
 

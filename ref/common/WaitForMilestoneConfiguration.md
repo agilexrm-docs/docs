@@ -1,4 +1,4 @@
-__[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Wait For Milestone activity Configuration__
+**[Home](/) --> [Reference](/ref) --> [Parent Shape](javascript:history.back()) --> Wait For Milestone activity Configuration**
 
 # Wait For Milestone Configuration property
 
