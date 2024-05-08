@@ -1,4 +1,4 @@
-### AgileXRMVersion 8.0.24043.20400
+### AgileXRMVersion 8.0.24121.20400
 Param(
 	[string]$apServiceAccountDomain ="INTERNAL",
 	[string]$apServiceAccountUser ="apservice",
@@ -1293,6 +1293,12 @@ function Configure-AgilePointPortal()
 }
 function Configure-AgileXRMSites()
 {
+	Set-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/requestFiltering/requestLimits" -Name "maxUrl" -value 20480
+	Set-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/requestFiltering/requestLimits" -Name "maxQueryString" -value 20480
+
+	Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/requestFiltering/requestLimits" -Name "maxUrl"
+	Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/requestFiltering/requestLimits" -Name "maxQueryString"
+
 	if($deploymentType -eq "Cloud")
 	{
 		$cacheType = "REDIS"
@@ -1640,6 +1646,9 @@ function Configure-AgilePointService()
 	Modify-AppSetings-Key -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config" -keyName "WCFServiceClientID" -keyValue $waadWcfAppId;
 	Modify-AppSetings-Key -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config" -keyName "WFCServiceAudienceUrl" -keyValue $waadWcfAppIdUri;
 
+	#PowerAutomate Unsubscribe
+	Modify-AppSetings-Key -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config" -keyName "ServerRESTUrl_ExposedToClients" -keyValue $apiRestUrl;
+	
 	Configure-AgilePointService-ServicesAddresses -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config"
 	Update-SwaggerConfiguration -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config";
 	Configure-Ws-Http-Binding -configFilePath "$agilePointServerInstanceFolder\bin\Ascentn.AgilePoint.WCFService.exe.config"
@@ -2005,7 +2014,7 @@ function Apply-Post-Installation()
 
 
 	#Create Connectors Records
-	Insert-AD-Connector -sqlInstance $sqlServer -agileDialogsURL $agileDialogsUrl -agileDialogsExternalURL $agileDialogsExternalUrl;
+	Insert-AD-Connector -sqlInstance $sqlServer -agileDialogsURL $agileDialogsUrl -agileDialogsExternalURL $agileDialogsExternalUrl -agileDialogsPublicUrl $agileDialogsPublicUrl;
 	Insert-PM-Connector -sqlInstance $sqlServer -processManagerURL $processManagerUrl;
 	Insert-CRM-Connector -sqlInstance $sqlServer -azureAppId $waadApplicationId -azureAppSecretKey $waadApplicationIdPassword -d365UniqueName $singleTenantCrmOrgUniqueId -d365Url $singleTenantCrmOrgFullUrl;
 	
@@ -2203,9 +2212,9 @@ function Insert-ConnectorRecord()
 
 function Insert-AD-Connector()
 {
-	param($sqlInstance, $agileDialogsURL, $agileDialogsExternalURL)
+	param($sqlInstance, $agileDialogsURL, $agileDialogsExternalURL, $agileDialogsPublicUrl)
 	
-	$connectorConfig = [string]::Format("<?xml version=""1.0"" encoding=""utf-8""?><ConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><AgileDialogsUrl>{0}</AgileDialogsUrl><AgileDialogsExternalConnectorUrl>{1}</AgileDialogsExternalConnectorUrl></ConnectorConfiguration>",$agileDialogsURL, $agileDialogsExternalURL)
+	$connectorConfig = [string]::Format("<?xml version=""1.0"" encoding=""utf-8""?><ConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><AgileDialogsUrl>{0}</AgileDialogsUrl><AgileDialogsExternalConnectorUrl>{1}</AgileDialogsExternalConnectorUrl><AgileDialogsPublicConnectorUrl>{2}</AgileDialogsPublicConnectorUrl></ConnectorConfiguration>",$agileDialogsURL, $agileDialogsExternalURL, $agileDialogsPublicUrl)
 
 	Insert-ConnectorRecord -connectorName $adConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig
 }

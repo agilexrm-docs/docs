@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "AgileXRM Online",
-    "description": "AgileXRM Online"
+    "description": "AgileXRM Connector to integrate with AgileXRM Process Server"
   },
   "host": "pool499.api.agilexrmonline.com",
   "basePath": "/",
@@ -27,23 +27,15 @@
             "schema": {
               "type": "object",
               "properties": {
-                "/pd:AP/pd:formFields/pd:MyDate": {
+                "GetUUIDResult": {
                   "type": "string",
-                  "description": "/pd:AP/pd:formFields/pd:MyDate"
-                },
-                "/pd:AP/pd:formFields/pd:MyDatePlainText": {
-                  "type": "string",
-                  "description": "/pd:AP/pd:formFields/pd:MyDatePlainText"
-                },
-                "/pd:AP/pd:formFields/pd:BasicDate": {
-                  "type": "string",
-                  "description": "/pd:AP/pd:formFields/pd:BasicDate"
+                  "description": "GetUUIDResult",
+                  "x-ms-summary": "GetUUIDResult"
                 }
               }
             }
           }
-        },
-        "x-ms-visibility": "internal"
+        }
       }
     },
     "/AgilepointServer/Workflow/CreateProcInst": {
@@ -162,12 +154,27 @@
           "default": {
             "description": "default",
             "schema": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+
+                "EventID": {
+                  "type": "string",
+                  "description": "EventID"
+                },
+                "EventName": {
+                  "type": "string",
+                  "description": "EventName"
+                }
+
+              }
             }
           }
         }
       }
     },
+
+
+
     "/AgilePointServer/Workflow/GetReleasedPID/{ProcessTemplateName}": {
       "get": {
         "summary": "GetReleasedPID",
@@ -197,8 +204,7 @@
               }
             }
           }
-        },
-        "x-ms-visibility": "internal"
+        }
       }
     },
     "/api/HttpTrigger1": {
@@ -506,7 +512,7 @@
       },
       "post": {
         "responses": {},
-        "summary": "Triggered by AgilePoint activity",
+        "summary": "Triggered by AgileXRM activity",
         "operationId": "AgilePart",
         "x-ms-trigger": "single",
         "parameters": [
@@ -581,7 +587,7 @@
             }
           }
         ],
-        "description": "Triggered by AgilePoint activity"
+        "description": "Triggered by AgileXRM activity"
       }
     },
     "/AgilePointServer/Workflow/CompleteProcedure/{WorkItemID}": {
@@ -837,7 +843,7 @@
           }
         },
         "summary": "Get Applications",
-        "description": "Get AgilePoint Applications",
+        "description": "Get AgileXRM Applications",
         "operationId": "GetEnabledApps",
         "parameters": [],
         "x-ms-visibility": "internal"
@@ -1229,6 +1235,27 @@
         "operationId": "GetApplicationNames",
         "x-ms-visibility": "internal",
         "parameters": []
+      }
+    },
+    "/AgilePointServer/Admin/DeleteWebhook/{webhookId}": {
+      "delete": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "x-ms-visibility": "internal",
+        "summary": "delete",
+        "operationId": "delete",
+        "parameters": [
+          {
+            "name": "webhookId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ]
       }
     }
   },

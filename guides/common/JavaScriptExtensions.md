@@ -1118,11 +1118,15 @@ that using DialogsEngine API (meant to be used against Grid controls):
 
 > Where:  
 > **control**, stands for the control id that we want to collect the selected data from.  
+>
 > ![JavascriptExtensions_33.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_33.png)
 
 ```javascript
-/* we want to know all the inner details about the selected item chosen by the user, 
-inside a grid called guid_1 */
+/* 
+  we want to know all the inner details about the selected item chosen by the user, 
+  inside a grid called guid_1 
+*/
+
 var result = DialogsEngine.getSelectedDataItem("guid_1");
 console.log(result);
 ```
@@ -1163,7 +1167,101 @@ In case we have a Grid with its *AllowMultipleSelection* property set to
 ]
 ```
 
-In case no row is selected, we will receive a *null* as the return value.
+In case no row is selected, we will receive a empty JSON object as the return value.
+``` json
+{
+  "accountid":"",
+  "name":"",
+  "accountnumber":""
+}
+```
+
+---
+
+### Add new conlumns to Grid controls
+
+Sometimes we need to add a non-data columns to show indicators or 
+customs buttons,customs views ... to a AgileDialogs XRMGrid control.
+
+
+``` xml
+ DialogsEngine.addColumnToGrid(<control>, <column>);
+```
+
+> Where:
+>
+> **control**: Is the name of the control where the new column will be added.
+>
+> **column**: A JSON object with the needed information to create the column, like this:
+> ``` json
+> {
+>     field: "btn.action",
+>     title: "Action",
+>     template: "<div>html content</div>",
+>     width: "30%"
+> };
+> ```
+>
+
+Example:
+
+``` javascript
+var theTemplate = '<button class="k-button k-primary">View</button>';
+var column = {
+    field: "btn.action",
+    title: "Action",
+    template: theTemplate,    
+    width: "30%"
+};
+DialogsEngine.addColumnToGrid("guid_1", column);
+
+```
+  
+
+![JavascriptExtensions_33_1.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_33_1.png)
+  
+
+#### Defining the column template
+
+In order to add new column to XRMGrid controls, its needed to build the column template. 
+
+It is the HTML content wich will be rendered in grid cell. 
+
+Templates offer a way to create HTML chunks that can be automatically merged with record data into rendered cell. 
+
+  
+> Templates use a hash-template syntax by utilizing the # (hash) sign for marking the areas that will be parsed.
+>
+>The # (hash) sign allows you mark areas that will be replaced by data during the template execution.
+>  
+>To use the hash syntax, apply any of the following approaches:
+>  
+>  - Render values as HTML (#= #).
+>  - Use HTML encoding to display values (#: #).
+>  
+> Use:  
+> #= XRMGRIDRECORDID # to get the recordID  
+> #= Field1 # to get the first field of query  
+> #= Field2 # to get sencond field of query  
+>#= Field3 # to get thrid field of query  
+>  
+
+``` javascript
+var theTemplate = '<div> #= XRMGRIDRECORDID # </div>' +
+				  '<div> #= Field1 # </div>' + 
+				  '<div> #= Field2 # </div>' + 
+				  '<div> #= Field3 # </div>';
+var column = {
+	field: "cell.detail",
+	title: "Detail",
+	template: theTemplate,
+	width: "60%"
+};
+DialogsEngine.addColumnToGrid("guid_1", column);
+
+```
+
+![JavascriptExtensions_33_2.png](../media/AgileDialogsDesignGuide/JavascriptExtensions_33_2.png)
 
 ---
 

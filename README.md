@@ -47,6 +47,8 @@ Check **AgileXRM** new features and news at <https://blog.agilexrm.com>.
 
 ## How to guides
 
+
+- [How to assign AgileXRM user licenses](howto/AssignUserLicenses.md)
 - [How to enable/disable a CDS entity/ task to execute AgileXRM process](howto/EnableDisableEntities.md)
 - [How to define an email template](ref/common/DefiningAnEmailTemplate.md)
 - [How to send process parameters](ref/common/ProcessParams.md)

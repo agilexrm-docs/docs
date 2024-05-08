@@ -5,7 +5,16 @@ param([string]$deploymentType="PrivateCloud",
 [string]$agilePointServicesAppIdUri ="https://ws.agilexrmonline.com:13487/AgilePointServer", 
 [string]$azStorageAccountName="",
 [string]$azStorageAccountSharedKey="",
-[string]$azFileShareName="axrmrepository")
+[string]$azFileShareName="axrmrepository",
+[bool]$applyRemoteAppLogonScript = $false,
+[bool]$repairAXrmLocalCertificate = $false,
+[string]$userName_="everyone",
+[string]$permission_=[System.Security.AccessControl.FileSystemRights]::Read,
+[string]$certStoreLocation_="Localmachine\My",
+[string]$certThumbprint_="f8931bec6eb3dbe4e6517f0fadb8488920e387c1",
+[string]$adminUserName = "envision\envisionadmin",
+[string]$adminPassword = ""
+)
 
 $now = Get-Date -Format "yyyyMMddHHmmss"
 $transcriptFileName = [string]::Format("PSWStartVM_{0}.log",$now)
@@ -67,6 +76,12 @@ function Set-Envision-Config-Keys()
 		exit -2
 	}
 	Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "VisioRepositoryEnabled" -keyValue "true";
+
+	if($deploymentType -eq "Cloud" -and $azStorageAccountName -ne "" -and $azStorageAccountSharedKey -ne "" -and $azFileShareName -ne "")
+	{
+		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "FileSystemRepositoryPath" -keyValue "z:\AgileXRM\Models" -createNode $true;
+		Modify-AppSetings-Key -configFilePath $targetEnvisionConfigFile -keyName "UserWorkspaceFolder" -keyValue "z:\Users\%UserName%\Models";
+	}
 
 	if($deploymentType -eq "PrivateCloud")
 	{
@@ -162,11 +177,11 @@ function Remove-WebViewDll-FromOfficeFolder
 	Get-ChildItem -Path $officePath -Filter "webview2loader*" | Remove-Item -Force -ErrorAction Ignore
 }
 
-function Trust-EnvisionAddIn-ForAllUsers
+function Trust-EnvisionAddIn
 {
-	param([string]$currentPath="")
+	param([string]$currentPath="HKEY_USERS\.DEFAULT")
 
-	$fullPath = "Registry::HKEY_USERS\.DEFAULT\Software\Microsoft\Office\16.0\Visio\Security"
+	$fullPath = "Registry::$currentPath\Software\Microsoft\Office\16.0\Visio\Security"
 
 	if (!(Test-Path -Path $fullPath ))
 	{
@@ -180,7 +195,7 @@ function Trust-EnvisionAddIn-ForAllUsers
 	}
 }
 
-function Write-LogonScript
+function Write-SingleTenant-LogonScript
 {
 	if($deploymentType -ne "PrivateCloud")
 	{
@@ -192,6 +207,9 @@ $scripBlock = @'
 	param([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
 	
 	Start-Transcript -Path "c:\temp\PSlog.txt"
+
+	#####################################SINGLETENANT LOGON SCRIPT - START FUNCTIONS#######################################
+
 	function Trust-EnvisionAddIn
 	{
 		$fullPath = "Registry::HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Visio\Security"
@@ -207,7 +225,7 @@ $scripBlock = @'
 		}
 	}
 
-	function Deploy-LogonScript([string]$storageAccountName, [string]$storageAccountSharedKey, [string]$fileShareName, [int]$storageAccountPort=445)
+	function Map-AzureFileShare-UnitDrive([string]$storageAccountName, [string]$storageAccountSharedKey, [string]$fileShareName, [int]$storageAccountPort=445)
 	{
 		if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
 		{
@@ -235,17 +253,23 @@ $scripBlock = @'
 			Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
 		}	
 	}
+	#####################################SINGLETENANT LOGON SCRIPT - END FUNCTIONS#######################################
+	
+	Map-AzureFileShare-UnitDrive -storageAccountName $storageAccountName -storageAccountSharedKey $storageAccountSharedKey -fileShareName $fileShareName
 
-	Deploy-LogonScript -storageAccountName $storageAccountName -storageAccountSharedKey $storageAccountSharedKey -fileShareName $fileShareName
-
-	Trust-EnvisionAddIn
-
-	#Deploy GPO Policy to simplify Visio UX
-	Start-Process -FilePath "C:\AgileXRM\gpo\DeployGPOLocally.cmd" -WorkingDirectory "C:\AgileXRM\gpo"
+	Trust-EnvisionAddIn;
 
 	Stop-Transcript
 '@
 
+	Create-LogonScript-ForUser -initSessionScripBlock $scripBlock -logonScriptParameters "-storageAccountName:$azStorageAccountName -storageAccountPort:445 -storageAccountSharedKey:$azStorageAccountSharedKey -fileShareName:$azFileShareName"
+}
+
+function Create-LogonScript-ForUser()
+{
+	param([string]$initSessionScripBlock, [string]$logonScriptParameters)
+	
+	
 	# paths
 	$gpRoot = "${env:SystemRoot}\System32\GroupPolicy"
 		
@@ -258,7 +282,7 @@ $scripBlock = @'
 	
 	$fileName = Join-Path $fileNamePath "LogonScript.ps1"
 	$content = Set-Content -Path $fileName `
-						   -Value $scripBlock
+						   -Value $initSessionScripBlock
 	
 	#gpInit file
 	$contentgptIniFile = "[General]`r`ngPCUserExtensionNames=[{42B5FAAE-6536-11D2-AE5A-0000F87571E3}{40B66650-4972-11D1-A7CA-0000F87571E3}]`r`nVersion=524288`r`n"
@@ -268,12 +292,11 @@ $scripBlock = @'
 	
 	# logon/logoff scripts
 	$userScriptsPath = Join-Path $gpRoot "User\Scripts\psscripts.ini"
-	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=-storageAccountName:$azStorageAccountName -storageAccountPort:445 -storageAccountSharedKey:$azStorageAccountSharedKey -fileShareName:$azFileShareName"
+	$contentLogonScript = "`r`n[ScriptsConfig]`r`nStartExecutePSFirst=true`r`n[Logon]`r`n0CmdLine=LogonScript.ps1`r`n0Parameters=$logonScriptParameters"
 
 	Set-Content -Path $userScriptsPath `
 		   -Value $contentLogonScript
 	gpupdate
-
 }
 
 function Register-EnvisionAddIn-Dll()
@@ -325,6 +348,200 @@ function Set-RemoteDesktop-Configuration()
 
 	Write-Host "Set-RemoteDesktop-Configuration successfully executed! 'RequireIntegrityActivationAuthenticationLevel' has been set to '0'" -ForegroundColor DarkGreen
 }
+function Write-MultiTenant-LogonScript()
+{
+	if($deploymentType -ne "Cloud")
+	{
+		Write-Host "Write-MultiTenant-LogonScript doesn't apply to NON 'Cloud' Environments" -ForegroundColor DarkCyan
+		return;
+	}
+	if($applyRemoteAppLogonScript -eq $false)
+	{
+		Write-Host "'Write-MultiTenant-LogonScript' needs parameter '$$applyRemoteAppLogonScript' to be set to 'true'" -ForegroundColor DarkCyan
+		return;
+	}
+	
+	$scripBlock = @'
+	param([string]$storageAccountName,[int]$storageAccountPort=445,[string]$storageAccountSharedKey, [string]$fileShareName)
+	Start-Transcript -Path "c:\temp\PSlog.txt"
+	#####################################MULTITENANT LOGON SCRIPT - START FUNCTIONS#######################################
+
+	function Trust-EnvisionAddIn
+	{
+		$fullPath = "Registry::HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Visio\Security"
+
+		if (!(Test-Path -Path $fullPath ))
+		{
+			New-item -Path $fullPath -Force
+			New-ItemProperty -Path $fullPath -Name 'VBAWarnings' -Value 1 -PropertyType DWord
+		}
+		else
+		{
+			Set-ItemProperty -Path $fullPath -Name 'VBAWarnings' -Value 1
+		}
+	}
+	
+	function Map-AzureFileShare-UnitDrive([string]$storageAccountName, [string]$storageAccountSharedKey, [string]$fileShareName, [int]$storageAccountPort=445)
+	{
+		if($storageAccountName -eq "" -or $storageAccountSharedKey -eq "" -or $fileShareName -eq "")
+		{
+			Write-Host "All or one of the params to configure Models Unit Drive are empty. Please provide values for azStorageAccountName, azStorageAccountSharedKey and azFileShareName" -ForegroundColor DarkCyan
+			return;
+		}
+
+		$computerName = [string]::Format("{0}.file.core.windows.net",$storageAccountName)
+		$connectTestResult = Test-NetConnection -ComputerName $computerName -Port $storageAccountPort
+		if ($connectTestResult.TcpTestSucceeded) 
+		{
+			# Save the password so the drive will persist on reboot
+			$commandParameters = "cmdkey /add:`"$computerName`" /user:`"localhost\$storageAccountName`" /pass:`"$storageAccountSharedKey`""
+			cmd.exe /C $commandParameters
+			Write-Host "Parameters: $commandParameters"
+
+			# Mount the drive
+			$rootPath = "\\$computerName\$fileShareName"
+			Write-Host "Root Path: $rootPath"
+			New-PSDrive -Name Z -PSProvider FileSystem -Root $rootPath -Scope Global -Persist
+
+			Write-Host "Repository Unit Drive successfully mapped in the VM!" -ForegroundColor DarkGreen
+
+		} else {
+			Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+		}	
+	}
+	
+	function ConfigureVisioUIRibbon()
+	{
+		#Deploy VisioUI Ribbon to customize Remote App Visio UI Experience
+		$languageResourcesFullPath = "Registry::HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\LanguageResources"
+		$uiLanguageTagObject = Get-ItemProperty -Path $languageResourcesFullPath -Name "UILanguageTag"
+		$visioLang = "";
+		if($uiLanguageTagObject -ne $null)
+		{
+			$visioLang = $uiLanguageTagObject.uiLanguageTag
+		}
+		
+		if($visioLang -eq $null -or $visioLang -eq "")
+		{
+			$visioLang = "en-us"
+		}
+
+		$customRibbonFile="$env:ProgramFiles\AgileXRM\Envision Component\CustomRibbon\Visio2016Pro\$visioLang\Visio.officeUI"
+		$localMsOfficePath = "$env:LOCALAPPDATA\Microsoft\Office"
+		if(!(Test-Path -Path $localMsOfficePath))
+		{
+			New-item -Path $localMsOfficePath -ItemType Directory -Force
+		}
+
+		if([System.IO.File]::Exists($customRibbonFile))
+		{
+			Copy-Item -Path $customRibbonFile -Destination $localMsOfficePath -Force
+			Write-Host "File '$$customRibbonFile' successfully copied to '$localMsOfficePath'!" -ForegroundColor DarkGreen
+		}
+	}
+	#####################################MULTITENANT LOGON SCRIPT - END FUNCTIONS#######################################
+	ConfigureVisioUIRibbon
+	Map-AzureFileShare-UnitDrive -storageAccountName $storageAccountName -storageAccountSharedKey $storageAccountSharedKey -fileShareName $fileShareName
+
+	Trust-EnvisionAddIn
+
+	Stop-Transcript
+'@
+
+	Create-LogonScript-ForUser -initSessionScripBlock $scripBlock -logonScriptParameters "-storageAccountName:$azStorageAccountName -storageAccountPort:445 -storageAccountSharedKey:$azStorageAccountSharedKey -fileShareName:$azFileShareName"
+	
+}
+
+function Repair-Agilexrmlocal-cert()
+{
+	if($repairAXrmLocalCertificate -ne $true)
+	{
+		Write-Host "To Repair Local AgileXRM certificate parameter '`$repairAXrmLocalCertificate' needs to be set to true";
+		return;
+	
+	}
+	$securePass = ConvertTo-SecureString -String $adminPassword -AsPlainText -Force;
+	$adminCredential = New-Object System.Management.Automation.PSCredential $adminUserName, $securePass
+	$executionCommand = {
+	param(    [string]$userName, [string]$permission,[string]$certStoreLocation,[string]$certThumbprint)
+			
+				Write-Host "UserName: $userName"
+		Write-Host "CertStore: $certStoreLocation"
+		Write-Host "Thumbprint: $certThumbprint"
+
+		# check if certificate is already installed
+		$certificateInstalled = Get-ChildItem cert:$certStoreLocation | Where thumbprint -eq $certThumbprint
+		# download & install only if certificate is not already installed on machine
+		if ($certificateInstalled -eq $null)
+		{
+			$message="Certificate with thumbprint:"+$certThumbprint+" does not exist at "+$certStoreLocation
+			Write-Host $message -ForegroundColor Red
+			exit 1;
+		}else{
+			try
+			{
+			Write-Host "Cert has been found. Trying to find file..."
+				$rule = new-object System.Security.AccessControl.FileSystemAccessRule ($userName, $permission, [System.Security.AccessControl.AccessControlType]::Allow)
+				$root = "c:\programdata\microsoft\crypto\rsa\machinekeys"
+				$l = ls Cert:$certStoreLocation
+				$l = $l |? {$_.thumbprint -like $certThumbprint}
+				$l |%{
+					$keyname = $_.privatekey.cspkeycontainerinfo.uniquekeycontainername
+					$p = [io.path]::combine($root, $keyname)
+					if ([io.file]::exists($p))
+					{
+						Write-Host "File Found! Trying to set permission...";
+						$acl = get-acl -path $p
+						$acl.addaccessrule($rule)
+						echo $p
+						set-acl -Path $p -AclObject $acl
+						Write-Host "Permission successfully set!";
+
+					}
+					else
+					{
+						Write-Host "file Not Found!";
+
+					}
+				}
+			}
+			catch 
+			{
+				Write-Host "Caught an exception:" -ForegroundColor Red
+				Write-Host "$($_.Exception)" -ForegroundColor Red
+				exit 1;
+			}    
+		}
+		exit $LASTEXITCODE
+	};
+
+	$setWebViewDataFolderCommand ={
+		[Environment]::SetEnvironmentVariable("WEBVIEW2_USER_DATA_FOLDER", "%UserProfile%\Documents", "Machine")
+	}
+
+	Write-Host "Exe Command: $executionCommand";
+	Invoke-Command -Credential $adminCredential  -ComputerName $env:COMPUTERNAME -ScriptBlock $executionCommand  -ArgumentList $userName_,$permission_,$certStoreLocation_,$certThumbprint_;
+}
+
+function DeployVisioGPOPolicy()
+{
+	#Deploy GPO Policy to simplify Visio UX
+	$gpoEnvisionFolder = "C:\AgileXRM\gpo";
+	if(!(Test-Path -Path $gpoEnvisionFolder))
+	{
+		Write-Host "Envision GPO Folder '$gpoEnvisionFolder' NOT found!" -ForegroundColor DarkCyan
+	}
+	else
+	{
+		$errorFile = "lgpo.err.txt"
+		$outputFile  = "lgpo.out.txt"
+		Start-Process -FilePath "$gpoEnvisionFolder\LGPO.exe" -WorkingDirectory $gpoEnvisionFolder -ArgumentList @("/m Machine_Registry.pol","/un User_Registry.pol","/v")  -Wait -RedirectStandardError "$gpoEnvisionFolder\$errorFile" -RedirectStandardOutput "$gpoEnvisionFolder\$outputFile"
+		Write-Host "DeployVisioGPOPolicy executed. Review log files in $gpoEnvisionFolder" -ForegroundColor DarkGreen
+		Write-Host "Writing '$errorFile' file:"
+		Get-Content -Path "$gpoEnvisionFolder\$errorFile"
+
+	}
+}
 
 #################################################END FUNCTIONS#################################################################
 
@@ -332,11 +549,14 @@ Remove-Old-Stencils-Folders
 Set-Envision-Config-Keys
 Deploy-License
 Remove-WebViewDll-FromOfficeFolder
-Trust-EnvisionAddIn-ForAllUsers
-Write-LogonScript
+Trust-EnvisionAddIn
+Trust-EnvisionAddIn -currentPath "HKEY_CURRENT_USER"
+Write-SingleTenant-LogonScript
 Register-EnvisionAddIn-Dll
 Set-RemoteDesktop-Configuration
-
+Write-MultiTenant-LogonScript
+Repair-Agilexrmlocal-cert
+DeployVisioGPOPolicy
 Stop-Transcript
 
 exit 0
