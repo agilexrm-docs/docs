@@ -45,7 +45,7 @@ An AgileDialog Model is a business process drawn and configured in Envision (MS 
 
 AgileDialogs can contain manual tasks (form Pages), decision points (based on context data) and automatic activities (to interact with XRM repository or other systems).
 
-![AAgileDialogsDesignGuide_01.pnglt](media/AgileDialogsDesignGuide/AgileDialogsDesignGuide_01.png)
+![AgileDialogsDesignGuide_01.png](media/AgileDialogsDesignGuide/AgileDialogsDesignGuide_01.png)
 
 ---
 
@@ -128,7 +128,7 @@ The most important ones are described in depth here:
 
 - *DialogTaskCRMActivityId*: If part of Dialog Activity, this property holds the CRM Activity ID that launched the current dialog instance.
 
-[This document list all available variables under *Generic* node](common/SchemaGenericVariables.md)
+[This document lists all available variables under the *Generic* node](common/SchemaGenericVariables.md)
 
 ---
 
@@ -235,25 +235,25 @@ Apart from these, most shapes in the *AgileXRM Automatic Activities* stencil can
 Currently the following control types are available, and each type has specific configuration besides the common properties.
 
 - [Calendar](common/Calendar.md)
-- [Check](common/Check.md)
+- [Checkbox](common/Check.md)
 - [Combo](common/Combo.md)
   - [Populating a Combo](common/PopulatingCombo.md)
 - [Currency Control](common/CurrencyControl.md)
 - [File](common/File.md)
+- [Grid](common/XRMGrid.md)
 - [Group Container](common/GroupContainer.md)
+- [HTML](common/HtmlControl.md)
 - [IFrame](common/IFrame.md)
 - [Info](common/Info.md)
+- [Lookup](common/XRMLookup.md)
+- [Numeric](common/NumericControl.md)
 - [Password](common/Password.md)
 - [Radio](common/Radio.md)
+- [Search](common/XrmSearchControl.md)
 - [Tab Container](common/TabContainer.md)
 - [Textbox](common/Textbox.md)
-- [HTML](common/HtmlControl.md)
-- [Numeric](common/NumericControl.md)
-- [Widget Control](common/WidgetControl.md)
-- [Grid](common/XRMGrid.md)
-- [Lookup](common/XRMLookup.md)
-- [Search](common/XrmSearchControl.md)
 - [Variable Control](common/VariableControl.md)
+- [Widget Control](common/WidgetControl.md)
 - [Yes/No](common/YesNoControl.md)
 
 ---
@@ -274,9 +274,9 @@ Currently the following control types are available, and each type has specific 
 
 ---
 
-#### AgileDialogs Progress Messages and advance
+#### AgileDialogs Progress Messages
 
-[AgileDialogs Progress Messages and advance](common/AgileDialogsProgressMessages.md)
+[AgileDialogs Progress Messages](common/AgileDialogsProgressMessages.md)
 
 ---
 
@@ -354,7 +354,7 @@ The value to pass is in the column *Decimal Value*, for instance for 3082 for Sp
 
 ##### Action after dialog finishes
 
-When creating a link to open a dialog it is also possible to specify what to do when the dialog is finished. There are several options based on the use of the query string parameter AfterSubmit*:
+When creating a link to open a dialog it is also possible to specify what to do when the dialog is finished. There are several options based on the use of the URL query string parameter AfterSubmit*:
 
 - Close the window when dialog finishes. This is useful when opening the dialog in a new window  
 
@@ -365,7 +365,74 @@ When creating a link to open a dialog it is also possible to specify what to do 
 - Redirect to another URL. This approach is used to return to the calling page instead of closing the window
 
 ```xml
-   http://<PROCESS_TEMPLATE_NAME>/AgileDialogs/AgileDialogsKendoRuntime.aspx?orgname=<ORGANIZATION_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE_NAME>&AfterSubmit=\<URL_TO_REDIRECT_TO\>
+   http://<PROCESS_TEMPLATE_NAME>/AgileDialogs/AgileDialogsKendoRuntime.aspx?orgname=<ORGANIZATION_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE_NAME>&AfterSubmit=<URL_TO_REDIRECT_TO>
+```
+
+- It is also possible to handle where a Dialog should be redirected to, once it is completed with the "Template AfterSubmit" parameter. This parameter can be found in Envision, inside AgileDialogs settings, in the "Options" tab (see image below).
+![AgileDialogsDesignGuide_20.png](media/AgileDialogsDesignGuide/AgileDialogsDesignGuide_20.png)
+
+This field supports the use of any AgileXRM context variable. Furthermore, it is also possible to use a special parametrization which allows to redirect to anywhere inside the current Dataverse/D365 Organization.
+This parametrization is based on the  "Xrm.Navigation.navigateTo()" function from Client PowerApps API (see full details in this URL: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-navigation/navigateto)
+
+So, in addition to any valid URL, similar expressions to the following are fully supported for any dialog executed in hosted mode in Dynamics365/Dataverse environment:
+
+- Record Navigation
+  ###### API Notation
+    ```xml
+    pageType=entityrecord&entityName=account&entityId=${guid_account}
+    ```
+  ###### Native URL Notation
+    ```xml
+    pagetype=entityrecord&etn=account&id=${guid_account}
+    ```
+
+- View Navigation
+  ###### API Notation
+    ```xml
+    pageType=entitylist&entityName=account&viewId=<myviewId>&viewType=savedquery 
+    ```
+  ###### Native URL Notation
+    ```xml
+    pagetype=entitylist&etn=account&viewid=<myViewId>&viewType=1039
+    ```
+
+- Dashboard Navigation
+  ###### API Notation
+
+    ```xml
+    pageType=dashboard&dashboardId=<myDashId>&type=system
+    ```
+  ###### Native URL Notation
+    ```xml
+    pagetype=dashboard&id=<myDashId>&type=system
+    ```
+
+- WebResource Navigation
+  ###### API Notation
+
+    ```xml
+    pageType=webresource&webresourceName=new_MyPage
+    ```
+  ###### Native URL Notation
+    ```xml
+    pagetype=webresource&webresourceName=new_MyPage
+    ```
+
+IMPORTANT NOTE: "URL AfterSubnit" overiddes "Template AfterSubmit" parameter, if the latter is configured. 
+
+---
+
+#### Enable/Disable automatic control focus
+
+By default, `AgileDialogs` focuses the first control on the page. This behaviour is usefull for the most cases, but sometimes we want to render `AgileDialogs` but prevent this behaviour. We can control this using `autofocus` parameter.
+
+Available values for `autofocus` parameter are:
+
+- 0 Use this value to disable autofocus behaviour
+- 1 USe this value to enable autofocus behaviour. This is the default value, so this case can be ignored.
+
+```xml
+   http://<PROCESS_TEMPLATE_NAME>/AgileDialogs/AgileDialogsKendoRuntime.aspx?orgname=<ORGANIZATION_NAME>&DefaultProcessTemplate=<PROCESS_TEMPLATE_NAME>&autofocus=<[0|1]>
 ```
 
 ---

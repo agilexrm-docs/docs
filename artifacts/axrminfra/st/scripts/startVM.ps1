@@ -1,4 +1,4 @@
-### AgileXRMVersion 8.0.24121.20400
+### AgileXRMVersion 8.0.25007.20500
 Param(
 	[string]$apServiceAccountDomain ="INTERNAL",
 	[string]$apServiceAccountUser ="apservice",
