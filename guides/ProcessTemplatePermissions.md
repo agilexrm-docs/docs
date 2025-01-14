@@ -39,7 +39,7 @@ In addition, there are several individual permissions that apply to different ac
 
 -	**View Process**: Allows the user to visualize the process instances in Process viewer.
 
-Each of these permissions is granted to "Security Role" of a "Business Unit". You may create new Security Roles to tailor your individual permissions. See Microsoft’s documentation on this topic. [Create or edit a security role to manage access - Power Platform | Microsoft Learn](https://learn.microsoft.com/en-us/power-platform/admin/create-edit-security-role)
+Each of these permissions is granted to "Security Role" of a "Business Unit". You may create new Security Roles to tailor your individual permissions. See Microsoft's documentation on this topic. [Create or edit a security role to manage access - Power Platform | Microsoft Learn](https://learn.microsoft.com/en-us/power-platform/admin/create-edit-security-role)
 
 
 > NOTE: These permissions apply to the action buttons shown in AgileXRM Process Manager making them may appear disabled if you don't have the appropriate permission.
@@ -90,7 +90,7 @@ Please note that these changes are applied immediately. There is no need to publ
 
 ### Option 2: In AgileXRM App in Dataverse
 
-1.	Open your organization’s root page. (i.e. https://{OrgName}.crm4.dynamics.com).
+1.	Open your organization's root page. (i.e. https://{OrgName}.crm4.dynamics.com).
 
 2.	Open "AgileXRM" App.
  
