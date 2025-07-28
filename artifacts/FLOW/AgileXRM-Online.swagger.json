@@ -57,7 +57,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "string",
+              "type": "object",
               "properties": {
                 "ProcessID": {
                   "type": "string",
