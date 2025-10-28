@@ -145,7 +145,7 @@
           "name": "[parameters('publicIPAddresses_AXRM_SERVER_IP_name')]",
           "location": "[parameters('location')]",
           "sku": {
-            "name": "Basic"
+            "name": "Standard"
           },
           "properties": {
             "publicIPAddressVersion": "IPv4",
@@ -165,7 +165,7 @@
         "name": "[parameters('publicIPAddresses_AXRM_MODELER_IP_name')]",
         "location": "[parameters('location')]",
         "sku": {
-          "name": "Basic"
+          "name": "Standard"
         },
         "properties": {
           "publicIPAddressVersion": "IPv4",
@@ -404,5 +404,6 @@
             "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworksName'), parameters('virtualNetworksSubnetName'))]"
         }
     }
+
 
 }
