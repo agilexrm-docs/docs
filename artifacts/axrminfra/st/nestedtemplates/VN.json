@@ -149,7 +149,7 @@
           },
           "properties": {
             "publicIPAddressVersion": "IPv4",
-            "publicIPAllocationMethod": "Dynamic",
+            "publicIPAllocationMethod": "Static",
             "idleTimeoutInMinutes": 4,
             "dnsSettings": {
               "domainNameLabel": "[variables('serveralias')]",
@@ -169,7 +169,7 @@
         },
         "properties": {
           "publicIPAddressVersion": "IPv4",
-          "publicIPAllocationMethod": "Dynamic",
+          "publicIPAllocationMethod": "Static",
           "idleTimeoutInMinutes": 4,
           "dnsSettings": {
             "domainNameLabel": "[variables('envisionalias')]",
@@ -407,3 +407,4 @@
 
 
 }
+
