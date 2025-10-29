@@ -109,30 +109,6 @@
           "minCapacity": 0.5
         }
       },
-      {
-        "condition": "[not(parameters('excludeDBCreation'))]",
-        "type": "Microsoft.Sql/servers/databases",
-        "apiVersion": "2019-06-01-preview",
-        "name": "[concat(variables('servers_sql_axrmst_name'), '/R', variables('singlePortalDB'))]",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-          "[resourceId('Microsoft.Sql/servers', variables('servers_sql_axrmst_name'))]"
-        ],
-        "sku": {
-          "name": "Basic",
-          "tier": "Basic"
-        },
-        "properties": {
-          "collation": "[variables('dbCollation')]",
-          "maxSizeBytes": "[mul(parameters('singlePortalDBSize'),variables('minimumDbSize'))]",
-          "zoneRedundant": false,
-          "readScale": "Disabled",
-          "readReplicaCount": 0,
-          "autoPauseDelay": "[variables('autoPauseDelay')]",
-          "minCapacity": 0.5
-        }
-      },
-
         {
         "condition": "[not(parameters('excludeDBCreation'))]",
         "type": "Microsoft.Sql/servers/databases",
@@ -217,3 +193,4 @@
   }
 
 }
+
