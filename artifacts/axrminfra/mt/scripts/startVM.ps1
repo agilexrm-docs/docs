@@ -1,4 +1,3 @@
-### AgileXRMVersion 8.0.26100.20500
 Param(
 	[string]$apServiceAccountDomain ="INTERNAL",
 	[string]$apServiceAccountUser ="apservice",
@@ -2676,10 +2675,17 @@ if($deploymentMode -eq "MT")
 	Write-Host "This is a Multitenant Deployment. Detecting network configuration..." -foregroundcolor darkCyan
 
 	#Connection Details with Service Principal
-	$securePass = ConvertTo-SecureString -String $svcPrincipalSecretKey -AsPlainText -Force;
-	$adminCredential = New-Object System.Management.Automation.PSCredential $svcPrincipalAppId, $securePass
-	Connect-AzAccount -Credential $adminCredential -Tenant $tenantId -SubscriptionId $subscriptionId -ServicePrincipal
-
+	if($svcPrincipalAppId -eq $svcPrincipalSecretKey)
+	{
+		Write-Host "Adding User Identity Manage account to context..."
+		Add-AzAccount -Identity -TenantId $tenantId -SubscriptionId $subscriptionId -AccountId $svcPrincipalAppId
+	}
+	else
+	{
+		$securePass = ConvertTo-SecureString -String $svcPrincipalSecretKey -AsPlainText -Force;
+		$adminCredential = New-Object System.Management.Automation.PSCredential $svcPrincipalAppId, $securePass
+		Connect-AzAccount -Credential $adminCredential -Tenant $tenantId -SubscriptionId $subscriptionId -ServicePrincipal
+	}
 	if($primaryNicName -eq $publicNicName -and $primaryNicName -eq $portalNicName)
 	{
 		$numberOfIpsInsideOfNic=4
