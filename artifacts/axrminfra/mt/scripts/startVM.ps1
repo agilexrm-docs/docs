@@ -1,3 +1,4 @@
+### AgileXRMVersion 8.0.26117.20500
 Param(
 	[string]$apServiceAccountDomain ="INTERNAL",
 	[string]$apServiceAccountUser ="apservice",
@@ -9,7 +10,7 @@ Param(
 	[string]$defaultGateway = "10.0.0.1",
 	[string]$sqlServer="",
 	[string]$sqlServerPort="1433",
-	[string]$appUrlSeparator=".",
+	[validateSet('.','-')][string]$appUrlSeparator=".",
 	[string]$domainUrl="agilexrmonline.com",
 	[string]$mainHostName="pool",
 	[string]$portalPort="443",
@@ -20,8 +21,8 @@ Param(
 	[string]$publicSitePort="443",
 	[string]$externalSitePort="443",
 	[string]$azureAdRealm = "https://axrm.agilexrmonline.com",
-	[string]$deploymentMode ="MT",
-	[string]$deploymentType ="Cloud",
+	[validateSet('MT','ST')][string]$deploymentMode ="MT",
+	[validateSet('Cloud','PrivateCloud')][string]$deploymentType ="Cloud",
 	[string]$localUsersPassword ="Default@1", 
 	[string]$waadWcfAppId = "19e4137f-55ae-4dbf-9fbc-e386bbf36304",
 	[string]$waadWcfAppIdUri = "https://ws.agilexrmonline.com:13487/AgilePointServer",
@@ -67,7 +68,18 @@ Param(
 	[string]$apiSiteSubdomain ="",
 	[string]$adminPortalSiteSubdomain ="",
 	[string]$publicSiteSubdomain ="",
-	[string]$externalSiteSubdomain =""
+	[string]$externalSiteSubdomain ="",
+	[string]$dnsTenantId,
+	[string]$dnsClientId,
+	[string]$dnsClientSecret,
+	[string]$stoManFunctionUrl,
+	[string]$stoManFunctionKey,
+	[validateSet('AzureTableStorage','Dataverse')][string]$mtRepoType="AzureTableStorage",
+	[string]$dvRepoUrl,
+	[string]$dvRepoClientId,
+	[string]$dvRepoClientSecret,
+	[string]$dvRepoOrgUnqName,
+	[string]$dvRepoPoolId
 )
 $now = Get-Date -Format "yyyyMMddHHmmss"
 $transcriptFileName = [string]::Format("PSWStartVM_{0}.log",$now)
@@ -255,6 +267,12 @@ $global:apServiceAccountPassword = $apServiceAccountPassword
 $adConnectorName = "AgileDialogs";
 $pmConnectorName = "XRMProcessViewer";
 $crmConnectorName ="CrmConnector";
+$tenantManagerConnectorName = "AgileXRMTenantManager"
+$azuOperationConnectorName ="AzureOperationsConnector"
+$orchardConnectorName = "OrchardCMS"
+$allowedConnectors = @($adConnectorName,$pmConnectorName,$crmConnectorName,$tenantManagerConnectorName,$azuOperationConnectorName,$orchardConnectorName)
+
+$backupFilesScript = "C:\tools\scripts\BackupAllConfigFiles_and_selected_Logs.ps1"
 
 $portalInstallationName="DEFAULTTENANT";
 
@@ -290,9 +308,9 @@ function Create-Adapter-IP-Addresses()
 	$adapter = Get-NetAdapter | ? {$_.Status -eq "up" -and $_.Name -eq $adapterName}
 	
 	
-	if(($adapter | Get-NetIPConfiguration).IPv4Address.IPAddress.Count -eq 2)
+	if(($adapter | Get-NetIPConfiguration).IPv4Address.IPAddress.Count -ge 2)
 	{
-		Write-Host "Create-Adapter-IP-Addresses>> 2 IP Addresses have been found in Adapter $adapterName . Exit without touching anything " -foregroundcolor DarkGray
+		Write-Host "Create-Adapter-IP-Addresses>> 2 or more IP Addresses have been found in Adapter $adapterName . Exit without touching anything " -foregroundcolor DarkGray
 		return;
 	}
 
@@ -1401,14 +1419,25 @@ function Configure-AgilePointPortal()
 		Modify-AppSetings-Key -configFilePath "$agilePointPortalWebFolder\web.config" -keyName "ida:Password" -keyValue "$waadApplicationIdPassword" ;
 	}
 	
-	if($deploymentMode -eq "MT" -and $isSqlAzure -eq $false)
+	if($deploymentMode -eq "MT")
 	{
-		Write-Host "Configuring Portal's 'setting.txt' file..." -ForegroundColor Magenta
-		$currentDBConnectionString="DataConnectionString: Server=$sqlServerAliasName;database=$masterPortalDB;Integrated security=SSPI"
+		if($isSqlAzure -eq $false)
+		{
+			Write-Host "Configuring Portal's 'setting.txt' file NO Azure SQL..." -ForegroundColor Magenta
+			$currentDBConnectionString="DataConnectionString: Server=$sqlServerAliasName;database=$masterPortalDB;Integrated security=SSPI"
+		}
+		else
+		{
+			Write-Host "Configuring Portal's 'setting.txt' file Azure SQL..." -ForegroundColor Magenta
+			$azureInstanceName = $sqlServer.Split(".")[0];
+			$currentDBConnectionString = [string]::Format("DataConnectionString: Server={0};database={1};User ID={2};Password={3}", $sqlServerAliasName, $masterPortalDB, "$dbUserName@$azureInstanceName", $dbUserPassword);
+		}
+
 		$settingsFile = "$agilePointPortalWebFolder\Config\settings.txt"
 
 		$output = Get-Content $settingsFile | Foreach-Object {$_ -replace '^DataConnectionString:.+$', $currentDBConnectionString}
 		$output | Set-Content $settingsFile
+
 		Write-Host "Portal's 'setting.txt' file configured!" -ForegroundColor DarkGreen
 	}
 	
@@ -1475,8 +1504,22 @@ function Configure-AgileXRMSites()
 	}
 	else
 	{
-		Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "AgileXRMGlobalOndemandStorage";	
-		Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
+		Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "TenantRepositoryType" -keyValue "$mtRepoType" -createNode $true;
+		
+		if($mtRepoType -eq "AzureTableStorage")
+		{
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "$azureStorageTableName";
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
+		}
+		elseif($mtRepoType -eq "Dataverse")
+		{
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "DataverseRepositoryUrl" -keyValue "$dvRepoUrl" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "DataverseEnvironmentUniqueName" -keyValue "$dvRepoOrgUnqName" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "DataverseRepositoryClientId" -keyValue "$dvRepoClientId" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "DataverseRepositoryClientSecret" -keyValue "$dvRepoClientSecret" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "DataverseRepositoryRestrictToPool" -keyValue "true" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "DataverseRepositoryPoolId" -keyValue "$dvRepoPoolId" -createNode $true;	
+		}
 	}
 
 	Modify-AppSetings-Key -configFilePath "$agileXrmWebFolder\web.config" -keyName "AllowTestPage" -keyValue "true";	
@@ -1535,8 +1578,22 @@ function Configure-AgileXRMSites()
 	}
 	else
 	{
-		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "AgileXRMGlobalOndemandStorage";	
-		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
+		Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "TenantRepositoryType" -keyValue "$mtRepoType" -createNode $true;
+		
+		if($mtRepoType -eq "AzureTableStorage")
+		{
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "$azureStorageTableName";
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
+		}
+		elseif($mtRepoType -eq "Dataverse")
+		{
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryUrl" -keyValue "$dvRepoUrl" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "DataverseEnvironmentUniqueName" -keyValue "$dvRepoOrgUnqName" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryClientId" -keyValue "$dvRepoClientId" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryClientSecret" -keyValue "$dvRepoClientSecret" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryRestrictToPool" -keyValue "true" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryPoolId" -keyValue "$dvRepoPoolId" -createNode $true;	
+		}
 	}
 	Modify-AppSetings-Key -configFilePath "$publicAgileXrmWebFolder\web.config" -keyName "AllowTestPage" -keyValue "false";	
 	Configure-Site-Custom-Errors -configFilePath "$publicAgileXrmWebFolder\web.config" -errorMode RemoteOnly
@@ -1599,8 +1656,22 @@ function Configure-AgileXRMSites()
 	}
 	elseif($deploymentType -eq "Cloud")
 	{
-		Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "AgileXRMGlobalOndemandStorage";	
-		Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
+		Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "TenantRepositoryType" -keyValue "$mtRepoType" -createNode $true;
+		
+		if($mtRepoType -eq "AzureTableStorage")
+		{
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "AzureStorageTableName" -keyValue "$azureStorageTableName";
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "AzureStorageConnectionString" -keyValue "$azureStorageConnString";	
+		}
+		elseif($mtRepoType -eq "Dataverse")
+		{
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryUrl" -keyValue "$dvRepoUrl" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "DataverseEnvironmentUniqueName" -keyValue "$dvRepoOrgUnqName" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryClientId" -keyValue "$dvRepoClientId" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryClientSecret" -keyValue "$dvRepoClientSecret" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryRestrictToPool" -keyValue "true" -createNode $true;	
+			Modify-AppSetings-Key -configFilePath "$externalAgileXrmWebFolder\web.config" -keyName "DataverseRepositoryPoolId" -keyValue "$dvRepoPoolId" -createNode $true;	
+		}
 	}
 	else
 	{
@@ -1891,6 +1962,13 @@ function Update-netflow-Cfg-File()
 			$node = $file.SelectSingleNode("descendant::database");
 			$node.SetAttribute("connectingString", $masterApDbConnectingString);
 		}
+		else
+		{
+			$azureInstanceName = $sqlServer.Split(".")[0];
+			$masterApDbConnectingString = [string]::Format("application name=AgilePoint Server;connection lifetime=5;Max Pool Size=800;min pool size=10;server={0};database={1};User ID={2};Password={3};", $sqlServerAliasName, $singleApDB, "$dbUserName@$azureInstanceName", $dbUserPassword);
+			$node = $file.SelectSingleNode("descendant::database");
+			$node.SetAttribute("connectingString", $masterApDbConnectingString);
+		}
 	}
 
 	$node = $file.SelectSingleNode("descendant::notification");
@@ -1985,7 +2063,12 @@ function Create-Local-Users()
 {
 	if($deploymentType -eq "Cloud")
 	{
-		Write-Host "Create Local Envision User doesn't apply to Cloud Deployments" -ForegroundColor DarkGray;
+		
+		$multiTenantAxrmUser = "xrm.system"
+		$multiTenantAxrmPass = $dvRepoPoolId
+		
+		Create-WinNT-User -userName $multiTenantAxrmUser -userPassword $multiTenantAxrmPass -userFirstName "AgileXRM Multi-Tenant" -userLastName "System Admin User" -userDescription "AgileXRM Multi-Tenant System User created to connect from Tenant Deployment system to Tenant"
+
 		return;
 	}
 
@@ -2408,9 +2491,9 @@ function Execute-NX-Portal-Recipe()
 
 function Insert-ConnectorRecord()
 {
-	param([string]$connectorName, [string]$connectorConfig, [string]$sqlInstance, [bool]$recreateRecord=$false)
+	param([string]$connectorName, [string]$connectorConfig, [string]$sqlInstance, [bool]$recreateRecord=$false, [bool]$updateRecord=$true)
 
-	if(($connectorName -ne $adConnectorName) -and ($connectorName -ne $pmConnectorName) -and ($connectorName -ne $crmConnectorName))
+	if(!$allowedConnectors.Contains($connectorName))
 	{
 		throw "Unknown '$connectorName' parameter value"
 	}
@@ -2433,35 +2516,39 @@ function Insert-ConnectorRecord()
 		$insertOutput = ExecuteSQL -ServerInstance $sqlInstance -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $insertQuery
 		Write-Host "Record successfully INSERTED in table 'WF_INTEGRATED_APPS' " -ForegroundColor DarkGreen
 	}
-	else
+	elseif($updateRecord -eq $true)
 	{
 		Write-Host "Record for connector '$connectorName' already exists in table 'WF_INTEGRATED_APPS'. Updating... " -ForegroundColor DarkCyan
 		$insertOutput = ExecuteSQL -ServerInstance $sqlInstance -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $updateQuery
 		Write-Host "Record successfully UPDATED in table 'WF_INTEGRATED_APPS' " -ForegroundColor DarkGreen
 	}
+	else
+	{
+		Write-Host "Record for connector '$connectorName' skipped" -ForegroundColor Magenta
+	}
 }
 
 function Insert-AD-Connector()
 {
-	param($sqlInstance, $agileDialogsURL, $agileDialogsExternalURL, $agileDialogsPublicUrl, $notiReceiverUrl)
+	param($sqlInstance, $agileDialogsURL, $agileDialogsExternalURL, $agileDialogsPublicUrl, $notiReceiverUrl,$updateRecord=$true)
 	
 	$connectorConfig = [string]::Format("<?xml version=""1.0"" encoding=""utf-8""?><ConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><AgileDialogsUrl>{0}</AgileDialogsUrl><AgileDialogsExternalConnectorUrl>{1}</AgileDialogsExternalConnectorUrl><AgileDialogsPublicConnectorUrl>{2}</AgileDialogsPublicConnectorUrl><AgileDialogsNotificationReceiverURL>{3}</AgileDialogsNotificationReceiverURL></ConnectorConfiguration>",$agileDialogsURL, $agileDialogsExternalURL, $agileDialogsPublicUrl, $notiReceiverUrl)
 
-	Insert-ConnectorRecord -connectorName $adConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig
+	Insert-ConnectorRecord -connectorName $adConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig -updateRecord $updateRecord
 }
 
 function Insert-PM-Connector()
 {
-	param($sqlInstance, $processManagerURL)
+	param($sqlInstance, $processManagerURL, $updateRecord=$true)
 	
 	$connectorConfig = [string]::Format("<?xml version=""1.0"" encoding=""utf-8""?><ProcessManagerConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><AppFilterName>*</AppFilterName><ServerUrl>{0}/signalr/hubs</ServerUrl><ProcessManagerConnectorServerHubUrl /><SignalRClientEnabled>true</SignalRClientEnabled><SignalRServerEnabled>false</SignalRServerEnabled></ProcessManagerConnectorConfiguration>",$processManagerURL)
 
-	Insert-ConnectorRecord -connectorName $pmConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig
+	Insert-ConnectorRecord -connectorName $pmConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig -updateRecord $updateRecord
 }
 
-function Insert-CRM-Connector()
+function Insert-CRM-Connector()	
 {
-	param($sqlInstance, $azureAppId, $azureAppSecretKey, $d365UniqueName, $d365Url)
+	param($sqlInstance, $azureAppId, $azureAppSecretKey, $d365UniqueName, $d365Urlj, $updateRecord=$true)
 
 	$orgsUniqueId = $d365UniqueName.split(";");
 	$orgsFullUrl = $d365Url.split(";");
@@ -2475,7 +2562,66 @@ function Insert-CRM-Connector()
 
 	$connectorConfig = [string]::Format("<?xml version=""1.0"" encoding=""utf-8""?><ConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><DefaultServerUrl /><LogOnAsOtherUser>false</LogOnAsOtherUser><CrmDomain /><CrmUsername /><CrmPassword /><LogExceptionsToCrm>true</LogExceptionsToCrm><LicenseSynchronizerStartHour>0</LicenseSynchronizerStartHour><RetrierConfiguration><MaxNumberOfRetries>10</MaxNumberOfRetries><WaitTimeForRetry>500</WaitTimeForRetry></RetrierConfiguration><DeploymentType>PrivateCloud</DeploymentType><AzureClientSecret>{1}</AzureClientSecret><AzureApplicationId>{0}</AzureApplicationId><OrganizationUrls>{2}</OrganizationUrls></ConnectorConfiguration>",$azureAppId,$azureAppSecretKey, $crmConnectorData)
 
-	Insert-ConnectorRecord -connectorName $crmConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig
+	Insert-ConnectorRecord -connectorName $crmConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig -updateRecord $updateRecord
+}
+
+function Insert-CRM-MT-Connector()
+{
+	param($sqlInstance, $azureAppId, $azureAppSecretKey, $d365UniqueName, $d365Url)
+	
+	$repoSection = "<TenantRepositoryType>$mtRepoType</TenantRepositoryType>"
+	if($mtRepoType -eq "AzureTableStorage")
+	{
+		$repoSection += "<AzureStorageTableName>$azureStorageTableName</AzureStorageTableName><AzureStorageConnectionString>$azureStorageConnString</AzureStorageConnectionString>"
+	}
+	elseif ($mtRepoType -eq "Dataverse")
+	{
+		$repoSection += "<DataverseRepositoryUrl>$dvRepoUrl</DataverseRepositoryUrl><DataverseRepositoryClientId>$dvRepoClientId</DataverseRepositoryClientId><DataverseRepositoryClientSecret>$dvRepoClientSecret</DataverseRepositoryClientSecret><DataverseRepositoryOrganizationName>$dvRepoOrgUnqName</DataverseRepositoryOrganizationName><DataverseRepositoryPoolId>$dvRepoPoolId</DataverseRepositoryPoolId>"
+	}
+
+	$crmConnectorConfig = "<?xml version=""1.0"" encoding=""utf-8""?><ConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><DefaultServerUrl /><LogOnAsOtherUser>false</LogOnAsOtherUser><CrmDomain /><CrmUsername /><CrmPassword /><LogExceptionsToCrm>true</LogExceptionsToCrm><LicenseSynchronizerStartHour>0</LicenseSynchronizerStartHour><RetrierConfiguration><MaxNumberOfRetries>5</MaxNumberOfRetries><WaitTimeForRetry>150</WaitTimeForRetry></RetrierConfiguration><DeploymentType>$deploymentType</DeploymentType><AzureClientSecret>$waadApplicationIdPassword</AzureClientSecret><AzureApplicationId>$waadApplicationId</AzureApplicationId><EnableCustomAttributesForTeamsMembers>true</EnableCustomAttributesForTeamsMembers><IsProd>false</IsProd><EnvironmentType>DEV</EnvironmentType>$repoSection</ConnectorConfiguration>"
+
+	Insert-ConnectorRecord -connectorName $crmConnectorName -sqlInstance $sqlInstance -connectorConfig $crmConnectorConfig -updateRecord $false
+	
+}
+
+function Insert-AzuOpe-Connector()
+{
+	param($sqlInstance)
+	$serviceUrl = [string]::Format("https://{0}:{1}",$apiServiceHostName,"13499")
+	
+	$connectorConfigData = @{ServiceUrl=$serviceUrl
+						AzureStorageConnectionString=$customStorageAzureConnString
+						ValidAudienceAzureAppId=$envisionAppId
+						RepositoryType=1} | ConvertTo-JSON
+	
+	Insert-ConnectorRecord -connectorName $azuOperationConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfigData -updateRecord $false
+	
+}
+
+function Insert-TM-Connnector()
+{
+	param($sqlInstance)
+	
+	$connectorConfig = "<?xml version=""1.0"" encoding=""utf-8""?><TenantManagerConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><EnableDnsManagement>true</EnableDnsManagement><DnsProviderConfig xsi:type=""AzureDnsOptions""><DnsZoneName>$domainUrl</DnsZoneName><TenantId>$dnsTenantId</TenantId><ClientId>$dnsClientId</ClientId><ClientSecret>$dnsClientSecret</ClientSecret><SubscriptionId/><ResourceGroupName/></DnsProviderConfig><AdminAddress>$rawAdminPortalHostName</AdminAddress><EngineApiAddress>$apiServiceHostName</EngineApiAddress><InternalWebAppsAddress>$agileXrmHostName</InternalWebAppsAddress><ExternalWebAppsAddress>$externalAXrmHostName</ExternalWebAppsAddress><PublicWebAppsAddress>$publicAXrmHostName</PublicWebAppsAddress><EnableBlobStorageManagement>true</EnableBlobStorageManagement><StorageMangementFunctionUrl>$stoManFunctionUrl</StorageMangementFunctionUrl><StorageMangementFunctionKey>$stoManFunctionKey</StorageMangementFunctionKey></TenantManagerConnectorConfiguration>"
+
+	Insert-ConnectorRecord -connectorName $tenantManagerConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig -updateRecord $false
+}
+
+function Insert-Orchard-Connector
+{
+	param($sqlInstance)
+	
+	$masterPortalDbConnString="Server=$sqlServerAliasName;database=$masterPortalDB;Integrated security=SSPI";
+	if($isSqlAzure)
+	{
+		$azureInstanceName = $sqlServer.Split(".")[0];
+		$masterPortalDbConnString = [string]::Format("Server={0};database={1};User ID={2};Password={3}", $sqlServerAliasName, $masterPortalDB, "$dbUserName@$azureInstanceName", $dbUserPassword);		
+	}
+	
+	$connectorConfig = "<?xml version=""1.0"" encoding=""utf-8""?><APCConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><CMSDatabaseConnectionString>$masterPortalDbConnString</CMSDatabaseConnectionString><CMSServiceURL /><CMSDBVendor>MSSQLDatabase</CMSDBVendor></APCConfiguration>"
+
+	Insert-ConnectorRecord -connectorName $orchardConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig -updateRecord $false
 }
 
 function Test-Db-Connection()
@@ -2539,6 +2685,7 @@ function Disable-NetflowFile-TaskScheduler()
 		Write-Host "Disable-NetflowFile-TaskScheduler ONLY Applies to ST deployments" -ForegroundColor Magenta
 	}
 }
+
 function Upsert-TenantAdminUser()
 {
 	$userAlias = [string]::Format("{0}\{1}",$internalDomainValue,$singleTenantAdminUser)
@@ -2572,6 +2719,51 @@ function Upsert-TenantAdminUser()
 		$insertQuery = "INSERT INTO [$singleApDB].[dbo].[WF_ASSIGNED_OBJECTS] ([ROLE_NAME],[ASSIGNEE], [ASSIGNEE_TYPE], [OBJECT_ID], [OBJECT_TYPE], [CREATED_DATE], [CREATED_BY])  VALUES ( 'ADMINISTRATORS', '$userAliasUppercase',  'User', '00000000000000000000000000000000','All',getdate(),'$userAliasUppercase')"
 		$insertOutput = ExecuteSQL -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $insertQuery
 		Write-Host "Record successfully inserted in table 'WF_ASSIGNED_OBJECTS' from '$singleApDB'" -ForegroundColor DarkGreen
+	}
+}
+
+function Upsert-XrmSystemUser()
+{
+	param([string]$xrmSystemUser="xrm.system")
+	$userAlias = [string]::Format("{0}\{1}",$internalDomainValue,$xrmSystemUser)
+	$userAliasUppercase = $userAlias.ToUpper()
+	$userFullName = "MT AXRM System Admin User"
+
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+	$query= "SELECT * FROM [$singleApDB].[dbo].[WF_REG_USERS] WHERE [USER_NAME_UPCASE] = '$userAliasUppercase'"
+	$queryOutput = ExecuteSQL -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $query
+	
+	if($queryOutput -eq $null)
+	{
+		Write-Host "Inserting Record in table 'WF_REG_USERS' from '$singleApDB'...."
+		$insertQuery = "INSERT INTO [$singleApDB].[dbo].[WF_REG_USERS] ([USER_NAME_UPCASE], [USER_NAME], [FULL_NAME], [LOCALE], [DISABLED], [REGISTERED_DATE])  VALUES ( '$userAlias', '$userAliasUppercase', '$userFullName', 'es-us','NO',getdate())"
+		$insertOutput = ExecuteSQL -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $insertQuery
+		Write-Host "Record successfully inserted in table 'WF_REG_USERS' from '$singleApDB'" -ForegroundColor DarkGreen
+	}
+	else
+	{
+		Write-Host "Record in table 'WF_REG_USERS' from '$singleApDB' already exists. Updating..." -ForegroundColor DarkCyan
+		$updateQuery = "UPDATE [$singleApDB].[dbo].[WF_REG_USERS] SET [USER_NAME_UPCASE]='$userAliasUppercase', [USER_NAME]='$userAlias', [FULL_NAME]='$userFullName' WHERE [USER_NAME] = '$userAlias'"
+		$udpateOutput = ExecuteSQL -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $updateQuery
+		Write-Debug-Message -functionName "Upsert-TenantAdminUser" -message "Record Content: $queryOutput"
+	}
+
+	$query = "SELECT * FROM [MasterAPDB].[dbo].[WF_GROUP_MEMBERS] where MEMBER = N'$userAliasUppercase'";
+	
+	$queryOutput = ExecuteSQL -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $query
+	if($queryOutput -eq $null)
+	{
+		Write-Host "Inserting Record in table 'WF_GROUP_MEMBERS' from '$singleApDB'...."
+		$createdBy = [string]::Format("{0}\{1}",$apServiceAccountDomain ,$apServiceAccountUser);
+
+		$insertQuery = "INSERT INTO [$singleApDB].[dbo].[WF_GROUP_MEMBERS] ([NAME],[DESCRIPTION],[CREATED_DATE],[CREATED_BY],[ENABLED],[MEMBER]) VALUES ('GLOBAL ADMINISTRATORS', '', getdate(), '$createdBy','Yes','$userAliasUppercase')"
+		$insertOutput = ExecuteSQL -ServerInstance $sqlServer -Database $singleApDB -Username $dbUserName -Password $dbUserPassword -Query $insertQuery
+
+		Write-Host "Record successfully inserted in table 'WF_GROUP_MEMBERS' from '$singleApDB'" -ForegroundColor DarkGreen
+	}
+	else
+	{
+		Write-Host "Record for AXRM System User already exists in 'WF_GROUP_MEMBERS' from '$singleApDB'. Skipped!" -ForegroundColor Magenta
 	}
 }
 
@@ -2667,8 +2859,86 @@ function ExecuteSQL()
 	}
 }
 
+function Apply-Post-Installation-For-MT()
+{
+	if($deploymentMode -ne "MT")
+	{
+		Write-Host "This is NOT a Multi Tenant Deployment. 'Apply-Post-Installation-For-MT' configuration doesn't apply" -foregroundcolor darkCyan
+		return;
+	}
+
+	$isApServiceUpAndRunning = Check-AP-Service-Status;
+	if(! $isApServiceUpAndRunning)
+	{
+		Write-Error "Service is not running. Provisioning has failed. Please review and reexecute";
+		exit -1;
+	}
+	
+	#X - Check DB Connection to MasterPortalDB
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $masterPortalDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+
+	#X - Check DB Connection to SinglePortalDB
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singlePortalDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+
+	#x - Create NX Portal Orchard
+	$attemp = 0;
+	$nxPortalStatus = Create-NX-Portal-Orchard;
+	Write-Host "Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
+	while ($nxPortalStatus -ne 0 -and $attemp -lt 15)
+	{
+		$nxPortalStatus = Create-NX-Portal-Orchard;
+		Write-Host "--Attemp $attemp .Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
+		$attemp++;
+		Start-Sleep -Milliseconds 5000;
+	}
+	
+	#Create Connectors Records
+	Insert-AD-Connector -sqlInstance $sqlServer -agileDialogsURL $agileDialogsUrl -agileDialogsExternalURL $agileDialogsExternalUrl -agileDialogsPublicUrl $agileDialogsPublicUrl -notiReceiverUrl $notiReceiverUrl -updateRecord $false;
+	Insert-PM-Connector -sqlInstance $sqlServer -processManagerURL $processManagerUrl -updateRecord $false;
+	Insert-CRM-MT-Connector -sqlInstance $sqlServer -azureAppId $waadApplicationId -azureAppSecretKey $waadApplicationIdPassword -d365UniqueName $singleTenantCrmOrgUniqueId -d365Url $singleTenantCrmOrgFullUrl;
+	Insert-AzuOpe-Connector -sqlInstance $sqlServer
+	Insert-TM-Connnector -sqlInstance $sqlServer
+	Insert-Orchard-Connector -sqlInstance $sqlServer
+	
+	#Upsert AgileXRM System User for Tenant Deployments:
+	Upsert-XrmSystemUser;
+	
+}
+function Backup-Config-Files()
+{
+
+	if(Test-Path -Path $backupFilesScript)
+	{
+		Write-Host "Executing '$backupFilesScript' file...." -ForegroundColor DarkCyan;
+
+		$dbAuthSection = ""
+		$dbSection="-db1:'$singleApDB' -db2:'$masterPortalDB' -sqlInstance:'$sqlInstance' "
+		if($isSqlAzure)
+		{
+			$azureInstanceName = $sqlServer.Split(".")[0];
+			$dbAuthSection = "-dbUserName:'$dbUserName@$azureInstanceName' -dbUserPassword:'$dbUserPass' -isSQLAzure "
+		}
+		
+		try
+		{
+			Invoke-Expression "& `"$backupFilesScript`" $dbSection $dbAuthSection "
+		}
+		catch
+		{
+			Write-Host "Something went wrong during backup config files execution!" -ForegroundColor Magenta;
+		}
+
+		Write-Host "'$backupFilesScript' file executed!" -ForegroundColor DarkGreen;
+	}
+	else
+	{
+		Write-Host "File $backupFilesScript Not FOUND!" -ForegroundColor Magenta;
+	}
+}
 
 ######################END FUNCTIONS########################################################################
+Backup-Config-Files;
+
 $numberOfIpsInsideOfNic = 2
 if($deploymentMode -eq "MT")
 {
@@ -2818,7 +3088,7 @@ Create-Local-Users
 Set-TimeZone -Id "UTC" -PassThru
 
 # Check DB Connection to SingleApDB
-if($deploymentMode -eq "ST")
+if($isSqlAzure)
 {
 	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singleApDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
 
@@ -2829,6 +3099,7 @@ if($deploymentMode -eq "ST")
 Start-Services;
 
 Apply-Post-Installation;
+Apply-Post-Installation-For-MT;
 
 Customize-Nx-Portal-For-AgileXRM
 
