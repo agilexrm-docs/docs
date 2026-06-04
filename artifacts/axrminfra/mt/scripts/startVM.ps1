@@ -72,8 +72,6 @@ Param(
 	[string]$dnsTenantId,
 	[string]$dnsClientId,
 	[string]$dnsClientSecret,
-	[string]$stoManFunctionUrl,
-	[string]$stoManFunctionKey,
 	[validateSet('AzureTableStorage','Dataverse')][string]$mtRepoType="AzureTableStorage",
 	[string]$dvRepoUrl,
 	[string]$dvRepoClientId,
@@ -2061,7 +2059,7 @@ function Create-WinNT-User()
 
 function Create-Local-Users()
 {
-	if($deploymentType -eq "Cloud")
+	if($deploymentType -eq "Cloud" -and $mtRepoType -eq "Dataverse")
 	{
 		
 		$multiTenantAxrmUser = "xrm.system"
@@ -2548,7 +2546,7 @@ function Insert-PM-Connector()
 
 function Insert-CRM-Connector()	
 {
-	param($sqlInstance, $azureAppId, $azureAppSecretKey, $d365UniqueName, $d365Urlj, $updateRecord=$true)
+	param($sqlInstance, $azureAppId, $azureAppSecretKey, $d365UniqueName, $d365Url, $updateRecord=$true)
 
 	$orgsUniqueId = $d365UniqueName.split(";");
 	$orgsFullUrl = $d365Url.split(";");
@@ -2603,7 +2601,7 @@ function Insert-TM-Connnector()
 {
 	param($sqlInstance)
 	
-	$connectorConfig = "<?xml version=""1.0"" encoding=""utf-8""?><TenantManagerConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><EnableDnsManagement>true</EnableDnsManagement><DnsProviderConfig xsi:type=""AzureDnsOptions""><DnsZoneName>$domainUrl</DnsZoneName><TenantId>$dnsTenantId</TenantId><ClientId>$dnsClientId</ClientId><ClientSecret>$dnsClientSecret</ClientSecret><SubscriptionId/><ResourceGroupName/></DnsProviderConfig><AdminAddress>$rawAdminPortalHostName</AdminAddress><EngineApiAddress>$apiServiceHostName</EngineApiAddress><InternalWebAppsAddress>$agileXrmHostName</InternalWebAppsAddress><ExternalWebAppsAddress>$externalAXrmHostName</ExternalWebAppsAddress><PublicWebAppsAddress>$publicAXrmHostName</PublicWebAppsAddress><EnableBlobStorageManagement>true</EnableBlobStorageManagement><StorageMangementFunctionUrl>$stoManFunctionUrl</StorageMangementFunctionUrl><StorageMangementFunctionKey>$stoManFunctionKey</StorageMangementFunctionKey></TenantManagerConnectorConfiguration>"
+	$connectorConfig = "<?xml version=""1.0"" encoding=""utf-8""?><TenantManagerConnectorConfiguration xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><EnableDnsManagement>true</EnableDnsManagement><DnsProviderConfig xsi:type=""AzureDnsOptions""><DnsZoneName>$domainUrl</DnsZoneName><TenantId>$dnsTenantId</TenantId><ClientId>$dnsClientId</ClientId><ClientSecret>$dnsClientSecret</ClientSecret><SubscriptionId/><ResourceGroupName/></DnsProviderConfig><AdminAddress>$rawAdminPortalHostName</AdminAddress><EngineApiAddress>$apiServiceHostName</EngineApiAddress><InternalWebAppsAddress>$agileXrmHostName</InternalWebAppsAddress><ExternalWebAppsAddress>$externalAXrmHostName</ExternalWebAppsAddress><PublicWebAppsAddress>$publicAXrmHostName</PublicWebAppsAddress><EnableBlobStorageManagement>true</EnableBlobStorageManagement></TenantManagerConnectorConfiguration>"
 
 	Insert-ConnectorRecord -connectorName $tenantManagerConnectorName -sqlInstance $sqlInstance -connectorConfig $connectorConfig -updateRecord $false
 }
@@ -2912,11 +2910,11 @@ function Backup-Config-Files()
 		Write-Host "Executing '$backupFilesScript' file...." -ForegroundColor DarkCyan;
 
 		$dbAuthSection = ""
-		$dbSection="-db1:'$singleApDB' -db2:'$masterPortalDB' -sqlInstance:'$sqlInstance' "
+		$dbSection="-db1:'$singleApDB' -db2:'$masterPortalDB' -sqlInstance:'$sqlServerAliasName' "
 		if($isSqlAzure)
 		{
 			$azureInstanceName = $sqlServer.Split(".")[0];
-			$dbAuthSection = "-dbUserName:'$dbUserName@$azureInstanceName' -dbUserPassword:'$dbUserPass' -isSQLAzure "
+			$dbAuthSection = "-dbUserName:'$dbUserName@$azureInstanceName' -dbUserPass:'$dbUserPassword' -isSQLAzure "
 		}
 		
 		try
