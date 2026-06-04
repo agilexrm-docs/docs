@@ -23,7 +23,7 @@ Param(
 	[string]$azureAdRealm = "https://axrm.agilexrmonline.com",
 	[validateSet('MT','ST')][string]$deploymentMode ="MT",
 	[validateSet('Cloud','PrivateCloud')][string]$deploymentType ="Cloud",
-	[string]$localUsersPassword ="Default@1", 
+	[string]$localUsersPassword ="", 
 	[string]$waadWcfAppId = "19e4137f-55ae-4dbf-9fbc-e386bbf36304",
 	[string]$waadWcfAppIdUri = "https://ws.agilexrmonline.com:13487/AgilePointServer",
 	[string]$waadApplicationId = "81c01359-21c1-467f-a3a8-52f5d6721fa0",
