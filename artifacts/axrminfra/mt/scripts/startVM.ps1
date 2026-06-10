@@ -138,7 +138,6 @@ if($deploymentMode -eq "ST")
 #Global Parameters
 $global:debugMode = $false
 $internalDomainValue = "INTERNAL"
-$deployPortalForMT = $false
 
 #Script Parameters
 $currentVmSSInstance = "$env:ComputerName"
@@ -2872,31 +2871,31 @@ function Apply-Post-Installation-For-MT()
 		Write-Error "Service is not running. Provisioning has failed. Please review and reexecute";
 		exit -1;
 	}
-	if($deployPortalForMT -eq $true)
+
+	if($isSqlAzure -ne $true)
 	{
-		Write-Host "Checking Portal in MT Deployment..."
-		#X - Check DB Connection to MasterPortalDB
-		$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $masterPortalDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+		Write-Host "PostInstallation in MT Deployment only valid for SQL Azure. Skipped!!" -ForegroundColor Magenta
+		return;
+	}
 	
-		#X - Check DB Connection to SinglePortalDB
-		$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singlePortalDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
-	
-		#x - Create NX Portal Orchard
-		$attemp = 0;
+	#X - Check DB Connection to MasterPortalDB
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $masterPortalDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+
+	#X - Check DB Connection to SinglePortalDB
+	$dbConnection = Test-Db-Connection -sqlInstanceName $sqlServer -sqlDbName $singlePortalDB -sqlUserName $dbUserName -sqlUserPassword $dbUserPassword 
+
+	#x - Create NX Portal Orchard
+	$attemp = 0;
+	$nxPortalStatus = Create-NX-Portal-Orchard;
+	Write-Host "Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
+	while ($nxPortalStatus -ne 0 -and $attemp -lt 15)
+	{
 		$nxPortalStatus = Create-NX-Portal-Orchard;
-		Write-Host "Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
-		while ($nxPortalStatus -ne 0 -and $attemp -lt 15)
-		{
-			$nxPortalStatus = Create-NX-Portal-Orchard;
-			Write-Host "--Attemp $attemp .Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
-			$attemp++;
-			Start-Sleep -Milliseconds 5000;
-		}
+		Write-Host "--Attemp $attemp .Create NX Portal Status is $nxPortalStatus" -ForegroundColor DarkCyan;
+		$attemp++;
+		Start-Sleep -Milliseconds 5000;
 	}
-	else
-	{
-		Write-Host "Portal in MT Deployment is skipped!!"
-	}
+
 	#Create Connectors Records
 	Insert-AD-Connector -sqlInstance $sqlServer -agileDialogsURL $agileDialogsUrl -agileDialogsExternalURL $agileDialogsExternalUrl -agileDialogsPublicUrl $agileDialogsPublicUrl -notiReceiverUrl $notiReceiverUrl -updateRecord $false;
 	Insert-PM-Connector -sqlInstance $sqlServer -processManagerURL $processManagerUrl -updateRecord $false;
